@@ -1,0 +1,13 @@
+int path - 맵에 enemy가 움직일 path 꼭지점들 저장
+timeBuild - enemy가 만들어진 시간
+timeAft - 만들어진 후 경과 시간
+velocity - enemy가 움직이는 속도
+
+setPath - path 변경 가능
+setTime - 경과시간 변경
+showPosition - path와 경과시간, 속도를 이용하여 현재 위치 알려줌
+Enemy->setEnvironment - 레벨 정보를 이용하여 디펜스와 속도를 입력
+attackLevel-공격가능한 enemy가 가지는 공격방법 ex)1=punch....
+Attackable->setEnvironment2 - 레벨 정보를 이용하여 attack에 필요한 정보 입력(attack, hitpoint, delay,ready, range, attackLevel)
+attack - attackLevel에 따라 다르게 공격
+attackFar - 멀리있는 포탑도 공격가능한 함수
