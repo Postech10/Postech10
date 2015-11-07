@@ -18,7 +18,8 @@ SOURCES += main.cpp \
     Enemy.cpp \
     Game.cpp \
     Tower.cpp \
-    BattleObject.cpp
+    BattleObject.cpp \
+    Upgrades.cpp
 
 HEADERS  += \
     BuildTowerIcon.h \
@@ -26,7 +27,8 @@ HEADERS  += \
     Enemy.h \
     Game.h \
     Tower.h \
-    BattleObject.h
+    BattleObject.h \
+    Upgrades.h
 
 RESOURCES += \
     pic.qrc

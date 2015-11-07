@@ -30,13 +30,14 @@ BattleObject::BattleObject()
     Target = NULL;
     HasTarget = false;
     Hp = 0;                                    //이건 개별적으로 정해야하므로 일단 BattleObject에선 0
+    AttackPower = 0;                            //위와 같은이유
     DefensivePower = 0;                         //위와 같은이유
     Attackable = false;                         //위와 같은이유
 }
 
 void BattleObject::Attack()
 {
-    Bullet *bullet = new Bullet();
+    Bullet *bullet = new Bullet(AttackPower);
     bullet->setPos(x()+50,y()+65);                  //constructor에 있는 object_center와 동일 좌표
     QLineF ln(QPointF(x()+50,y()+65),(Target->x(),Target->y()));      //목적지까지 선긋기
     int angle = -1 * ln.angle();                    //object와 target사이의 각도를 재서
@@ -58,6 +59,36 @@ void BattleObject::IsHitBy(int AttackPower)
 int BattleObject::GetHp()
 {
     return Hp;
+}
+
+int BattleObject::GetAttackPower()
+{
+    return AttackPower;
+}
+
+int BattleObject::GetDefensivePower()
+{
+    return DefensivePower;
+}
+
+bool BattleObject::GetAttackable()
+{
+    return Attackable;
+}
+
+void BattleObject::SetHp(int Hp)
+{
+    this->Hp=Hp;
+}
+
+void BattleObject::SetAttackPower(int AttackPower)
+{
+    this->AttackPower=AttackPower;
+}
+
+void BattleObject::SetDefensivePower(int DefensivePower)
+{
+    this->DefensivePower=DefensivePower;
 }
 
 void BattleObject::SetTarget()

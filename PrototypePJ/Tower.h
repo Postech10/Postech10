@@ -2,6 +2,7 @@
 #define TOWER
 
 #include "BattleObject.h"
+#include "Upgrades.h"
 
 #define NORMAL 0
 #define SPLASH 1
@@ -21,7 +22,8 @@
 class Tower: public BattleObject{
     Q_OBJECT
 public:
-    void upgrade(Upgrades, TowerCode);
+    Tower();
+    void upgrade(Upgrade, int);
     void fuseTower(Tower*, Tower*);
 protected:
     int TargetNum;

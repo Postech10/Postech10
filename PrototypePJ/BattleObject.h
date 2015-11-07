@@ -15,6 +15,12 @@ public:
     double CalcDistance(QGraphicsItem*);
     void IsHitBy(int);
     int GetHp();
+    int GetAttackPower();
+    int GetDefensivePower();
+    bool GetAttackable();
+    void SetHp(int Hp);
+    void SetAttackPower(int AttackPower);
+    void SetDefensivePower(int DefensivePower);
 public slots:
     void SetTarget();
 protected:
@@ -22,6 +28,7 @@ protected:
     QGraphicsItem* Target;
     bool HasTarget;
     int Hp;
+    int AttackPower;
     int DefensivePower;
     bool Attackable;
 };
