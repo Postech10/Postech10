@@ -10,9 +10,9 @@ UpgradeButton::UpgradeButton(QGraphicsItem *parent): QGraphicsPixmapItem(parent)
 
 void UpgradeButton::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {    
-    if(game->fuse_tower.size() == 1)
-        qDebug()<<"upgrade button was pressed!";
+    if(game->waiting_line.size() == 1)
+        qDebug()<<" upgrade button was pressed!";
     else
-        qDebug()<<"you need only one tower to upgrade.";
-    game->fuse_mode = true;
+        qDebug()<<" you need only one tower to upgrade.";
+    game->upgrade_mode = true;
 }

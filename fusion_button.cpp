@@ -9,10 +9,10 @@ fusion_button::fusion_button(QGraphicsItem *parent): QGraphicsPixmapItem(parent)
 
 void fusion_button::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
-    if(game->fuse_tower.size() == 2)
-        qDebug()<<"Tower button was pressed!";
+    if(game->waiting_line.size() == 2)
+        qDebug()<<" Fusion button was pressed!";
     else
-        qDebug()<<"you need two towers to fusion.";
+        qDebug()<<" you need two towers to fusion.";
     game->fuse_mode = true;
 }
 

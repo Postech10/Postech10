@@ -58,20 +58,20 @@ void Tower::fire()
 void Tower::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
     if(!choose){
-        if(game->fuse_tower.size() < 2){
+        if(game->waiting_line.size() < 2){
            attack_area->setPen(QPen(Qt::SolidLine));
            choose = true;
-           game->fuse_tower.push_back(this);
+           game->waiting_line.push_back(this);
         }
     }
 
     else{
       attack_area->setPen(QPen(Qt::DotLine));
         choose = false;
-        if(game->fuse_tower[0] == this)
-            game->fuse_tower.remove(0);
+        if(game->waiting_line[0] == this)
+            game->waiting_line.remove(0);
         else
-           game->fuse_tower.remove(1);
+           game->waiting_line.remove(1);
     }
 }
 

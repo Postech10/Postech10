@@ -27,7 +27,7 @@ public:
     bool add_mode;
     bool fuse_mode;
     bool upgrade_mode;
-    QVector<Tower*> fuse_tower;
+    QVector<Tower*> waiting_line;
 
 public slots:
     void spawnEnemy();
