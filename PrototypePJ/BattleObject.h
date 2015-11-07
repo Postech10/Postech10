@@ -17,10 +17,12 @@ public:
     int GetHp();
     int GetAttackPower();
     int GetDefensivePower();
+    int GetAttackSpeed();
     bool GetAttackable();
     void SetHp(int Hp);
     void SetAttackPower(int AttackPower);
     void SetDefensivePower(int DefensivePower);
+    void SetAttackSpeed(int AttackSpeed);
 public slots:
     void SetTarget();
 protected:
@@ -30,6 +32,7 @@ protected:
     int Hp;
     int AttackPower;
     int DefensivePower;
+    int AttackSpeed;
     bool Attackable;
 };
 

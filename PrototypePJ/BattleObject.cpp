@@ -25,13 +25,14 @@ BattleObject::BattleObject()
 
     QTimer *timer = new QTimer();
     connect(timer,SIGNAL(timeout()),this,SLOT(SetTarget()));
-    timer->start(2500);
+    timer->start(1/AttackSpeed);                         //나중에 알맞게 수정예정
 
     Target = NULL;
     HasTarget = false;
     Hp = 0;                                    //이건 개별적으로 정해야하므로 일단 BattleObject에선 0
     AttackPower = 0;                            //위와 같은이유
     DefensivePower = 0;                         //위와 같은이유
+    AttackSpeed = 0;
     Attackable = false;                         //위와 같은이유
 }
 
@@ -71,6 +72,11 @@ int BattleObject::GetDefensivePower()
     return DefensivePower;
 }
 
+int BattleObject::GetAttackSpeed()
+{
+    return AttackSpeed;
+}
+
 bool BattleObject::GetAttackable()
 {
     return Attackable;
@@ -89,6 +95,11 @@ void BattleObject::SetAttackPower(int AttackPower)
 void BattleObject::SetDefensivePower(int DefensivePower)
 {
     this->DefensivePower=DefensivePower;
+}
+
+void BattleObject::SetAttackSpeed(int AttackSpeed)
+{
+    this->AttackSpeed=AttackSpeed;
 }
 
 void BattleObject::SetTarget()
