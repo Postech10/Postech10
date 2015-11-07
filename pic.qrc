@@ -6,5 +6,7 @@
         <file>add.png</file>
         <file>start.png</file>
         <file>title.png</file>
+        <file>fusion_button.png</file>
+        <file>upgrade_button.png</file>
     </qresource>
 </RCC>

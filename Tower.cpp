@@ -35,6 +35,8 @@ Tower::Tower(): QObject()
     connect(timer,SIGNAL(timeout()),this,SLOT(aquire_target()));
     timer->start(2500);
     attack_dest = QPointF(800,0);
+
+    choose = false;
 }
 
 double Tower::distanceTo(QGraphicsItem *item)
@@ -51,6 +53,26 @@ void Tower::fire()
     int angle = -1 * ln.angle();                    //각도재서
     bullet->setRotation(angle);                     //rotation 설정
     game->scene->addItem(bullet);                   //추가
+}
+
+void Tower::mousePressEvent(QGraphicsSceneMouseEvent *event)
+{
+    if(!choose){
+        if(game->fuse_tower.size() < 2){
+           attack_area->setPen(QPen(Qt::SolidLine));
+           choose = true;
+           game->fuse_tower.push_back(this);
+        }
+    }
+
+    else{
+      attack_area->setPen(QPen(Qt::DotLine));
+        choose = false;
+        if(game->fuse_tower[0] == this)
+            game->fuse_tower.remove(0);
+        else
+           game->fuse_tower.remove(1);
+    }
 }
 
 void Tower::aquire_target()

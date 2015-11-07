@@ -8,6 +8,5 @@ public:
     void mousePressEvent(QGraphicsSceneMouseEvent *event);      //누를 때 method
 };
 
-
 #endif // BUILDTOWERICON
 
