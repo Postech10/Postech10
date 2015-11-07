@@ -12,23 +12,16 @@ TARGET = hwcopy2
 TEMPLATE = app
 
 
-SOURCES += main.cpp \
-    BuildTowerIcon.cpp \
+SOURCES += \
     Bullet.cpp \
-    Enemy.cpp \
-    Game.cpp \
     Tower.cpp \
     BattleObject.cpp \
     Upgrades.cpp
 
 HEADERS  += \
-    BuildTowerIcon.h \
     Bullet.h \
-    Enemy.h \
-    Game.h \
     Tower.h \
     BattleObject.h \
     Upgrades.h
 
-RESOURCES += \
-    pic.qrc
+RESOURCES +=
