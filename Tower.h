@@ -7,6 +7,7 @@
 #include <QGraphicsItem>
 #include <QPointF>
 #include <QObject>
+#include <QColor>
 
 class Tower: public QObject, public QGraphicsPixmapItem{
     Q_OBJECT
