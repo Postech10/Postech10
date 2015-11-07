@@ -9,9 +9,9 @@
 #include "fusion_button.h"
 #include <QPoint>
 #include <QDebug>
+#include <Qpainter>
 
-Game::Game()                    //constructor
-{
+Game::Game(){                    //constructor
     scene = new QGraphicsScene(this);       //view하는 scene 생성
     scene->setSceneRect(0,0,1024,768);       //scene 크기 설정
     setScene(scene);
@@ -36,6 +36,14 @@ Game::Game()                    //constructor
     timer->start(2000);
 
 
+    for(int i=0 ; i<13 ; i++){
+        QLine line(0,i*64,1024,i*64);
+        scene->addLine(line);
+    }
+    for(int i=0 ; i<17 ; i++){
+        QLine line(i*64,0,i*64,768);
+        scene->addLine(line);
+    }
 }
 
 void Game::displayMenu()
@@ -53,8 +61,7 @@ void Game::displayMenu()
     scene->addItem(y);
 }
 
-void Game::setCursor(QString filename)
-{
+void Game::setCursor(QString filename){
     if(cursor){                                     //이전에 사용자가 어떤 pixmapitem 오브젝트를 선택 했을 경우
         scene->removeItem(cursor);
         delete cursor;                              //지우고
@@ -67,7 +74,7 @@ void Game::setCursor(QString filename)
 void Game::mouseMoveEvent(QMouseEvent *event)       //mouse 움직임
 {
     if(cursor){                                     //cursor가 null이 아니면
-        cursor->setPos(event->pos());               //cursor를 현재 마우스 위치로
+        cursor->setPos(event->pos().x()-32,event->pos().y()-32);               //cursor를 현재 마우스 위치로
     }
 }
 
@@ -76,17 +83,17 @@ void Game::mousePressEvent(QMouseEvent *event)      //mouse 누름
     QPoint pointed_spot = event->pos();
     qDebug()<<pointed_spot.x()/64 << pointed_spot.y()/64;
 
-    if(this->position[pointed_spot.x()/64][pointed_spot.y()/64] == false){
-       if(add_mode){                                      //add 누른 상태면
-           scene->addItem(build[build.size()-1]);
-           build[build.size()-1]->setPos(event->pos());                //그자리에 build가 가리키는거 생성
-           cursor = nullptr;
-           add_mode = false;
-           this->position[pointed_spot.x()/64][pointed_spot.y()/64] = true;
-        }
-        else{
-            QGraphicsView::mousePressEvent(event);      //아니면 제기능.
-        }
+    if(this->position[pointed_spot.x()/64][pointed_spot.y()/64] == false && add_mode){                                         //add 누른 상태면
+
+        build[build.size()-1]->setPos((pointed_spot.x()/64)*63+32,(pointed_spot.y()/64)*63+32); //그자리에 build가 가리키는거 생성
+        scene->addItem(build[build.size()-1]);
+    //    cursor->setPos((pointed_spot.x()/64)*64+32,(pointed_spot.y()/64)*64+32);
+    //    scene->addItem(cursor);
+    //    delete cursor;
+
+        cursor = nullptr;
+        add_mode = false;
+        this->position[pointed_spot.x()/64][pointed_spot.y()/64] = true;
     }
     else
        QGraphicsView::mousePressEvent(event);
