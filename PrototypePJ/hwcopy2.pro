@@ -17,14 +17,16 @@ SOURCES += main.cpp \
     Bullet.cpp \
     Enemy.cpp \
     Game.cpp \
-    Tower.cpp
+    Tower.cpp \
+    BattleObject.cpp
 
 HEADERS  += \
     BuildTowerIcon.h \
     Bullet.h \
     Enemy.h \
     Game.h \
-    Tower.h
+    Tower.h \
+    BattleObject.h
 
 RESOURCES += \
     pic.qrc

@@ -21,6 +21,7 @@
 class Tower: public BattleObject{
     Q_OBJECT
 public:
+    Tower();
     void upgrade(Upgrades, TowerCode);
     void fuseTower(Tower*, Tower*);
 protected:
