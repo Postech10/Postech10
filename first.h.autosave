@@ -1,0 +1,32 @@
+#ifndef GAME
+#define GAME
+
+#include <QGraphicsView>
+#include <QMouseEvent>
+#include "Tower.h"
+
+class Game: public QGraphicsView{               //game화면을 상속 (view)
+    
+    Q_OBJECT
+    QGraphicsScene *scene;                      
+    QGraphicsPixmapItem *cursor;
+    Tower *build;
+    
+public:
+    Game();                                     //constructor
+    
+    void setCursor(QString filename);           //cursor생성
+    
+    void mouseMoveEvent(QMouseEvent *event);    //
+    
+    void mousePressEvent(QMouseEvent *event);   //press, move method
+    
+    void displayMenu();
+
+public slots:
+    void spawnEnemy();
+};
+
+#endif // GAME
+
+
