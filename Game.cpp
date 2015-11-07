@@ -7,7 +7,8 @@
 #include <QTimer>
 #include "upgrade_button.h"
 #include "fusion_button.h"
-
+#include <QPoint>
+#include <QDebug>
 
 Game::Game()                    //constructor
 {
@@ -19,6 +20,10 @@ Game::Game()                    //constructor
     add_mode=false;                        //cursor, add 초기화
     fuse_mode=false;
     upgrade_mode=false;
+    for(int i=0 ; i < 16 ; i++){
+        for(int j=0 ; j < 12 ; j++)
+            position[i][j]=false;
+    }
 
     setMouseTracking(true);                 //enable mouse tracking
     setFixedSize(1024,768);                  //view 크기 설정
@@ -68,15 +73,23 @@ void Game::mouseMoveEvent(QMouseEvent *event)       //mouse 움직임
 
 void Game::mousePressEvent(QMouseEvent *event)      //mouse 누름
 {
-    if(add_mode){                                      //add 누른 상태면
-        scene->addItem(build[build.size()-1]);
-        build[build.size()-1]->setPos(event->pos());                //그자리에 build가 가리키는거 생성
-        cursor = nullptr;
-        add_mode = false;
+    QPoint pointed_spot = event->pos();
+    qDebug()<<pointed_spot.x()/64 << pointed_spot.y()/64;
+
+    if(this->position[pointed_spot.x()/64][pointed_spot.y()/64] == false){
+       if(add_mode){                                      //add 누른 상태면
+           scene->addItem(build[build.size()-1]);
+           build[build.size()-1]->setPos(event->pos());                //그자리에 build가 가리키는거 생성
+           cursor = nullptr;
+           add_mode = false;
+           this->position[pointed_spot.x()/64][pointed_spot.y()/64] = true;
+        }
+        else{
+            QGraphicsView::mousePressEvent(event);      //아니면 제기능.
+        }
     }
-    else{
-        QGraphicsView::mousePressEvent(event);      //아니면 제기능.
-    }
+    else
+       QGraphicsView::mousePressEvent(event);
 }
 
 void Game::spawnEnemy()

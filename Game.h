@@ -27,6 +27,7 @@ public:
     bool add_mode;
     bool fuse_mode;
     bool upgrade_mode;
+    bool position[16][12];
     QVector<Tower*> waiting_line;
 
 public slots:

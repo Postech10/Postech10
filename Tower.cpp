@@ -57,7 +57,7 @@ void Tower::fire()
 
 void Tower::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
-    if(!choose){
+    if(!choose && !game->add_mode){
         if(game->waiting_line.size() < 2){
            attack_area->setPen(QPen(Qt::SolidLine));
            choose = true;
