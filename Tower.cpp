@@ -12,7 +12,7 @@ extern Game *game;
 
 Tower::Tower(): QObject()
 {
-    setPixmap(QPixmap(":/images/tower.png"));     //사진설정
+    setPixmap(QPixmap(":/images/add.png"));     //사진설정
 
     QVector<QPointF> points;
     points << QPoint(1,0)<< QPoint(2,0)<< QPoint(3,1)<< QPoint(3,2)<< QPoint(2,3)
