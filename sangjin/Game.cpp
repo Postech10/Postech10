@@ -16,6 +16,7 @@ Game::Game(){                    //constructor
     scene->setSceneRect(0,0,1024,768);       //scene 크기 설정
     setScene(scene);
 
+    tooltip = nullptr;
     cursor = nullptr;
     add_mode=false;                        //cursor, add 초기화
     fuse_mode=false;
@@ -48,17 +49,27 @@ Game::Game(){                    //constructor
 
 void Game::displayMenu()
 {
-   UpgradeButton *x = new UpgradeButton();
-   x->setPos(800-117,100);
-   scene->addItem(x);
+    UpgradeButton *x = new UpgradeButton();
+    x->setPos(1024-192,500);
+    x->setZValue(1);
+    scene->addItem(x);
 
-    BuildTowerIcon *ic = new BuildTowerIcon();
-    ic->setPos(800-117,0);
+    BuildTowerIcon *ic = new BuildTowerIcon(":/images/Mechanical.bmp");
+    ic->setPos(1024-192,0);
+    ic->setZValue(1);
     scene->addItem(ic);                     //add icon 생성
 
     fusion_button *y = new fusion_button();
-    y->setPos(800-117,200);
+    y->setPos(1024-192+64,500);
+    y->setZValue(1);
     scene->addItem(y);
+
+    scene->addRect(1024-192,0,200,768,QPen(Qt::SolidLine),QBrush(QColor(Qt::gray)));
+}
+
+/*void Game::mouseMoveEvent(QMouseEvent *event)
+{
+    if(event->pos().x()/64 == 16 && event->pos().y()/64 == )
 }
 
 void Game::setCursor(QString filename){
@@ -70,37 +81,56 @@ void Game::setCursor(QString filename){
     cursor->setPixmap(QPixmap(filename));           //filename의 그림으로
     scene->addItem(cursor);                         //scene에 add
 }
-
+*/
 void Game::mouseMoveEvent(QMouseEvent *event)       //mouse 움직임
 {
-    if(cursor){                                     //cursor가 null이 아니면
-        cursor->setPos(event->pos().x()-32,event->pos().y()-32);               //cursor를 현재 마우스 위치로
+    if(tooltip){
+        scene->removeItem(tooltip);
+        delete tooltip;
+        tooltip = nullptr;
     }
-}
 
-void Game::mousePressEvent(QMouseEvent *event)      //mouse 누름
-{
-    QPoint pointed_spot = event->pos();
-    qDebug()<<pointed_spot.x()/64 << pointed_spot.y()/64;
-
-    if(this->position[pointed_spot.x()/64][pointed_spot.y()/64] == false && add_mode){                                         //add 누른 상태면
-
-        build[build.size()-1]->setPos((pointed_spot.x()/64)*63+32,(pointed_spot.y()/64)*63+32); //그자리에 build가 가리키는거 생성
-        scene->addItem(build[build.size()-1]);
-    //    cursor->setPos((pointed_spot.x()/64)*64+32,(pointed_spot.y()/64)*64+32);
-    //    scene->addItem(cursor);
-    //    delete cursor;
-
-        cursor = nullptr;
-        add_mode = false;
-        this->position[pointed_spot.x()/64][pointed_spot.y()/64] = true;
+    if(event->pos().x()/64 == (1024-192)/64 && event->pos().y()/64 == 0){
+        tooltip = new QGraphicsPixmapItem();
+        tooltip->setPixmap(QPixmap(":/images/add.png"));
+        tooltip->setPos(1024-192,300);
+        scene->addItem(tooltip);
     }
+
     else
-       QGraphicsView::mousePressEvent(event);
+        QGraphicsView::mouseMoveEvent(event);
 }
 
 void Game::spawnEnemy()
 {
     Enemy *enemy = new Enemy();
     scene->addItem(enemy);
+}
+
+void Game::button_Pressed()
+{
+    if(add_mode == true){
+        build.push_back(new Tower());
+        QPixmap* add_mode_pixmap = new QPixmap(QString(":/images/Mechanical.bmp"));
+        QCursor* add_mode_cursor = new QCursor(*add_mode_pixmap);
+        QWidget::setCursor(*add_mode_cursor);
+    }
+}
+
+void Game::mousePressEvent(QMouseEvent *event){
+
+    QPoint pointed_spot = event->pos();
+
+    if(this->position[pointed_spot.x()/64][pointed_spot.y()/64] == false && add_mode){
+        pointer = build[build.size()-1];
+        pointer->setVisible(true);
+        pointer->setPos((pointed_spot.x()/64)*64,(pointed_spot.y()/64)*64);
+        scene->addItem(pointer);
+        QWidget::unsetCursor();
+
+        this->position[pointed_spot.x()/64][pointed_spot.y()/64] = true;
+        add_mode = false;
+    }
+    else
+       QGraphicsView::mousePressEvent(event);
 }

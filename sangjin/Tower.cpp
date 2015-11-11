@@ -12,7 +12,7 @@ extern Game *game;
 
 Tower::Tower(): QObject()
 {
-    setPixmap(QPixmap(":/images/Machanical.bmp"));     //사진설정
+    setPixmap(QPixmap(":/images/Mechanical.bmp"));     //사진설정
 
     QVector<QPointF> points;
     points << QPoint(1,0)<< QPoint(2,0)<< QPoint(3,1)<< QPoint(3,2)<< QPoint(2,3)
@@ -57,7 +57,7 @@ void Tower::fire()
 
 void Tower::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
-    if(!choose && !game->add_mode){
+    if(!choose && !game->GetAddMode()){
         if(game->waiting_line.size() < 2){
            attack_area->setPen(QPen(Qt::SolidLine));
            choose = true;

@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>tower.png</file>
+        <file>bullet.png</file>
+        <file>enemy.png</file>
+        <file>add.png</file>
+        <file>start.png</file>
+        <file>title.png</file>
+        <file>fusion_button.png</file>
+        <file>upgrade_button.png</file>
+        <file>Mechanical.bmp</file>
+    </qresource>
+</RCC>
