@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_Game_t {
-    QByteArrayData data[6];
-    char stringdata0[51];
+    QByteArrayData data[7];
+    char stringdata0[57];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -34,11 +34,12 @@ QT_MOC_LITERAL(1, 5, 8), // "RoundSet"
 QT_MOC_LITERAL(2, 14, 0), // ""
 QT_MOC_LITERAL(3, 15, 9), // "new_round"
 QT_MOC_LITERAL(4, 25, 10), // "spawnEnemy"
-QT_MOC_LITERAL(5, 36, 14) // "button_Pressed"
+QT_MOC_LITERAL(5, 36, 14), // "button_Pressed"
+QT_MOC_LITERAL(6, 51, 5) // "point"
 
     },
     "Game\0RoundSet\0\0new_round\0spawnEnemy\0"
-    "button_Pressed"
+    "button_Pressed\0point"
 };
 #undef QT_MOC_LITERAL
 
@@ -60,14 +61,14 @@ static const uint qt_meta_data_Game[] = {
 
  // slots: name, argc, parameters, tag, flags
        4,    0,   32,    2, 0x0a /* Public */,
-       5,    0,   33,    2, 0x0a /* Public */,
+       5,    1,   33,    2, 0x0a /* Public */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::Int,    3,
 
  // slots: parameters
     QMetaType::Void,
-    QMetaType::Void,
+    QMetaType::Void, QMetaType::QPointF,    6,
 
        0        // eod
 };
@@ -80,7 +81,7 @@ void Game::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void *
         switch (_id) {
         case 0: _t->RoundSet((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 1: _t->spawnEnemy(); break;
-        case 2: _t->button_Pressed(); break;
+        case 2: _t->button_Pressed((*reinterpret_cast< QPointF(*)>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {

@@ -4,7 +4,7 @@
 #include <QGraphicsSceneMouseEvent>
 class UpgradeButton : public QGraphicsPixmapItem{
 public:
-    UpgradeButton(QGraphicsItem *parent =0);
+    UpgradeButton(char* filename,QGraphicsItem *parent =0);
     void mousePressEvent(QGraphicsSceneMouseEvent *event);      //누를 때 method
 };
 

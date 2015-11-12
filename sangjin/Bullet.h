@@ -1,3 +1,4 @@
+#pragma once
 #ifndef BULLET
 #define BULLET
 

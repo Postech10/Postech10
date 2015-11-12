@@ -3,12 +3,11 @@
 
 extern Game *game;
 
-BuildTowerIcon::BuildTowerIcon(char *filename, QGraphicsItem *parent): QGraphicsPixmapItem(parent){
+BuildTowerIcon::BuildTowerIcon(char *filename, QGraphicsItem *parent){
     setPixmap(QPixmap(filename));     //constructor
 }
-
 void BuildTowerIcon::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
     game->SetAddMode(true);
-    game->button_Pressed();
+    game->button_Pressed(event->pos());
 }

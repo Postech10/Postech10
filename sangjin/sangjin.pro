@@ -16,22 +16,24 @@ SOURCES += main.cpp\
     BuildTowerIcon.cpp \
     Bullet.cpp \
     Enemy.cpp \
-    fusion_button.cpp \
     Game.cpp \
     Tower.cpp \
     upgrade_button.cpp \
-    Wave_Generator.cpp
+    Wave_Generator.cpp \
+    Fusion_Button.cpp \
+    Button.cpp
 
 HEADERS  += \
     BuildTowerIcon.h \
     Bullet.h \
     Enemy.h \
     first.h \
-    fusion_button.h \
     Game.h \
     Tower.h \
     upgrade_button.h \
-    Wave_Generator.h
+    Wave_Generator.h \
+    Fusion_Button.h \
+    Button.h
 
 RESOURCES += \
     sources.qrc

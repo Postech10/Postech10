@@ -47,10 +47,12 @@ SOURCES       = ..\sangjin\main.cpp \
 		..\sangjin\BuildTowerIcon.cpp \
 		..\sangjin\Bullet.cpp \
 		..\sangjin\Enemy.cpp \
-		..\sangjin\fusion_button.cpp \
 		..\sangjin\Game.cpp \
 		..\sangjin\Tower.cpp \
-		..\sangjin\upgrade_button.cpp release\qrc_sources.cpp \
+		..\sangjin\upgrade_button.cpp \
+		..\sangjin\Wave_Generator.cpp \
+		..\sangjin\Fusion_Button.cpp \
+		..\sangjin\button.cpp release\qrc_sources.cpp \
 		release\moc_Bullet.cpp \
 		release\moc_Enemy.cpp \
 		release\moc_Game.cpp \
@@ -59,10 +61,12 @@ OBJECTS       = release\main.obj \
 		release\BuildTowerIcon.obj \
 		release\Bullet.obj \
 		release\Enemy.obj \
-		release\fusion_button.obj \
 		release\Game.obj \
 		release\Tower.obj \
 		release\upgrade_button.obj \
+		release\Wave_Generator.obj \
+		release\Fusion_Button.obj \
+		release\button.obj \
 		release\qrc_sources.obj \
 		release\moc_Bullet.obj \
 		release\moc_Enemy.obj \
@@ -73,17 +77,21 @@ DIST          =  ..\sangjin\BuildTowerIcon.h \
 		..\sangjin\Bullet.h \
 		..\sangjin\Enemy.h \
 		..\sangjin\first.h \
-		..\sangjin\fusion_button.h \
 		..\sangjin\Game.h \
 		..\sangjin\Tower.h \
-		..\sangjin\upgrade_button.h ..\sangjin\main.cpp \
+		..\sangjin\upgrade_button.h \
+		..\sangjin\Wave_Generator.h \
+		..\sangjin\Fusion_Button.h \
+		..\sangjin\button.h ..\sangjin\main.cpp \
 		..\sangjin\BuildTowerIcon.cpp \
 		..\sangjin\Bullet.cpp \
 		..\sangjin\Enemy.cpp \
-		..\sangjin\fusion_button.cpp \
 		..\sangjin\Game.cpp \
 		..\sangjin\Tower.cpp \
-		..\sangjin\upgrade_button.cpp
+		..\sangjin\upgrade_button.cpp \
+		..\sangjin\Wave_Generator.cpp \
+		..\sangjin\Fusion_Button.cpp \
+		..\sangjin\button.cpp
 QMAKE_TARGET  = sangjin
 DESTDIR        = release\ #avoid trailing-slash linebreak
 TARGET         = sangjin.exe
@@ -173,7 +181,7 @@ dist:
 	$(ZIP) sangjin.zip $(SOURCES) $(DIST) ..\sangjin\sangjin.pro ..\..\Qt\5.5\msvc2010\mkspecs\features\spec_pre.prf ..\..\Qt\5.5\msvc2010\mkspecs\common\msvc-desktop.conf ..\..\Qt\5.5\msvc2010\mkspecs\qconfig.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_3dcore.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_3dcore_private.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_3dinput.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_3dinput_private.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_3dquick.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_3dquick_private.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_3dquickrenderer.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_3dquickrenderer_private.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_3drenderer.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_3drenderer_private.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_axbase.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_axbase_private.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_axcontainer.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_axcontainer_private.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_axserver.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_axserver_private.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_bluetooth.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_bluetooth_private.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_bootstrap_private.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_clucene_private.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_concurrent.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_concurrent_private.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_core.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_core_private.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_dbus.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_dbus_private.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_declarative.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_declarative_private.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_designer.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_designer_private.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_designercomponents_private.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_enginio.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_enginio_private.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_gui.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_gui_private.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_help.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_help_private.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_location.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_location_private.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_multimedia.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_multimedia_private.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_multimediawidgets.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_multimediawidgets_private.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_network.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_network_private.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_nfc.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_nfc_private.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_opengl.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_opengl_private.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_openglextensions.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_openglextensions_private.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_platformsupport_private.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_positioning.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_positioning_private.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_printsupport.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_printsupport_private.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_qml.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_qml_private.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_qmldevtools_private.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_qmltest.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_qmltest_private.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_quick.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_quick_private.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_quickparticles_private.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_quickwidgets.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_quickwidgets_private.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_script.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_script_private.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_scripttools.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_scripttools_private.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_sensors.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_sensors_private.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_serialport.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_serialport_private.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_sql.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_sql_private.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_svg.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_svg_private.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_testlib.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_testlib_private.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_uiplugin.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_uitools.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_uitools_private.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_webchannel.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_webchannel_private.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_webkit.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_webkit_private.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_webkitwidgets.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_webkitwidgets_private.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_websockets.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_websockets_private.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_widgets.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_widgets_private.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_winextras.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_winextras_private.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_xml.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_xml_private.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_xmlpatterns.pri ..\..\Qt\5.5\msvc2010\mkspecs\modules\qt_lib_xmlpatterns_private.pri ..\..\Qt\5.5\msvc2010\mkspecs\features\qt_functions.prf ..\..\Qt\5.5\msvc2010\mkspecs\features\qt_config.prf ..\..\Qt\5.5\msvc2010\mkspecs\features\win32\qt_config.prf ..\..\Qt\5.5\msvc2010\mkspecs\win32-msvc2010\qmake.conf ..\..\Qt\5.5\msvc2010\mkspecs\features\spec_post.prf ..\..\Qt\5.5\msvc2010\mkspecs\features\exclusive_builds.prf ..\..\Qt\5.5\msvc2010\mkspecs\features\default_pre.prf ..\..\Qt\5.5\msvc2010\mkspecs\features\win32\default_pre.prf ..\..\Qt\5.5\msvc2010\mkspecs\features\resolve_config.prf ..\..\Qt\5.5\msvc2010\mkspecs\features\exclusive_builds_post.prf ..\..\Qt\5.5\msvc2010\mkspecs\features\default_post.prf ..\..\Qt\5.5\msvc2010\mkspecs\features\build_pass.prf ..\..\Qt\5.5\msvc2010\mkspecs\features\win32\rtti.prf ..\..\Qt\5.5\msvc2010\mkspecs\features\precompile_header.prf ..\..\Qt\5.5\msvc2010\mkspecs\features\warn_on.prf ..\..\Qt\5.5\msvc2010\mkspecs\features\qt.prf ..\..\Qt\5.5\msvc2010\mkspecs\features\resources.prf ..\..\Qt\5.5\msvc2010\mkspecs\features\moc.prf ..\..\Qt\5.5\msvc2010\mkspecs\features\win32\opengl.prf ..\..\Qt\5.5\msvc2010\mkspecs\features\uic.prf ..\..\Qt\5.5\msvc2010\mkspecs\features\win32\windows.prf ..\..\Qt\5.5\msvc2010\mkspecs\features\testcase_targets.prf ..\..\Qt\5.5\msvc2010\mkspecs\features\exceptions.prf ..\..\Qt\5.5\msvc2010\mkspecs\features\yacc.prf ..\..\Qt\5.5\msvc2010\mkspecs\features\lex.prf ..\sangjin\sangjin.pro ..\sangjin\sources.qrc C:/Qt/5.5/msvc2010/lib/qtmain.prl C:/Qt/5.5/msvc2010/lib/Qt5Widgets.prl C:/Qt/5.5/msvc2010/lib/Qt5Gui.prl C:/Qt/5.5/msvc2010/lib/Qt5Core.prl  NO_PCH_SOURCES RESOURCES HEADERS SOURCES OBJECTIVE_SOURCES FORMS YACCSOURCES YACCSOURCES LEXSOURCES 
 
 clean: compiler_clean 
-	-$(DEL_FILE) release\main.obj release\BuildTowerIcon.obj release\Bullet.obj release\Enemy.obj release\fusion_button.obj release\Game.obj release\Tower.obj release\upgrade_button.obj release\qrc_sources.obj release\moc_Bullet.obj release\moc_Enemy.obj release\moc_Game.obj release\moc_Tower.obj
+	-$(DEL_FILE) release\main.obj release\BuildTowerIcon.obj release\Bullet.obj release\Enemy.obj release\Game.obj release\Tower.obj release\upgrade_button.obj release\Wave_Generator.obj release\Fusion_Button.obj release\button.obj release\qrc_sources.obj release\moc_Bullet.obj release\moc_Enemy.obj release\moc_Game.obj release\moc_Tower.obj
 	-$(DEL_FILE) release\sangjin.exp release\sangjin.exe.embed.manifest
 
 distclean: clean 
@@ -193,10 +201,12 @@ compiler_rcc_make_all: release\qrc_sources.cpp
 compiler_rcc_clean:
 	-$(DEL_FILE) release\qrc_sources.cpp
 release\qrc_sources.cpp: ..\sangjin\sources.qrc \
+		..\sangjin\Start_Button.png \
 		..\sangjin\upgrade_button.png \
 		..\sangjin\add.png \
 		..\sangjin\fusion_button.png \
 		..\sangjin\start.png \
+		..\sangjin\Pause_Button.png \
 		..\sangjin\bullet.png \
 		..\sangjin\Mechanical.bmp \
 		..\sangjin\enemy.png \
@@ -502,6 +512,7 @@ release\moc_Game.cpp: ..\..\Qt\5.5\msvc2010\include\QtWidgets\QGraphicsView \
 		..\..\Qt\5.5\msvc2010\include\QtGui\qtouchdevice.h \
 		..\..\Qt\5.5\msvc2010\include\QtWidgets\qgraphicsscene.h \
 		..\..\Qt\5.5\msvc2010\include\QtGui\QMouseEvent \
+		..\..\Qt\5.5\msvc2010\include\QtCore\QVector \
 		..\sangjin\Tower.h \
 		..\..\Qt\5.5\msvc2010\include\QtWidgets\QGraphicsPixmapItem \
 		..\..\Qt\5.5\msvc2010\include\QtWidgets\qgraphicsitem.h \
@@ -512,7 +523,18 @@ release\moc_Game.cpp: ..\..\Qt\5.5\msvc2010\include\QtWidgets\QGraphicsView \
 		..\..\Qt\5.5\msvc2010\include\QtCore\QPointF \
 		..\..\Qt\5.5\msvc2010\include\QtCore\QObject \
 		..\..\Qt\5.5\msvc2010\include\QtGui\QColor \
-		..\..\Qt\5.5\msvc2010\include\QtCore\QVector \
+		..\sangjin\Enemy.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\QList \
+		..\sangjin\button.h \
+		..\..\Qt\5.5\msvc2010\include\QtWidgets\QPushButton \
+		..\..\Qt\5.5\msvc2010\include\QtWidgets\qpushbutton.h \
+		..\..\Qt\5.5\msvc2010\include\QtWidgets\qabstractbutton.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qicon.h \
+		..\sangjin\Game.h \
+		..\sangjin\Wave_Generator.h \
+		..\sangjin\upgrade_button.h \
+		..\sangjin\Fusion_Button.h \
+		..\sangjin\BuildTowerIcon.h \
 		..\sangjin\Game.h
 	C:\Qt\5.5\msvc2010\bin\moc.exe $(DEFINES) -D_MSC_VER=1600 -D_WIN32 -IC:/Qt/5.5/msvc2010/mkspecs/win32-msvc2010 -IC:/Postech10/sangjin -IC:/Qt/5.5/msvc2010/include -IC:/Qt/5.5/msvc2010/include/QtWidgets -IC:/Qt/5.5/msvc2010/include/QtGui -IC:/Qt/5.5/msvc2010/include/QtANGLE -IC:/Qt/5.5/msvc2010/include/QtCore -I. ..\sangjin\Game.h -o release\moc_Game.cpp
 
@@ -753,6 +775,7 @@ release\main.obj: ..\sangjin\main.cpp ..\..\Qt\5.5\msvc2010\include\QtWidgets\QA
 		..\..\Qt\5.5\msvc2010\include\QtWidgets\qframe.h \
 		../sangjin/Game.h \
 		..\..\Qt\5.5\msvc2010\include\QtGui\QMouseEvent \
+		..\..\Qt\5.5\msvc2010\include\QtCore\QVector \
 		../sangjin/Tower.h \
 		..\..\Qt\5.5\msvc2010\include\QtWidgets\QGraphicsPixmapItem \
 		..\..\Qt\5.5\msvc2010\include\QtWidgets\qgraphicsitem.h \
@@ -763,7 +786,17 @@ release\main.obj: ..\sangjin\main.cpp ..\..\Qt\5.5\msvc2010\include\QtWidgets\QA
 		..\..\Qt\5.5\msvc2010\include\QtCore\QPointF \
 		..\..\Qt\5.5\msvc2010\include\QtCore\QObject \
 		..\..\Qt\5.5\msvc2010\include\QtGui\QColor \
-		..\..\Qt\5.5\msvc2010\include\QtCore\QVector
+		../sangjin/Enemy.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\QList \
+		../sangjin/button.h \
+		..\..\Qt\5.5\msvc2010\include\QtWidgets\QPushButton \
+		..\..\Qt\5.5\msvc2010\include\QtWidgets\qpushbutton.h \
+		..\..\Qt\5.5\msvc2010\include\QtWidgets\qabstractbutton.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qicon.h \
+		../sangjin/Wave_Generator.h \
+		../sangjin/upgrade_button.h \
+		../sangjin/Fusion_Button.h \
+		../sangjin/BuildTowerIcon.h
 
 release\BuildTowerIcon.obj: ..\sangjin\BuildTowerIcon.cpp ../sangjin/BuildTowerIcon.h \
 		..\..\Qt\5.5\msvc2010\include\QtWidgets\QGraphicsPixmapItem \
@@ -855,26 +888,19 @@ release\BuildTowerIcon.obj: ..\sangjin\BuildTowerIcon.cpp ../sangjin/BuildTowerI
 		..\..\Qt\5.5\msvc2010\include\QtGui\qpixelformat.h \
 		..\..\Qt\5.5\msvc2010\include\QtWidgets\QGraphicsSceneMouseEvent \
 		..\..\Qt\5.5\msvc2010\include\QtWidgets\qgraphicssceneevent.h \
-		..\..\Qt\5.5\msvc2010\include\QtWidgets\QButtonGroup \
-		..\..\Qt\5.5\msvc2010\include\QtWidgets\qbuttongroup.h \
-		../sangjin/Game.h \
-		..\..\Qt\5.5\msvc2010\include\QtWidgets\QGraphicsView \
-		..\..\Qt\5.5\msvc2010\include\QtWidgets\qgraphicsview.h \
-		..\..\Qt\5.5\msvc2010\include\QtGui\qpainter.h \
-		..\..\Qt\5.5\msvc2010\include\QtGui\qtextoption.h \
-		..\..\Qt\5.5\msvc2010\include\QtGui\qpen.h \
-		..\..\Qt\5.5\msvc2010\include\QtGui\qbrush.h \
-		..\..\Qt\5.5\msvc2010\include\QtGui\qfontinfo.h \
-		..\..\Qt\5.5\msvc2010\include\QtGui\qfont.h \
-		..\..\Qt\5.5\msvc2010\include\QtGui\qfontmetrics.h \
-		..\..\Qt\5.5\msvc2010\include\QtWidgets\qscrollarea.h \
-		..\..\Qt\5.5\msvc2010\include\QtWidgets\qabstractscrollarea.h \
-		..\..\Qt\5.5\msvc2010\include\QtWidgets\qframe.h \
+		..\..\Qt\5.5\msvc2010\include\QtWidgets\QPushButton \
+		..\..\Qt\5.5\msvc2010\include\QtWidgets\qpushbutton.h \
+		..\..\Qt\5.5\msvc2010\include\QtWidgets\qabstractbutton.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qicon.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qkeysequence.h \
 		..\..\Qt\5.5\msvc2010\include\QtWidgets\qwidget.h \
 		..\..\Qt\5.5\msvc2010\include\QtGui\qpalette.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qbrush.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qfont.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qfontmetrics.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qfontinfo.h \
 		..\..\Qt\5.5\msvc2010\include\QtWidgets\qsizepolicy.h \
 		..\..\Qt\5.5\msvc2010\include\QtGui\qcursor.h \
-		..\..\Qt\5.5\msvc2010\include\QtGui\qkeysequence.h \
 		..\..\Qt\5.5\msvc2010\include\QtGui\qevent.h \
 		..\..\Qt\5.5\msvc2010\include\QtCore\qurl.h \
 		..\..\Qt\5.5\msvc2010\include\QtCore\qurlquery.h \
@@ -882,15 +908,30 @@ release\BuildTowerIcon.obj: ..\sangjin\BuildTowerIcon.cpp ../sangjin/BuildTowerI
 		..\..\Qt\5.5\msvc2010\include\QtCore\qfiledevice.h \
 		..\..\Qt\5.5\msvc2010\include\QtGui\qvector2d.h \
 		..\..\Qt\5.5\msvc2010\include\QtGui\qtouchdevice.h \
+		../sangjin/Game.h \
+		..\..\Qt\5.5\msvc2010\include\QtWidgets\QGraphicsView \
+		..\..\Qt\5.5\msvc2010\include\QtWidgets\qgraphicsview.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qpainter.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qtextoption.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qpen.h \
+		..\..\Qt\5.5\msvc2010\include\QtWidgets\qscrollarea.h \
+		..\..\Qt\5.5\msvc2010\include\QtWidgets\qabstractscrollarea.h \
+		..\..\Qt\5.5\msvc2010\include\QtWidgets\qframe.h \
 		..\..\Qt\5.5\msvc2010\include\QtWidgets\qgraphicsscene.h \
 		..\..\Qt\5.5\msvc2010\include\QtGui\QMouseEvent \
+		..\..\Qt\5.5\msvc2010\include\QtCore\QVector \
 		../sangjin/Tower.h \
 		..\..\Qt\5.5\msvc2010\include\QtWidgets\QGraphicsPolygonItem \
 		..\..\Qt\5.5\msvc2010\include\QtWidgets\QGraphicsItem \
 		..\..\Qt\5.5\msvc2010\include\QtCore\QPointF \
 		..\..\Qt\5.5\msvc2010\include\QtCore\QObject \
 		..\..\Qt\5.5\msvc2010\include\QtGui\QColor \
-		..\..\Qt\5.5\msvc2010\include\QtCore\QVector
+		../sangjin/Enemy.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\QList \
+		../sangjin/button.h \
+		../sangjin/Wave_Generator.h \
+		../sangjin/upgrade_button.h \
+		../sangjin/Fusion_Button.h
 
 release\Bullet.obj: ..\sangjin\Bullet.cpp ../sangjin/Bullet.h \
 		..\..\Qt\5.5\msvc2010\include\QtWidgets\QGraphicsPixmapItem \
@@ -1015,14 +1056,23 @@ release\Bullet.obj: ..\sangjin\Bullet.cpp ../sangjin/Bullet.h \
 		..\..\Qt\5.5\msvc2010\include\QtGui\qtouchdevice.h \
 		..\..\Qt\5.5\msvc2010\include\QtWidgets\qgraphicsscene.h \
 		..\..\Qt\5.5\msvc2010\include\QtGui\QMouseEvent \
+		..\..\Qt\5.5\msvc2010\include\QtCore\QVector \
 		../sangjin/Tower.h \
 		..\..\Qt\5.5\msvc2010\include\QtWidgets\QGraphicsSceneMouseEvent \
 		..\..\Qt\5.5\msvc2010\include\QtWidgets\qgraphicssceneevent.h \
 		..\..\Qt\5.5\msvc2010\include\QtWidgets\QGraphicsPolygonItem \
 		..\..\Qt\5.5\msvc2010\include\QtCore\QPointF \
 		..\..\Qt\5.5\msvc2010\include\QtGui\QColor \
-		..\..\Qt\5.5\msvc2010\include\QtCore\QVector \
-		../sangjin/Enemy.h
+		../sangjin/Enemy.h \
+		../sangjin/button.h \
+		..\..\Qt\5.5\msvc2010\include\QtWidgets\QPushButton \
+		..\..\Qt\5.5\msvc2010\include\QtWidgets\qpushbutton.h \
+		..\..\Qt\5.5\msvc2010\include\QtWidgets\qabstractbutton.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qicon.h \
+		../sangjin/Wave_Generator.h \
+		../sangjin/upgrade_button.h \
+		../sangjin/Fusion_Button.h \
+		../sangjin/BuildTowerIcon.h
 
 release\Enemy.obj: ..\sangjin\Enemy.cpp ../sangjin/Enemy.h \
 		..\..\Qt\5.5\msvc2010\include\QtWidgets\QGraphicsPixmapItem \
@@ -1146,139 +1196,22 @@ release\Enemy.obj: ..\sangjin\Enemy.cpp ../sangjin/Enemy.h \
 		..\..\Qt\5.5\msvc2010\include\QtGui\qtouchdevice.h \
 		..\..\Qt\5.5\msvc2010\include\QtWidgets\qgraphicsscene.h \
 		..\..\Qt\5.5\msvc2010\include\QtGui\QMouseEvent \
-		../sangjin/Tower.h \
-		..\..\Qt\5.5\msvc2010\include\QtWidgets\QGraphicsSceneMouseEvent \
-		..\..\Qt\5.5\msvc2010\include\QtWidgets\qgraphicssceneevent.h \
-		..\..\Qt\5.5\msvc2010\include\QtWidgets\QGraphicsPolygonItem \
-		..\..\Qt\5.5\msvc2010\include\QtWidgets\QGraphicsItem \
-		..\..\Qt\5.5\msvc2010\include\QtGui\QColor \
-		..\..\Qt\5.5\msvc2010\include\QtCore\QVector
-
-release\fusion_button.obj: ..\sangjin\fusion_button.cpp ../sangjin/fusion_button.h \
-		..\..\Qt\5.5\msvc2010\include\QtWidgets\QGraphicsPixmapItem \
-		..\..\Qt\5.5\msvc2010\include\QtWidgets\qgraphicsitem.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qglobal.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qconfig.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qfeatures.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qsystemdetection.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qprocessordetection.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qcompilerdetection.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qtypeinfo.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qtypetraits.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qsysinfo.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qlogging.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qflags.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qatomic.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qbasicatomic.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qatomic_bootstrap.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qgenericatomic.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qatomic_cxx11.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qatomic_gcc.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qatomic_msvc.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qatomic_armv7.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qatomic_armv6.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qatomic_armv5.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qatomic_ia64.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qatomic_mips.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qatomic_x86.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qatomic_unix.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qglobalstatic.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qmutex.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qnumeric.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qobject.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qobjectdefs.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qnamespace.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qobjectdefs_impl.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qstring.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qchar.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qbytearray.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qrefcount.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qarraydata.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qstringbuilder.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qlist.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qalgorithms.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qiterator.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qbytearraylist.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qstringlist.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qregexp.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qstringmatcher.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qcoreevent.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qscopedpointer.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qmetatype.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qvarlengtharray.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qcontainerfwd.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qisenum.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qobject_impl.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qvariant.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qmap.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qpair.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qdebug.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qhash.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qtextstream.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qiodevice.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qlocale.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qshareddata.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qvector.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qpoint.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qset.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qcontiguouscache.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qrect.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qmargins.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qsize.h \
-		..\..\Qt\5.5\msvc2010\include\QtGui\qpainterpath.h \
-		..\..\Qt\5.5\msvc2010\include\QtGui\qmatrix.h \
-		..\..\Qt\5.5\msvc2010\include\QtGui\qpolygon.h \
-		..\..\Qt\5.5\msvc2010\include\QtGui\qregion.h \
-		..\..\Qt\5.5\msvc2010\include\QtGui\qwindowdefs.h \
-		..\..\Qt\5.5\msvc2010\include\QtGui\qwindowdefs_win.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qdatastream.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qline.h \
-		..\..\Qt\5.5\msvc2010\include\QtGui\qpixmap.h \
-		..\..\Qt\5.5\msvc2010\include\QtGui\qpaintdevice.h \
-		..\..\Qt\5.5\msvc2010\include\QtGui\qcolor.h \
-		..\..\Qt\5.5\msvc2010\include\QtGui\qrgb.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qsharedpointer.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qsharedpointer_impl.h \
-		..\..\Qt\5.5\msvc2010\include\QtGui\qimage.h \
-		..\..\Qt\5.5\msvc2010\include\QtGui\qtransform.h \
-		..\..\Qt\5.5\msvc2010\include\QtGui\qpixelformat.h \
-		..\..\Qt\5.5\msvc2010\include\QtWidgets\QGraphicsSceneMouseEvent \
-		..\..\Qt\5.5\msvc2010\include\QtWidgets\qgraphicssceneevent.h \
-		../sangjin/Game.h \
-		..\..\Qt\5.5\msvc2010\include\QtWidgets\QGraphicsView \
-		..\..\Qt\5.5\msvc2010\include\QtWidgets\qgraphicsview.h \
-		..\..\Qt\5.5\msvc2010\include\QtGui\qpainter.h \
-		..\..\Qt\5.5\msvc2010\include\QtGui\qtextoption.h \
-		..\..\Qt\5.5\msvc2010\include\QtGui\qpen.h \
-		..\..\Qt\5.5\msvc2010\include\QtGui\qbrush.h \
-		..\..\Qt\5.5\msvc2010\include\QtGui\qfontinfo.h \
-		..\..\Qt\5.5\msvc2010\include\QtGui\qfont.h \
-		..\..\Qt\5.5\msvc2010\include\QtGui\qfontmetrics.h \
-		..\..\Qt\5.5\msvc2010\include\QtWidgets\qscrollarea.h \
-		..\..\Qt\5.5\msvc2010\include\QtWidgets\qabstractscrollarea.h \
-		..\..\Qt\5.5\msvc2010\include\QtWidgets\qframe.h \
-		..\..\Qt\5.5\msvc2010\include\QtWidgets\qwidget.h \
-		..\..\Qt\5.5\msvc2010\include\QtGui\qpalette.h \
-		..\..\Qt\5.5\msvc2010\include\QtWidgets\qsizepolicy.h \
-		..\..\Qt\5.5\msvc2010\include\QtGui\qcursor.h \
-		..\..\Qt\5.5\msvc2010\include\QtGui\qkeysequence.h \
-		..\..\Qt\5.5\msvc2010\include\QtGui\qevent.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qurl.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qurlquery.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qfile.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\qfiledevice.h \
-		..\..\Qt\5.5\msvc2010\include\QtGui\qvector2d.h \
-		..\..\Qt\5.5\msvc2010\include\QtGui\qtouchdevice.h \
-		..\..\Qt\5.5\msvc2010\include\QtWidgets\qgraphicsscene.h \
-		..\..\Qt\5.5\msvc2010\include\QtGui\QMouseEvent \
-		../sangjin/Tower.h \
-		..\..\Qt\5.5\msvc2010\include\QtWidgets\QGraphicsPolygonItem \
-		..\..\Qt\5.5\msvc2010\include\QtWidgets\QGraphicsItem \
-		..\..\Qt\5.5\msvc2010\include\QtCore\QPointF \
-		..\..\Qt\5.5\msvc2010\include\QtCore\QObject \
-		..\..\Qt\5.5\msvc2010\include\QtGui\QColor \
 		..\..\Qt\5.5\msvc2010\include\QtCore\QVector \
-		..\..\Qt\5.5\msvc2010\include\QtCore\QDebug
+		../sangjin/Tower.h \
+		..\..\Qt\5.5\msvc2010\include\QtWidgets\QGraphicsSceneMouseEvent \
+		..\..\Qt\5.5\msvc2010\include\QtWidgets\qgraphicssceneevent.h \
+		..\..\Qt\5.5\msvc2010\include\QtWidgets\QGraphicsPolygonItem \
+		..\..\Qt\5.5\msvc2010\include\QtWidgets\QGraphicsItem \
+		..\..\Qt\5.5\msvc2010\include\QtGui\QColor \
+		../sangjin/button.h \
+		..\..\Qt\5.5\msvc2010\include\QtWidgets\QPushButton \
+		..\..\Qt\5.5\msvc2010\include\QtWidgets\qpushbutton.h \
+		..\..\Qt\5.5\msvc2010\include\QtWidgets\qabstractbutton.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qicon.h \
+		../sangjin/Wave_Generator.h \
+		../sangjin/upgrade_button.h \
+		../sangjin/Fusion_Button.h \
+		../sangjin/BuildTowerIcon.h
 
 release\Game.obj: ..\sangjin\Game.cpp ../sangjin/Game.h \
 		..\..\Qt\5.5\msvc2010\include\QtWidgets\QGraphicsView \
@@ -1392,6 +1325,7 @@ release\Game.obj: ..\sangjin\Game.cpp ../sangjin/Game.h \
 		..\..\Qt\5.5\msvc2010\include\QtGui\qtouchdevice.h \
 		..\..\Qt\5.5\msvc2010\include\QtWidgets\qgraphicsscene.h \
 		..\..\Qt\5.5\msvc2010\include\QtGui\QMouseEvent \
+		..\..\Qt\5.5\msvc2010\include\QtCore\QVector \
 		../sangjin/Tower.h \
 		..\..\Qt\5.5\msvc2010\include\QtWidgets\QGraphicsPixmapItem \
 		..\..\Qt\5.5\msvc2010\include\QtWidgets\qgraphicsitem.h \
@@ -1402,19 +1336,22 @@ release\Game.obj: ..\sangjin\Game.cpp ../sangjin/Game.h \
 		..\..\Qt\5.5\msvc2010\include\QtCore\QPointF \
 		..\..\Qt\5.5\msvc2010\include\QtCore\QObject \
 		..\..\Qt\5.5\msvc2010\include\QtGui\QColor \
-		..\..\Qt\5.5\msvc2010\include\QtCore\QVector \
-		..\..\Qt\5.5\msvc2010\include\QtWidgets\QGraphicsScene \
-		../sangjin/Bullet.h \
 		../sangjin/Enemy.h \
 		..\..\Qt\5.5\msvc2010\include\QtCore\QList \
+		../sangjin/button.h \
+		..\..\Qt\5.5\msvc2010\include\QtWidgets\QPushButton \
+		..\..\Qt\5.5\msvc2010\include\QtWidgets\qpushbutton.h \
+		..\..\Qt\5.5\msvc2010\include\QtWidgets\qabstractbutton.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qicon.h \
+		../sangjin/Wave_Generator.h \
+		../sangjin/upgrade_button.h \
+		../sangjin/Fusion_Button.h \
 		../sangjin/BuildTowerIcon.h \
-		..\..\Qt\5.5\msvc2010\include\QtWidgets\QButtonGroup \
-		..\..\Qt\5.5\msvc2010\include\QtWidgets\qbuttongroup.h \
+		..\..\Qt\5.5\msvc2010\include\QtWidgets\QGraphicsScene \
+		../sangjin/Bullet.h \
 		..\..\Qt\5.5\msvc2010\include\QtCore\QTimer \
 		..\..\Qt\5.5\msvc2010\include\QtCore\qtimer.h \
 		..\..\Qt\5.5\msvc2010\include\QtCore\qbasictimer.h \
-		../sangjin/upgrade_button.h \
-		../sangjin/fusion_button.h \
 		..\..\Qt\5.5\msvc2010\include\QtCore\QPoint \
 		..\..\Qt\5.5\msvc2010\include\QtCore\QDebug \
 		..\..\Qt\5.5\msvc2010\include\QtGui\Qpainter
@@ -1549,7 +1486,16 @@ release\Tower.obj: ..\sangjin\Tower.cpp ../sangjin/Tower.h \
 		..\..\Qt\5.5\msvc2010\include\QtWidgets\qgraphicsscene.h \
 		..\..\Qt\5.5\msvc2010\include\QtGui\QMouseEvent \
 		../sangjin/Enemy.h \
-		..\..\Qt\5.5\msvc2010\include\QtCore\QList
+		..\..\Qt\5.5\msvc2010\include\QtCore\QList \
+		../sangjin/button.h \
+		..\..\Qt\5.5\msvc2010\include\QtWidgets\QPushButton \
+		..\..\Qt\5.5\msvc2010\include\QtWidgets\qpushbutton.h \
+		..\..\Qt\5.5\msvc2010\include\QtWidgets\qabstractbutton.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qicon.h \
+		../sangjin/Wave_Generator.h \
+		../sangjin/upgrade_button.h \
+		../sangjin/Fusion_Button.h \
+		../sangjin/BuildTowerIcon.h
 
 release\upgrade_button.obj: ..\sangjin\upgrade_button.cpp ../sangjin/upgrade_button.h \
 		..\..\Qt\5.5\msvc2010\include\QtWidgets\QGraphicsPixmapItem \
@@ -1668,14 +1614,389 @@ release\upgrade_button.obj: ..\sangjin\upgrade_button.cpp ../sangjin/upgrade_but
 		..\..\Qt\5.5\msvc2010\include\QtGui\qtouchdevice.h \
 		..\..\Qt\5.5\msvc2010\include\QtWidgets\qgraphicsscene.h \
 		..\..\Qt\5.5\msvc2010\include\QtGui\QMouseEvent \
+		..\..\Qt\5.5\msvc2010\include\QtCore\QVector \
 		../sangjin/Tower.h \
 		..\..\Qt\5.5\msvc2010\include\QtWidgets\QGraphicsPolygonItem \
 		..\..\Qt\5.5\msvc2010\include\QtWidgets\QGraphicsItem \
 		..\..\Qt\5.5\msvc2010\include\QtCore\QPointF \
 		..\..\Qt\5.5\msvc2010\include\QtCore\QObject \
 		..\..\Qt\5.5\msvc2010\include\QtGui\QColor \
-		..\..\Qt\5.5\msvc2010\include\QtCore\QVector \
+		../sangjin/Enemy.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\QList \
+		../sangjin/button.h \
+		..\..\Qt\5.5\msvc2010\include\QtWidgets\QPushButton \
+		..\..\Qt\5.5\msvc2010\include\QtWidgets\qpushbutton.h \
+		..\..\Qt\5.5\msvc2010\include\QtWidgets\qabstractbutton.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qicon.h \
+		../sangjin/Wave_Generator.h \
+		../sangjin/Fusion_Button.h \
+		../sangjin/BuildTowerIcon.h \
 		..\..\Qt\5.5\msvc2010\include\QtCore\QDebug
+
+release\Wave_Generator.obj: ..\sangjin\Wave_Generator.cpp ../sangjin/Wave_Generator.h \
+		../sangjin/Enemy.h \
+		..\..\Qt\5.5\msvc2010\include\QtWidgets\QGraphicsPixmapItem \
+		..\..\Qt\5.5\msvc2010\include\QtWidgets\qgraphicsitem.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qglobal.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qconfig.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qfeatures.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qsystemdetection.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qprocessordetection.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qcompilerdetection.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qtypeinfo.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qtypetraits.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qsysinfo.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qlogging.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qflags.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qatomic.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qbasicatomic.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qatomic_bootstrap.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qgenericatomic.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qatomic_cxx11.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qatomic_gcc.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qatomic_msvc.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qatomic_armv7.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qatomic_armv6.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qatomic_armv5.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qatomic_ia64.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qatomic_mips.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qatomic_x86.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qatomic_unix.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qglobalstatic.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qmutex.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qnumeric.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qobject.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qobjectdefs.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qnamespace.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qobjectdefs_impl.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qstring.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qchar.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qbytearray.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qrefcount.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qarraydata.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qstringbuilder.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qlist.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qalgorithms.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qiterator.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qbytearraylist.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qstringlist.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qregexp.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qstringmatcher.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qcoreevent.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qscopedpointer.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qmetatype.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qvarlengtharray.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qcontainerfwd.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qisenum.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qobject_impl.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qvariant.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qmap.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qpair.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qdebug.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qhash.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qtextstream.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qiodevice.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qlocale.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qshareddata.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qvector.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qpoint.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qset.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qcontiguouscache.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qrect.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qmargins.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qsize.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qpainterpath.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qmatrix.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qpolygon.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qregion.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qwindowdefs.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qwindowdefs_win.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qdatastream.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qline.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qpixmap.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qpaintdevice.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qcolor.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qrgb.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qsharedpointer.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qsharedpointer_impl.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qimage.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qtransform.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qpixelformat.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\QObject \
+		..\..\Qt\5.5\msvc2010\include\QtCore\QList \
+		..\..\Qt\5.5\msvc2010\include\QtCore\QPointF \
+		..\..\Qt\5.5\msvc2010\include\QtCore\QVector
+
+release\Fusion_Button.obj: ..\sangjin\Fusion_Button.cpp ../sangjin/Fusion_Button.h \
+		..\..\Qt\5.5\msvc2010\include\QtWidgets\QGraphicsPixmapItem \
+		..\..\Qt\5.5\msvc2010\include\QtWidgets\qgraphicsitem.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qglobal.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qconfig.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qfeatures.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qsystemdetection.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qprocessordetection.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qcompilerdetection.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qtypeinfo.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qtypetraits.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qsysinfo.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qlogging.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qflags.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qatomic.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qbasicatomic.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qatomic_bootstrap.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qgenericatomic.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qatomic_cxx11.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qatomic_gcc.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qatomic_msvc.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qatomic_armv7.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qatomic_armv6.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qatomic_armv5.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qatomic_ia64.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qatomic_mips.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qatomic_x86.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qatomic_unix.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qglobalstatic.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qmutex.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qnumeric.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qobject.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qobjectdefs.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qnamespace.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qobjectdefs_impl.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qstring.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qchar.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qbytearray.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qrefcount.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qarraydata.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qstringbuilder.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qlist.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qalgorithms.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qiterator.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qbytearraylist.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qstringlist.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qregexp.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qstringmatcher.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qcoreevent.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qscopedpointer.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qmetatype.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qvarlengtharray.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qcontainerfwd.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qisenum.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qobject_impl.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qvariant.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qmap.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qpair.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qdebug.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qhash.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qtextstream.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qiodevice.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qlocale.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qshareddata.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qvector.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qpoint.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qset.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qcontiguouscache.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qrect.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qmargins.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qsize.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qpainterpath.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qmatrix.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qpolygon.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qregion.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qwindowdefs.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qwindowdefs_win.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qdatastream.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qline.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qpixmap.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qpaintdevice.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qcolor.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qrgb.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qsharedpointer.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qsharedpointer_impl.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qimage.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qtransform.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qpixelformat.h \
+		..\..\Qt\5.5\msvc2010\include\QtWidgets\QGraphicsSceneMouseEvent \
+		..\..\Qt\5.5\msvc2010\include\QtWidgets\qgraphicssceneevent.h \
+		../sangjin/Game.h \
+		..\..\Qt\5.5\msvc2010\include\QtWidgets\QGraphicsView \
+		..\..\Qt\5.5\msvc2010\include\QtWidgets\qgraphicsview.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qpainter.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qtextoption.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qpen.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qbrush.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qfontinfo.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qfont.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qfontmetrics.h \
+		..\..\Qt\5.5\msvc2010\include\QtWidgets\qscrollarea.h \
+		..\..\Qt\5.5\msvc2010\include\QtWidgets\qabstractscrollarea.h \
+		..\..\Qt\5.5\msvc2010\include\QtWidgets\qframe.h \
+		..\..\Qt\5.5\msvc2010\include\QtWidgets\qwidget.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qpalette.h \
+		..\..\Qt\5.5\msvc2010\include\QtWidgets\qsizepolicy.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qcursor.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qkeysequence.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qevent.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qurl.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qurlquery.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qfile.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qfiledevice.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qvector2d.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qtouchdevice.h \
+		..\..\Qt\5.5\msvc2010\include\QtWidgets\qgraphicsscene.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\QMouseEvent \
+		..\..\Qt\5.5\msvc2010\include\QtCore\QVector \
+		../sangjin/Tower.h \
+		..\..\Qt\5.5\msvc2010\include\QtWidgets\QGraphicsPolygonItem \
+		..\..\Qt\5.5\msvc2010\include\QtWidgets\QGraphicsItem \
+		..\..\Qt\5.5\msvc2010\include\QtCore\QPointF \
+		..\..\Qt\5.5\msvc2010\include\QtCore\QObject \
+		..\..\Qt\5.5\msvc2010\include\QtGui\QColor \
+		../sangjin/Enemy.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\QList \
+		../sangjin/button.h \
+		..\..\Qt\5.5\msvc2010\include\QtWidgets\QPushButton \
+		..\..\Qt\5.5\msvc2010\include\QtWidgets\qpushbutton.h \
+		..\..\Qt\5.5\msvc2010\include\QtWidgets\qabstractbutton.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qicon.h \
+		../sangjin/Wave_Generator.h \
+		../sangjin/upgrade_button.h \
+		../sangjin/BuildTowerIcon.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\QDebug
+
+release\button.obj: ..\sangjin\button.cpp ../sangjin/button.h \
+		..\..\Qt\5.5\msvc2010\include\QtWidgets\QPushButton \
+		..\..\Qt\5.5\msvc2010\include\QtWidgets\qpushbutton.h \
+		..\..\Qt\5.5\msvc2010\include\QtWidgets\qabstractbutton.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qicon.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qglobal.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qconfig.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qfeatures.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qsystemdetection.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qprocessordetection.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qcompilerdetection.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qtypeinfo.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qtypetraits.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qsysinfo.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qlogging.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qflags.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qatomic.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qbasicatomic.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qatomic_bootstrap.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qgenericatomic.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qatomic_cxx11.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qatomic_gcc.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qatomic_msvc.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qatomic_armv7.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qatomic_armv6.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qatomic_armv5.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qatomic_ia64.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qatomic_mips.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qatomic_x86.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qatomic_unix.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qglobalstatic.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qmutex.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qnumeric.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qsize.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qnamespace.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qlist.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qalgorithms.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qiterator.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qrefcount.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qarraydata.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qbytearraylist.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qbytearray.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qstring.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qchar.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qstringbuilder.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qstringlist.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qregexp.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qstringmatcher.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qpixmap.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qpaintdevice.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qwindowdefs.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qobjectdefs.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qobjectdefs_impl.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qwindowdefs_win.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qrect.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qmargins.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qpoint.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qcolor.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qrgb.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qsharedpointer.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qshareddata.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qhash.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qpair.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qsharedpointer_impl.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qobject.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qcoreevent.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qscopedpointer.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qmetatype.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qvarlengtharray.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qcontainerfwd.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qisenum.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qobject_impl.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qimage.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qtransform.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qmatrix.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qpolygon.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qvector.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qregion.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qdatastream.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qiodevice.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qline.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qpainterpath.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qpixelformat.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qkeysequence.h \
+		..\..\Qt\5.5\msvc2010\include\QtWidgets\qwidget.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qpalette.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qbrush.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qfont.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qfontmetrics.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qfontinfo.h \
+		..\..\Qt\5.5\msvc2010\include\QtWidgets\qsizepolicy.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qcursor.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qevent.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qvariant.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qmap.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qdebug.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qtextstream.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qlocale.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qset.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qcontiguouscache.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qurl.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qurlquery.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qfile.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\qfiledevice.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qvector2d.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qtouchdevice.h \
+		..\..\Qt\5.5\msvc2010\include\QtWidgets\QGraphicsPixmapItem \
+		..\..\Qt\5.5\msvc2010\include\QtWidgets\qgraphicsitem.h \
+		../sangjin/Game.h \
+		..\..\Qt\5.5\msvc2010\include\QtWidgets\QGraphicsView \
+		..\..\Qt\5.5\msvc2010\include\QtWidgets\qgraphicsview.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qpainter.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qtextoption.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\qpen.h \
+		..\..\Qt\5.5\msvc2010\include\QtWidgets\qscrollarea.h \
+		..\..\Qt\5.5\msvc2010\include\QtWidgets\qabstractscrollarea.h \
+		..\..\Qt\5.5\msvc2010\include\QtWidgets\qframe.h \
+		..\..\Qt\5.5\msvc2010\include\QtWidgets\qgraphicsscene.h \
+		..\..\Qt\5.5\msvc2010\include\QtGui\QMouseEvent \
+		..\..\Qt\5.5\msvc2010\include\QtCore\QVector \
+		../sangjin/Tower.h \
+		..\..\Qt\5.5\msvc2010\include\QtWidgets\QGraphicsSceneMouseEvent \
+		..\..\Qt\5.5\msvc2010\include\QtWidgets\qgraphicssceneevent.h \
+		..\..\Qt\5.5\msvc2010\include\QtWidgets\QGraphicsPolygonItem \
+		..\..\Qt\5.5\msvc2010\include\QtWidgets\QGraphicsItem \
+		..\..\Qt\5.5\msvc2010\include\QtCore\QPointF \
+		..\..\Qt\5.5\msvc2010\include\QtCore\QObject \
+		..\..\Qt\5.5\msvc2010\include\QtGui\QColor \
+		../sangjin/Enemy.h \
+		..\..\Qt\5.5\msvc2010\include\QtCore\QList \
+		../sangjin/Wave_Generator.h \
+		../sangjin/upgrade_button.h \
+		../sangjin/Fusion_Button.h \
+		../sangjin/BuildTowerIcon.h
 
 release\qrc_sources.obj: release\qrc_sources.cpp 
 
