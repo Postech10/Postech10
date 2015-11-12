@@ -1,0 +1,12 @@
+#include "Wave_Generator.h"
+
+WaveGenerator::WaveGenerator()
+{
+    
+}
+
+std::vector<_Bool, _Alloc> WaveGenerator::MakeSpawnList(int round)
+{
+    
+}
+

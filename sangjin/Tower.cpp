@@ -57,7 +57,7 @@ void Tower::fire()
 
 void Tower::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
-    if(!choose && !game->GetAddMode()){
+    if(choose == false && game->GetAddMode()==false){
         if(game->waiting_line.size() < 2){
            attack_area->setPen(QPen(Qt::SolidLine));
            choose = true;
@@ -65,14 +65,14 @@ void Tower::mousePressEvent(QGraphicsSceneMouseEvent *event)
         }
     }
 
-    else{
+    else if(choose == true){
       attack_area->setPen(QPen(Qt::DotLine));
         choose = false;
         if(game->waiting_line[0] == this)
             game->waiting_line.remove(0);
         else
            game->waiting_line.remove(1);
-    }
+    }        
 }
 
 void Tower::aquire_target()

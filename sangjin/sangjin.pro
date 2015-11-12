@@ -19,7 +19,8 @@ SOURCES += main.cpp\
     fusion_button.cpp \
     Game.cpp \
     Tower.cpp \
-    upgrade_button.cpp
+    upgrade_button.cpp \
+    Wave_Generator.cpp
 
 HEADERS  += \
     BuildTowerIcon.h \
@@ -29,7 +30,8 @@ HEADERS  += \
     fusion_button.h \
     Game.h \
     Tower.h \
-    upgrade_button.h
+    upgrade_button.h \
+    Wave_Generator.h
 
 RESOURCES += \
     sources.qrc
