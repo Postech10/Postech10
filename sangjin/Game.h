@@ -72,7 +72,7 @@ private :
     BuildTowerIcon *tower_button;
     UpgradeButton *upgrade_button;
 
-    QTimer *timer;
+    QTimer *spawn_timer;
 
 
 };

@@ -18,7 +18,7 @@ Game::Game(){                    //constructor
     add_mode=false;                        //cursor, add 초기화
     fuse_mode=false;
     upgrade_mode=false;
-    state = Paused;
+    state = Cleared;
 
     for(int i=0 ; i < 16 ; i++){
         for(int j=0 ; j < 12 ; j++)
@@ -108,14 +108,14 @@ void Game::mouseMoveEvent(QMouseEvent *event)       //mouse 움직임
 
 void Game::spawnEnemy()
 {
-    Enemy* temp;
     qDebug()<<"!!!!!!!!!!!!!1";
 
-    temp = SpawnList.back();
-    scene->addItem(temp);
-    temp->move_forward();
-    enemy.push_back(temp);
-    SpawnList.removeLast();
+    if(SpawnList.size() > 0 ){
+        enemy.push_back(SpawnList.back());
+        enemy[enemy.size()-1]->startMovement(150);
+        scene->addItem(enemy.back());
+        SpawnList.pop_back();
+    }
 
 }
 
@@ -127,12 +127,39 @@ void Game::button_Pressed(QPointF point)
         QCursor* add_mode_cursor = new QCursor(*add_mode_pixmap);
         QWidget::setCursor(*add_mode_cursor);
     }
-
-    else if(start_pause_button->contains(point) == true && state == Paused){
+    else if(start_pause_button->contains(point) == true && state == Cleared){
         MakeNewGame();
-        timer = new QTimer(this);
-        connect(timer,SIGNAL(timeout()),this,SLOT(spawnEnemy()));
-        timer->start(2000);
+
+        spawn_timer = new QTimer(this);
+        connect(spawn_timer,SIGNAL(timeout()),this,SLOT(spawnEnemy()));
+        spawn_timer->start(2000);
+
+        start_pause_button->setPixmap(QPixmap(":/images/Pause_Button.png"));
+        state = Ingame;
+    }
+    else if(start_pause_button->contains(point)==true && state == Ingame){
+
+        if(spawn_timer != nullptr){
+            spawn_timer->stop();
+            delete spawn_timer;
+            spawn_timer = nullptr;
+        }
+
+        for(int i=0 ; i<enemy.size() ; i++)
+            enemy[i]->stopMovement();
+
+        start_pause_button->setPixmap(QPixmap(":/images/Start_Button.png"));
+        state = Paused;
+    }
+
+    else if(start_pause_button->contains(point)==true && state == Paused){
+        for(int i=0 ; i<enemy.size() ; i++)
+            enemy[i]->startMovement(150);
+
+        spawn_timer = new QTimer(this);
+        connect(spawn_timer,SIGNAL(timeout()),this,SLOT(spawnEnemy()));
+        spawn_timer->start(2000);
+
         start_pause_button->setPixmap(QPixmap(":/images/Pause_Button.png"));
         state = Ingame;
     }
