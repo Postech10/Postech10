@@ -10,10 +10,4 @@
         <file>upgrade_button.png</file>
         <file>Mechanical.bmp</file>
     </qresource>
-    <qresource prefix="/sprites">
-        <file>graphics/Animation_Assistant.bmp</file>
-        <file>graphics/Animation_Chemical.bmp</file>
-        <file>graphics/Animation_Mechanical.bmp</file>
-        <file>graphics/Animation_SMP.bmp</file>
-    </qresource>
 </RCC>

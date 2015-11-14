@@ -31,9 +31,6 @@ Game::Game(){                    //constructor
     setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);     //scroll 없음
 
-    //button 하나 생성
-
-
     QTimer *timer = new QTimer(this);
     connect(timer,SIGNAL(timeout()),this,SLOT(spawnEnemy()));
     timer->start(2000);
