@@ -22,6 +22,9 @@ Game::Game()                    //constructor
     ic->setPos(800-117,0);
     scene->addItem(ic);                     //add icon 생성
 
+    //button 하나 생성
+
+
     QTimer *timer = new QTimer(this);
     connect(timer,SIGNAL(timeout()),this,SLOT(spawnEnemy()));
     timer->start(2000);
