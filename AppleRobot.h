@@ -4,8 +4,7 @@
 #include "TutorRobot.h"
 #include "SplashLaser.h"
 
-class AppleRobot
-{
+class AppleRobot: public TutorRobot{
 public:
     AppleRobot();
     void Attack();
