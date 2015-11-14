@@ -15,12 +15,15 @@ TEMPLATE = app
 SOURCES += \
     Bullet.cpp \
 <<<<<<< HEAD
+<<<<<<< HEAD
     Enemy.cpp \
     Game.cpp \
     Tower.cpp \
     upgrade_button.cpp \
     fusion_button.cpp
 =======
+=======
+>>>>>>> BattleObject-&-Tower
     Tower.cpp \
     BattleObject.cpp \
     Upgrades.cpp \
@@ -46,6 +49,7 @@ SOURCES += \
     SplashLaser.cpp \
     TripleMajorSenior.cpp \
     SplashPoisonBullet.cpp
+<<<<<<< HEAD
 >>>>>>> origin/BattleObject-&-Tower
 
 HEADERS  += \
@@ -57,6 +61,11 @@ HEADERS  += \
     upgrade_button.h \
     fusion_button.h
 =======
+=======
+
+HEADERS  += \
+    Bullet.h \
+>>>>>>> BattleObject-&-Tower
     Tower.h \
     BattleObject.h \
     Upgrades.h \
@@ -82,6 +91,9 @@ HEADERS  += \
     SplashLaser.h \
     TripleMajorSenior.h \
     SplashPoisonBullet.h
+<<<<<<< HEAD
 >>>>>>> origin/BattleObject-&-Tower
+=======
+>>>>>>> BattleObject-&-Tower
 
 RESOURCES +=

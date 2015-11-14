@@ -3,6 +3,7 @@
 Tower::Tower()
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
     setPixmap(QPixmap(":/images/Machanical.bmp"));     //사진설정
 
     QVector<QPointF> points;
@@ -29,6 +30,8 @@ Tower::Tower()
 
     choose = false;
 =======
+=======
+>>>>>>> BattleObject-&-Tower
     TargetNum = 1;
     TowerCode = NORMAL;
     Hp = 100;
@@ -36,7 +39,10 @@ Tower::Tower()
     DefensivePower = 20;
     AttackSpeed = 20;
     Attackable = true;                  //초기설정 나중에 밸런스를 위해 바꿀거임
+<<<<<<< HEAD
 >>>>>>> origin/BattleObject-&-Tower
+=======
+>>>>>>> BattleObject-&-Tower
 }
 
 void Tower::upgrade(Upgrades up, int towercode)
@@ -86,6 +92,7 @@ Tower* Tower::fuseTower(Tower *tow1, Tower *tow2)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 void Tower::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
     if(!choose && !game->add_mode){
@@ -114,6 +121,13 @@ int Tower::GetTargetNum()
     return TargetNum;
 }
 
+=======
+int Tower::GetTargetNum()
+{
+    return TargetNum;
+}
+
+>>>>>>> BattleObject-&-Tower
 int Tower::GetTowerCode()
 {
     return TowerCode;

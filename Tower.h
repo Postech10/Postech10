@@ -2,6 +2,7 @@
 #define TOWER
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <QGraphicsPixmapItem>
 #include <QGraphicsSceneMouseEvent>
 #include <QGraphicsPolygonItem>
@@ -13,6 +14,10 @@
 #include "BattleObject.h"
 #include "Upgrades.h"
 >>>>>>> origin/BattleObject-&-Tower
+=======
+#include "BattleObject.h"
+#include "Upgrades.h"
+>>>>>>> BattleObject-&-Tower
 
 #define NORMAL 0
 #define SPLASH 1
@@ -32,6 +37,7 @@
 class Tower: public BattleObject{
 public:
 <<<<<<< HEAD
+<<<<<<< HEAD
     Tower();                                //constructor
     double distanceTo(QGraphicsItem *item); //item까지 거리
     void fire();                            //발사
@@ -44,6 +50,8 @@ private:
     bool has_target;                        //타겟 소유 여부
     bool choose;
 =======
+=======
+>>>>>>> BattleObject-&-Tower
     Tower();
     void upgrade(Upgrades, int);                    //이 method는 slow, gold가 적용되는 하위상속 tower에서는 overriding할 계획 일단 공격력, 방어력, 공속에 대해 구현함
     Tower* fuseTower(Tower*, Tower*);                 //합성법 참고해서 만들기
@@ -52,7 +60,10 @@ private:
 protected:
     int TargetNum;
     int TowerCode;
+<<<<<<< HEAD
 >>>>>>> origin/BattleObject-&-Tower
+=======
+>>>>>>> BattleObject-&-Tower
 };
 
 #endif // TOWER
