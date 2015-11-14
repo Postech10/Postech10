@@ -13,12 +13,17 @@ Game::Game(){                    //constructor
     scene->setSceneRect(0,0,1024,768);       //scene 크기 설정
     setScene(scene);
 
+    //변수들 초기화
+
+    money = 50;
+    round = 0;
     tooltip = nullptr;
     cursor = nullptr;
     add_mode=false;                        //cursor, add 초기화
     fuse_mode=false;
     upgrade_mode=false;
     state = Cleared;
+    enemy_num=0;
 
     for(int i=0 ; i < 16 ; i++){
         for(int j=0 ; j < 12 ; j++)
@@ -29,7 +34,7 @@ Game::Game(){                    //constructor
     setFixedSize(1024,768);                  //view 크기 설정
 
     setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);     //scroll 없음
+    setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);     //scroll 없음 
 
 /*    QTimer *timer = new QTimer(this);
     connect(timer,SIGNAL(timeout()),this,SLOT(spawnEnemy()));
@@ -45,6 +50,7 @@ Game::Game(){                    //constructor
         scene->addLine(line);
     }
 
+    connect(this,SIGNAL(game_is_cleared()),this,SLOT(clear_game()));
 }
 
 void Game::displayMenu()
@@ -55,7 +61,7 @@ void Game::displayMenu()
     scene->addItem(upgrade_button);
 
     tower_button = new BuildTowerIcon(":/images/Mechanical.bmp");
-    tower_button->setPos(1024-192,0);
+    tower_button->setPos(1024-192,200);
     tower_button->setZValue(1);
     scene->addItem(tower_button);                     //add icon 생성
 
@@ -70,6 +76,19 @@ void Game::displayMenu()
     scene->addItem(start_pause_button);
 
     scene->addRect(1024-192,0,200,768,QPen(Qt::SolidLine),QBrush(QColor(Qt::gray)));
+
+    round_label = new QLabel();
+    round_label->setFont(QFont("Arial", 30 , QFont::Bold));
+    round_label->setStyleSheet("background-color:gray;");
+    round_label->setGeometry(1024-185,0,192,30);
+    scene->addWidget(round_label);
+
+    money_label = new QLabel();
+    money_label->setFont(QFont("Arial", 30 , QFont::Bold));
+    money_label->setStyleSheet("background-color:gray;");
+    money_label->setText(QString("Money ")+QString::number(money));
+    money_label->setGeometry(1024-185,50,192,50);
+    scene->addWidget(money_label);
 }
 
 /*void Game::mouseMoveEvent(QMouseEvent *event)
@@ -95,7 +114,7 @@ void Game::mouseMoveEvent(QMouseEvent *event)       //mouse 움직임
         tooltip = nullptr;
     }
 
-    if(event->pos().x()/64 == (1024-192)/64 && event->pos().y()/64 == 0){
+    if(tower_button->contains(event->pos()) == true){
         tooltip = new QGraphicsPixmapItem();
         tooltip->setPixmap(QPixmap(":/images/add.png"));
         tooltip->setPos(1024-192,300);
@@ -104,19 +123,23 @@ void Game::mouseMoveEvent(QMouseEvent *event)       //mouse 움직임
 
     else
         QGraphicsView::mouseMoveEvent(event);
+
+    qDebug()<<tower_button->contains(event->pos());
 }
 
 void Game::spawnEnemy()
 {
-    qDebug()<<"!!!!!!!!!!!!!1";
+    qDebug()<<"율류류류";
 
-    if(SpawnList.size() > 0 ){
-        enemy.push_back(SpawnList.back());
+    if(wave != enemy.size() ){
+        enemy.push_back(SpawnList[wave-enemy.size()-1]);
         enemy[enemy.size()-1]->startMovement(150);
         scene->addItem(enemy.back());
-        SpawnList.pop_back();
+        enemy_num++;
+        qDebug()<<enemy_num<<","<<SpawnList.size();
     }
-
+    else
+        spawn_timer->stop();
 }
 
 void Game::button_Pressed(QPointF point)
@@ -165,6 +188,12 @@ void Game::button_Pressed(QPointF point)
     }
 }
 
+void Game::clear_game()
+{
+    wave_generator.ClearSpwanList(wave);
+    start_pause_button->setPixmap(QPixmap(":/images/Start_Button.png"));
+}
+
 void Game::mousePressEvent(QMouseEvent *event){
 
 
@@ -172,6 +201,7 @@ void Game::mousePressEvent(QMouseEvent *event){
     qDebug()<<event->pos();
 
     if(this->position[pointed_spot.x()/64][pointed_spot.y()/64] == false && add_mode){
+
         pointer = build[build.size()-1];
         pointer->setVisible(true);
         pointer->setPos((pointed_spot.x()/64)*64,(pointed_spot.y()/64)*64);
@@ -180,16 +210,37 @@ void Game::mousePressEvent(QMouseEvent *event){
 
         this->position[pointed_spot.x()/64][pointed_spot.y()/64] = true;
         add_mode = false;
+        money_label->setText(QString("Money ")+QString::number(money));
     }
 
     else
         QGraphicsView::mousePressEvent(event);
 }
 
+void Game::SumWithEnemyNum(int _num)
+{
+    enemy_num += _num;
+    if(enemy_num == 0){
+        SetState(Cleared);
+    }
+}
+
 void Game::MakeNewGame()
 {
     UpdateGame();
-
     enemy.clear();
+    SpawnList.clear();
     SpawnList = wave_generator.MakeSpawnList(round);
+    wave = SpawnList.size();
+    round_label->setText(QString("Round ")+QString::number(round));
+    money_label->setText(QString("Money ")+QString::number(money));
+}
+
+void Game::SetState(int _state)
+{
+    if(state != _state){
+        state = _state;
+        if(_state == Cleared)
+            emit game_is_cleared();
+    }
 }

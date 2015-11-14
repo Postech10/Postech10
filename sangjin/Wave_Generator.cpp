@@ -1,4 +1,5 @@
 #include "Wave_Generator.h"
+#include <qdebug.h>
 
 WaveGenerator::WaveGenerator()
 {
@@ -8,7 +9,7 @@ WaveGenerator::WaveGenerator()
 QVector<Enemy *> WaveGenerator::MakeSpawnList(int round)
 {
     if(round <10){
-        for(int i=0 ; i<10 ; i++){
+        for(int i=0 ; i<5 ; i++){
             SpawnList.push_back(new(Enemy));
         }
     }
@@ -44,4 +45,11 @@ QVector<Enemy *> WaveGenerator::MakeSpawnList(int round)
     */
 
     return SpawnList;
+}
+
+void WaveGenerator::ClearSpwanList(int wave)
+{
+    for(int i=0 ; i<wave ; i++)
+        delete SpawnList[i];
+    SpawnList.clear();
 }

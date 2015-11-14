@@ -14,6 +14,7 @@ public:
     void rotateToPoint(QPointF p);      //p를 향해 돈다
     void startMovement(int interval);
     void stopMovement();
+
 public slots:
     void move_forward();                //move method
 private:

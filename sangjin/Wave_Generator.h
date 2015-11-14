@@ -11,7 +11,7 @@ class WaveGenerator
 public:
     WaveGenerator();
     QVector<Enemy *> MakeSpawnList(int round);
-    void ClearSpwanList();
+    void ClearSpwanList(int wave);
 
 signals:
 

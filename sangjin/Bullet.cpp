@@ -22,7 +22,7 @@ void Bullet::move()
         if(typeid(*(colliding_enemies[i]))==typeid(Enemy)){
             game->scene->removeItem(colliding_enemies[i]);
             game->scene->removeItem(this);
-            delete colliding_enemies[i];
+            game->SumWithEnemyNum(-1);
             delete this;
             return;
         }

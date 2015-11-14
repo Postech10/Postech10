@@ -8,6 +8,9 @@ BuildTowerIcon::BuildTowerIcon(char *filename, QGraphicsItem *parent){
 }
 void BuildTowerIcon::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
-    game->SetAddMode(true);
-    game->button_Pressed(event->pos());
+    if(game->get_money() >= 20){
+        game->SetAddMode(true);
+        game->button_Pressed(event->pos());
+        game->set_money(game->get_money()-20);
+    }
 }
