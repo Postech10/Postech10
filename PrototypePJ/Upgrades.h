@@ -2,13 +2,26 @@
 #define UPGRADES
 
 #include "Tower.h"
+#include "SplashTower.h"
+#include "SlowTower.h"
+#include "PoisonTower.h"
+#include "ChainTower.h"
+#include "GoldTower.h"
+#include "TutorRobot.h"
+#include "ProfessorMeeting.h"
+#include "ChemEngSenior.h"
+#include "JobsBiography.h"
+#include "MetalEngSenior.h"
+#include "AppleRobot.h"
+#include "SteveJobs.h"
+#include "TripleMajorSenior.h"
 
 class Upgrades{
 public:
     Tower GetReference(int towercode);
     void UpgradeAttack(int towercode);
     void UpgradeDefense(int towercode);
-    void UpgradeSlow(int towercode);                    //나중에
+    void UpgradeSlow(int towercode);
     void UpgradeGold(int towercode);
     void UpgradeAttackSpeed(int towercode);
 private:
@@ -22,7 +35,7 @@ private:
     ProfessorMeeting profref;
     ChemEngSenior cesref;
     JobsBiography jobsbioref;
-    MetalEngSeniot mesref;
+    MetalEngSenior mesref;
     AppleRobot appleref;
     SteveJobs jobsref;
     TripleMajorSenior tripleref;

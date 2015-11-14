@@ -5,6 +5,13 @@
 
 BattleObject::BattleObject()
 {
+    Target = NULL;
+    HasTarget = false;
+    Hp = 0;                                    //이건 개별적으로 정해야하므로 일단 BattleObject에선 0
+    AttackPower = 0;                            //위와 같은이유
+    DefensivePower = 0;                         //위와 같은이유
+    AttackSpeed = 0;
+    Attackable = false;                         //위와 같은이유
     setPixmap(QPixmap(":/images/BattleObject.png"));     //사진설정
 
     QVector<QPointF> points;                             //AttackRange 설정 과정
@@ -21,19 +28,13 @@ BattleObject::BattleObject()
     poly_center = mapToScene(poly_center);
     QPointF object_center(x()+50, y()+65);       //확실히 모름 나중에 디버깅하면서 맞출생각
     QLineF ln(poly_center, object_center);
-    attack_area->setPos(x()+ln.dx(),y()+ln.dy());       //center 맞추기
+    AttackRange->setPos(x()+ln.dx(),y()+ln.dy());       //center 맞추기
+    if(Attackable){
+        QTimer *timer = new QTimer();
+        connect(timer,SIGNAL(timeout()),this,SLOT(SetTarget()));
+        timer->start(1/AttackSpeed);                         //나중에 알맞게 수정예정
+    }
 
-    QTimer *timer = new QTimer();
-    connect(timer,SIGNAL(timeout()),this,SLOT(SetTarget()));
-    timer->start(1/AttackSpeed);                         //나중에 알맞게 수정예정
-
-    Target = NULL;
-    HasTarget = false;
-    Hp = 0;                                    //이건 개별적으로 정해야하므로 일단 BattleObject에선 0
-    AttackPower = 0;                            //위와 같은이유
-    DefensivePower = 0;                         //위와 같은이유
-    AttackSpeed = 0;
-    Attackable = false;                         //위와 같은이유
 }
 
 void BattleObject::Attack()
@@ -106,11 +107,10 @@ void BattleObject::SetTarget()
 {
     QList<QGraphicsItem *> colliding_items= AttackRange->collidingItems();//AttackRange와 colliding하는 item들
     if(colliding_items.size() <= 2){        //target아직 없음       //debug가 안되서 왜 2여야되는지 모름..나중에
-        has_target = false;
+        HasTarget = false;
         return ;
     }
     double closest_dist = 300;              //처음엔 범위보다 큰값으로 initialize
-    QPointF closest_pt = QPointF(0,0);      //가장 가까운 아이템의 좌표
     for (size_t i=0, n=colliding_items.size();i<n;i++){
         Enemy *test = dynamic_cast<Enemy *>(colliding_items[i]);           //colliding enemy
         if(test){                          //enemy일 경우만
@@ -118,7 +118,7 @@ void BattleObject::SetTarget()
             if(this_dist < closest_dist){               //제일 가까운 enemy를 찾는다 (나중에 공격방식바꾸고 싶을때 수정예정)
                 closest_dist = this_dist;
                 Target = test;
-                has_target = true;                  //가장가까운 적이 Target이 되도록함
+                HasTarget = true;                  //가장가까운 적이 Target이 되도록함
             }
         }
     }

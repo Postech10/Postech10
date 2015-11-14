@@ -50,17 +50,19 @@ void Upgrades::UpgradeDefense(int towercode)
 
 void Upgrades::UpgradeSlow(int towercode)
 {
-
+    SlowTower *ref = GetReference(towercode);
+    ref->SetSlowPower(ref->GetSlowPower()+DEFAULT_UPGRADE_AMOUNT);
 }
 
 void Upgrades::UpgradeGold(int towercode)
 {
-
+    GoldTower *ref = GetReference(towercode);
+    ref->SetGoldPower(ref->GetGoldPower()+DEFAULT_UPGRADE_AMOUNT);
 }
 
 void Upgrades::UpgradeAttackSpeed(int towercode)
 {
     Tower *ref = GetReference(towercode);
-    ref->SetAttackSpeed(ref->GetDefensivePower()+DEFAULT_UPGRADE_AMOUNT);
+    ref->SetAttackSpeed(ref->GetAttackSpeed()+DEFAULT_UPGRADE_AMOUNT);
 }
 
