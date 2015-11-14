@@ -1,15 +1,16 @@
-#include "ProfessorMeeting.h"
+﻿#include "ProfessorMeeting.h"
 
 ProfessorMeeting::ProfessorMeeting()
 {
     TargetNum = 1;
     TowerCode = PROF;
     Hp = 100;
-    SlowPower = 10;
-    AttackPower = 20;
+    SlowPower = 20;
+    AttackPower = 40;
     DefensivePower = 20;
     AttackSpeed = 20;
     Attackable = true;                  //초기설정 나중에 밸런스를 위해 바꿀거임
+    setPixmap(QPixmap(":/images/professor_meeting.png"));     //사진설정
 }
 
 void ProfessorMeeting::Attack()

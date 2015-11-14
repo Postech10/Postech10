@@ -1,4 +1,4 @@
-#include "Tower.h"
+﻿#include "Tower.h"
 
 Tower::Tower()
 {
@@ -9,6 +9,7 @@ Tower::Tower()
     DefensivePower = 20;
     AttackSpeed = 20;
     Attackable = true;                  //초기설정 나중에 밸런스를 위해 바꿀거임
+    setPixmap(QPixmap(":/images/Tower.png"));     //사진설정
 }
 
 void Tower::upgrade(Upgrades up, int towercode)

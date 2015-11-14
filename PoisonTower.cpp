@@ -1,15 +1,15 @@
-#include "PoisonTower.h"
+﻿#include "PoisonTower.h"
 
 PoisonTower::PoisonTower()
 {
     TargetNum = 1;
     TowerCode = POISON;
     Hp = 100;
-    AttackPower = 20;
+    AttackPower = 30;
     DefensivePower = 20;
     AttackSpeed = 20;
     Attackable = true;                  //초기설정 나중에 밸런스를 위해 바꿀거임
-
+    setPixmap(QPixmap(":/images/poison_tower.png"));     //사진설정
 }
 
 void PoisonTower::Attack()

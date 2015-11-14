@@ -1,4 +1,4 @@
-#include "MetalEngSenior.h"
+﻿#include "MetalEngSenior.h"
 
 MetalEngSenior::MetalEngSenior()
 {
@@ -10,7 +10,7 @@ MetalEngSenior::MetalEngSenior()
     GoldPower = 20;
     AttackSpeed = 20;
     Attackable = true;                  //초기설정 나중에 밸런스를 위해 바꿀거임
-    //나중에 알맞게 수정예정
+    setPixmap(QPixmap(":/images/metal_eng_senior.png"));     //사진설정    
 }
 
 void MetalEngSenior::Attack()

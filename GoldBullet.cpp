@@ -1,4 +1,4 @@
-#include "GoldBullet.h"
+﻿#include "GoldBullet.h"
 
 GoldBullet::GoldBullet(int attack, int gold)
 {
@@ -17,7 +17,7 @@ void GoldBullet::move()
         if(typeid(*(colliding_enemies[i]))==typeid(Enemy)){
             ((BattleObject *)colliding_enemies[i])->IsHitBy(AttackPower);
             if(((Enemy *)colliding_enemies[i])->DieOrNot())       //죽었는지 아닌지 확인필요.. 논의필요함
-                game->money->inc(GoldPower);                      //이타워에 의해 죽었을때!! 돈 올라감
+                game->set_money(game->get_money()+GoldPower);                      //이타워에 의해 죽었을때!! 돈 올라감
             game->scene->removeItem(this);                      //꼭필요한지 모르겠음.. 나중에 수정예정
             delete this;
             return;
