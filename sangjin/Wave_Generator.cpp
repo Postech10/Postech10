@@ -9,7 +9,7 @@ WaveGenerator::WaveGenerator()
 QVector<Enemy *> WaveGenerator::MakeSpawnList(int round)
 {
     if(round <10){
-        for(int i=0 ; i<5 ; i++){
+        for(int i=0 ; i<5*round ; i++){
             SpawnList.push_back(new(Enemy));
         }
     }
