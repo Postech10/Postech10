@@ -10,5 +10,6 @@
         <file>upgrade_button.png</file>
         <file>Pause_Button.png</file>
         <file>Start_Button.png</file>
+        <file>tooltip.png</file>
     </qresource>
 </RCC>

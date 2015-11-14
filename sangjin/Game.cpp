@@ -114,10 +114,10 @@ void Game::mouseMoveEvent(QMouseEvent *event)       //mouse 움직임
         tooltip = nullptr;
     }
 
-    if(tower_button->contains(event->pos()) == true){
+    if(event->pos().x()/64 == (1024-192)/64 && event->pos().y()/64 == 200/64){
         tooltip = new QGraphicsPixmapItem();
-        tooltip->setPixmap(QPixmap(":/images/add.png"));
-        tooltip->setPos(1024-192,300);
+        tooltip->setPixmap(QPixmap(":/images/tooltip.png"));
+        tooltip->setPos(1024-(192)*3/4,300);
         scene->addItem(tooltip);
     }
 
