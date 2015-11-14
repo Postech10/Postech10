@@ -1,33 +1,37 @@
 #include "Bullet.h"
-#include <QPixmap>
-#include <QTimer>
-#include <qmath.h>
-#include <QList>
-#include "Game.h"
-#include "Enemy.h"
+#include "BattleObject.h"
 
-extern Game *game;
+#define STEP_SIZE 30                            //기본 STEP Size.. 나중에바꿀예정
 
-Bullet::Bullet(): QObject()
+Bullet::Bullet(int power): QObject()
 {
     setPixmap(QPixmap(":/images/bullet.png"));          //image 설정
+    SetAttackPower(power);
     QTimer * move_timer = new QTimer(this);
     connect(move_timer,SIGNAL(timeout()),this,SLOT(move()));        //일정 시간마다 움직임
     move_timer->start(30);
+}
+
+void Bullet::SetAttackPower(int AttackPower)
+{
+    this->AttackPower = AttackPower;
+}
+
+int Bullet::GetAttackPower()
+{
+    return AttackPower;
 }
 void Bullet::move()
 {
     QList<QGraphicsItem *> colliding_enemies=collidingItems();      //enemy랑 부딪히면 사라짐
     for(size_t i=0, n=colliding_enemies.size();i<n;i++){
         if(typeid(*(colliding_enemies[i]))==typeid(Enemy)){
-            game->scene->removeItem(colliding_enemies[i]);
-            game->scene->removeItem(this);
-            delete colliding_enemies[i];
+            ((BattleObject *)colliding_enemies[i])->IsHitBy(AttackPower);
+            game->scene->removeItem(this);                      //꼭필요한지 모르겠음.. 나중에 수정예정
             delete this;
             return;
         }
     }
-    int STEP_SIZE = 30;                             //한번에 움직이는 정도
     double theta = rotation();                      //theta 설정
 
     double dy = STEP_SIZE*qSin(qDegreesToRadians(theta));
