@@ -13,87 +13,77 @@ TEMPLATE = app
 
 
 SOURCES += \
-    Bullet.cpp \
-<<<<<<< HEAD
-<<<<<<< HEAD
-    Enemy.cpp \
-    Game.cpp \
-    Tower.cpp \
     upgrade_button.cpp \
-    fusion_button.cpp
-=======
-=======
->>>>>>> BattleObject-&-Tower
-    Tower.cpp \
-    BattleObject.cpp \
-    Upgrades.cpp \
-    SplashTower.cpp \
-    SplashBullet.cpp \
-    SlowTower.cpp \
-    SlowBullet.cpp \
-    PoisonTower.cpp \
-    PoisonBullet.cpp \
-    ChainTower.cpp \
-    GoldTower.cpp \
-    ProfessorMeeting.cpp \
-    PMBullet.cpp \
-    TutorRobot.cpp \
-    MetalEngSenior.cpp \
-    SteveJobs.cpp \
-    GoldBullet.cpp \
-    IronBullet.cpp \
-    ChemEngSenior.cpp \
-    CESBullet.cpp \
-    JobsBiography.cpp \
-    AppleRobot.cpp \
-    SplashLaser.cpp \
-    TripleMajorSenior.cpp \
-    SplashPoisonBullet.cpp
-<<<<<<< HEAD
->>>>>>> origin/BattleObject-&-Tower
+	main.cpp \
+	fusion_button.cpp \
+	enemycontrol.cpp \
+	enemy.cpp \
+	attackableenemy.cpp \
+	Upgrades.cpp \
+	TutorRobot.cpp \
+	TripleMajorSenior.cpp \
+	Tower.cpp \
+	SteveJobs.cpp \
+	SplashTower.cpp \
+	SplashPoisonBullet.cpp \
+	SplashLaser.cpp \
+	SplashBullet.cpp \
+	SlowTower.cpp \
+	SplashTower.cpp \
+	SlowBullet.cpp \
+	ProfessorMeeting.cpp \
+	PoisonTower.cpp \
+	PoisonBullet.cpp \
+	PMBullet.cpp \
+	MetalEngSenior.cpp \
+	JobsBiography.cpp \
+	IronBullet.cpp \
+	GoldTower.cpp \
+	GoldBullet.cpp \
+	Game.cpp \
+	ChemEngSenior.cpp \
+	ChainTower.cpp \
+	CESBullet.cpp \
+	Bullet.cpp \
+	BuildTowerIcon.cpp \
+	BattleObject.cpp \
+	AppleRobot.cpp \
 
 HEADERS  += \
-    Bullet.h \
-<<<<<<< HEAD
-    Enemy.h \
-    Game.h \
-    Tower.h \
-    upgrade_button.h \
-    fusion_button.h
-=======
-=======
-
-HEADERS  += \
-    Bullet.h \
->>>>>>> BattleObject-&-Tower
-    Tower.h \
-    BattleObject.h \
-    Upgrades.h \
-    SplashTower.h \
-    SplashBullet.h \
-    SlowTower.h \
-    SlowBullet.h \
-    PoisonTower.h \
-    PoisonBullet.h \
-    ChainTower.h \
-    GoldTower.h \
-    ProfessorMeeting.h \
-    PMBullet.h \
-    TutorRobot.h \
-    MetalEngSenior.h \
-    SteveJobs.h \
-    GoldBullet.h \
-    IronBullet.h \
-    ChemEngSenior.h \
-    CESBullet.h \
-    JobsBiography.h \
-    AppleRobot.h \
-    SplashLaser.h \
-    TripleMajorSenior.h \
-    SplashPoisonBullet.h
-<<<<<<< HEAD
->>>>>>> origin/BattleObject-&-Tower
-=======
->>>>>>> BattleObject-&-Tower
+	upgrade_button.h \
+	fusion_button.h \
+	enemycontrol.h \
+	enemy.h \
+	attackableenemy.h \
+	Upgrades.h \
+	TutorRobot.h \
+	TripleMajorSenior.h \
+	Tower.h \
+	SteveJobs.h \
+	SplashTower.h \
+	SplashPoisonBullet.h \
+	SplashLaser.h \
+	SplashBullet.h \
+	SlowTower.h \
+	SlowBullet.h \
+	ProfessorMeeting.h \
+	PoisonTower.h \
+	PoisonBullet.h \
+	PMBullet.h \
+	MetalEngSenior.h \
+	JobsBiography.h \
+	IronBullet.h \
+	GoldTower.h \
+	GoldBullet.h \
+	Game.h \
+	ChemEngSenior.h \
+	ChainTower.h \
+	CESBullet.h \
+	Bullet.h \
+	BuildTowerIcon.h \
+	BattleObject.h \
+	AppleRobot.h \
 
 RESOURCES +=
+	pic.qrc \
+	
