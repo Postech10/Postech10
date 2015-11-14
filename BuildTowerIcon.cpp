@@ -10,8 +10,9 @@ BuildTowerIcon::BuildTowerIcon(QGraphicsItem *parent): QGraphicsPixmapItem(paren
 
 void BuildTowerIcon::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
-    if(!game->build){                   //NULL일때
-        game->build = new Tower();      //build 새로운 타워 가리키는 포인터
-        game->setCursor(QString(":/images/tower.png"));     //이미지 설정
-    }
+
+    game->build.push_back(new Tower());      //build 새로운 타워 가리키는 포인터
+    game->setCursor(QString(":/images/Mechanical.bmp"));     //이미지 설정
+    game->add_mode = true;
+
 }
