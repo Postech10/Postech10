@@ -5,6 +5,7 @@
 
 class GoldBullet: public Bullet{
 public:
+    GoldBullet();
     GoldBullet(int, int);
 public slots:
     void move();

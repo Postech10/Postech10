@@ -12,7 +12,6 @@ BattleObject::BattleObject()
     AttackSpeed = 0;
     Attackable = false;                         //위와 같은이유
     timer = new QTimer();
-    setPixmap(QPixmap(":/images/BattleObject.png"));     //사진설정
 
     QVector<QPointF> points;                             //AttackRange 설정 과정
     points << QPoint(1,0)<< QPoint(2,0)<< QPoint(3,1)<< QPoint(3,2)<< QPoint(2,3)

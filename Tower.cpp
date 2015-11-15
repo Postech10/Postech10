@@ -14,17 +14,6 @@ Tower::Tower()
     Attackable = true;                  //초기설정 나중에 밸런스를 위해 바꿀거임
     setPixmap(QPixmap(":/images/Mechanical.bmp"));     //사진설정
 
-    QVector<QPointF> points;
-    points << QPoint(1,0)<< QPoint(2,0)<< QPoint(3,1)<< QPoint(3,2)<< QPoint(2,3)
-              << QPoint(1,3)<< QPoint(0,2)<< QPoint(0,1);
-    int SCALE_FACTOR = 80;                          //범위 설정
-    for (size_t i=0, n=points.size(); i<n;i++)
-        points[i]*=SCALE_FACTOR;                    //확대
-
-    attack_area = new QGraphicsPolygonItem(QPolygonF(points),this);
-    attack_area->setPen(QPen(Qt::DotLine));     //점선으로 범위 보이기
-
-
 }
 
 void Tower::upgrade(Upgrades up, int towercode)

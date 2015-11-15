@@ -2,7 +2,7 @@
 
 SplashLaser::SplashLaser(int attack, int gold)
 {
-    setPixmap(QPixmap(":/images/spalsh_laser.png"));          //image 설정
+    setPixmap(QPixmap(":/images/Mechanical.bmp"));          //image 설정
     SetAttackPower(attack);
     GoldPower = gold;
 }
@@ -28,8 +28,8 @@ void SplashLaser::move()
             QList<QGraphicsItem *> splashed_enemies= SplashRange->collidingItems();//splash범위 안에있는 item들
             for (size_t j=0, n=splashed_enemies.size();j<n;j++){
                 if(typeid(*(splashed_enemies[j]))==typeid(Enemy)){
-                    dynamic_cast<BattleObject*>(splashed_enemies[j])->IsHitBy(AttackPower);
-                    if(((Enemy *)colliding_enemies[j])->DieOrNot())       //죽었는지 아닌지 확인필요.. 논의필요함
+                    dynamic_cast<Enemy*>(splashed_enemies[j])->IsHitBy(AttackPower);
+                    if(dynamic_cast<Enemy*>(colliding_enemies[j])->DieOrNot())       //죽었는지 아닌지 확인필요.. 논의필요함
                         game->set_money(game->get_money()+GoldPower);                      //이타워에 의해 죽었을때!! 돈 올라감
                 }
             }

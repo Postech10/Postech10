@@ -2,7 +2,7 @@
 #ifndef WAVEGENERATOR_H
 #define WAVEGENERATOR_H
 
-#include "Enemy.h"
+#include "enemy.h"
 #include <QVector>
 
 

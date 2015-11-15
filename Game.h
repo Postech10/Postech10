@@ -8,12 +8,12 @@
 #include <QString>
 #include <QLabel>
 #include "Tower.h"
-#include "Enemy.h"
+#include "enemy.h"
 #include "Wave_Generator.h"
 #include "upgrade_button.h"
-#include "Fusion_Button.h"
+#include "fusion_button.h"
 #include "BuildTowerIcon.h"
-#include "Button.h"
+#include "button.h"
 
 enum State {Ingame, Paused, Cleared};
 

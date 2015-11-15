@@ -10,7 +10,7 @@ JobsBiography::JobsBiography()
     GoldPower = 10;
     AttackSpeed = 20;
     Attackable = true;                  //초기설정 나중에 밸런스를 위해 바꿀거임
-    setPixmap(QPixmap(":/images/jobs_biography.png"));     //사진설정        
+    setPixmap(QPixmap(":/images/Mechanical.bmp"));     //사진설정
 }
 
 void JobsBiography::SetTarget()

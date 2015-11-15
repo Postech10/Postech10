@@ -11,7 +11,7 @@ TripleMajorSenior::TripleMajorSenior()
     GoldPower = 30;
     AttackSpeed = 20;
     Attackable = true;                  //초기설정 나중에 밸런스를 위해 바꿀거임
-    setPixmap(QPixmap(":/images/triple_major_senior.png"));     //사진설정        
+    setPixmap(QPixmap(":/images/Mechanical.bmp"));     //사진설정
 }
 
 void TripleMajorSenior::Attack()

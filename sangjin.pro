@@ -12,7 +12,6 @@ TARGET = sangjin
 TEMPLATE = app
 
 
-<<<<<<< HEAD:hwcopy2.pro
 SOURCES += \
         upgrade_button.cpp \
 	main.cpp \
@@ -47,13 +46,9 @@ SOURCES += \
 	BuildTowerIcon.cpp \
 	BattleObject.cpp \
 	AppleRobot.cpp \
-        BuildTowerIcon.cpp \
-        Enemy.cpp \
-        upgrade_button.cpp \
+        enemy.cpp \
         Wave_Generator.cpp \
-        Fusion_Button.cpp \
-        Button.cpp \
-
+        button.cpp \
 
 HEADERS  += \
 	upgrade_button.h \
@@ -88,12 +83,9 @@ HEADERS  += \
 	BuildTowerIcon.h \
 	BattleObject.h \
 	AppleRobot.h \
-        BuildTowerIcon.h \
-        Enemy.h \
-        upgrade_button.h \
+        enemy.h \
         Wave_Generator.h \
-        Fusion_Button.h \
-        Button.h \
+        button.h \
 
 RESOURCES += \
         sources.qrc \

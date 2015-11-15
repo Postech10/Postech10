@@ -1,8 +1,13 @@
 #include "Bullet.h"
 
+Bullet::Bullet()
+{
+    ;
+}
+
 Bullet::Bullet(int power): QObject()
 {
-    setPixmap(QPixmap(":/images/bullet.png"));          //image 설정
+    setPixmap(QPixmap(":/images/Mechanical.bmp"));          //image 설정
     SetAttackPower(power);
     move_timer = new QTimer();
 }
@@ -30,11 +35,8 @@ void Bullet::move()
     QList<QGraphicsItem *> colliding_enemies=collidingItems();      //enemy랑 부딪히면 사라짐
     for(size_t i=0, n=colliding_enemies.size();i<n;i++){
         if(typeid(*(colliding_enemies[i]))==typeid(Enemy)){
-/*<<<<<<< HEAD
- * selected SangJin's code because I heard you discussing this.
-            ((BattleObject *)colliding_enemies[i])->IsHitBy(AttackPower);
-            game->scene->removeItem(this);                      //꼭필요한지 모르겠음.. 나중에 수정예정
-=======*/
+            dynamic_cast<Enemy*>(colliding_enemies[i])->IsHitBy(AttackPower);
+
             game->scene->removeItem(colliding_enemies[i]);
             game->scene->removeItem(this);
             game->SumWithEnemyNum(-1);

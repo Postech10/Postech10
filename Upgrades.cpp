@@ -33,6 +33,8 @@ Tower* Upgrades::GetReference(int towercode)//return type shoud be a pointer
         return &jobsref;
     case TRIPLE:
         return &tripleref;
+    default:
+        return NULL;
     }
 }
 
