@@ -3,16 +3,14 @@
 
 extern Game *game;
 
-BuildTowerIcon::BuildTowerIcon(QGraphicsItem *parent): QGraphicsPixmapItem(parent)
-{
-    setPixmap(QPixmap(":/images/add.png"));     //constructor
+BuildTowerIcon::BuildTowerIcon(char *filename, QGraphicsItem *parent){
+    setPixmap(QPixmap(filename));     //constructor
 }
-
 void BuildTowerIcon::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
-
-    game->build.push_back(new Tower());      //build 새로운 타워 가리키는 포인터
-    game->setCursor(QString(":/images/Mechanical.bmp"));     //이미지 설정
-    game->add_mode = true;
-
+    if(game->get_money() >= 20){
+        game->SetAddMode(true);
+        game->button_Pressed(event->pos());
+        game->set_money(game->get_money()-20);
+    }
 }

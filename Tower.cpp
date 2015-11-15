@@ -1,4 +1,6 @@
 ﻿#include "Tower.h"
+#include <QVector>
+#include <QPointF>
 
 Tower::Tower()
 {
@@ -9,7 +11,18 @@ Tower::Tower()
     DefensivePower = 20;
     AttackSpeed = 20;
     Attackable = true;                  //초기설정 나중에 밸런스를 위해 바꿀거임
-    setPixmap(QPixmap(":/images/Tower.png"));     //사진설정
+    setPixmap(QPixmap(":/images/Mechanical.bmp"));     //사진설정
+
+    QVector<QPointF> points;
+    points << QPoint(1,0)<< QPoint(2,0)<< QPoint(3,1)<< QPoint(3,2)<< QPoint(2,3)
+              << QPoint(1,3)<< QPoint(0,2)<< QPoint(0,1);
+    int SCALE_FACTOR = 80;                          //범위 설정
+    for (size_t i=0, n=points.size(); i<n;i++)
+        points[i]*=SCALE_FACTOR;                    //확대
+
+    attack_area = new QGraphicsPolygonItem(QPolygonF(points),this);
+    attack_area->setPen(QPen(Qt::DotLine));     //점선으로 범위 보이기
+
 
 }
 
@@ -62,6 +75,27 @@ Tower* Tower::fuseTower(Tower *tow1, Tower *tow2)
 int Tower::GetTargetNum()
 {
     return TargetNum;
+/*=======hw used this method for "Maximum Targets"
+ * HOWEVER, Sangjin used this for scanning enemies(?) if i'm right.
+ * you two are on mission to solve this
+ * ---------------------------------------------------------
+    if(choose == false && game->GetAddMode()==false){
+        if(game->waiting_line.size() < 2){
+           attack_area->setPen(QPen(Qt::SolidLine));
+           choose = true;
+           game->waiting_line.push_back(this);
+        }
+    }
+
+    else if(choose == true){
+      attack_area->setPen(QPen(Qt::DotLine));
+        choose = false;
+        if(game->waiting_line[0] == this)
+            game->waiting_line.remove(0);
+        else
+           game->waiting_line.remove(1);
+    }        
+>>>>>>> game*/
 }
 
 int Tower::GetTowerCode()

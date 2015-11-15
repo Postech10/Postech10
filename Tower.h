@@ -1,3 +1,4 @@
+#pragma once
 #ifndef TOWER
 #define TOWER
 

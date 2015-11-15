@@ -3,11 +3,10 @@
 #include <QDebug>
 extern Game *game;
 
-UpgradeButton::UpgradeButton(QGraphicsItem *parent): QGraphicsPixmapItem(parent){
-
-         setPixmap(QPixmap(":/images/upgrade_button.png"));     //constructor
+UpgradeButton::UpgradeButton(char *filename, QGraphicsItem *parent)
+{
+    setPixmap(QPixmap(filename));    //constructor
 }
-
 void UpgradeButton::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {    
     if(game->waiting_line.size() == 1)
