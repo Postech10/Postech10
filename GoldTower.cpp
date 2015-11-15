@@ -5,12 +5,12 @@ GoldTower::GoldTower()
     TargetNum = 1;
     TowerCode = GOLD;
     Hp = 100;
-    AttackPower = 20;
+    AttackPower = 30;
     DefensivePower = 20;
     GoldPower = 10;
     AttackSpeed = 20;
     Attackable = true;                  //초기설정 나중에 밸런스를 위해 바꿀거임
-                                        //나중에 알맞게 수정예정
+    setPixmap(QPixmap(":/images/gold_tower.png"));     //사진설정    
 }
 
 void GoldTower::Attack()

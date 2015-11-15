@@ -1,14 +1,16 @@
 #include "SplashTower.h"
 
+
 SplashTower::SplashTower()
 {
     TargetNum = 1;
     TowerCode = SPLASH;
     Hp = 100;
-    AttackPower = 20;
+    AttackPower = 30;
     DefensivePower = 20;
     AttackSpeed = 20;
     Attackable = true;                  //초기설정 나중에 밸런스를 위해 바꿀거임
+    setPixmap(QPixmap(":/images/splash_tower.png"));     //사진설정
 }
 
 

@@ -51,7 +51,6 @@ void Upgrades::UpgradeDefense(int towercode)
 void Upgrades::UpgradeSlow(int towercode)
 {
     Tower *ref = GetReference(towercode);//should get a Tower Pointer
-    ref = dynamic_cast<SlowTower*>(ref);
     dynamic_cast<SlowTower*>(ref)->SetSlowPower(dynamic_cast<SlowTower*>(ref)->GetSlowPower()+DEFAULT_UPGRADE_AMOUNT);
 }
 

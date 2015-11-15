@@ -1,37 +1,7 @@
-#include "Tower.h"
+﻿#include "Tower.h"
 
 Tower::Tower()
 {
-<<<<<<< HEAD
-<<<<<<< HEAD
-    setPixmap(QPixmap(":/images/Machanical.bmp"));     //사진설정
-
-    QVector<QPointF> points;
-    points << QPoint(1,0)<< QPoint(2,0)<< QPoint(3,1)<< QPoint(3,2)<< QPoint(2,3)
-              << QPoint(1,3)<< QPoint(0,2)<< QPoint(0,1);
-    int SCALE_FACTOR = 80;                          //범위 설정
-    for (size_t i=0, n=points.size(); i<n;i++)
-        points[i]*=SCALE_FACTOR;                    //확대
-
-    attack_area = new QGraphicsPolygonItem(QPolygonF(points),this);
-    attack_area->setPen(QPen(Qt::DotLine));     //점선으로 범위 보이기
-
-    QPointF poly_center(1.5,1.5);
-    poly_center *= SCALE_FACTOR;                //역시 확대
-    poly_center = mapToScene(poly_center);
-    QPointF tower_center(x()+50, y()+65);
-    QLineF ln(poly_center, tower_center);
-    attack_area->setPos(x()+ln.dx(),y()+ln.dy());       //center 맞추기
-
-    QTimer *timer = new QTimer();
-    connect(timer,SIGNAL(timeout()),this,SLOT(aquire_target()));
-    timer->start(2500);
-    attack_dest = QPointF(800,0);
-
-    choose = false;
-=======
-=======
->>>>>>> BattleObject-&-Tower
     TargetNum = 1;
     TowerCode = NORMAL;
     Hp = 100;
@@ -39,10 +9,8 @@ Tower::Tower()
     DefensivePower = 20;
     AttackSpeed = 20;
     Attackable = true;                  //초기설정 나중에 밸런스를 위해 바꿀거임
-<<<<<<< HEAD
->>>>>>> origin/BattleObject-&-Tower
-=======
->>>>>>> BattleObject-&-Tower
+    setPixmap(QPixmap(":/images/Tower.png"));     //사진설정
+
 }
 
 void Tower::upgrade(Upgrades up, int towercode)
@@ -91,43 +59,11 @@ Tower* Tower::fuseTower(Tower *tow1, Tower *tow2)
     }
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-void Tower::mousePressEvent(QGraphicsSceneMouseEvent *event)
-{
-    if(!choose && !game->add_mode){
-        if(game->waiting_line.size() < 2){
-           attack_area->setPen(QPen(Qt::SolidLine));
-           choose = true;
-           game->waiting_line.push_back(this);
-        }
-    }
-
-    else{
-      attack_area->setPen(QPen(Qt::DotLine));
-        choose = false;
-        if(game->waiting_line[0] == this)
-            game->waiting_line.remove(0);
-        else
-           game->waiting_line.remove(1);
-    }
-}
-
-void Tower::aquire_target()
-=======
-int Tower::GetTargetNum()
->>>>>>> origin/BattleObject-&-Tower
-{
-    return TargetNum;
-}
-
-=======
 int Tower::GetTargetNum()
 {
     return TargetNum;
 }
 
->>>>>>> BattleObject-&-Tower
 int Tower::GetTowerCode()
 {
     return TowerCode;

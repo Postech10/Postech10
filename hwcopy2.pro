@@ -29,7 +29,6 @@ SOURCES += \
 	SplashLaser.cpp \
 	SplashBullet.cpp \
 	SlowTower.cpp \
-	SplashTower.cpp \
 	SlowBullet.cpp \
 	ProfessorMeeting.cpp \
 	PoisonTower.cpp \
@@ -84,6 +83,6 @@ HEADERS  += \
 	BattleObject.h \
 	AppleRobot.h \
 
-RESOURCES +=
+RESOURCES += \
 	pic.qrc \
-	
+

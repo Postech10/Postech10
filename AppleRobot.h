@@ -1,10 +1,11 @@
 #ifndef APPLEROBOT_H
 #define APPLEROBOT_H
 
-#include "TutorRobot.h"
+#include "JobsBiography.h"
 #include "SplashLaser.h"
 
-class AppleRobot: public TutorRobot{
+class AppleRobot: public JobsBiography{
+
 public:
     AppleRobot();
     void Attack();

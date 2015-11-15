@@ -9,6 +9,7 @@ SlowTower::SlowTower()
     DefensivePower = 20;
     AttackSpeed = 20;
     Attackable = true;                  //초기설정 나중에 밸런스를 위해 바꿀거임
+    setPixmap(QPixmap(":/images/slow_tower.png"));     //사진설정
 }
 
 void SlowTower::Attack()

@@ -5,8 +5,7 @@
 #include "SplashBullet.h"
 
 
-class SplashTower : public Tower
-{
+class SplashTower: public Tower{
 public:
     SplashTower();
     void Attack();
