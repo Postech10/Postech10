@@ -1,5 +1,5 @@
 #include "attackableenemy.h"
-#include "bullet.h"
+#include "Bullet.h"
 #include "QGraphicsScene"
 #include <QTimer>
 #include <QDebug>
@@ -17,7 +17,7 @@ AttackableEnemy::AttackableEnemy(int level):Enemy(level)
 
 void AttackableEnemy::attack()
 {
-    Bullet* bullet = new Bullet();
+    Bullet* bullet = new Bullet(10);//put arbitray value to fit into the signature
     bullet->setPos(x()+this->rect().width()/2,y()+this->rect().height()/2);
     scene()->addItem(bullet);
 }

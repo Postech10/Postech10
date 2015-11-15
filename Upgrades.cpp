@@ -2,37 +2,37 @@
 
 #define DEFAULT_UPGRADE_AMOUNT 10
 
-Tower Upgrades::GetReference(int towercode)
+Tower* Upgrades::GetReference(int towercode)//return type shoud be a pointer
 {
     switch(towercode){
     case NORMAL:
-        return normalref;
+        return &normalref;
     case SPLASH:
-        return splashref;
+        return &splashref;
     case SLOW:
-        return slowref;
+        return &slowref;
     case POISON:
-        return poisonref;
+        return &poisonref;
     case CHAIN:
-        return chainref;
+        return &chainref;
     case GOLD:
-        return goldref;
+        return &goldref;
     case TUTOR:
-        return tutref;
+        return &tutref;
     case PROF:
-        return profref;
+        return &profref;
     case CES:
-        return cesref;
+        return &cesref;
     case JOBSBIO:
-        return jobsbioref;
+        return &jobsbioref;
     case MES:
-        return mesref;
+        return &mesref;
     case APPLE:
-        return appleref;
+        return &appleref;
     case JOBS:
-        return jobsref;
+        return &jobsref;
     case TRIPLE:
-        return tripleref;
+        return &tripleref;
     }
 }
 
@@ -50,14 +50,15 @@ void Upgrades::UpgradeDefense(int towercode)
 
 void Upgrades::UpgradeSlow(int towercode)
 {
-    SlowTower *ref = GetReference(towercode);
-    ref->SetSlowPower(ref->GetSlowPower()+DEFAULT_UPGRADE_AMOUNT);
+    Tower *ref = GetReference(towercode);//should get a Tower Pointer
+    ref = dynamic_cast<SlowTower*>(ref);
+    dynamic_cast<SlowTower*>(ref)->SetSlowPower(dynamic_cast<SlowTower*>(ref)->GetSlowPower()+DEFAULT_UPGRADE_AMOUNT);
 }
 
 void Upgrades::UpgradeGold(int towercode)
 {
-    GoldTower *ref = GetReference(towercode);
-    ref->SetGoldPower(ref->GetGoldPower()+DEFAULT_UPGRADE_AMOUNT);
+    Tower *ref = GetReference(towercode);//should get a Tower pointer
+    dynamic_cast<GoldTower*>(ref)->SetGoldPower(dynamic_cast<GoldTower*>(ref)->GetGoldPower()+DEFAULT_UPGRADE_AMOUNT);
 }
 
 void Upgrades::UpgradeAttackSpeed(int towercode)

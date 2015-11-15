@@ -18,7 +18,7 @@
 
 class Upgrades{
 public:
-    Tower GetReference(int towercode);
+    Tower* GetReference(int towercode);
     void UpgradeAttack(int towercode);
     void UpgradeDefense(int towercode);
     void UpgradeSlow(int towercode);
