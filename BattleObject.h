@@ -7,6 +7,7 @@
 #include <QObject>
 #include <QPointF>
 #include <QTimer>
+#include <QPen>
 
 class BattleObject: public QObject, public QGraphicsPixmapItem{
     Q_OBJECT

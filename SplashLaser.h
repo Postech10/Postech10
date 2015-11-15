@@ -2,6 +2,7 @@
 #define SPLASHLASER_H
 
 #include "GoldBullet.h"
+#include "SplashBullet.h"
 
 class SplashLaser: public GoldBullet{
 public:

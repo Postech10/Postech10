@@ -6,9 +6,6 @@ CESBullet::CESBullet(int attack,int gold)
     setPixmap(QPixmap(":/images/ces_bullet.png"));          //image 설정
     SetAttackPower(attack);
     GoldPower = gold;
-    QTimer * move_timer = new QTimer(this);
-    connect(move_timer,SIGNAL(timeout()),this,SLOT(move()));        //일정 시간마다 움직임
-    move_timer->start(30);
 }
 
 void CESBullet::move()

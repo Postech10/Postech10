@@ -4,9 +4,6 @@ PoisonBullet::PoisonBullet(int power)
 {
     setPixmap(QPixmap(":/images/poison_bullet.png"));          //image 설정
     SetAttackPower(power);
-    QTimer * move_timer = new QTimer(this);
-    connect(move_timer,SIGNAL(timeout()),this,SLOT(move()));        //일정 시간마다 움직임
-    move_timer->start(30);
 }
 
 void PoisonBullet::move()

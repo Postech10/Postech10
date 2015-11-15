@@ -1,15 +1,10 @@
 #include "Bullet.h"
-#include "BattleObject.h"
-
-#define STEP_SIZE 30                            //기본 STEP Size.. 나중에바꿀예정
 
 Bullet::Bullet(int power): QObject()
 {
     setPixmap(QPixmap(":/images/bullet.png"));          //image 설정
     SetAttackPower(power);
-    QTimer * move_timer = new QTimer(this);
-    connect(move_timer,SIGNAL(timeout()),this,SLOT(move()));        //일정 시간마다 움직임
-    move_timer->start(30);
+    move_timer = new QTimer();
 }
 
 void Bullet::SetAttackPower(int AttackPower)
@@ -20,6 +15,15 @@ void Bullet::SetAttackPower(int AttackPower)
 int Bullet::GetAttackPower()
 {
     return AttackPower;
+}
+
+void Bullet::Activated(bool active)
+{
+    connect(move_timer,SIGNAL(timeout()),this,SLOT(move()));        //일정 시간마다 움직임
+    if(active)
+        move_timer->start(30);
+    else
+        move_timer->stop();
 }
 void Bullet::move()
 {
