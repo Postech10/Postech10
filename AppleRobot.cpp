@@ -1,4 +1,7 @@
-﻿#include "AppleRobot.h"
+#include "AppleRobot.h"
+#include "Game.h"
+
+extern Game* game;
 
 AppleRobot::AppleRobot()
 {

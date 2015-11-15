@@ -1,4 +1,7 @@
 #include "PoisonTower.h"
+#include "Game.h"
+
+extern Game* game;
 
 PoisonTower::PoisonTower()
 {

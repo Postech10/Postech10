@@ -1,4 +1,8 @@
 #include "SplashBullet.h"
+#include <typeinfo> //you should include typeinfo to use typeid
+#include "Game.h"
+
+extern Game* game;
 
 SplashBullet::SplashBullet(int power)
 {

@@ -1,4 +1,7 @@
 #include "SlowTower.h"
+#include "Game.h"
+
+extern Game* game;
 
 SlowTower::SlowTower()
 {

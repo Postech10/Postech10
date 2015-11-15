@@ -1,4 +1,7 @@
 #include "ProfessorMeeting.h"
+#include "Game.h"
+
+extern Game* game;
 
 ProfessorMeeting::ProfessorMeeting()
 {

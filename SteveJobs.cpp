@@ -1,4 +1,7 @@
 #include "SteveJobs.h"
+#include "Game.h"
+
+extern Game* game;
 
 SteveJobs::SteveJobs()
 {

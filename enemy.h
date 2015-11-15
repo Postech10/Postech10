@@ -14,7 +14,7 @@ private:
     float x_move;
     float y_move;
 public:
-    Enemy(int level);
+    Enemy(int level=1);
 public slots:
     void move();
 };

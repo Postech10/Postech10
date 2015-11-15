@@ -1,4 +1,7 @@
 #include "SplashTower.h"
+#include "Game.h"
+
+extern Game* game;
 
 
 SplashTower::SplashTower()

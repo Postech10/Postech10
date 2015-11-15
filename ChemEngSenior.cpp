@@ -1,4 +1,7 @@
 #include "ChemEngSenior.h"
+#include "Game.h"
+
+extern Game* game;
 
 ChemEngSenior::ChemEngSenior()
 {

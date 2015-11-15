@@ -1,4 +1,7 @@
 #include "MetalEngSenior.h"
+#include "Game.h"
+
+extern Game* game;
 
 MetalEngSenior::MetalEngSenior()
 {

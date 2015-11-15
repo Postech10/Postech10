@@ -1,6 +1,9 @@
 #include "BattleObject.h"
 #include "Bullet.h"
+#include "Game.h"
 #define SCALE_FACTOR 80
+
+extern Game* game;
 
 BattleObject::BattleObject()
 {

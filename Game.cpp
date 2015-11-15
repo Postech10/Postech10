@@ -2,12 +2,12 @@
 #include <QGraphicsScene>
 #include "Tower.h"
 #include "Bullet.h"
-#include "Enemy.h"
+#include "enemy.h"
 #include "BuildTowerIcon.h"
 #include <QTimer>
 #include <QPoint>
 #include <QDebug>
-#include <Qpainter>
+#include <QPainter>
 
 Game::Game(){                    //constructor
     scene = new QGraphicsScene(this);       //view하는 scene 생성
@@ -134,7 +134,8 @@ void Game::spawnEnemy()
 
     if(wave != enemy.size() ){
         enemy.push_back(SpawnList[wave-enemy.size()-1]);
-        enemy[enemy.size()-1]->startMovement(150);
+        //enemy[enemy.size()-1]->startMovement(150);
+        //please add startMovement method and un-commentize this.
         scene->addItem(enemy.back());
         enemy_num++;
         qDebug()<<enemy_num<<","<<SpawnList.size();
@@ -169,16 +170,18 @@ void Game::button_Pressed(QPointF point)
             spawn_timer = nullptr;
         }
 
-        for(int i=0 ; i<enemy.size() ; i++)
-            enemy[i]->stopMovement();
+        //for(int i=0 ; i<enemy.size() ; i++)
+            //enemy[i]->stopMovement();
+        //please declare stopMovement method and un-commentize this
 
         start_pause_button->setPixmap(QPixmap(":/images/Start_Button.png"));
         state = Paused;
     }
 
     else if(start_pause_button->contains(point)==true && state == Paused){
-        for(int i=0 ; i<enemy.size() ; i++)
-            enemy[i]->startMovement(150);
+        //for(int i=0 ; i<enemy.size() ; i++)
+            //enemy[i]->startMovement(150);
+        //please declare startMovement method and un-commentize this.
 
         spawn_timer = new QTimer(this);
         connect(spawn_timer,SIGNAL(timeout()),this,SLOT(spawnEnemy()));

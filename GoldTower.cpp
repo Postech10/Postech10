@@ -1,4 +1,7 @@
 #include "GoldTower.h"
+#include "Game.h"
+
+extern Game* game;
 
 GoldTower::GoldTower()
 {

@@ -1,4 +1,8 @@
 #include "PoisonBullet.h"
+#include <typeinfo> //you should include typeinfo to use typeid
+#include "Game.h"
+
+extern Game* game;
 
 PoisonBullet::PoisonBullet(int power)
 {
@@ -11,7 +15,8 @@ void PoisonBullet::move()
     QList<QGraphicsItem *> colliding_enemies=collidingItems();      //enemy랑 부딪히면 사라짐
     for(size_t i=0, n=colliding_enemies.size();i<n;i++){
         if(typeid(*(colliding_enemies[i]))==typeid(Enemy)){
-            dynamic_cast<Enemy*>(colliding_enemies[i])->IsPoisonedBy(AttackPower);  //enemy에 논의 필요
+            //dynamic_cast<Enemy*>(colliding_enemies[i])->IsPoisonedBy(AttackPower);  //enemy에 논의 필요
+            //please add method isPoisoned by and un-commentize this.
             game->scene->removeItem(this);                      //꼭필요한지 모르겠음.. 나중에 수정예정
             delete this;
             return;
