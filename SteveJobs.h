@@ -6,6 +6,7 @@
 class SteveJobs: public Tower{
 public:
     SteveJobs();
+    void Activated(bool);
 public slots:
     void IncGold();
 };

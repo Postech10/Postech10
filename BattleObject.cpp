@@ -12,6 +12,7 @@ BattleObject::BattleObject()
     DefensivePower = 0;                         //위와 같은이유
     AttackSpeed = 0;
     Attackable = false;                         //위와 같은이유
+    timer = new QTimer();
     setPixmap(QPixmap(":/images/BattleObject.png"));     //사진설정
 
     QVector<QPointF> points;                             //AttackRange 설정 과정
@@ -29,15 +30,9 @@ BattleObject::BattleObject()
     QPointF object_center(x()+50, y()+65);       //확실히 모름 나중에 디버깅하면서 맞출생각
     QLineF ln(poly_center, object_center);
     AttackRange->setPos(x()+ln.dx(),y()+ln.dy());       //center 맞추기
-    if(Attackable){
-        QTimer *timer = new QTimer();
-        connect(timer,SIGNAL(timeout()),this,SLOT(SetTarget()));
-        timer->start(1/AttackSpeed);                         //나중에 알맞게 수정예정
-    }
-
 }
 
-void BattleObject::Attack()
+virtual void BattleObject::Attack()
 {
     Bullet *bullet = new Bullet(AttackPower);
     bullet->setPos(x()+50,y()+65);                  //constructor에 있는 object_center와 동일 좌표
@@ -103,7 +98,19 @@ void BattleObject::SetAttackSpeed(int AttackSpeed)
     this->AttackSpeed=AttackSpeed;
 }
 
-void BattleObject::SetTarget()
+virtual void BattleObject::Activated(bool active)
+{
+    connect(timer,SIGNAL(timeout()),this,SLOT(SetTarget()));
+    if(active){
+        if(Attackable){
+            timer->start(1/AttackSpeed);
+        }
+    }
+    else
+        timer->stop();
+}
+
+virtual void BattleObject::SetTarget()
 {
     QList<QGraphicsItem *> colliding_items= AttackRange->collidingItems();//AttackRange와 colliding하는 item들
     if(colliding_items.size() <= 2){        //target아직 없음       //debug가 안되서 왜 2여야되는지 모름..나중에

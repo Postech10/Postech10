@@ -10,10 +10,15 @@ SteveJobs::SteveJobs()
     AttackSpeed = 20;
     Attackable = false;                  //초기설정 나중에 밸런스를 위해 바꿀거임
     setPixmap(QPixmap(":/images/stevejobs.png"));     //사진설정
-    QTimer *timer = new QTimer();                        //반드시 수정이 필요함.. 다른타워와 다른개념이기 때문에
+}
+
+void SteveJobs::Activated(bool active)
+{
     connect(timer,SIGNAL(timeout()),this,SLOT(IncGold()));
-    timer->start(1/AttackSpeed);                         //여기선 AttackSpeed가 골드 증가 시간
-                                                         //나중에 알맞게 수정예정
+    if(active)
+        timer->start(1/AttackSpeed);
+    else
+        timer->stop();
 }
 
 void SteveJobs::IncGold()
