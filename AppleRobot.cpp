@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-#include "AppleRobot.h"
-=======
 ﻿#include "AppleRobot.h"
->>>>>>> origin/BattleObject-&-Tower
 
 AppleRobot::AppleRobot()
 {

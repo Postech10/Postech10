@@ -46,7 +46,7 @@ SOURCES += \
 	Bullet.cpp \
 	BuildTowerIcon.cpp \
 	BattleObject.cpp \
-	AppleRobot.cpp \
+    AppleRobot.cpp
 
 HEADERS  += \
 	upgrade_button.h \

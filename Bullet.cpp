@@ -7,9 +7,7 @@ Bullet::Bullet(int power): QObject()
 {
     setPixmap(QPixmap(":/images/bullet.png"));          //image 설정
     SetAttackPower(power);
-    QTimer * move_timer = new QTimer(this);
-    connect(move_timer,SIGNAL(timeout()),this,SLOT(move()));        //일정 시간마다 움직임
-    move_timer->start(30);
+    move_timer = new QTimer();
 }
 
 void Bullet::SetAttackPower(int AttackPower)
@@ -21,7 +19,16 @@ int Bullet::GetAttackPower()
 {
     return AttackPower;
 }
-void Bullet::move()
+
+void Bullet::Activated(bool active)
+{
+    connect(move_timer,SIGNAL(timeout()),this,SLOT(move()));        //일정 시간마다 움직임
+    if(active)
+        move_timer->start(30);
+    else
+        move_timer->stop();
+}
+virtual void Bullet::move()
 {
     QList<QGraphicsItem *> colliding_enemies=collidingItems();      //enemy랑 부딪히면 사라짐
     for(size_t i=0, n=colliding_enemies.size();i<n;i++){

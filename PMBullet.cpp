@@ -5,9 +5,6 @@ PMBullet::PMBullet(int attack, int slow)
     setPixmap(QPixmap(":/images/pm_bullet.png"));          //image 설정
     AttackPower = attack;
     SlowPower = slow;
-    QTimer * move_timer = new QTimer(this);
-    connect(move_timer,SIGNAL(timeout()),this,SLOT(move()));        //일정 시간마다 움직임
-    move_timer->start(30);
 }
 
 void PMBullet::move()
