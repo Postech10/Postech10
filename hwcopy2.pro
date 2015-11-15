@@ -17,8 +17,6 @@ SOURCES += \
 	main.cpp \
 	fusion_button.cpp \
 	enemycontrol.cpp \
-	enemy.cpp \
-	attackableenemy.cpp \
 	Upgrades.cpp \
 	TutorRobot.cpp \
 	TripleMajorSenior.cpp \
@@ -46,14 +44,13 @@ SOURCES += \
 	Bullet.cpp \
 	BuildTowerIcon.cpp \
 	BattleObject.cpp \
-    AppleRobot.cpp
+    AppleRobot.cpp \
+    enemy.cpp \
+    attackableenemy.cpp
 
 HEADERS  += \
 	upgrade_button.h \
 	fusion_button.h \
-	enemycontrol.h \
-	enemy.h \
-	attackableenemy.h \
 	Upgrades.h \
 	TutorRobot.h \
 	TripleMajorSenior.h \
@@ -82,6 +79,9 @@ HEADERS  += \
 	BuildTowerIcon.h \
 	BattleObject.h \
 	AppleRobot.h \
+    attackableenemy.h \
+    enemy.h \
+    enemycontrol.h
 
 RESOURCES += \
 	pic.qrc \

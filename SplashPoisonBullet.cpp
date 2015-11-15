@@ -28,8 +28,8 @@ void SplashPoisonBullet::move()
             QList<QGraphicsItem *> splashed_enemies= SplashRange->collidingItems();//splash범위 안에있는 item들
             for (size_t j=0, n=splashed_enemies.size();j<n;j++){
                 if(typeid(*(splashed_enemies[j]))==typeid(Enemy)){
-                    splashed_enemies[j]->IsPoisonedBy(AttackPower); //enemy 독걸려서 죽은거 돈 버는거 논의필요
-                    if(((Enemy *)splashed_enemies[j])->DieOrNot())       //죽었는지 아닌지 확인필요.. 논의필요함
+                    dynamic_cast<Enemy*>(splashed_enemies[j])->IsPoisonedBy(AttackPower); //enemy 독걸려서 죽은거 돈 버는거 논의필요
+                    if(dynamic_cast<Enemy*>(splashed_enemies[j])->DieOrNot())       //죽었는지 아닌지 확인필요.. 논의필요함
                 	game->set_money(game->get_money()+GoldPower);                      //이타워에 의해 죽었을때!! 돈 올라감            
 	}
             }

@@ -6,6 +6,7 @@
 class SlowBullet: public Bullet
 {
 public:
+    SlowBullet();
     SlowBullet(int);           //constructor, int는 slowbullet의 느려지는 정도(?)을 뜻함
 public slots:
     void move();        //slowbullet move method

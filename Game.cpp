@@ -2,7 +2,7 @@
 #include <QGraphicsScene>
 #include "Tower.h"
 #include "Bullet.h"
-#include "Enemy.h"
+#include "enemy.h"
 #include "BuildTowerIcon.h"
 #include <QTimer>
 #include "upgrade_button.h"
