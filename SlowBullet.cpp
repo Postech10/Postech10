@@ -7,7 +7,7 @@ SlowBullet::SlowBullet()
 
 SlowBullet::SlowBullet(int power)
 {
-    setPixmap(QPixmap(":/images/slow_bullet.png"));          //image 설정
+    setPixmap(QPixmap(":/images/Mechanical.bmp"));          //image 설정
     SlowPower = power;
 }
 

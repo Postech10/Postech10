@@ -2,7 +2,7 @@
 
 SplashLaser::SplashLaser(int attack, int gold)
 {
-    setPixmap(QPixmap(":/images/spalsh_laser.png"));          //image 설정
+    setPixmap(QPixmap(":/images/Mechanical.bmp"));          //image 설정
     SetAttackPower(attack);
     GoldPower = gold;
 }

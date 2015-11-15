@@ -3,7 +3,7 @@
 
 CESBullet::CESBullet(int attack,int gold)
 {
-    setPixmap(QPixmap(":/images/ces_bullet.png"));          //image 설정
+    setPixmap(QPixmap(":/images/Mechanical.bmp"));          //image 설정
     SetAttackPower(attack);
     GoldPower = gold;
 }

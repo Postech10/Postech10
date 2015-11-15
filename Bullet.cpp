@@ -7,7 +7,7 @@ Bullet::Bullet()
 
 Bullet::Bullet(int power): QObject()
 {
-    setPixmap(QPixmap(":/images/bullet.png"));          //image 설정
+    setPixmap(QPixmap(":/images/Mechanical.bmp"));          //image 설정
     SetAttackPower(power);
     move_timer = new QTimer();
 }

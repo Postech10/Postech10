@@ -2,7 +2,7 @@
 
 PMBullet::PMBullet(int attack, int slow)
 {
-    setPixmap(QPixmap(":/images/pm_bullet.png"));          //image 설정
+    setPixmap(QPixmap(":/images/Mechanical.bmp"));          //image 설정
     AttackPower = attack;
     SlowPower = slow;
 }
