@@ -1,6 +1,5 @@
-
 #include "BattleObject.h"
-
+#include "Bullet.h"
 #define SCALE_FACTOR 80
 
 BattleObject::BattleObject()
@@ -32,11 +31,11 @@ BattleObject::BattleObject()
     AttackRange->setPos(x()+ln.dx(),y()+ln.dy());       //center 맞추기
 }
 
-virtual void BattleObject::Attack()
+void BattleObject::Attack()
 {
     Bullet *bullet = new Bullet(AttackPower);
     bullet->setPos(x()+50,y()+65);                  //constructor에 있는 object_center와 동일 좌표
-    QLineF ln(QPointF(x()+50,y()+65),(Target->x(),Target->y()));      //목적지까지 선긋기
+    QLineF ln(QPointF(x()+50,y()+65),QPointF(Target->x(),Target->y()));      //목적지까지 선긋기
     int angle = -1 * ln.angle();                    //object와 target사이의 각도를 재서
     bullet->setRotation(angle);                     //그방향으로 날아가도록 rotation을 설정
     game->scene->addItem(bullet);                   //추가 .... 이건 game이라는 view가 전제되있을 경우고 나중에 다른 조원이 어떻게하냐에 따라 달라질예정
@@ -98,7 +97,7 @@ void BattleObject::SetAttackSpeed(int AttackSpeed)
     this->AttackSpeed=AttackSpeed;
 }
 
-virtual void BattleObject::Activated(bool active)
+void BattleObject::Activated(bool active)
 {
     connect(timer,SIGNAL(timeout()),this,SLOT(SetTarget()));
     if(active){
@@ -110,7 +109,7 @@ virtual void BattleObject::Activated(bool active)
         timer->stop();
 }
 
-virtual void BattleObject::SetTarget()
+void BattleObject::SetTarget()
 {
     QList<QGraphicsItem *> colliding_items= AttackRange->collidingItems();//AttackRange와 colliding하는 item들
     if(colliding_items.size() <= 2){        //target아직 없음       //debug가 안되서 왜 2여야되는지 모름..나중에

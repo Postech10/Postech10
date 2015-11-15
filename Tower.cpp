@@ -1,4 +1,5 @@
 ﻿#include "Tower.h"
+#include "Upgrades.h"
 
 Tower::Tower()
 {
@@ -15,9 +16,9 @@ Tower::Tower()
 
 void Tower::upgrade(Upgrades up, int towercode)
 {
-    this->SetAttackPower(up.GetReference(towercode).GetAttackPower());
-    this->SetDefensivePower(up.GetReference(towercode).GetDefensivePower());
-    this->SetAttackSpeed(up.GetReference(towercode).GetAttackSpeed());
+    this->SetAttackPower(up.GetReference(towercode)->GetAttackPower());
+    this->SetDefensivePower(up.GetReference(towercode)->GetDefensivePower());
+    this->SetAttackSpeed(up.GetReference(towercode)->GetAttackSpeed());
 }
 
 Tower* Tower::fuseTower(Tower *tow1, Tower *tow2)

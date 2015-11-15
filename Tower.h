@@ -2,7 +2,7 @@
 #define TOWER
 
 #include "BattleObject.h"
-#include "Upgrades.h"
+#include "enemy.h"
 
 #define NORMAL 0
 #define SPLASH 1
@@ -19,6 +19,7 @@
 #define JOBS 12
 #define TRIPLE 13
 
+class Upgrades;
 class Tower: public BattleObject{
 public:
     Tower();

@@ -1,7 +1,4 @@
 #include "Bullet.h"
-#include "BattleObject.h"
-
-#define STEP_SIZE 30                            //기본 STEP Size.. 나중에바꿀예정
 
 Bullet::Bullet(int power): QObject()
 {
@@ -28,7 +25,7 @@ void Bullet::Activated(bool active)
     else
         move_timer->stop();
 }
-virtual void Bullet::move()
+void Bullet::move()
 {
     QList<QGraphicsItem *> colliding_enemies=collidingItems();      //enemy랑 부딪히면 사라짐
     for(size_t i=0, n=colliding_enemies.size();i<n;i++){
