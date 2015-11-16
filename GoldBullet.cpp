@@ -10,10 +10,10 @@ GoldBullet::GoldBullet()
     ;
 }
 
-GoldBullet::GoldBullet(int power, int gold)
+GoldBullet::GoldBullet(int attack, int gold)
 {
     setPixmap(QPixmap(":/images/Mechanical.bmp"));          //image 설정
-    SetAttackPower(power);
+    SetAttackPower(attack);
     GoldPower = gold;
 }
 
