@@ -1,0 +1,19 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/upgrade_button.png</file>
+        <file>images/tooltip.png</file>
+        <file>images/test_Mechanical.bmp</file>
+        <file>images/fusion_button.png</file>
+        <file>images/Start_Button.png</file>
+        <file>images/Pause_Button.png</file>
+        <file>sounds/upgrade.wav</file>
+        <file>sounds/splash.wav</file>
+        <file>sounds/pushbutton.wav</file>
+        <file>sounds/move.wav</file>
+        <file>sounds/lifelost.wav</file>
+        <file>sounds/Select.wav</file>
+        <file>sounds/Hit.wav</file>
+        <file>sounds/Electricity.wav</file>
+        <file>sounds/BulletWentOff.wav</file>
+    </qresource>
+</RCC>
