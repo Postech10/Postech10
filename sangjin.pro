@@ -56,9 +56,7 @@ SOURCES += \
     src/BuildTowerIcon.cpp \
     src/BattleObject.cpp \
     src/AppleRobot.cpp \
-    src/soundobject.cpp \
-    src/AnimatedObject.cpp \
-    src/control_animation.cpp
+    src/soundobject.cpp
 
 HEADERS  += \
     include/upgrade_button.h \
@@ -97,9 +95,7 @@ HEADERS  += \
     include/BuildTowerIcon.h \
     include/BattleObject.h \
     include/AppleRobot.h \
-    include/soundobject.h \
-    include/AnimatedObject.h \
-    include/control_animation.h
+    include/soundobject.h
 
 RESOURCES += \
     resources/sources.qrc \

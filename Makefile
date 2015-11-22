@@ -85,9 +85,7 @@ SOURCES       = src/upgrade_button.cpp \
 		src/BuildTowerIcon.cpp \
 		src/BattleObject.cpp \
 		src/AppleRobot.cpp \
-		src/soundobject.cpp \
-		src/AnimatedObject.cpp \
-		src/control_animation.cpp rss/qrc_sources.cpp \
+		src/soundobject.cpp rss/qrc_sources.cpp \
 		moc/moc_mainwindow.cpp \
 		moc/moc_enemycontrol.cpp \
 		moc/moc_enemy.cpp \
@@ -133,8 +131,6 @@ OBJECTS       = obj/upgrade_button.o \
 		obj/BattleObject.o \
 		obj/AppleRobot.o \
 		obj/soundobject.o \
-		obj/AnimatedObject.o \
-		obj/control_animation.o \
 		obj/qrc_sources.o \
 		obj/moc_mainwindow.o \
 		obj/moc_enemycontrol.o \
@@ -298,9 +294,7 @@ DIST          = ../../../Qt/5.4/gcc_64/mkspecs/features/spec_pre.prf \
 		include/BuildTowerIcon.h \
 		include/BattleObject.h \
 		include/AppleRobot.h \
-		include/soundobject.h \
-		include/AnimatedObject.h \
-		include/control_animation.h src/upgrade_button.cpp \
+		include/soundobject.h src/upgrade_button.cpp \
 		src/mainwindow.cpp \
 		src/main.cpp \
 		src/fusion_button.cpp \
@@ -337,9 +331,7 @@ DIST          = ../../../Qt/5.4/gcc_64/mkspecs/features/spec_pre.prf \
 		src/BuildTowerIcon.cpp \
 		src/BattleObject.cpp \
 		src/AppleRobot.cpp \
-		src/soundobject.cpp \
-		src/AnimatedObject.cpp \
-		src/control_animation.cpp
+		src/soundobject.cpp
 QMAKE_TARGET  = sangjin
 DESTDIR       = bin/#avoid trailing-slash linebreak
 TARGET        = bin/sangjin
@@ -639,8 +631,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents resources/sources.qrc $(DISTDIR)/
-	$(COPY_FILE) --parents include/upgrade_button.h include/mainwindow.h include/fusion_button.h include/enemycontrol.h include/enemy.h include/button.h include/attackableenemy.h include/Wave_Generator.h include/Upgrades.h include/TutorRobot.h include/TripleMajorSenior.h include/Tower.h include/SteveJobs.h include/SplashTower.h include/SplashPoisonBullet.h include/SplashLaser.h include/SplashBullet.h include/SlowTower.h include/SlowBullet.h include/ProfessorMeeting.h include/PoisonTower.h include/PoisonBullet.h include/PMBullet.h include/MetalEngSenior.h include/JobsBiography.h include/IronBullet.h include/GoldTower.h include/GoldBullet.h include/Game.h include/ChemEngSenior.h include/ChainTower.h include/CESBullet.h include/Bullet.h include/BuildTowerIcon.h include/BattleObject.h include/AppleRobot.h include/soundobject.h include/AnimatedObject.h include/control_animation.h $(DISTDIR)/
-	$(COPY_FILE) --parents src/upgrade_button.cpp src/mainwindow.cpp src/main.cpp src/fusion_button.cpp src/enemycontrol.cpp src/enemy.cpp src/button.cpp src/attackableenemy.cpp src/Wave_Generator.cpp src/Upgrades.cpp src/TutorRobot.cpp src/TripleMajorSenior.cpp src/Tower.cpp src/SteveJobs.cpp src/SplashTower.cpp src/SplashPoisonBullet.cpp src/SplashLaser.cpp src/SplashBullet.cpp src/SlowTower.cpp src/SlowBullet.cpp src/ProfessorMeeting.cpp src/PoisonTower.cpp src/PoisonBullet.cpp src/PMBullet.cpp src/MetalEngSenior.cpp src/JobsBiography.cpp src/IronBullet.cpp src/GoldTower.cpp src/GoldBullet.cpp src/Game.cpp src/ChemEngSenior.cpp src/ChainTower.cpp src/CESBullet.cpp src/Bullet.cpp src/BuildTowerIcon.cpp src/BattleObject.cpp src/AppleRobot.cpp src/soundobject.cpp src/AnimatedObject.cpp src/control_animation.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents include/upgrade_button.h include/mainwindow.h include/fusion_button.h include/enemycontrol.h include/enemy.h include/button.h include/attackableenemy.h include/Wave_Generator.h include/Upgrades.h include/TutorRobot.h include/TripleMajorSenior.h include/Tower.h include/SteveJobs.h include/SplashTower.h include/SplashPoisonBullet.h include/SplashLaser.h include/SplashBullet.h include/SlowTower.h include/SlowBullet.h include/ProfessorMeeting.h include/PoisonTower.h include/PoisonBullet.h include/PMBullet.h include/MetalEngSenior.h include/JobsBiography.h include/IronBullet.h include/GoldTower.h include/GoldBullet.h include/Game.h include/ChemEngSenior.h include/ChainTower.h include/CESBullet.h include/Bullet.h include/BuildTowerIcon.h include/BattleObject.h include/AppleRobot.h include/soundobject.h $(DISTDIR)/
+	$(COPY_FILE) --parents src/upgrade_button.cpp src/mainwindow.cpp src/main.cpp src/fusion_button.cpp src/enemycontrol.cpp src/enemy.cpp src/button.cpp src/attackableenemy.cpp src/Wave_Generator.cpp src/Upgrades.cpp src/TutorRobot.cpp src/TripleMajorSenior.cpp src/Tower.cpp src/SteveJobs.cpp src/SplashTower.cpp src/SplashPoisonBullet.cpp src/SplashLaser.cpp src/SplashBullet.cpp src/SlowTower.cpp src/SlowBullet.cpp src/ProfessorMeeting.cpp src/PoisonTower.cpp src/PoisonBullet.cpp src/PMBullet.cpp src/MetalEngSenior.cpp src/JobsBiography.cpp src/IronBullet.cpp src/GoldTower.cpp src/GoldBullet.cpp src/Game.cpp src/ChemEngSenior.cpp src/ChainTower.cpp src/CESBullet.cpp src/Bullet.cpp src/BuildTowerIcon.cpp src/BattleObject.cpp src/AppleRobot.cpp src/soundobject.cpp $(DISTDIR)/
 
 
 clean:compiler_clean 
@@ -7542,101 +7534,6 @@ obj/soundobject.o: src/soundobject.cpp include/soundobject.h \
 		../../../Qt/5.4/gcc_64/include/QtCore/qcontiguouscache.h \
 		../../../Qt/5.4/gcc_64/include/QtCore/QString
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/soundobject.o src/soundobject.cpp
-
-obj/AnimatedObject.o: src/AnimatedObject.cpp include/AnimatedObject.h \
-		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPixmapItem \
-		../../../Qt/5.4/gcc_64/include/QtWidgets/qgraphicsitem.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qglobal.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qconfig.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qfeatures.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qsystemdetection.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qprocessordetection.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qcompilerdetection.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qtypeinfo.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qtypetraits.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qsysinfo.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qlogging.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qflags.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qatomic.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qbasicatomic.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qatomic_bootstrap.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qgenericatomic.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qatomic_msvc.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qatomic_armv7.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qatomic_armv6.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qatomic_armv5.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qatomic_ia64.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qatomic_mips.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qatomic_x86.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qatomic_cxx11.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qatomic_gcc.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qatomic_unix.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qglobalstatic.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qmutex.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qnumeric.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qobject.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qobjectdefs.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qnamespace.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qobjectdefs_impl.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qstring.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qchar.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qbytearray.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qrefcount.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qarraydata.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qstringbuilder.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qlist.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qalgorithms.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qiterator.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qbytearraylist.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qcoreevent.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qscopedpointer.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qmetatype.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qvarlengtharray.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qcontainerfwd.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qisenum.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qobject_impl.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qvariant.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qmap.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qpair.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qdebug.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qhash.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qtextstream.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qiodevice.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qlocale.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qshareddata.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qvector.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qpoint.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qset.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qcontiguouscache.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qstringlist.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qdatastream.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qregexp.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qstringmatcher.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qrect.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qmargins.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qsize.h \
-		../../../Qt/5.4/gcc_64/include/QtGui/qpainterpath.h \
-		../../../Qt/5.4/gcc_64/include/QtGui/qmatrix.h \
-		../../../Qt/5.4/gcc_64/include/QtGui/qpolygon.h \
-		../../../Qt/5.4/gcc_64/include/QtGui/qregion.h \
-		../../../Qt/5.4/gcc_64/include/QtGui/qwindowdefs.h \
-		../../../Qt/5.4/gcc_64/include/QtGui/qwindowdefs_win.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qline.h \
-		../../../Qt/5.4/gcc_64/include/QtGui/qpixmap.h \
-		../../../Qt/5.4/gcc_64/include/QtGui/qpaintdevice.h \
-		../../../Qt/5.4/gcc_64/include/QtGui/qcolor.h \
-		../../../Qt/5.4/gcc_64/include/QtGui/qrgb.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qsharedpointer.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qsharedpointer_impl.h \
-		../../../Qt/5.4/gcc_64/include/QtGui/qimage.h \
-		../../../Qt/5.4/gcc_64/include/QtGui/qtransform.h \
-		../../../Qt/5.4/gcc_64/include/QtGui/qpixelformat.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/QString \
-		../../../Qt/5.4/gcc_64/include/QtGui/QPixmap
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/AnimatedObject.o src/AnimatedObject.cpp
-
-obj/control_animation.o: src/control_animation.cpp include/control_animation.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/control_animation.o src/control_animation.cpp
 
 obj/qrc_sources.o: rss/qrc_sources.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/qrc_sources.o rss/qrc_sources.cpp
