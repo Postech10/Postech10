@@ -19,9 +19,6 @@ Tower::Tower()
     Attackable = true;                  //초기설정 나중에 밸런스를 위해 바꿀거임
     setPixmap(QPixmap(":/images/Mechanical.bmp"));     //사진설정
 
-    QTimer *timer = new QTimer();
-    connect(timer,SIGNAL(timeout()),this,SLOT(SetTarget()));
-    timer->start(2500);
 }
 
 void Tower::upgrade(Upgrades* up, int towercode)
@@ -35,7 +32,7 @@ Tower* Tower::fuseTower(Tower *tow1, Tower *tow2)
 {
     /*타워 조합 공식
      * @@1+1=2@@
-     * NORMAL + SLOW = PROF 0*2 = 2
+     * NORMAL + SLOW = PROF 0*2 = 0
      * SPLASH + CHAIN = TUTOR 1*4 = 4
      * SPLASH + GOLD = MES 1*5 = 5
      * POISON + GOLD = CES 3*5 = 15
@@ -57,9 +54,7 @@ Tower* Tower::fuseTower(Tower *tow1, Tower *tow2)
     //game class에서 지우는 걸
 
     switch(mult_code){
-    case 0:                       //디버깅용
-        return new AppleRobot();       //디버깅용
-    case 2:
+    case 0:
         return new ProfessorMeeting();
     case 4:
         return new TutorRobot();
