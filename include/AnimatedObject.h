@@ -5,7 +5,7 @@
 #include <QPixmap>
 enum states { CALM, ATTACK, DESTROYED };
 
-class AnimatedObject : public QGrapihcsPixmapItem
+class AnimatedObject : public QGraphicsPixmapItem
 {
 public:
     Animation();

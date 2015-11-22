@@ -907,7 +907,7 @@ moc/moc_enemycontrol.cpp: include/enemy.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qtouchdevice.h \
 		include/BattleObject.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPixmapItem \
-		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPolygonItem \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsEllipseItem \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsItem \
 		../../../Qt/5.4/gcc_64/include/QtCore/QPointF \
 		../../../Qt/5.4/gcc_64/include/QtCore/QTimer \
@@ -1028,7 +1028,7 @@ moc/moc_enemy.cpp: ../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsRectItem \
 		../../../Qt/5.4/gcc_64/include/QtGui/qtouchdevice.h \
 		include/BattleObject.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPixmapItem \
-		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPolygonItem \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsEllipseItem \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsItem \
 		../../../Qt/5.4/gcc_64/include/QtCore/QPointF \
 		../../../Qt/5.4/gcc_64/include/QtCore/QTimer \
@@ -1147,7 +1147,7 @@ moc/moc_attackableenemy.cpp: include/enemy.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qtouchdevice.h \
 		include/BattleObject.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPixmapItem \
-		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPolygonItem \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsEllipseItem \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsItem \
 		../../../Qt/5.4/gcc_64/include/QtCore/QPointF \
 		../../../Qt/5.4/gcc_64/include/QtCore/QTimer \
@@ -1278,7 +1278,7 @@ moc/moc_Game.cpp: ../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsView \
 		include/BattleObject.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPixmapItem \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qgraphicsitem.h \
-		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPolygonItem \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsEllipseItem \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsItem \
 		../../../Qt/5.4/gcc_64/include/QtCore/QObject \
 		../../../Qt/5.4/gcc_64/include/QtCore/QPointF \
@@ -1297,6 +1297,7 @@ moc/moc_Game.cpp: ../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsView \
 		include/SplashTower.h \
 		include/SplashBullet.h \
 		include/Bullet.h \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPolygonItem \
 		../../../Qt/5.4/gcc_64/include/QtCore/QtMath \
 		../../../Qt/5.4/gcc_64/include/QtCore/qmath.h \
 		include/SlowTower.h \
@@ -1425,6 +1426,7 @@ moc/moc_Bullet.cpp: ../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPixmapItem
 		../../../Qt/5.4/gcc_64/include/QtCore/QtMath \
 		../../../Qt/5.4/gcc_64/include/QtCore/qmath.h \
 		include/BattleObject.h \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsEllipseItem \
 		../../../Qt/5.4/gcc_64/include/QtCore/QPointF \
 		../../../Qt/5.4/gcc_64/include/QtGui/QPen \
 		../../../Qt/5.4/gcc_64/include/QtGui/qpen.h \
@@ -1537,7 +1539,7 @@ moc/moc_BattleObject.cpp: ../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPixm
 		../../../Qt/5.4/gcc_64/include/QtGui/qimage.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qtransform.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qpixelformat.h \
-		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPolygonItem \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsEllipseItem \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsItem \
 		../../../Qt/5.4/gcc_64/include/QtCore/QObject \
 		../../../Qt/5.4/gcc_64/include/QtCore/QPointF \
@@ -1657,7 +1659,7 @@ obj/upgrade_button.o: src/upgrade_button.cpp include/upgrade_button.h \
 		include/Upgrades.h \
 		include/Tower.h \
 		include/BattleObject.h \
-		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPolygonItem \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsEllipseItem \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsItem \
 		../../../Qt/5.4/gcc_64/include/QtCore/QObject \
 		../../../Qt/5.4/gcc_64/include/QtCore/QPointF \
@@ -1688,6 +1690,7 @@ obj/upgrade_button.o: src/upgrade_button.cpp include/upgrade_button.h \
 		include/SplashTower.h \
 		include/SplashBullet.h \
 		include/Bullet.h \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPolygonItem \
 		../../../Qt/5.4/gcc_64/include/QtCore/QtMath \
 		../../../Qt/5.4/gcc_64/include/QtCore/qmath.h \
 		include/SlowTower.h \
@@ -1973,7 +1976,7 @@ obj/main.o: src/main.cpp ../../../Qt/5.4/gcc_64/include/QtWidgets/QApplication \
 		include/BattleObject.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPixmapItem \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qgraphicsitem.h \
-		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPolygonItem \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsEllipseItem \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsItem \
 		../../../Qt/5.4/gcc_64/include/QtCore/QObject \
 		../../../Qt/5.4/gcc_64/include/QtCore/QPointF \
@@ -1992,6 +1995,7 @@ obj/main.o: src/main.cpp ../../../Qt/5.4/gcc_64/include/QtWidgets/QApplication \
 		include/SplashTower.h \
 		include/SplashBullet.h \
 		include/Bullet.h \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPolygonItem \
 		../../../Qt/5.4/gcc_64/include/QtCore/QtMath \
 		../../../Qt/5.4/gcc_64/include/QtCore/qmath.h \
 		include/SlowTower.h \
@@ -2147,7 +2151,7 @@ obj/fusion_button.o: src/fusion_button.cpp include/fusion_button.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qlabel.h \
 		include/Tower.h \
 		include/BattleObject.h \
-		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPolygonItem \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsEllipseItem \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsItem \
 		../../../Qt/5.4/gcc_64/include/QtCore/QObject \
 		../../../Qt/5.4/gcc_64/include/QtCore/QPointF \
@@ -2164,6 +2168,7 @@ obj/fusion_button.o: src/fusion_button.cpp include/fusion_button.h \
 		include/SplashTower.h \
 		include/SplashBullet.h \
 		include/Bullet.h \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPolygonItem \
 		../../../Qt/5.4/gcc_64/include/QtCore/QtMath \
 		../../../Qt/5.4/gcc_64/include/QtCore/qmath.h \
 		include/SlowTower.h \
@@ -2304,7 +2309,7 @@ obj/enemycontrol.o: src/enemycontrol.cpp include/enemycontrol.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qtouchdevice.h \
 		include/BattleObject.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPixmapItem \
-		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPolygonItem \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsEllipseItem \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsItem \
 		../../../Qt/5.4/gcc_64/include/QtCore/QPointF \
 		../../../Qt/5.4/gcc_64/include/QtCore/QTimer \
@@ -2426,7 +2431,7 @@ obj/enemy.o: src/enemy.cpp include/enemy.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qtouchdevice.h \
 		include/BattleObject.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPixmapItem \
-		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPolygonItem \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsEllipseItem \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsItem \
 		../../../Qt/5.4/gcc_64/include/QtCore/QPointF \
 		../../../Qt/5.4/gcc_64/include/QtCore/QTimer \
@@ -2567,7 +2572,7 @@ obj/button.o: src/button.cpp include/button.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qlabel.h \
 		include/Tower.h \
 		include/BattleObject.h \
-		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPolygonItem \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsEllipseItem \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsItem \
 		../../../Qt/5.4/gcc_64/include/QtCore/QObject \
 		../../../Qt/5.4/gcc_64/include/QtCore/QPointF \
@@ -2584,6 +2589,7 @@ obj/button.o: src/button.cpp include/button.h \
 		include/SplashTower.h \
 		include/SplashBullet.h \
 		include/Bullet.h \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPolygonItem \
 		../../../Qt/5.4/gcc_64/include/QtCore/QtMath \
 		../../../Qt/5.4/gcc_64/include/QtCore/qmath.h \
 		include/SlowTower.h \
@@ -2719,7 +2725,7 @@ obj/attackableenemy.o: src/attackableenemy.cpp include/attackableenemy.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qtouchdevice.h \
 		include/BattleObject.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPixmapItem \
-		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPolygonItem \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsEllipseItem \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsItem \
 		../../../Qt/5.4/gcc_64/include/QtCore/QPointF \
 		../../../Qt/5.4/gcc_64/include/QtCore/QTimer \
@@ -2728,6 +2734,7 @@ obj/attackableenemy.o: src/attackableenemy.cpp include/attackableenemy.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/QPen \
 		../../../Qt/5.4/gcc_64/include/QtGui/qpen.h \
 		include/Bullet.h \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPolygonItem \
 		../../../Qt/5.4/gcc_64/include/QtCore/QtMath \
 		../../../Qt/5.4/gcc_64/include/QtCore/qmath.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsScene \
@@ -2844,7 +2851,7 @@ obj/Wave_Generator.o: src/Wave_Generator.cpp include/Wave_Generator.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qtouchdevice.h \
 		include/BattleObject.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPixmapItem \
-		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPolygonItem \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsEllipseItem \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsItem \
 		../../../Qt/5.4/gcc_64/include/QtCore/QPointF \
 		../../../Qt/5.4/gcc_64/include/QtCore/QTimer \
@@ -2945,7 +2952,7 @@ obj/Upgrades.o: src/Upgrades.cpp include/Upgrades.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qimage.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qtransform.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qpixelformat.h \
-		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPolygonItem \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsEllipseItem \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsItem \
 		../../../Qt/5.4/gcc_64/include/QtCore/QObject \
 		../../../Qt/5.4/gcc_64/include/QtCore/QPointF \
@@ -2976,6 +2983,7 @@ obj/Upgrades.o: src/Upgrades.cpp include/Upgrades.h \
 		include/SplashTower.h \
 		include/SplashBullet.h \
 		include/Bullet.h \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPolygonItem \
 		../../../Qt/5.4/gcc_64/include/QtCore/QtMath \
 		../../../Qt/5.4/gcc_64/include/QtCore/qmath.h \
 		include/SlowTower.h \
@@ -3091,7 +3099,7 @@ obj/TutorRobot.o: src/TutorRobot.cpp include/TutorRobot.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qimage.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qtransform.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qpixelformat.h \
-		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPolygonItem \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsEllipseItem \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsItem \
 		../../../Qt/5.4/gcc_64/include/QtCore/QObject \
 		../../../Qt/5.4/gcc_64/include/QtCore/QPointF \
@@ -3121,6 +3129,7 @@ obj/TutorRobot.o: src/TutorRobot.cpp include/TutorRobot.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qtouchdevice.h \
 		include/SplashBullet.h \
 		include/Bullet.h \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPolygonItem \
 		../../../Qt/5.4/gcc_64/include/QtCore/QtMath \
 		../../../Qt/5.4/gcc_64/include/QtCore/qmath.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/TutorRobot.o src/TutorRobot.cpp
@@ -3217,7 +3226,7 @@ obj/TripleMajorSenior.o: src/TripleMajorSenior.cpp include/TripleMajorSenior.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qimage.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qtransform.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qpixelformat.h \
-		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPolygonItem \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsEllipseItem \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsItem \
 		../../../Qt/5.4/gcc_64/include/QtCore/QObject \
 		../../../Qt/5.4/gcc_64/include/QtCore/QPointF \
@@ -3247,6 +3256,7 @@ obj/TripleMajorSenior.o: src/TripleMajorSenior.cpp include/TripleMajorSenior.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qtouchdevice.h \
 		include/GoldBullet.h \
 		include/Bullet.h \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPolygonItem \
 		../../../Qt/5.4/gcc_64/include/QtCore/QtMath \
 		../../../Qt/5.4/gcc_64/include/QtCore/qmath.h \
 		include/IronBullet.h \
@@ -3388,7 +3398,7 @@ obj/Tower.o: src/Tower.cpp ../../../Qt/5.4/gcc_64/include/QtCore/QVector \
 		../../../Qt/5.4/gcc_64/include/QtGui/qimage.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qtransform.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qpixelformat.h \
-		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPolygonItem \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsEllipseItem \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsItem \
 		../../../Qt/5.4/gcc_64/include/QtCore/QObject \
 		../../../Qt/5.4/gcc_64/include/QtCore/QTimer \
@@ -3418,6 +3428,7 @@ obj/Tower.o: src/Tower.cpp ../../../Qt/5.4/gcc_64/include/QtCore/QVector \
 		include/SplashTower.h \
 		include/SplashBullet.h \
 		include/Bullet.h \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPolygonItem \
 		../../../Qt/5.4/gcc_64/include/QtCore/QtMath \
 		../../../Qt/5.4/gcc_64/include/QtCore/qmath.h \
 		include/SlowTower.h \
@@ -3558,7 +3569,7 @@ obj/SteveJobs.o: src/SteveJobs.cpp include/SteveJobs.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qimage.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qtransform.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qpixelformat.h \
-		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPolygonItem \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsEllipseItem \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsItem \
 		../../../Qt/5.4/gcc_64/include/QtCore/QObject \
 		../../../Qt/5.4/gcc_64/include/QtCore/QPointF \
@@ -3609,6 +3620,7 @@ obj/SteveJobs.o: src/SteveJobs.cpp include/SteveJobs.h \
 		include/SplashTower.h \
 		include/SplashBullet.h \
 		include/Bullet.h \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPolygonItem \
 		../../../Qt/5.4/gcc_64/include/QtCore/QtMath \
 		../../../Qt/5.4/gcc_64/include/QtCore/qmath.h \
 		include/SlowTower.h \
@@ -3729,7 +3741,7 @@ obj/SplashTower.o: src/SplashTower.cpp include/SplashTower.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qimage.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qtransform.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qpixelformat.h \
-		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPolygonItem \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsEllipseItem \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsItem \
 		../../../Qt/5.4/gcc_64/include/QtCore/QObject \
 		../../../Qt/5.4/gcc_64/include/QtCore/QPointF \
@@ -3759,6 +3771,7 @@ obj/SplashTower.o: src/SplashTower.cpp include/SplashTower.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qtouchdevice.h \
 		include/SplashBullet.h \
 		include/Bullet.h \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPolygonItem \
 		../../../Qt/5.4/gcc_64/include/QtCore/QtMath \
 		../../../Qt/5.4/gcc_64/include/QtCore/qmath.h \
 		include/Game.h \
@@ -3909,6 +3922,7 @@ obj/SplashPoisonBullet.o: src/SplashPoisonBullet.cpp include/SplashPoisonBullet.
 		../../../Qt/5.4/gcc_64/include/QtCore/QtMath \
 		../../../Qt/5.4/gcc_64/include/QtCore/qmath.h \
 		include/BattleObject.h \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsEllipseItem \
 		../../../Qt/5.4/gcc_64/include/QtCore/QPointF \
 		../../../Qt/5.4/gcc_64/include/QtGui/QPen \
 		../../../Qt/5.4/gcc_64/include/QtGui/qpen.h \
@@ -4080,6 +4094,7 @@ obj/SplashLaser.o: src/SplashLaser.cpp include/SplashLaser.h \
 		../../../Qt/5.4/gcc_64/include/QtCore/QtMath \
 		../../../Qt/5.4/gcc_64/include/QtCore/qmath.h \
 		include/BattleObject.h \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsEllipseItem \
 		../../../Qt/5.4/gcc_64/include/QtCore/QPointF \
 		../../../Qt/5.4/gcc_64/include/QtGui/QPen \
 		../../../Qt/5.4/gcc_64/include/QtGui/qpen.h \
@@ -4250,6 +4265,7 @@ obj/SplashBullet.o: src/SplashBullet.cpp include/SplashBullet.h \
 		../../../Qt/5.4/gcc_64/include/QtCore/QtMath \
 		../../../Qt/5.4/gcc_64/include/QtCore/qmath.h \
 		include/BattleObject.h \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsEllipseItem \
 		../../../Qt/5.4/gcc_64/include/QtCore/QPointF \
 		../../../Qt/5.4/gcc_64/include/QtGui/QPen \
 		../../../Qt/5.4/gcc_64/include/QtGui/qpen.h \
@@ -4413,7 +4429,7 @@ obj/SlowTower.o: src/SlowTower.cpp include/SlowTower.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qimage.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qtransform.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qpixelformat.h \
-		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPolygonItem \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsEllipseItem \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsItem \
 		../../../Qt/5.4/gcc_64/include/QtCore/QObject \
 		../../../Qt/5.4/gcc_64/include/QtCore/QPointF \
@@ -4443,6 +4459,7 @@ obj/SlowTower.o: src/SlowTower.cpp include/SlowTower.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qtouchdevice.h \
 		include/SlowBullet.h \
 		include/Bullet.h \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPolygonItem \
 		../../../Qt/5.4/gcc_64/include/QtCore/QtMath \
 		../../../Qt/5.4/gcc_64/include/QtCore/qmath.h \
 		include/Game.h \
@@ -4592,6 +4609,7 @@ obj/SlowBullet.o: src/SlowBullet.cpp include/SlowBullet.h \
 		../../../Qt/5.4/gcc_64/include/QtCore/QtMath \
 		../../../Qt/5.4/gcc_64/include/QtCore/qmath.h \
 		include/BattleObject.h \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsEllipseItem \
 		../../../Qt/5.4/gcc_64/include/QtCore/QPointF \
 		../../../Qt/5.4/gcc_64/include/QtGui/QPen \
 		../../../Qt/5.4/gcc_64/include/QtGui/qpen.h \
@@ -4756,7 +4774,7 @@ obj/ProfessorMeeting.o: src/ProfessorMeeting.cpp include/ProfessorMeeting.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qimage.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qtransform.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qpixelformat.h \
-		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPolygonItem \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsEllipseItem \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsItem \
 		../../../Qt/5.4/gcc_64/include/QtCore/QObject \
 		../../../Qt/5.4/gcc_64/include/QtCore/QPointF \
@@ -4786,6 +4804,7 @@ obj/ProfessorMeeting.o: src/ProfessorMeeting.cpp include/ProfessorMeeting.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qtouchdevice.h \
 		include/SlowBullet.h \
 		include/Bullet.h \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPolygonItem \
 		../../../Qt/5.4/gcc_64/include/QtCore/QtMath \
 		../../../Qt/5.4/gcc_64/include/QtCore/qmath.h \
 		include/PMBullet.h \
@@ -4926,7 +4945,7 @@ obj/PoisonTower.o: src/PoisonTower.cpp include/PoisonTower.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qimage.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qtransform.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qpixelformat.h \
-		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPolygonItem \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsEllipseItem \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsItem \
 		../../../Qt/5.4/gcc_64/include/QtCore/QObject \
 		../../../Qt/5.4/gcc_64/include/QtCore/QPointF \
@@ -4956,6 +4975,7 @@ obj/PoisonTower.o: src/PoisonTower.cpp include/PoisonTower.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qtouchdevice.h \
 		include/PoisonBullet.h \
 		include/Bullet.h \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPolygonItem \
 		../../../Qt/5.4/gcc_64/include/QtCore/QtMath \
 		../../../Qt/5.4/gcc_64/include/QtCore/qmath.h \
 		include/Game.h \
@@ -5105,6 +5125,7 @@ obj/PoisonBullet.o: src/PoisonBullet.cpp include/PoisonBullet.h \
 		../../../Qt/5.4/gcc_64/include/QtCore/QtMath \
 		../../../Qt/5.4/gcc_64/include/QtCore/qmath.h \
 		include/BattleObject.h \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsEllipseItem \
 		../../../Qt/5.4/gcc_64/include/QtCore/QPointF \
 		../../../Qt/5.4/gcc_64/include/QtGui/QPen \
 		../../../Qt/5.4/gcc_64/include/QtGui/qpen.h \
@@ -5277,6 +5298,7 @@ obj/PMBullet.o: src/PMBullet.cpp include/PMBullet.h \
 		../../../Qt/5.4/gcc_64/include/QtCore/QtMath \
 		../../../Qt/5.4/gcc_64/include/QtCore/qmath.h \
 		include/BattleObject.h \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsEllipseItem \
 		../../../Qt/5.4/gcc_64/include/QtCore/QPointF \
 		../../../Qt/5.4/gcc_64/include/QtGui/QPen \
 		../../../Qt/5.4/gcc_64/include/QtGui/qpen.h \
@@ -5440,7 +5462,7 @@ obj/MetalEngSenior.o: src/MetalEngSenior.cpp include/MetalEngSenior.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qimage.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qtransform.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qpixelformat.h \
-		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPolygonItem \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsEllipseItem \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsItem \
 		../../../Qt/5.4/gcc_64/include/QtCore/QObject \
 		../../../Qt/5.4/gcc_64/include/QtCore/QPointF \
@@ -5470,6 +5492,7 @@ obj/MetalEngSenior.o: src/MetalEngSenior.cpp include/MetalEngSenior.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qtouchdevice.h \
 		include/GoldBullet.h \
 		include/Bullet.h \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPolygonItem \
 		../../../Qt/5.4/gcc_64/include/QtCore/QtMath \
 		../../../Qt/5.4/gcc_64/include/QtCore/qmath.h \
 		include/IronBullet.h \
@@ -5611,7 +5634,7 @@ obj/JobsBiography.o: src/JobsBiography.cpp include/JobsBiography.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qimage.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qtransform.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qpixelformat.h \
-		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPolygonItem \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsEllipseItem \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsItem \
 		../../../Qt/5.4/gcc_64/include/QtCore/QObject \
 		../../../Qt/5.4/gcc_64/include/QtCore/QPointF \
@@ -5641,6 +5664,7 @@ obj/JobsBiography.o: src/JobsBiography.cpp include/JobsBiography.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qtouchdevice.h \
 		include/GoldBullet.h \
 		include/Bullet.h \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPolygonItem \
 		../../../Qt/5.4/gcc_64/include/QtCore/QtMath \
 		../../../Qt/5.4/gcc_64/include/QtCore/qmath.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/JobsBiography.o src/JobsBiography.cpp
@@ -5744,6 +5768,7 @@ obj/IronBullet.o: src/IronBullet.cpp include/IronBullet.h \
 		../../../Qt/5.4/gcc_64/include/QtCore/QtMath \
 		../../../Qt/5.4/gcc_64/include/QtCore/qmath.h \
 		include/BattleObject.h \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsEllipseItem \
 		../../../Qt/5.4/gcc_64/include/QtCore/QPointF \
 		../../../Qt/5.4/gcc_64/include/QtGui/QPen \
 		../../../Qt/5.4/gcc_64/include/QtGui/qpen.h \
@@ -5858,7 +5883,7 @@ obj/GoldTower.o: src/GoldTower.cpp include/GoldTower.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qimage.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qtransform.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qpixelformat.h \
-		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPolygonItem \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsEllipseItem \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsItem \
 		../../../Qt/5.4/gcc_64/include/QtCore/QObject \
 		../../../Qt/5.4/gcc_64/include/QtCore/QPointF \
@@ -5888,6 +5913,7 @@ obj/GoldTower.o: src/GoldTower.cpp include/GoldTower.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qtouchdevice.h \
 		include/GoldBullet.h \
 		include/Bullet.h \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPolygonItem \
 		../../../Qt/5.4/gcc_64/include/QtCore/QtMath \
 		../../../Qt/5.4/gcc_64/include/QtCore/qmath.h \
 		include/Game.h \
@@ -6037,6 +6063,7 @@ obj/GoldBullet.o: src/GoldBullet.cpp include/GoldBullet.h \
 		../../../Qt/5.4/gcc_64/include/QtCore/QtMath \
 		../../../Qt/5.4/gcc_64/include/QtCore/qmath.h \
 		include/BattleObject.h \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsEllipseItem \
 		../../../Qt/5.4/gcc_64/include/QtCore/QPointF \
 		../../../Qt/5.4/gcc_64/include/QtGui/QPen \
 		../../../Qt/5.4/gcc_64/include/QtGui/qpen.h \
@@ -6231,7 +6258,7 @@ obj/Game.o: src/Game.cpp include/Game.h \
 		include/BattleObject.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPixmapItem \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qgraphicsitem.h \
-		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPolygonItem \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsEllipseItem \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsItem \
 		../../../Qt/5.4/gcc_64/include/QtCore/QObject \
 		../../../Qt/5.4/gcc_64/include/QtCore/QPointF \
@@ -6250,6 +6277,7 @@ obj/Game.o: src/Game.cpp include/Game.h \
 		include/SplashTower.h \
 		include/SplashBullet.h \
 		include/Bullet.h \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPolygonItem \
 		../../../Qt/5.4/gcc_64/include/QtCore/QtMath \
 		../../../Qt/5.4/gcc_64/include/QtCore/qmath.h \
 		include/SlowTower.h \
@@ -6376,7 +6404,7 @@ obj/ChemEngSenior.o: src/ChemEngSenior.cpp include/ChemEngSenior.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qimage.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qtransform.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qpixelformat.h \
-		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPolygonItem \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsEllipseItem \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsItem \
 		../../../Qt/5.4/gcc_64/include/QtCore/QObject \
 		../../../Qt/5.4/gcc_64/include/QtCore/QPointF \
@@ -6406,6 +6434,7 @@ obj/ChemEngSenior.o: src/ChemEngSenior.cpp include/ChemEngSenior.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qtouchdevice.h \
 		include/GoldBullet.h \
 		include/Bullet.h \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPolygonItem \
 		../../../Qt/5.4/gcc_64/include/QtCore/QtMath \
 		../../../Qt/5.4/gcc_64/include/QtCore/qmath.h \
 		include/CESBullet.h \
@@ -6546,7 +6575,7 @@ obj/ChainTower.o: src/ChainTower.cpp include/ChainTower.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qimage.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qtransform.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qpixelformat.h \
-		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPolygonItem \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsEllipseItem \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsItem \
 		../../../Qt/5.4/gcc_64/include/QtCore/QObject \
 		../../../Qt/5.4/gcc_64/include/QtCore/QPointF \
@@ -6575,6 +6604,7 @@ obj/ChainTower.o: src/ChainTower.cpp include/ChainTower.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qvector2d.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qtouchdevice.h \
 		include/Bullet.h \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPolygonItem \
 		../../../Qt/5.4/gcc_64/include/QtCore/QtMath \
 		../../../Qt/5.4/gcc_64/include/QtCore/qmath.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/ChainTower.o src/ChainTower.cpp
@@ -6678,6 +6708,7 @@ obj/CESBullet.o: src/CESBullet.cpp include/CESBullet.h \
 		../../../Qt/5.4/gcc_64/include/QtCore/QtMath \
 		../../../Qt/5.4/gcc_64/include/QtCore/qmath.h \
 		include/BattleObject.h \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsEllipseItem \
 		../../../Qt/5.4/gcc_64/include/QtCore/QPointF \
 		../../../Qt/5.4/gcc_64/include/QtGui/QPen \
 		../../../Qt/5.4/gcc_64/include/QtGui/qpen.h \
@@ -6847,6 +6878,7 @@ obj/Bullet.o: src/Bullet.cpp include/Bullet.h \
 		../../../Qt/5.4/gcc_64/include/QtCore/QtMath \
 		../../../Qt/5.4/gcc_64/include/QtCore/qmath.h \
 		include/BattleObject.h \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsEllipseItem \
 		../../../Qt/5.4/gcc_64/include/QtCore/QPointF \
 		../../../Qt/5.4/gcc_64/include/QtGui/QPen \
 		../../../Qt/5.4/gcc_64/include/QtGui/qpen.h \
@@ -7033,7 +7065,7 @@ obj/BuildTowerIcon.o: src/BuildTowerIcon.cpp include/BuildTowerIcon.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qtouchdevice.h \
 		include/Tower.h \
 		include/BattleObject.h \
-		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPolygonItem \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsEllipseItem \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsItem \
 		../../../Qt/5.4/gcc_64/include/QtCore/QObject \
 		../../../Qt/5.4/gcc_64/include/QtCore/QPointF \
@@ -7066,6 +7098,7 @@ obj/BuildTowerIcon.o: src/BuildTowerIcon.cpp include/BuildTowerIcon.h \
 		include/SplashTower.h \
 		include/SplashBullet.h \
 		include/Bullet.h \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPolygonItem \
 		../../../Qt/5.4/gcc_64/include/QtCore/QtMath \
 		../../../Qt/5.4/gcc_64/include/QtCore/qmath.h \
 		include/SlowTower.h \
@@ -7180,7 +7213,7 @@ obj/BattleObject.o: src/BattleObject.cpp include/BattleObject.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qimage.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qtransform.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qpixelformat.h \
-		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPolygonItem \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsEllipseItem \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsItem \
 		../../../Qt/5.4/gcc_64/include/QtCore/QObject \
 		../../../Qt/5.4/gcc_64/include/QtCore/QPointF \
@@ -7191,6 +7224,7 @@ obj/BattleObject.o: src/BattleObject.cpp include/BattleObject.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qpen.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qbrush.h \
 		include/Bullet.h \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPolygonItem \
 		../../../Qt/5.4/gcc_64/include/QtCore/QtMath \
 		../../../Qt/5.4/gcc_64/include/QtCore/qmath.h \
 		include/enemy.h \
@@ -7355,7 +7389,7 @@ obj/AppleRobot.o: src/AppleRobot.cpp include/AppleRobot.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qimage.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qtransform.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qpixelformat.h \
-		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPolygonItem \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsEllipseItem \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsItem \
 		../../../Qt/5.4/gcc_64/include/QtCore/QObject \
 		../../../Qt/5.4/gcc_64/include/QtCore/QPointF \
@@ -7385,6 +7419,7 @@ obj/AppleRobot.o: src/AppleRobot.cpp include/AppleRobot.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qtouchdevice.h \
 		include/GoldBullet.h \
 		include/Bullet.h \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPolygonItem \
 		../../../Qt/5.4/gcc_64/include/QtCore/QtMath \
 		../../../Qt/5.4/gcc_64/include/QtCore/qmath.h \
 		include/SplashLaser.h \

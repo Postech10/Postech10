@@ -14,7 +14,6 @@ Enemy::Enemy(int level)
     int xLoc[10] = {70,45,20,20,50,80,80,80,45,20};
     int yLoc[10] = {80,80,80,60,60,60,35,10,10,10};
 
-    qDebug() << "make enemy";
     for(int i=0;i<10;i++){
         path[i][0] = xLoc[i]*width/100;
         path[i][1] = yLoc[i]*height/100;
@@ -44,8 +43,11 @@ Enemy::Enemy(int level)
     clockRate=10000/(60+currentLevel);   //different velocity according to level
 
     life=1;
-    Hp=(currentLevel/10+1)*1000;
-    DefensivePower=10;
+    Hp=(currentLevel/10+1)*50;
+    DefensivePower=1;
+
+    if(currentLevel%10!=0)
+        this->HideAttackRange();
 
     setPicture();
 
@@ -54,7 +56,7 @@ Enemy::Enemy(int level)
     //move according to signal
     timer = new QTimer();
     connect(timer, SIGNAL(timeout()), this, SLOT(move()));
-    timer->start(clockRate);
+
 }
 
 void Enemy::IsPoisonedBy(int power)
@@ -83,13 +85,18 @@ void Enemy::IsHitBy(int power)
 
 }
 
+void Enemy::startMovement()
+{
+    timer->start(50);
+}
+
 void Enemy::setPicture()     //Hp AttackPower DefensePower
 {
     int n = currentLevel;
 
     switch(n/10){
     case 0:
-        if(n%10) setPixmap(QPixmap(":/images/Enemy1.png"));
+        if(n%10) setPixmap(QPixmap(":/images/Mechanical.bmp"));
         else     setPixmap(QPixmap(":/images/Enemy2.png"));
         break;
     case 1:

@@ -2,7 +2,7 @@
 #define BATTLEOBJECT
 
 #include <QGraphicsPixmapItem>
-#include <QGraphicsPolygonItem>
+#include <QGraphicsEllipseItem>
 #include <QGraphicsItem>
 #include <QObject>
 #include <QPointF>
@@ -15,7 +15,7 @@ public:
     BattleObject();
     virtual void Attack();
     double CalcDistance(QGraphicsItem*);
-    void IsHitBy(int);
+    virtual void IsHitBy(int);
     int GetHp();
     int GetAttackPower();
     int GetDefensivePower();
@@ -26,10 +26,11 @@ public:
     void SetDefensivePower(int DefensivePower);
     void SetAttackSpeed(int AttackSpeed);
     virtual void Activated(bool);
+    void HideAttackRange();
 public slots:
     virtual void SetTarget();
 protected:
-    QGraphicsPolygonItem* AttackRange;
+    QGraphicsEllipseItem* AttackRange;
     QGraphicsItem* Target;
     bool HasTarget;
     int Hp;
