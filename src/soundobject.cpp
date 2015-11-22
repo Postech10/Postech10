@@ -21,6 +21,7 @@ void SoundObject::playSound(const QString &tag)
         if(soundon[it.key()] == true) //playing?
         {
             (*it)->stop();//stop it
+            soundon[it.key()] = false;
         }
     }
 
