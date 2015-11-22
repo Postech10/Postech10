@@ -1,2 +1,6 @@
 sangjin.pro.user
+bin/
+moc/
+obj/
+rss/
 
