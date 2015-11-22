@@ -24,7 +24,7 @@ class Upgrades;
 class Tower: public BattleObject{
 public:
     Tower();
-    void upgrade(Upgrades, int);
+    void upgrade(Upgrades*, int);
     Tower* fuseTower(Tower*, Tower*);
     int GetTargetNum();
     int GetTowerCode();
