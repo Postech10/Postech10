@@ -117,6 +117,12 @@ private :
     QLabel* round_label; //round 출력
     QLabel* money_label; //money 출력
 
+    QLabel* upgrade_level;
+    QLabel* attack_ability;
+    QLabel* defense_ability;
+    QLabel* attack_speed_ability;
+
+
 };
 
 #endif // GAME

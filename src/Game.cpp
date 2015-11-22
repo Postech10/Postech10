@@ -132,17 +132,17 @@ void Game::displayMenu()
 
     //make a label which shows current round and add it into scene
     round_label = new QLabel();
-    round_label->setFont(QFont("Arial", 30 , QFont::Bold));
+    round_label->setFont(QFont("Arial", 20 , QFont::Bold));
     //round_label->setStyleSheet("background-color:gray;");
     round_label->setGeometry(1024-64*4,0,64*3,30);
     scene->addWidget(round_label);
 
     //make a label which shows current money the user has and add it into scene
     money_label = new QLabel();
-    money_label->setFont(QFont("Arial", 30 , QFont::Bold));
+    money_label->setFont(QFont("Arial", 20 , QFont::Bold));
     //money_label->setStyleSheet("background-color:gray;");
     money_label->setText(QString("Money ")+QString::number(money));
-    money_label->setGeometry(1024-64*4,50,64*3,30);
+    money_label->setGeometry(1024-64*4,35,64*3,30);
     scene->addWidget(money_label);
 }
 
@@ -157,8 +157,6 @@ void Game::mouseMoveEvent(QMouseEvent *event)
         delete tooltip;
         tooltip = nullptr;
     }
-
-    qDebug()<<Normal_Tower_button->contains(event->pos());
 
     //when mouse cursor is on tower build button
     if(event->pos().x()/64 == (1024-192)/64 && event->pos().y()/64 == 200/64 && tooltip == nullptr){
@@ -181,11 +179,13 @@ void Game::spawnEnemy()
 
     if(wave != enemy.size() ){
         enemy.push_back(SpawnList[wave-enemy.size()-1]);
-        //enemy[enemy.size()-1]->startMovement();
+
+        enemy[enemy.size()-1]->startMovement();
         //please add startMovement method and un-commentize this.
         scene->addItem(enemy.back());
         enemy_num++;
-        qDebug()<<enemy_num<<","<<SpawnList.size();
+
+        qDebug()<<reinterpret_cast<int> (enemy.back());
     }
     else
         spawn_timer->stop();
@@ -334,11 +334,9 @@ void Game::DeletTowerInfo()
     }
 }
 
-
 //method to controll any mouse click events.
 //when add mode is true, tower is built by this method.
 void Game::mousePressEvent(QMouseEvent *event){
-
 
     QPoint pointed_spot = event->pos();
 
@@ -347,6 +345,7 @@ void Game::mousePressEvent(QMouseEvent *event){
         pointer = build[build.size()-1];
         pointer->setVisible(true);
         pointer->setPos((pointed_spot.x()/64)*64,(pointed_spot.y()/64)*64);
+        pointer->Activated(true);
         scene->addItem(pointer);
         QWidget::unsetCursor();
 

@@ -1,7 +1,7 @@
 #include "BattleObject.h"
 #include "Bullet.h"
 #include "Game.h"
-#define SCALE_FACTOR 80
+#define SCALE_FACTOR 300
 
 extern Game* game;
 
@@ -16,19 +16,12 @@ BattleObject::BattleObject()
     Attackable = false;                         //위와 같은이유
     timer = new QTimer();
 
-    QVector<QPointF> points;                             //AttackRange 설정 과정
-    points << QPoint(1,0)<< QPoint(2,0)<< QPoint(3,1)<< QPoint(3,2)<< QPoint(2,3)
-              << QPoint(1,3)<< QPoint(0,2)<< QPoint(0,1);//범위 설정 -> 나중에 원으로 하는법 알아내면 바꿀예정 지금은 8각형임..
-    for (size_t i=0, n=points.size(); i<n;i++)
-        points[i]*=SCALE_FACTOR;                    //확대
-
-    AttackRange = new QGraphicsPolygonItem(QPolygonF(points),this);
+    AttackRange = new QGraphicsEllipseItem(QRectF(0,0,SCALE_FACTOR,SCALE_FACTOR),this);
     AttackRange->setPen(QPen(Qt::DotLine));     //점선으로 범위 보이기
 
-    QPointF poly_center(1.5,1.5);               //AttackRange의 중심
-    poly_center *= SCALE_FACTOR;                //역시 확대
+    QPointF poly_center(SCALE_FACTOR/2,SCALE_FACTOR/2);               //AttackRange의 중심
     poly_center = mapToScene(poly_center);
-    QPointF object_center(x()+50, y()+65);       //확실히 모름 나중에 디버깅하면서 맞출생각
+    QPointF object_center(x()+40, y()+50);       //확실히 모름 나중에 디버깅하면서 맞출생각
     QLineF ln(poly_center, object_center);
     AttackRange->setPos(x()+ln.dx(),y()+ln.dy());       //center 맞추기
 }
@@ -36,8 +29,9 @@ BattleObject::BattleObject()
 void BattleObject::Attack()
 {
     Bullet *bullet = new Bullet(AttackPower);
-    bullet->setPos(x()+50,y()+65);                  //constructor에 있는 object_center와 동일 좌표
-    QLineF ln(QPointF(x()+50,y()+65),QPointF(Target->x(),Target->y()));      //목적지까지 선긋기
+    bullet->Activated(true);
+    bullet->setPos(x()+40,y()+50);                  //constructor에 있는 object_center와 동일 좌표
+    QLineF ln(QPointF(x()+40,y()+50),QPointF(Target->x(),Target->y()));      //목적지까지 선긋기
     int angle = -1 * ln.angle();                    //object와 target사이의 각도를 재서
     bullet->setRotation(angle);                     //그방향으로 날아가도록 rotation을 설정
     game->scene->addItem(bullet);                   //추가 .... 이건 game이라는 view가 전제되있을 경우고 나중에 다른 조원이 어떻게하냐에 따라 달라질예정
@@ -104,11 +98,16 @@ void BattleObject::Activated(bool active)
     connect(timer,SIGNAL(timeout()),this,SLOT(SetTarget()));
     if(active){
         if(Attackable){
-            timer->start(1/AttackSpeed);
+            timer->start(1000);
         }
     }
     else
         timer->stop();
+}
+
+void BattleObject::HideAttackRange()
+{
+    AttackRange->setPen(QPen(Qt::NoPen));     //점선으로 범위 보이기
 }
 
 void BattleObject::SetTarget()
@@ -130,6 +129,6 @@ void BattleObject::SetTarget()
             }
         }
     }
-
-    Attack();                               //공
+    if(HasTarget == true)
+     Attack();                               //공
 }

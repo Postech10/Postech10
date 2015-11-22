@@ -4,7 +4,7 @@
 #include <QGraphicsRectItem>
 #include <QObject>
 #include<QWidget>
-#include <BattleObject.h>
+#include "BattleObject.h"
 #include <QTimer>
 
 class Enemy : public BattleObject{
@@ -29,6 +29,7 @@ public:
     void IsPoisonedBy(int);           //called when attack by poison tower
     void IsSlowedBy();                //called when attack by slow tower
     void IsHitBy(int);               //called when attacked
+    void startMovement();
 public slots:
     void move();                      //go through path
     void IsHitByP(int);               //decrease Hp, when poisoned by tower
