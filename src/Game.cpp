@@ -185,7 +185,7 @@ void Game::spawnEnemy()
         scene->addItem(enemy.back());
         enemy_num++;
 
-        qDebug()<<reinterpret_cast<int> (enemy.back());
+        //qDebug()<<reinterpret_cast<int> (enemy.back());
     }
     else
         spawn_timer->stop();
