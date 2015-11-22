@@ -15,5 +15,9 @@
         <file>sounds/Hit.wav</file>
         <file>sounds/Electricity.wav</file>
         <file>sounds/BulletWentOff.wav</file>
+        <file>images/upgrade.jpg</file>
+        <file>images/TileMapSet.bmp</file>
+        <file>images/Map.bmp</file>
+        <file>images/FUSE.jpg</file>
     </qresource>
 </RCC>

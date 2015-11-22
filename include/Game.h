@@ -5,6 +5,7 @@
 #include <QGraphicsView>
 #include <QMouseEvent>
 #include <QVector>
+#include <QList>
 #include <QString>
 #include <QLabel>
 #include "Tower.h"
@@ -33,12 +34,13 @@ public:
     inline void SetAddMode(bool _add_mode) {add_mode = _add_mode;}
     inline bool GetAddMode() {return add_mode;}
 
+    //upgrade_mode accessor & modifier
+    void SetUpgradeMode(bool _upgrade_mode);
+    inline bool GetUpgradeMode() {return upgrade_mode;}
+
     //money accessor & modifier
     inline void set_money(int _money) {money = _money;}
     inline int get_money() {return money;}
-
-    //게임이 종료 되었을 때, round를 변화 시키는 함수
-    inline void UpdateGame() {round++;}
 
     void SumWithEnemyNum(int _num);
     inline int GetEnemyNum() {return enemy_num;}
@@ -48,26 +50,27 @@ public:
 
     void MakeNewGame();
 
+    void FuseTower();
+
     //지금은 변수들이 public인데 나중에 모두 private로 만들거임.
     QGraphicsScene *scene;
-    QVector<Tower*> waiting_line;
+    QList<Tower*> waiting_line;
     QGraphicsPixmapItem *tooltip;
     bool fuse_mode;
-    bool upgrade_mode;
-
 
 
 signals:
     void RoundSet(int new_round);
-
     void game_is_cleared();
     //state가 Cleared로 바뀌었을 때, 실행 되어 다음 판을 준비 하는 함수.
 
 public slots:
 
     void spawnEnemy();
-    void button_Pressed(QPointF point);
+    void button_Pressed(QPointF point, int tower_code);
     void clear_game();
+    void ShowTowerInfo(Tower* tower);
+    void DeletTowerInfo();
 
 private :
 
@@ -84,6 +87,9 @@ private :
     //지금 살아 있는 enemy의 수
     int enemy_num;
 
+    //combnination[r][w]가 true면 r과 w는 조합이 가능함
+    bool combination[14][14];
+
     //타워를 건설 할 때 사용하는 포인터 변수
     Tower* pointer;
 
@@ -94,16 +100,23 @@ private :
     int state; //현재 게임 상황이 어떤 상황인지 알려 주는 변수
 
     bool add_mode; //add_mode 인지 아닌지에 대한 정보를 담고 있는 변수
+    bool upgrade_mode;
     bool position[16][12]; //1024*768를 64*64 크기의 정사각형들로 나눔
 
     Button *start_pause_button; //start_puase 버튼
     Fusion_Button *fusion_button; //합체 버튼
-    BuildTowerIcon *tower_button; //타워 버튼
+    BuildTowerIcon *Normal_Tower_button; //타워 버튼
+    BuildTowerIcon *Splash_Tower_button; //타워 버튼
+    BuildTowerIcon *Slow_Tower_button; //타워 버튼
+    BuildTowerIcon *Poison_Tower_button; //타워 버튼
+    BuildTowerIcon *Chain_Tower_button; //타워 버튼
+    BuildTowerIcon *Gold_Tower_button; //타워 버튼
     UpgradeButton *upgrade_button; //업그레이드 버튼
 
     QTimer *spawn_timer; //적들이 scene에 출현 하는 frequency에 관한 정보를 담고 있다.
     QLabel* round_label; //round 출력
     QLabel* money_label; //money 출력
+
 };
 
 #endif // GAME

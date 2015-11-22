@@ -9,7 +9,7 @@ Button::Button(char *filename, QGraphicsItem *parent){
 
 void Button::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
-    game->button_Pressed(event->pos());
+    game->button_Pressed(event->pos(),0);
 }
 
 
