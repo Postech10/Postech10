@@ -36,7 +36,7 @@ void SplashPoisonBullet::move()
                   //  if(dynamic_cast<Enemy*>(splashed_enemies[j])->DieOrNot())       //죽었는지 아닌지 확인필요.. 논의필요함
                     //Please Add these methods.
                 	game->set_money(game->get_money()+GoldPower);                      //이타워에 의해 죽었을때!! 돈 올라감            
-	}
+                }
             }
             game->scene->removeItem(this);                      //꼭필요한지 모르겠음.. 나중에 수정예정
             game->scene->removeItem(SplashRange);               //마찬가지

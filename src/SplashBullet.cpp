@@ -31,7 +31,9 @@ void SplashBullet::move()
             QList<QGraphicsItem *> splashed_enemies= SplashRange->collidingItems();//splash범위 안에있는 item들
             for (size_t j=0, n=splashed_enemies.size();j<n;j++){
                 if(typeid(*(splashed_enemies[j]))==typeid(Enemy))
-                   dynamic_cast<BattleObject*>(splashed_enemies[j])->IsHitBy(AttackPower);
+                   //dynamic_cast<Enemy*>(splashed_enemies[j])->IsHitBy(AttackPower);
+                    //please add isHitBy method and un-commentize this
+                    ;
             }
             game->scene->removeItem(this);                      //꼭필요한지 모르겠음.. 나중에 수정예정
             game->scene->removeItem(SplashRange);               //마찬가지
