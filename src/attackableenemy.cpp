@@ -1,5 +1,5 @@
-#include "Attackableenemy.h"
-#include "bullet.h"
+#include "attackableenemy.h"
+#include "Bullet.h"
 #include "QGraphicsScene"
 #include <QTimer>
 #include <QDebug>

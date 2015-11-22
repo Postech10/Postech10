@@ -127,7 +127,7 @@ void Game::displayMenu()
 
     //add a large menu bar bar loacated in right side
     //scene->addRect(1024-192,0,200,768,QPen(Qt::SolidLine),QBrush(QColor(Qt::gray)));
-    QPixmap* map = new QPixmap(":/images/graphics/Map.bmp");
+    QPixmap* map = new QPixmap(":/images/Map.bmp");
     scene->addPixmap(*map);
 
     //make a label which shows current round and add it into scene
@@ -181,7 +181,7 @@ void Game::spawnEnemy()
 
     if(wave != enemy.size() ){
         enemy.push_back(SpawnList[wave-enemy.size()-1]);
-        enemy[enemy.size()-1]->startMovement();
+        //enemy[enemy.size()-1]->startMovement();
         //please add startMovement method and un-commentize this.
         scene->addItem(enemy.back());
         enemy_num++;

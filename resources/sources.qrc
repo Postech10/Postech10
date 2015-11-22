@@ -19,5 +19,7 @@
         <file>images/TileMapSet.bmp</file>
         <file>images/Map.bmp</file>
         <file>images/FUSE.jpg</file>
+        <file>images/start.jpg</file>
+        <file>images/Mechanical.bmp</file>
     </qresource>
 </RCC>

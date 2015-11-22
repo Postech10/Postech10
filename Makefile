@@ -657,11 +657,17 @@ compiler_rcc_make_all: rss/qrc_sources.cpp
 compiler_rcc_clean:
 	-$(DEL_FILE) rss/qrc_sources.cpp
 rss/qrc_sources.cpp: resources/sources.qrc \
+		resources/images/FUSE.jpg \
 		resources/images/Start_Button.png \
+		resources/images/start.jpg \
 		resources/images/test_Mechanical.bmp \
 		resources/images/upgrade_button.png \
+		resources/images/TileMapSet.bmp \
+		resources/images/Map.bmp \
 		resources/images/fusion_button.png \
 		resources/images/Pause_Button.png \
+		resources/images/upgrade.jpg \
+		resources/images/Mechanical.bmp \
 		resources/images/tooltip.png \
 		resources/sounds/Select.wav \
 		resources/sounds/upgrade.wav \
@@ -891,10 +897,19 @@ moc/moc_enemycontrol.cpp: include/enemy.h \
 		../../../Qt/5.4/gcc_64/include/QtCore/qfiledevice.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qvector2d.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qtouchdevice.h \
+		include/BattleObject.h \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPixmapItem \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPolygonItem \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsItem \
+		../../../Qt/5.4/gcc_64/include/QtCore/QPointF \
+		../../../Qt/5.4/gcc_64/include/QtCore/QTimer \
+		../../../Qt/5.4/gcc_64/include/QtCore/qtimer.h \
+		../../../Qt/5.4/gcc_64/include/QtCore/qbasictimer.h \
+		../../../Qt/5.4/gcc_64/include/QtGui/QPen \
+		../../../Qt/5.4/gcc_64/include/QtGui/qpen.h \
 		include/attackableenemy.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsScene \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qgraphicsscene.h \
-		../../../Qt/5.4/gcc_64/include/QtGui/qpen.h \
 		include/enemycontrol.h
 	/home/ycjung/Qt/5.4/gcc_64/bin/moc $(DEFINES) -I/home/ycjung/Qt/5.4/gcc_64/mkspecs/linux-g++ -I/home/ycjung/Documents/Postech10/Postech10 -I/home/ycjung/Documents/Postech10/Postech10/include -I/home/ycjung/Qt/5.4/gcc_64/include -I/home/ycjung/Qt/5.4/gcc_64/include/QtMultimedia -I/home/ycjung/Qt/5.4/gcc_64/include/QtWidgets -I/home/ycjung/Qt/5.4/gcc_64/include/QtGui -I/home/ycjung/Qt/5.4/gcc_64/include/QtNetwork -I/home/ycjung/Qt/5.4/gcc_64/include/QtCore include/enemycontrol.h -o moc/moc_enemycontrol.cpp
 
@@ -1003,6 +1018,16 @@ moc/moc_enemy.cpp: ../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsRectItem \
 		../../../Qt/5.4/gcc_64/include/QtCore/qfiledevice.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qvector2d.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qtouchdevice.h \
+		include/BattleObject.h \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPixmapItem \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPolygonItem \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsItem \
+		../../../Qt/5.4/gcc_64/include/QtCore/QPointF \
+		../../../Qt/5.4/gcc_64/include/QtCore/QTimer \
+		../../../Qt/5.4/gcc_64/include/QtCore/qtimer.h \
+		../../../Qt/5.4/gcc_64/include/QtCore/qbasictimer.h \
+		../../../Qt/5.4/gcc_64/include/QtGui/QPen \
+		../../../Qt/5.4/gcc_64/include/QtGui/qpen.h \
 		include/enemy.h
 	/home/ycjung/Qt/5.4/gcc_64/bin/moc $(DEFINES) -I/home/ycjung/Qt/5.4/gcc_64/mkspecs/linux-g++ -I/home/ycjung/Documents/Postech10/Postech10 -I/home/ycjung/Documents/Postech10/Postech10/include -I/home/ycjung/Qt/5.4/gcc_64/include -I/home/ycjung/Qt/5.4/gcc_64/include/QtMultimedia -I/home/ycjung/Qt/5.4/gcc_64/include/QtWidgets -I/home/ycjung/Qt/5.4/gcc_64/include/QtGui -I/home/ycjung/Qt/5.4/gcc_64/include/QtNetwork -I/home/ycjung/Qt/5.4/gcc_64/include/QtCore include/enemy.h -o moc/moc_enemy.cpp
 
@@ -1112,6 +1137,16 @@ moc/moc_attackableenemy.cpp: include/enemy.h \
 		../../../Qt/5.4/gcc_64/include/QtCore/qfiledevice.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qvector2d.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qtouchdevice.h \
+		include/BattleObject.h \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPixmapItem \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPolygonItem \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsItem \
+		../../../Qt/5.4/gcc_64/include/QtCore/QPointF \
+		../../../Qt/5.4/gcc_64/include/QtCore/QTimer \
+		../../../Qt/5.4/gcc_64/include/QtCore/qtimer.h \
+		../../../Qt/5.4/gcc_64/include/QtCore/qbasictimer.h \
+		../../../Qt/5.4/gcc_64/include/QtGui/QPen \
+		../../../Qt/5.4/gcc_64/include/QtGui/qpen.h \
 		include/attackableenemy.h
 	/home/ycjung/Qt/5.4/gcc_64/bin/moc $(DEFINES) -I/home/ycjung/Qt/5.4/gcc_64/mkspecs/linux-g++ -I/home/ycjung/Documents/Postech10/Postech10 -I/home/ycjung/Documents/Postech10/Postech10/include -I/home/ycjung/Qt/5.4/gcc_64/include -I/home/ycjung/Qt/5.4/gcc_64/include/QtMultimedia -I/home/ycjung/Qt/5.4/gcc_64/include/QtWidgets -I/home/ycjung/Qt/5.4/gcc_64/include/QtGui -I/home/ycjung/Qt/5.4/gcc_64/include/QtNetwork -I/home/ycjung/Qt/5.4/gcc_64/include/QtCore include/attackableenemy.h -o moc/moc_attackableenemy.cpp
 
@@ -1227,6 +1262,7 @@ moc/moc_Game.cpp: ../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsView \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qgraphicsscene.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/QMouseEvent \
 		../../../Qt/5.4/gcc_64/include/QtCore/QVector \
+		../../../Qt/5.4/gcc_64/include/QtCore/QList \
 		../../../Qt/5.4/gcc_64/include/QtCore/QString \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QLabel \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qlabel.h \
@@ -1249,11 +1285,32 @@ moc/moc_Game.cpp: ../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsView \
 		include/upgrade_button.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsSceneMouseEvent \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qgraphicssceneevent.h \
-		include/soundobject.h \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/QSound \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/qsound.h \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/qtmultimediadefs.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/QMap \
+		include/Upgrades.h \
+		include/SplashTower.h \
+		include/SplashBullet.h \
+		include/Bullet.h \
+		../../../Qt/5.4/gcc_64/include/QtCore/QtMath \
+		../../../Qt/5.4/gcc_64/include/QtCore/qmath.h \
+		include/SlowTower.h \
+		include/SlowBullet.h \
+		include/PoisonTower.h \
+		include/PoisonBullet.h \
+		include/ChainTower.h \
+		include/GoldTower.h \
+		include/GoldBullet.h \
+		include/TutorRobot.h \
+		include/ProfessorMeeting.h \
+		include/PMBullet.h \
+		include/ChemEngSenior.h \
+		include/CESBullet.h \
+		include/JobsBiography.h \
+		include/MetalEngSenior.h \
+		include/IronBullet.h \
+		include/AppleRobot.h \
+		include/SplashLaser.h \
+		include/SteveJobs.h \
+		include/TripleMajorSenior.h \
+		include/SplashPoisonBullet.h \
 		include/fusion_button.h \
 		include/BuildTowerIcon.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QPushButton \
@@ -1589,42 +1646,7 @@ obj/upgrade_button.o: src/upgrade_button.cpp include/upgrade_button.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qpixelformat.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsSceneMouseEvent \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qgraphicssceneevent.h \
-		include/soundobject.h \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/QSound \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/qsound.h \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/qtmultimediadefs.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/QMap \
-		../../../Qt/5.4/gcc_64/include/QtCore/QString \
-		include/Game.h \
-		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsView \
-		../../../Qt/5.4/gcc_64/include/QtWidgets/qgraphicsview.h \
-		../../../Qt/5.4/gcc_64/include/QtGui/qpainter.h \
-		../../../Qt/5.4/gcc_64/include/QtGui/qtextoption.h \
-		../../../Qt/5.4/gcc_64/include/QtGui/qpen.h \
-		../../../Qt/5.4/gcc_64/include/QtGui/qbrush.h \
-		../../../Qt/5.4/gcc_64/include/QtGui/qfontinfo.h \
-		../../../Qt/5.4/gcc_64/include/QtGui/qfont.h \
-		../../../Qt/5.4/gcc_64/include/QtGui/qfontmetrics.h \
-		../../../Qt/5.4/gcc_64/include/QtWidgets/qscrollarea.h \
-		../../../Qt/5.4/gcc_64/include/QtWidgets/qabstractscrollarea.h \
-		../../../Qt/5.4/gcc_64/include/QtWidgets/qframe.h \
-		../../../Qt/5.4/gcc_64/include/QtWidgets/qwidget.h \
-		../../../Qt/5.4/gcc_64/include/QtGui/qpalette.h \
-		../../../Qt/5.4/gcc_64/include/QtWidgets/qsizepolicy.h \
-		../../../Qt/5.4/gcc_64/include/QtGui/qcursor.h \
-		../../../Qt/5.4/gcc_64/include/QtGui/qkeysequence.h \
-		../../../Qt/5.4/gcc_64/include/QtGui/qevent.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qurl.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qurlquery.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qfile.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qfiledevice.h \
-		../../../Qt/5.4/gcc_64/include/QtGui/qvector2d.h \
-		../../../Qt/5.4/gcc_64/include/QtGui/qtouchdevice.h \
-		../../../Qt/5.4/gcc_64/include/QtWidgets/qgraphicsscene.h \
-		../../../Qt/5.4/gcc_64/include/QtGui/QMouseEvent \
-		../../../Qt/5.4/gcc_64/include/QtCore/QVector \
-		../../../Qt/5.4/gcc_64/include/QtWidgets/QLabel \
-		../../../Qt/5.4/gcc_64/include/QtWidgets/qlabel.h \
+		include/Upgrades.h \
 		include/Tower.h \
 		include/BattleObject.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPolygonItem \
@@ -1635,9 +1657,66 @@ obj/upgrade_button.o: src/upgrade_button.cpp include/upgrade_button.h \
 		../../../Qt/5.4/gcc_64/include/QtCore/qtimer.h \
 		../../../Qt/5.4/gcc_64/include/QtCore/qbasictimer.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/QPen \
+		../../../Qt/5.4/gcc_64/include/QtGui/qpen.h \
+		../../../Qt/5.4/gcc_64/include/QtGui/qbrush.h \
 		include/enemy.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsRectItem \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QWidget \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/qwidget.h \
+		../../../Qt/5.4/gcc_64/include/QtGui/qpalette.h \
+		../../../Qt/5.4/gcc_64/include/QtGui/qfont.h \
+		../../../Qt/5.4/gcc_64/include/QtGui/qfontmetrics.h \
+		../../../Qt/5.4/gcc_64/include/QtGui/qfontinfo.h \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/qsizepolicy.h \
+		../../../Qt/5.4/gcc_64/include/QtGui/qcursor.h \
+		../../../Qt/5.4/gcc_64/include/QtGui/qkeysequence.h \
+		../../../Qt/5.4/gcc_64/include/QtGui/qevent.h \
+		../../../Qt/5.4/gcc_64/include/QtCore/qurl.h \
+		../../../Qt/5.4/gcc_64/include/QtCore/qurlquery.h \
+		../../../Qt/5.4/gcc_64/include/QtCore/qfile.h \
+		../../../Qt/5.4/gcc_64/include/QtCore/qfiledevice.h \
+		../../../Qt/5.4/gcc_64/include/QtGui/qvector2d.h \
+		../../../Qt/5.4/gcc_64/include/QtGui/qtouchdevice.h \
+		include/SplashTower.h \
+		include/SplashBullet.h \
+		include/Bullet.h \
+		../../../Qt/5.4/gcc_64/include/QtCore/QtMath \
+		../../../Qt/5.4/gcc_64/include/QtCore/qmath.h \
+		include/SlowTower.h \
+		include/SlowBullet.h \
+		include/PoisonTower.h \
+		include/PoisonBullet.h \
+		include/ChainTower.h \
+		include/GoldTower.h \
+		include/GoldBullet.h \
+		include/TutorRobot.h \
+		include/ProfessorMeeting.h \
+		include/PMBullet.h \
+		include/ChemEngSenior.h \
+		include/CESBullet.h \
+		include/JobsBiography.h \
+		include/MetalEngSenior.h \
+		include/IronBullet.h \
+		include/AppleRobot.h \
+		include/SplashLaser.h \
+		include/SteveJobs.h \
+		include/TripleMajorSenior.h \
+		include/SplashPoisonBullet.h \
+		include/Game.h \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsView \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/qgraphicsview.h \
+		../../../Qt/5.4/gcc_64/include/QtGui/qpainter.h \
+		../../../Qt/5.4/gcc_64/include/QtGui/qtextoption.h \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/qscrollarea.h \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/qframe.h \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/qgraphicsscene.h \
+		../../../Qt/5.4/gcc_64/include/QtGui/QMouseEvent \
+		../../../Qt/5.4/gcc_64/include/QtCore/QVector \
+		../../../Qt/5.4/gcc_64/include/QtCore/QList \
+		../../../Qt/5.4/gcc_64/include/QtCore/QString \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QLabel \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/qlabel.h \
 		include/Wave_Generator.h \
 		include/fusion_button.h \
 		include/BuildTowerIcon.h \
@@ -1878,6 +1957,7 @@ obj/main.o: src/main.cpp ../../../Qt/5.4/gcc_64/include/QtWidgets/QApplication \
 		include/Game.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/QMouseEvent \
 		../../../Qt/5.4/gcc_64/include/QtCore/QVector \
+		../../../Qt/5.4/gcc_64/include/QtCore/QList \
 		../../../Qt/5.4/gcc_64/include/QtCore/QString \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QLabel \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qlabel.h \
@@ -1900,11 +1980,32 @@ obj/main.o: src/main.cpp ../../../Qt/5.4/gcc_64/include/QtWidgets/QApplication \
 		include/upgrade_button.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsSceneMouseEvent \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qgraphicssceneevent.h \
-		include/soundobject.h \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/QSound \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/qsound.h \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/qtmultimediadefs.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/QMap \
+		include/Upgrades.h \
+		include/SplashTower.h \
+		include/SplashBullet.h \
+		include/Bullet.h \
+		../../../Qt/5.4/gcc_64/include/QtCore/QtMath \
+		../../../Qt/5.4/gcc_64/include/QtCore/qmath.h \
+		include/SlowTower.h \
+		include/SlowBullet.h \
+		include/PoisonTower.h \
+		include/PoisonBullet.h \
+		include/ChainTower.h \
+		include/GoldTower.h \
+		include/GoldBullet.h \
+		include/TutorRobot.h \
+		include/ProfessorMeeting.h \
+		include/PMBullet.h \
+		include/ChemEngSenior.h \
+		include/CESBullet.h \
+		include/JobsBiography.h \
+		include/MetalEngSenior.h \
+		include/IronBullet.h \
+		include/AppleRobot.h \
+		include/SplashLaser.h \
+		include/SteveJobs.h \
+		include/TripleMajorSenior.h \
+		include/SplashPoisonBullet.h \
 		include/fusion_button.h \
 		include/BuildTowerIcon.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QPushButton \
@@ -2032,6 +2133,7 @@ obj/fusion_button.o: src/fusion_button.cpp include/fusion_button.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qgraphicsscene.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/QMouseEvent \
 		../../../Qt/5.4/gcc_64/include/QtCore/QVector \
+		../../../Qt/5.4/gcc_64/include/QtCore/QList \
 		../../../Qt/5.4/gcc_64/include/QtCore/QString \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QLabel \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qlabel.h \
@@ -2050,11 +2152,32 @@ obj/fusion_button.o: src/fusion_button.cpp include/fusion_button.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QWidget \
 		include/Wave_Generator.h \
 		include/upgrade_button.h \
-		include/soundobject.h \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/QSound \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/qsound.h \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/qtmultimediadefs.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/QMap \
+		include/Upgrades.h \
+		include/SplashTower.h \
+		include/SplashBullet.h \
+		include/Bullet.h \
+		../../../Qt/5.4/gcc_64/include/QtCore/QtMath \
+		../../../Qt/5.4/gcc_64/include/QtCore/qmath.h \
+		include/SlowTower.h \
+		include/SlowBullet.h \
+		include/PoisonTower.h \
+		include/PoisonBullet.h \
+		include/ChainTower.h \
+		include/GoldTower.h \
+		include/GoldBullet.h \
+		include/TutorRobot.h \
+		include/ProfessorMeeting.h \
+		include/PMBullet.h \
+		include/ChemEngSenior.h \
+		include/CESBullet.h \
+		include/JobsBiography.h \
+		include/MetalEngSenior.h \
+		include/IronBullet.h \
+		include/AppleRobot.h \
+		include/SplashLaser.h \
+		include/SteveJobs.h \
+		include/TripleMajorSenior.h \
+		include/SplashPoisonBullet.h \
 		include/BuildTowerIcon.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QPushButton \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qpushbutton.h \
@@ -2171,13 +2294,19 @@ obj/enemycontrol.o: src/enemycontrol.cpp include/enemycontrol.h \
 		../../../Qt/5.4/gcc_64/include/QtCore/qfiledevice.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qvector2d.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qtouchdevice.h \
-		include/attackableenemy.h \
-		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsScene \
-		../../../Qt/5.4/gcc_64/include/QtWidgets/qgraphicsscene.h \
-		../../../Qt/5.4/gcc_64/include/QtGui/qpen.h \
+		include/BattleObject.h \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPixmapItem \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPolygonItem \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsItem \
+		../../../Qt/5.4/gcc_64/include/QtCore/QPointF \
 		../../../Qt/5.4/gcc_64/include/QtCore/QTimer \
 		../../../Qt/5.4/gcc_64/include/QtCore/qtimer.h \
 		../../../Qt/5.4/gcc_64/include/QtCore/qbasictimer.h \
+		../../../Qt/5.4/gcc_64/include/QtGui/QPen \
+		../../../Qt/5.4/gcc_64/include/QtGui/qpen.h \
+		include/attackableenemy.h \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsScene \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/qgraphicsscene.h \
 		../../../Qt/5.4/gcc_64/include/QtCore/QDebug
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/enemycontrol.o src/enemycontrol.cpp
 
@@ -2287,13 +2416,19 @@ obj/enemy.o: src/enemy.cpp include/enemy.h \
 		../../../Qt/5.4/gcc_64/include/QtCore/qfiledevice.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qvector2d.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qtouchdevice.h \
+		include/BattleObject.h \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPixmapItem \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPolygonItem \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsItem \
+		../../../Qt/5.4/gcc_64/include/QtCore/QPointF \
 		../../../Qt/5.4/gcc_64/include/QtCore/QTimer \
 		../../../Qt/5.4/gcc_64/include/QtCore/qtimer.h \
 		../../../Qt/5.4/gcc_64/include/QtCore/qbasictimer.h \
+		../../../Qt/5.4/gcc_64/include/QtGui/QPen \
+		../../../Qt/5.4/gcc_64/include/QtGui/qpen.h \
 		../../../Qt/5.4/gcc_64/include/QtCore/QDebug \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsScene \
-		../../../Qt/5.4/gcc_64/include/QtWidgets/qgraphicsscene.h \
-		../../../Qt/5.4/gcc_64/include/QtGui/qpen.h
+		../../../Qt/5.4/gcc_64/include/QtWidgets/qgraphicsscene.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/enemy.o src/enemy.cpp
 
 obj/button.o: src/button.cpp include/button.h \
@@ -2418,6 +2553,7 @@ obj/button.o: src/button.cpp include/button.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qgraphicsscene.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/QMouseEvent \
 		../../../Qt/5.4/gcc_64/include/QtCore/QVector \
+		../../../Qt/5.4/gcc_64/include/QtCore/QList \
 		../../../Qt/5.4/gcc_64/include/QtCore/QString \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QLabel \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qlabel.h \
@@ -2436,19 +2572,41 @@ obj/button.o: src/button.cpp include/button.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QWidget \
 		include/Wave_Generator.h \
 		include/upgrade_button.h \
-		include/soundobject.h \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/QSound \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/qsound.h \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/qtmultimediadefs.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/QMap \
+		include/Upgrades.h \
+		include/SplashTower.h \
+		include/SplashBullet.h \
+		include/Bullet.h \
+		../../../Qt/5.4/gcc_64/include/QtCore/QtMath \
+		../../../Qt/5.4/gcc_64/include/QtCore/qmath.h \
+		include/SlowTower.h \
+		include/SlowBullet.h \
+		include/PoisonTower.h \
+		include/PoisonBullet.h \
+		include/ChainTower.h \
+		include/GoldTower.h \
+		include/GoldBullet.h \
+		include/TutorRobot.h \
+		include/ProfessorMeeting.h \
+		include/PMBullet.h \
+		include/ChemEngSenior.h \
+		include/CESBullet.h \
+		include/JobsBiography.h \
+		include/MetalEngSenior.h \
+		include/IronBullet.h \
+		include/AppleRobot.h \
+		include/SplashLaser.h \
+		include/SteveJobs.h \
+		include/TripleMajorSenior.h \
+		include/SplashPoisonBullet.h \
 		include/fusion_button.h \
 		include/BuildTowerIcon.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/button.o src/button.cpp
 
-obj/attackableenemy.o: src/attackableenemy.cpp include/attackableenemy.h \
-		include/enemy.h \
-		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsRectItem \
-		../../../Qt/5.4/gcc_64/include/QtWidgets/qgraphicsitem.h \
+obj/attackableenemy.o: src/attackableenemy.cpp ../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsScene \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/qgraphicsscene.h \
+		../../../Qt/5.4/gcc_64/include/QtCore/qobject.h \
+		../../../Qt/5.4/gcc_64/include/QtCore/qobjectdefs.h \
+		../../../Qt/5.4/gcc_64/include/QtCore/qnamespace.h \
 		../../../Qt/5.4/gcc_64/include/QtCore/qglobal.h \
 		../../../Qt/5.4/gcc_64/include/QtCore/qconfig.h \
 		../../../Qt/5.4/gcc_64/include/QtCore/qfeatures.h \
@@ -2477,9 +2635,6 @@ obj/attackableenemy.o: src/attackableenemy.cpp include/attackableenemy.h \
 		../../../Qt/5.4/gcc_64/include/QtCore/qglobalstatic.h \
 		../../../Qt/5.4/gcc_64/include/QtCore/qmutex.h \
 		../../../Qt/5.4/gcc_64/include/QtCore/qnumeric.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qobject.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qobjectdefs.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qnamespace.h \
 		../../../Qt/5.4/gcc_64/include/QtCore/qobjectdefs_impl.h \
 		../../../Qt/5.4/gcc_64/include/QtCore/qstring.h \
 		../../../Qt/5.4/gcc_64/include/QtCore/qchar.h \
@@ -2498,76 +2653,49 @@ obj/attackableenemy.o: src/attackableenemy.cpp include/attackableenemy.h \
 		../../../Qt/5.4/gcc_64/include/QtCore/qcontainerfwd.h \
 		../../../Qt/5.4/gcc_64/include/QtCore/qisenum.h \
 		../../../Qt/5.4/gcc_64/include/QtCore/qobject_impl.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qvariant.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qmap.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qpair.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qdebug.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qhash.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qtextstream.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qiodevice.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qlocale.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qshareddata.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qvector.h \
 		../../../Qt/5.4/gcc_64/include/QtCore/qpoint.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qset.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qcontiguouscache.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qstringlist.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qdatastream.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qregexp.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qstringmatcher.h \
 		../../../Qt/5.4/gcc_64/include/QtCore/qrect.h \
 		../../../Qt/5.4/gcc_64/include/QtCore/qmargins.h \
 		../../../Qt/5.4/gcc_64/include/QtCore/qsize.h \
-		../../../Qt/5.4/gcc_64/include/QtGui/qpainterpath.h \
+		../../../Qt/5.4/gcc_64/include/QtGui/qbrush.h \
+		../../../Qt/5.4/gcc_64/include/QtCore/qpair.h \
+		../../../Qt/5.4/gcc_64/include/QtCore/qvector.h \
+		../../../Qt/5.4/gcc_64/include/QtGui/qcolor.h \
+		../../../Qt/5.4/gcc_64/include/QtGui/qrgb.h \
+		../../../Qt/5.4/gcc_64/include/QtCore/qstringlist.h \
+		../../../Qt/5.4/gcc_64/include/QtCore/qdatastream.h \
+		../../../Qt/5.4/gcc_64/include/QtCore/qiodevice.h \
+		../../../Qt/5.4/gcc_64/include/QtCore/qregexp.h \
+		../../../Qt/5.4/gcc_64/include/QtCore/qstringmatcher.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qmatrix.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qpolygon.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qregion.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qwindowdefs.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qwindowdefs_win.h \
 		../../../Qt/5.4/gcc_64/include/QtCore/qline.h \
-		../../../Qt/5.4/gcc_64/include/QtGui/qpixmap.h \
-		../../../Qt/5.4/gcc_64/include/QtGui/qpaintdevice.h \
-		../../../Qt/5.4/gcc_64/include/QtGui/qcolor.h \
-		../../../Qt/5.4/gcc_64/include/QtGui/qrgb.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qsharedpointer.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qsharedpointer_impl.h \
-		../../../Qt/5.4/gcc_64/include/QtGui/qimage.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qtransform.h \
+		../../../Qt/5.4/gcc_64/include/QtGui/qpainterpath.h \
+		../../../Qt/5.4/gcc_64/include/QtGui/qimage.h \
+		../../../Qt/5.4/gcc_64/include/QtGui/qpaintdevice.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qpixelformat.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/QObject \
-		../../../Qt/5.4/gcc_64/include/QtWidgets/QWidget \
-		../../../Qt/5.4/gcc_64/include/QtWidgets/qwidget.h \
-		../../../Qt/5.4/gcc_64/include/QtGui/qpalette.h \
-		../../../Qt/5.4/gcc_64/include/QtGui/qbrush.h \
+		../../../Qt/5.4/gcc_64/include/QtGui/qpixmap.h \
+		../../../Qt/5.4/gcc_64/include/QtCore/qsharedpointer.h \
+		../../../Qt/5.4/gcc_64/include/QtCore/qshareddata.h \
+		../../../Qt/5.4/gcc_64/include/QtCore/qhash.h \
+		../../../Qt/5.4/gcc_64/include/QtCore/qsharedpointer_impl.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qfont.h \
-		../../../Qt/5.4/gcc_64/include/QtGui/qfontmetrics.h \
-		../../../Qt/5.4/gcc_64/include/QtGui/qfontinfo.h \
-		../../../Qt/5.4/gcc_64/include/QtWidgets/qsizepolicy.h \
-		../../../Qt/5.4/gcc_64/include/QtGui/qcursor.h \
-		../../../Qt/5.4/gcc_64/include/QtGui/qkeysequence.h \
-		../../../Qt/5.4/gcc_64/include/QtGui/qevent.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qurl.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qurlquery.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qfile.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qfiledevice.h \
-		../../../Qt/5.4/gcc_64/include/QtGui/qvector2d.h \
-		../../../Qt/5.4/gcc_64/include/QtGui/qtouchdevice.h \
-		include/Bullet.h \
-		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPixmapItem \
-		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPolygonItem \
-		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsItem \
+		../../../Qt/5.4/gcc_64/include/QtGui/qpen.h \
 		../../../Qt/5.4/gcc_64/include/QtCore/QTimer \
 		../../../Qt/5.4/gcc_64/include/QtCore/qtimer.h \
 		../../../Qt/5.4/gcc_64/include/QtCore/qbasictimer.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/QtMath \
-		../../../Qt/5.4/gcc_64/include/QtCore/qmath.h \
-		include/BattleObject.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/QPointF \
-		../../../Qt/5.4/gcc_64/include/QtGui/QPen \
-		../../../Qt/5.4/gcc_64/include/QtGui/qpen.h \
-		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsScene \
-		../../../Qt/5.4/gcc_64/include/QtWidgets/qgraphicsscene.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/QDebug
+		../../../Qt/5.4/gcc_64/include/QtCore/QDebug \
+		../../../Qt/5.4/gcc_64/include/QtCore/qdebug.h \
+		../../../Qt/5.4/gcc_64/include/QtCore/qmap.h \
+		../../../Qt/5.4/gcc_64/include/QtCore/qtextstream.h \
+		../../../Qt/5.4/gcc_64/include/QtCore/qlocale.h \
+		../../../Qt/5.4/gcc_64/include/QtCore/qvariant.h \
+		../../../Qt/5.4/gcc_64/include/QtCore/qset.h \
+		../../../Qt/5.4/gcc_64/include/QtCore/qcontiguouscache.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/attackableenemy.o src/attackableenemy.cpp
 
 obj/Wave_Generator.o: src/Wave_Generator.cpp include/Wave_Generator.h \
@@ -2677,6 +2805,16 @@ obj/Wave_Generator.o: src/Wave_Generator.cpp include/Wave_Generator.h \
 		../../../Qt/5.4/gcc_64/include/QtCore/qfiledevice.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qvector2d.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qtouchdevice.h \
+		include/BattleObject.h \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPixmapItem \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPolygonItem \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsItem \
+		../../../Qt/5.4/gcc_64/include/QtCore/QPointF \
+		../../../Qt/5.4/gcc_64/include/QtCore/QTimer \
+		../../../Qt/5.4/gcc_64/include/QtCore/qtimer.h \
+		../../../Qt/5.4/gcc_64/include/QtCore/qbasictimer.h \
+		../../../Qt/5.4/gcc_64/include/QtGui/QPen \
+		../../../Qt/5.4/gcc_64/include/QtGui/qpen.h \
 		../../../Qt/5.4/gcc_64/include/QtCore/QVector
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/Wave_Generator.o src/Wave_Generator.cpp
 
@@ -3087,6 +3225,7 @@ obj/TripleMajorSenior.o: src/TripleMajorSenior.cpp include/TripleMajorSenior.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qgraphicsscene.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/QMouseEvent \
 		../../../Qt/5.4/gcc_64/include/QtCore/QVector \
+		../../../Qt/5.4/gcc_64/include/QtCore/QList \
 		../../../Qt/5.4/gcc_64/include/QtCore/QString \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QLabel \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qlabel.h \
@@ -3094,11 +3233,23 @@ obj/TripleMajorSenior.o: src/TripleMajorSenior.cpp include/TripleMajorSenior.h \
 		include/upgrade_button.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsSceneMouseEvent \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qgraphicssceneevent.h \
-		include/soundobject.h \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/QSound \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/qsound.h \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/qtmultimediadefs.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/QMap \
+		include/Upgrades.h \
+		include/SplashTower.h \
+		include/SplashBullet.h \
+		include/SlowTower.h \
+		include/SlowBullet.h \
+		include/PoisonTower.h \
+		include/PoisonBullet.h \
+		include/ChainTower.h \
+		include/TutorRobot.h \
+		include/ProfessorMeeting.h \
+		include/PMBullet.h \
+		include/ChemEngSenior.h \
+		include/CESBullet.h \
+		include/JobsBiography.h \
+		include/AppleRobot.h \
+		include/SplashLaser.h \
+		include/SteveJobs.h \
 		include/fusion_button.h \
 		include/BuildTowerIcon.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QPushButton \
@@ -3108,9 +3259,9 @@ obj/TripleMajorSenior.o: src/TripleMajorSenior.cpp include/TripleMajorSenior.h \
 		include/button.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/TripleMajorSenior.o src/TripleMajorSenior.cpp
 
-obj/Tower.o: src/Tower.cpp ../../../Qt/5.4/gcc_64/include/QtCore/QPointF \
-		../../../Qt/5.4/gcc_64/include/QtCore/qpoint.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qnamespace.h \
+obj/Tower.o: src/Tower.cpp ../../../Qt/5.4/gcc_64/include/QtCore/QVector \
+		../../../Qt/5.4/gcc_64/include/QtCore/qvector.h \
+		../../../Qt/5.4/gcc_64/include/QtCore/qalgorithms.h \
 		../../../Qt/5.4/gcc_64/include/QtCore/qglobal.h \
 		../../../Qt/5.4/gcc_64/include/QtCore/qconfig.h \
 		../../../Qt/5.4/gcc_64/include/QtCore/qfeatures.h \
@@ -3139,6 +3290,18 @@ obj/Tower.o: src/Tower.cpp ../../../Qt/5.4/gcc_64/include/QtCore/QPointF \
 		../../../Qt/5.4/gcc_64/include/QtCore/qglobalstatic.h \
 		../../../Qt/5.4/gcc_64/include/QtCore/qmutex.h \
 		../../../Qt/5.4/gcc_64/include/QtCore/qnumeric.h \
+		../../../Qt/5.4/gcc_64/include/QtCore/qiterator.h \
+		../../../Qt/5.4/gcc_64/include/QtCore/qlist.h \
+		../../../Qt/5.4/gcc_64/include/QtCore/qrefcount.h \
+		../../../Qt/5.4/gcc_64/include/QtCore/qarraydata.h \
+		../../../Qt/5.4/gcc_64/include/QtCore/qbytearraylist.h \
+		../../../Qt/5.4/gcc_64/include/QtCore/qbytearray.h \
+		../../../Qt/5.4/gcc_64/include/QtCore/qnamespace.h \
+		../../../Qt/5.4/gcc_64/include/QtCore/qstring.h \
+		../../../Qt/5.4/gcc_64/include/QtCore/qchar.h \
+		../../../Qt/5.4/gcc_64/include/QtCore/qstringbuilder.h \
+		../../../Qt/5.4/gcc_64/include/QtCore/qpoint.h \
+		../../../Qt/5.4/gcc_64/include/QtCore/QPointF \
 		include/Upgrades.h \
 		include/Tower.h \
 		include/BattleObject.h \
@@ -3147,16 +3310,6 @@ obj/Tower.o: src/Tower.cpp ../../../Qt/5.4/gcc_64/include/QtCore/QPointF \
 		../../../Qt/5.4/gcc_64/include/QtCore/qobject.h \
 		../../../Qt/5.4/gcc_64/include/QtCore/qobjectdefs.h \
 		../../../Qt/5.4/gcc_64/include/QtCore/qobjectdefs_impl.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qstring.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qchar.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qbytearray.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qrefcount.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qarraydata.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qstringbuilder.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qlist.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qalgorithms.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qiterator.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qbytearraylist.h \
 		../../../Qt/5.4/gcc_64/include/QtCore/qcoreevent.h \
 		../../../Qt/5.4/gcc_64/include/QtCore/qscopedpointer.h \
 		../../../Qt/5.4/gcc_64/include/QtCore/qmetatype.h \
@@ -3173,7 +3326,6 @@ obj/Tower.o: src/Tower.cpp ../../../Qt/5.4/gcc_64/include/QtCore/QPointF \
 		../../../Qt/5.4/gcc_64/include/QtCore/qiodevice.h \
 		../../../Qt/5.4/gcc_64/include/QtCore/qlocale.h \
 		../../../Qt/5.4/gcc_64/include/QtCore/qshareddata.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/qvector.h \
 		../../../Qt/5.4/gcc_64/include/QtCore/qset.h \
 		../../../Qt/5.4/gcc_64/include/QtCore/qcontiguouscache.h \
 		../../../Qt/5.4/gcc_64/include/QtCore/qstringlist.h \
@@ -3250,7 +3402,33 @@ obj/Tower.o: src/Tower.cpp ../../../Qt/5.4/gcc_64/include/QtCore/QPointF \
 		include/SplashLaser.h \
 		include/SteveJobs.h \
 		include/TripleMajorSenior.h \
-		include/SplashPoisonBullet.h
+		include/SplashPoisonBullet.h \
+		include/Game.h \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsView \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/qgraphicsview.h \
+		../../../Qt/5.4/gcc_64/include/QtGui/qpainter.h \
+		../../../Qt/5.4/gcc_64/include/QtGui/qtextoption.h \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/qscrollarea.h \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/qframe.h \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/qgraphicsscene.h \
+		../../../Qt/5.4/gcc_64/include/QtGui/QMouseEvent \
+		../../../Qt/5.4/gcc_64/include/QtCore/QList \
+		../../../Qt/5.4/gcc_64/include/QtCore/QString \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QLabel \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/qlabel.h \
+		include/Wave_Generator.h \
+		include/upgrade_button.h \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsSceneMouseEvent \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/qgraphicssceneevent.h \
+		include/fusion_button.h \
+		include/BuildTowerIcon.h \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QPushButton \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/qpushbutton.h \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/qabstractbutton.h \
+		../../../Qt/5.4/gcc_64/include/QtGui/qicon.h \
+		include/button.h \
+		../../../Qt/5.4/gcc_64/include/QtCore/QDebug
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/Tower.o src/Tower.cpp
 
 obj/SteveJobs.o: src/SteveJobs.cpp include/SteveJobs.h \
@@ -3382,6 +3560,7 @@ obj/SteveJobs.o: src/SteveJobs.cpp include/SteveJobs.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qgraphicsscene.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/QMouseEvent \
 		../../../Qt/5.4/gcc_64/include/QtCore/QVector \
+		../../../Qt/5.4/gcc_64/include/QtCore/QList \
 		../../../Qt/5.4/gcc_64/include/QtCore/QString \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QLabel \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qlabel.h \
@@ -3389,11 +3568,31 @@ obj/SteveJobs.o: src/SteveJobs.cpp include/SteveJobs.h \
 		include/upgrade_button.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsSceneMouseEvent \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qgraphicssceneevent.h \
-		include/soundobject.h \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/QSound \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/qsound.h \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/qtmultimediadefs.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/QMap \
+		include/Upgrades.h \
+		include/SplashTower.h \
+		include/SplashBullet.h \
+		include/Bullet.h \
+		../../../Qt/5.4/gcc_64/include/QtCore/QtMath \
+		../../../Qt/5.4/gcc_64/include/QtCore/qmath.h \
+		include/SlowTower.h \
+		include/SlowBullet.h \
+		include/PoisonTower.h \
+		include/PoisonBullet.h \
+		include/ChainTower.h \
+		include/GoldTower.h \
+		include/GoldBullet.h \
+		include/TutorRobot.h \
+		include/ProfessorMeeting.h \
+		include/PMBullet.h \
+		include/ChemEngSenior.h \
+		include/CESBullet.h \
+		include/JobsBiography.h \
+		include/MetalEngSenior.h \
+		include/IronBullet.h \
+		include/AppleRobot.h \
+		include/SplashLaser.h \
+		include/TripleMajorSenior.h \
+		include/SplashPoisonBullet.h \
 		include/fusion_button.h \
 		include/BuildTowerIcon.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QPushButton \
@@ -3536,6 +3735,7 @@ obj/SplashTower.o: src/SplashTower.cpp include/SplashTower.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qgraphicsscene.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/QMouseEvent \
 		../../../Qt/5.4/gcc_64/include/QtCore/QVector \
+		../../../Qt/5.4/gcc_64/include/QtCore/QList \
 		../../../Qt/5.4/gcc_64/include/QtCore/QString \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QLabel \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qlabel.h \
@@ -3543,11 +3743,27 @@ obj/SplashTower.o: src/SplashTower.cpp include/SplashTower.h \
 		include/upgrade_button.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsSceneMouseEvent \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qgraphicssceneevent.h \
-		include/soundobject.h \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/QSound \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/qsound.h \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/qtmultimediadefs.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/QMap \
+		include/Upgrades.h \
+		include/SlowTower.h \
+		include/SlowBullet.h \
+		include/PoisonTower.h \
+		include/PoisonBullet.h \
+		include/ChainTower.h \
+		include/GoldTower.h \
+		include/GoldBullet.h \
+		include/TutorRobot.h \
+		include/ProfessorMeeting.h \
+		include/PMBullet.h \
+		include/ChemEngSenior.h \
+		include/CESBullet.h \
+		include/JobsBiography.h \
+		include/MetalEngSenior.h \
+		include/IronBullet.h \
+		include/AppleRobot.h \
+		include/SplashLaser.h \
+		include/SteveJobs.h \
+		include/TripleMajorSenior.h \
+		include/SplashPoisonBullet.h \
 		include/fusion_button.h \
 		include/BuildTowerIcon.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QPushButton \
@@ -3689,6 +3905,7 @@ obj/SplashPoisonBullet.o: src/SplashPoisonBullet.cpp include/SplashPoisonBullet.
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qgraphicsscene.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/QMouseEvent \
 		../../../Qt/5.4/gcc_64/include/QtCore/QVector \
+		../../../Qt/5.4/gcc_64/include/QtCore/QList \
 		../../../Qt/5.4/gcc_64/include/QtCore/QString \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QLabel \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qlabel.h \
@@ -3697,11 +3914,27 @@ obj/SplashPoisonBullet.o: src/SplashPoisonBullet.cpp include/SplashPoisonBullet.
 		include/upgrade_button.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsSceneMouseEvent \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qgraphicssceneevent.h \
-		include/soundobject.h \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/QSound \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/qsound.h \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/qtmultimediadefs.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/QMap \
+		include/Upgrades.h \
+		include/SplashTower.h \
+		include/SplashBullet.h \
+		include/SlowTower.h \
+		include/SlowBullet.h \
+		include/PoisonTower.h \
+		include/PoisonBullet.h \
+		include/ChainTower.h \
+		include/GoldTower.h \
+		include/TutorRobot.h \
+		include/ProfessorMeeting.h \
+		include/PMBullet.h \
+		include/ChemEngSenior.h \
+		include/CESBullet.h \
+		include/JobsBiography.h \
+		include/MetalEngSenior.h \
+		include/IronBullet.h \
+		include/AppleRobot.h \
+		include/SplashLaser.h \
+		include/SteveJobs.h \
+		include/TripleMajorSenior.h \
 		include/fusion_button.h \
 		include/BuildTowerIcon.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QPushButton \
@@ -3844,6 +4077,7 @@ obj/SplashLaser.o: src/SplashLaser.cpp include/SplashLaser.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qgraphicsscene.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/QMouseEvent \
 		../../../Qt/5.4/gcc_64/include/QtCore/QVector \
+		../../../Qt/5.4/gcc_64/include/QtCore/QList \
 		../../../Qt/5.4/gcc_64/include/QtCore/QString \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QLabel \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qlabel.h \
@@ -3852,11 +4086,26 @@ obj/SplashLaser.o: src/SplashLaser.cpp include/SplashLaser.h \
 		include/upgrade_button.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsSceneMouseEvent \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qgraphicssceneevent.h \
-		include/soundobject.h \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/QSound \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/qsound.h \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/qtmultimediadefs.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/QMap \
+		include/Upgrades.h \
+		include/SplashTower.h \
+		include/SlowTower.h \
+		include/SlowBullet.h \
+		include/PoisonTower.h \
+		include/PoisonBullet.h \
+		include/ChainTower.h \
+		include/GoldTower.h \
+		include/TutorRobot.h \
+		include/ProfessorMeeting.h \
+		include/PMBullet.h \
+		include/ChemEngSenior.h \
+		include/CESBullet.h \
+		include/JobsBiography.h \
+		include/MetalEngSenior.h \
+		include/IronBullet.h \
+		include/AppleRobot.h \
+		include/SteveJobs.h \
+		include/TripleMajorSenior.h \
+		include/SplashPoisonBullet.h \
 		include/fusion_button.h \
 		include/BuildTowerIcon.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QPushButton \
@@ -3997,6 +4246,7 @@ obj/SplashBullet.o: src/SplashBullet.cpp include/SplashBullet.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qgraphicsscene.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/QMouseEvent \
 		../../../Qt/5.4/gcc_64/include/QtCore/QVector \
+		../../../Qt/5.4/gcc_64/include/QtCore/QList \
 		../../../Qt/5.4/gcc_64/include/QtCore/QString \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QLabel \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qlabel.h \
@@ -4005,11 +4255,28 @@ obj/SplashBullet.o: src/SplashBullet.cpp include/SplashBullet.h \
 		include/upgrade_button.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsSceneMouseEvent \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qgraphicssceneevent.h \
-		include/soundobject.h \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/QSound \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/qsound.h \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/qtmultimediadefs.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/QMap \
+		include/Upgrades.h \
+		include/SplashTower.h \
+		include/SlowTower.h \
+		include/SlowBullet.h \
+		include/PoisonTower.h \
+		include/PoisonBullet.h \
+		include/ChainTower.h \
+		include/GoldTower.h \
+		include/GoldBullet.h \
+		include/TutorRobot.h \
+		include/ProfessorMeeting.h \
+		include/PMBullet.h \
+		include/ChemEngSenior.h \
+		include/CESBullet.h \
+		include/JobsBiography.h \
+		include/MetalEngSenior.h \
+		include/IronBullet.h \
+		include/AppleRobot.h \
+		include/SplashLaser.h \
+		include/SteveJobs.h \
+		include/TripleMajorSenior.h \
+		include/SplashPoisonBullet.h \
 		include/fusion_button.h \
 		include/BuildTowerIcon.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QPushButton \
@@ -4152,6 +4419,7 @@ obj/SlowTower.o: src/SlowTower.cpp include/SlowTower.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qgraphicsscene.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/QMouseEvent \
 		../../../Qt/5.4/gcc_64/include/QtCore/QVector \
+		../../../Qt/5.4/gcc_64/include/QtCore/QList \
 		../../../Qt/5.4/gcc_64/include/QtCore/QString \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QLabel \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qlabel.h \
@@ -4159,11 +4427,27 @@ obj/SlowTower.o: src/SlowTower.cpp include/SlowTower.h \
 		include/upgrade_button.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsSceneMouseEvent \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qgraphicssceneevent.h \
-		include/soundobject.h \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/QSound \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/qsound.h \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/qtmultimediadefs.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/QMap \
+		include/Upgrades.h \
+		include/SplashTower.h \
+		include/SplashBullet.h \
+		include/PoisonTower.h \
+		include/PoisonBullet.h \
+		include/ChainTower.h \
+		include/GoldTower.h \
+		include/GoldBullet.h \
+		include/TutorRobot.h \
+		include/ProfessorMeeting.h \
+		include/PMBullet.h \
+		include/ChemEngSenior.h \
+		include/CESBullet.h \
+		include/JobsBiography.h \
+		include/MetalEngSenior.h \
+		include/IronBullet.h \
+		include/AppleRobot.h \
+		include/SplashLaser.h \
+		include/SteveJobs.h \
+		include/TripleMajorSenior.h \
+		include/SplashPoisonBullet.h \
 		include/fusion_button.h \
 		include/BuildTowerIcon.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QPushButton \
@@ -4304,6 +4588,7 @@ obj/SlowBullet.o: src/SlowBullet.cpp include/SlowBullet.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qgraphicsscene.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/QMouseEvent \
 		../../../Qt/5.4/gcc_64/include/QtCore/QVector \
+		../../../Qt/5.4/gcc_64/include/QtCore/QList \
 		../../../Qt/5.4/gcc_64/include/QtCore/QString \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QLabel \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qlabel.h \
@@ -4312,11 +4597,28 @@ obj/SlowBullet.o: src/SlowBullet.cpp include/SlowBullet.h \
 		include/upgrade_button.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsSceneMouseEvent \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qgraphicssceneevent.h \
-		include/soundobject.h \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/QSound \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/qsound.h \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/qtmultimediadefs.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/QMap \
+		include/Upgrades.h \
+		include/SplashTower.h \
+		include/SplashBullet.h \
+		include/SlowTower.h \
+		include/PoisonTower.h \
+		include/PoisonBullet.h \
+		include/ChainTower.h \
+		include/GoldTower.h \
+		include/GoldBullet.h \
+		include/TutorRobot.h \
+		include/ProfessorMeeting.h \
+		include/PMBullet.h \
+		include/ChemEngSenior.h \
+		include/CESBullet.h \
+		include/JobsBiography.h \
+		include/MetalEngSenior.h \
+		include/IronBullet.h \
+		include/AppleRobot.h \
+		include/SplashLaser.h \
+		include/SteveJobs.h \
+		include/TripleMajorSenior.h \
+		include/SplashPoisonBullet.h \
 		include/fusion_button.h \
 		include/BuildTowerIcon.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QPushButton \
@@ -4461,6 +4763,7 @@ obj/ProfessorMeeting.o: src/ProfessorMeeting.cpp include/ProfessorMeeting.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qgraphicsscene.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/QMouseEvent \
 		../../../Qt/5.4/gcc_64/include/QtCore/QVector \
+		../../../Qt/5.4/gcc_64/include/QtCore/QList \
 		../../../Qt/5.4/gcc_64/include/QtCore/QString \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QLabel \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qlabel.h \
@@ -4468,11 +4771,25 @@ obj/ProfessorMeeting.o: src/ProfessorMeeting.cpp include/ProfessorMeeting.h \
 		include/upgrade_button.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsSceneMouseEvent \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qgraphicssceneevent.h \
-		include/soundobject.h \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/QSound \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/qsound.h \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/qtmultimediadefs.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/QMap \
+		include/Upgrades.h \
+		include/SplashTower.h \
+		include/SplashBullet.h \
+		include/PoisonTower.h \
+		include/PoisonBullet.h \
+		include/ChainTower.h \
+		include/GoldTower.h \
+		include/GoldBullet.h \
+		include/TutorRobot.h \
+		include/ChemEngSenior.h \
+		include/CESBullet.h \
+		include/JobsBiography.h \
+		include/MetalEngSenior.h \
+		include/IronBullet.h \
+		include/AppleRobot.h \
+		include/SplashLaser.h \
+		include/SteveJobs.h \
+		include/TripleMajorSenior.h \
+		include/SplashPoisonBullet.h \
 		include/fusion_button.h \
 		include/BuildTowerIcon.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QPushButton \
@@ -4615,6 +4932,7 @@ obj/PoisonTower.o: src/PoisonTower.cpp include/PoisonTower.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qgraphicsscene.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/QMouseEvent \
 		../../../Qt/5.4/gcc_64/include/QtCore/QVector \
+		../../../Qt/5.4/gcc_64/include/QtCore/QList \
 		../../../Qt/5.4/gcc_64/include/QtCore/QString \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QLabel \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qlabel.h \
@@ -4622,11 +4940,27 @@ obj/PoisonTower.o: src/PoisonTower.cpp include/PoisonTower.h \
 		include/upgrade_button.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsSceneMouseEvent \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qgraphicssceneevent.h \
-		include/soundobject.h \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/QSound \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/qsound.h \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/qtmultimediadefs.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/QMap \
+		include/Upgrades.h \
+		include/SplashTower.h \
+		include/SplashBullet.h \
+		include/SlowTower.h \
+		include/SlowBullet.h \
+		include/ChainTower.h \
+		include/GoldTower.h \
+		include/GoldBullet.h \
+		include/TutorRobot.h \
+		include/ProfessorMeeting.h \
+		include/PMBullet.h \
+		include/ChemEngSenior.h \
+		include/CESBullet.h \
+		include/JobsBiography.h \
+		include/MetalEngSenior.h \
+		include/IronBullet.h \
+		include/AppleRobot.h \
+		include/SplashLaser.h \
+		include/SteveJobs.h \
+		include/TripleMajorSenior.h \
+		include/SplashPoisonBullet.h \
 		include/fusion_button.h \
 		include/BuildTowerIcon.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QPushButton \
@@ -4767,6 +5101,7 @@ obj/PoisonBullet.o: src/PoisonBullet.cpp include/PoisonBullet.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qgraphicsscene.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/QMouseEvent \
 		../../../Qt/5.4/gcc_64/include/QtCore/QVector \
+		../../../Qt/5.4/gcc_64/include/QtCore/QList \
 		../../../Qt/5.4/gcc_64/include/QtCore/QString \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QLabel \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qlabel.h \
@@ -4775,11 +5110,28 @@ obj/PoisonBullet.o: src/PoisonBullet.cpp include/PoisonBullet.h \
 		include/upgrade_button.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsSceneMouseEvent \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qgraphicssceneevent.h \
-		include/soundobject.h \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/QSound \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/qsound.h \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/qtmultimediadefs.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/QMap \
+		include/Upgrades.h \
+		include/SplashTower.h \
+		include/SplashBullet.h \
+		include/SlowTower.h \
+		include/SlowBullet.h \
+		include/PoisonTower.h \
+		include/ChainTower.h \
+		include/GoldTower.h \
+		include/GoldBullet.h \
+		include/TutorRobot.h \
+		include/ProfessorMeeting.h \
+		include/PMBullet.h \
+		include/ChemEngSenior.h \
+		include/CESBullet.h \
+		include/JobsBiography.h \
+		include/MetalEngSenior.h \
+		include/IronBullet.h \
+		include/AppleRobot.h \
+		include/SplashLaser.h \
+		include/SteveJobs.h \
+		include/TripleMajorSenior.h \
+		include/SplashPoisonBullet.h \
 		include/fusion_button.h \
 		include/BuildTowerIcon.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QPushButton \
@@ -4921,6 +5273,7 @@ obj/PMBullet.o: src/PMBullet.cpp include/PMBullet.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qgraphicsscene.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/QMouseEvent \
 		../../../Qt/5.4/gcc_64/include/QtCore/QVector \
+		../../../Qt/5.4/gcc_64/include/QtCore/QList \
 		../../../Qt/5.4/gcc_64/include/QtCore/QString \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QLabel \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qlabel.h \
@@ -4929,11 +5282,27 @@ obj/PMBullet.o: src/PMBullet.cpp include/PMBullet.h \
 		include/upgrade_button.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsSceneMouseEvent \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qgraphicssceneevent.h \
-		include/soundobject.h \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/QSound \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/qsound.h \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/qtmultimediadefs.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/QMap \
+		include/Upgrades.h \
+		include/SplashTower.h \
+		include/SplashBullet.h \
+		include/SlowTower.h \
+		include/PoisonTower.h \
+		include/PoisonBullet.h \
+		include/ChainTower.h \
+		include/GoldTower.h \
+		include/GoldBullet.h \
+		include/TutorRobot.h \
+		include/ProfessorMeeting.h \
+		include/ChemEngSenior.h \
+		include/CESBullet.h \
+		include/JobsBiography.h \
+		include/MetalEngSenior.h \
+		include/IronBullet.h \
+		include/AppleRobot.h \
+		include/SplashLaser.h \
+		include/SteveJobs.h \
+		include/TripleMajorSenior.h \
+		include/SplashPoisonBullet.h \
 		include/fusion_button.h \
 		include/BuildTowerIcon.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QPushButton \
@@ -5078,6 +5447,7 @@ obj/MetalEngSenior.o: src/MetalEngSenior.cpp include/MetalEngSenior.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qgraphicsscene.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/QMouseEvent \
 		../../../Qt/5.4/gcc_64/include/QtCore/QVector \
+		../../../Qt/5.4/gcc_64/include/QtCore/QList \
 		../../../Qt/5.4/gcc_64/include/QtCore/QString \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QLabel \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qlabel.h \
@@ -5085,11 +5455,25 @@ obj/MetalEngSenior.o: src/MetalEngSenior.cpp include/MetalEngSenior.h \
 		include/upgrade_button.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsSceneMouseEvent \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qgraphicssceneevent.h \
-		include/soundobject.h \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/QSound \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/qsound.h \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/qtmultimediadefs.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/QMap \
+		include/Upgrades.h \
+		include/SplashTower.h \
+		include/SplashBullet.h \
+		include/SlowTower.h \
+		include/SlowBullet.h \
+		include/PoisonTower.h \
+		include/PoisonBullet.h \
+		include/ChainTower.h \
+		include/TutorRobot.h \
+		include/ProfessorMeeting.h \
+		include/PMBullet.h \
+		include/ChemEngSenior.h \
+		include/CESBullet.h \
+		include/JobsBiography.h \
+		include/AppleRobot.h \
+		include/SplashLaser.h \
+		include/SteveJobs.h \
+		include/TripleMajorSenior.h \
+		include/SplashPoisonBullet.h \
 		include/fusion_button.h \
 		include/BuildTowerIcon.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QPushButton \
@@ -5480,6 +5864,7 @@ obj/GoldTower.o: src/GoldTower.cpp include/GoldTower.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qgraphicsscene.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/QMouseEvent \
 		../../../Qt/5.4/gcc_64/include/QtCore/QVector \
+		../../../Qt/5.4/gcc_64/include/QtCore/QList \
 		../../../Qt/5.4/gcc_64/include/QtCore/QString \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QLabel \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qlabel.h \
@@ -5487,11 +5872,27 @@ obj/GoldTower.o: src/GoldTower.cpp include/GoldTower.h \
 		include/upgrade_button.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsSceneMouseEvent \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qgraphicssceneevent.h \
-		include/soundobject.h \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/QSound \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/qsound.h \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/qtmultimediadefs.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/QMap \
+		include/Upgrades.h \
+		include/SplashTower.h \
+		include/SplashBullet.h \
+		include/SlowTower.h \
+		include/SlowBullet.h \
+		include/PoisonTower.h \
+		include/PoisonBullet.h \
+		include/ChainTower.h \
+		include/TutorRobot.h \
+		include/ProfessorMeeting.h \
+		include/PMBullet.h \
+		include/ChemEngSenior.h \
+		include/CESBullet.h \
+		include/JobsBiography.h \
+		include/MetalEngSenior.h \
+		include/IronBullet.h \
+		include/AppleRobot.h \
+		include/SplashLaser.h \
+		include/SteveJobs.h \
+		include/TripleMajorSenior.h \
+		include/SplashPoisonBullet.h \
 		include/fusion_button.h \
 		include/BuildTowerIcon.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QPushButton \
@@ -5632,6 +6033,7 @@ obj/GoldBullet.o: src/GoldBullet.cpp include/GoldBullet.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qgraphicsscene.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/QMouseEvent \
 		../../../Qt/5.4/gcc_64/include/QtCore/QVector \
+		../../../Qt/5.4/gcc_64/include/QtCore/QList \
 		../../../Qt/5.4/gcc_64/include/QtCore/QString \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QLabel \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qlabel.h \
@@ -5640,11 +6042,28 @@ obj/GoldBullet.o: src/GoldBullet.cpp include/GoldBullet.h \
 		include/upgrade_button.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsSceneMouseEvent \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qgraphicssceneevent.h \
-		include/soundobject.h \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/QSound \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/qsound.h \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/qtmultimediadefs.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/QMap \
+		include/Upgrades.h \
+		include/SplashTower.h \
+		include/SplashBullet.h \
+		include/SlowTower.h \
+		include/SlowBullet.h \
+		include/PoisonTower.h \
+		include/PoisonBullet.h \
+		include/ChainTower.h \
+		include/GoldTower.h \
+		include/TutorRobot.h \
+		include/ProfessorMeeting.h \
+		include/PMBullet.h \
+		include/ChemEngSenior.h \
+		include/CESBullet.h \
+		include/JobsBiography.h \
+		include/MetalEngSenior.h \
+		include/IronBullet.h \
+		include/AppleRobot.h \
+		include/SplashLaser.h \
+		include/SteveJobs.h \
+		include/TripleMajorSenior.h \
+		include/SplashPoisonBullet.h \
 		include/fusion_button.h \
 		include/BuildTowerIcon.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QPushButton \
@@ -5767,6 +6186,7 @@ obj/Game.o: src/Game.cpp include/Game.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qgraphicsscene.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/QMouseEvent \
 		../../../Qt/5.4/gcc_64/include/QtCore/QVector \
+		../../../Qt/5.4/gcc_64/include/QtCore/QList \
 		../../../Qt/5.4/gcc_64/include/QtCore/QString \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QLabel \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qlabel.h \
@@ -5789,11 +6209,32 @@ obj/Game.o: src/Game.cpp include/Game.h \
 		include/upgrade_button.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsSceneMouseEvent \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qgraphicssceneevent.h \
-		include/soundobject.h \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/QSound \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/qsound.h \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/qtmultimediadefs.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/QMap \
+		include/Upgrades.h \
+		include/SplashTower.h \
+		include/SplashBullet.h \
+		include/Bullet.h \
+		../../../Qt/5.4/gcc_64/include/QtCore/QtMath \
+		../../../Qt/5.4/gcc_64/include/QtCore/qmath.h \
+		include/SlowTower.h \
+		include/SlowBullet.h \
+		include/PoisonTower.h \
+		include/PoisonBullet.h \
+		include/ChainTower.h \
+		include/GoldTower.h \
+		include/GoldBullet.h \
+		include/TutorRobot.h \
+		include/ProfessorMeeting.h \
+		include/PMBullet.h \
+		include/ChemEngSenior.h \
+		include/CESBullet.h \
+		include/JobsBiography.h \
+		include/MetalEngSenior.h \
+		include/IronBullet.h \
+		include/AppleRobot.h \
+		include/SplashLaser.h \
+		include/SteveJobs.h \
+		include/TripleMajorSenior.h \
+		include/SplashPoisonBullet.h \
 		include/fusion_button.h \
 		include/BuildTowerIcon.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QPushButton \
@@ -5802,9 +6243,7 @@ obj/Game.o: src/Game.cpp include/Game.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qicon.h \
 		include/button.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsScene \
-		include/Bullet.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/QtMath \
-		../../../Qt/5.4/gcc_64/include/QtCore/qmath.h \
+		src/BuildTowerIcon.h \
 		../../../Qt/5.4/gcc_64/include/QtCore/QPoint \
 		../../../Qt/5.4/gcc_64/include/QtCore/QDebug \
 		../../../Qt/5.4/gcc_64/include/QtGui/QPainter
@@ -5945,6 +6384,7 @@ obj/ChemEngSenior.o: src/ChemEngSenior.cpp include/ChemEngSenior.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qgraphicsscene.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/QMouseEvent \
 		../../../Qt/5.4/gcc_64/include/QtCore/QVector \
+		../../../Qt/5.4/gcc_64/include/QtCore/QList \
 		../../../Qt/5.4/gcc_64/include/QtCore/QString \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QLabel \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qlabel.h \
@@ -5952,11 +6392,25 @@ obj/ChemEngSenior.o: src/ChemEngSenior.cpp include/ChemEngSenior.h \
 		include/upgrade_button.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsSceneMouseEvent \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qgraphicssceneevent.h \
-		include/soundobject.h \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/QSound \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/qsound.h \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/qtmultimediadefs.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/QMap \
+		include/Upgrades.h \
+		include/SplashTower.h \
+		include/SplashBullet.h \
+		include/SlowTower.h \
+		include/SlowBullet.h \
+		include/PoisonTower.h \
+		include/PoisonBullet.h \
+		include/ChainTower.h \
+		include/TutorRobot.h \
+		include/ProfessorMeeting.h \
+		include/PMBullet.h \
+		include/JobsBiography.h \
+		include/MetalEngSenior.h \
+		include/IronBullet.h \
+		include/AppleRobot.h \
+		include/SplashLaser.h \
+		include/SteveJobs.h \
+		include/TripleMajorSenior.h \
+		include/SplashPoisonBullet.h \
 		include/fusion_button.h \
 		include/BuildTowerIcon.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QPushButton \
@@ -6221,6 +6675,7 @@ obj/CESBullet.o: src/CESBullet.cpp include/CESBullet.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qgraphicsscene.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/QMouseEvent \
 		../../../Qt/5.4/gcc_64/include/QtCore/QVector \
+		../../../Qt/5.4/gcc_64/include/QtCore/QList \
 		../../../Qt/5.4/gcc_64/include/QtCore/QString \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QLabel \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qlabel.h \
@@ -6229,11 +6684,27 @@ obj/CESBullet.o: src/CESBullet.cpp include/CESBullet.h \
 		include/upgrade_button.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsSceneMouseEvent \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qgraphicssceneevent.h \
-		include/soundobject.h \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/QSound \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/qsound.h \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/qtmultimediadefs.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/QMap \
+		include/Upgrades.h \
+		include/SplashTower.h \
+		include/SplashBullet.h \
+		include/SlowTower.h \
+		include/SlowBullet.h \
+		include/PoisonTower.h \
+		include/PoisonBullet.h \
+		include/ChainTower.h \
+		include/GoldTower.h \
+		include/TutorRobot.h \
+		include/ProfessorMeeting.h \
+		include/PMBullet.h \
+		include/ChemEngSenior.h \
+		include/JobsBiography.h \
+		include/MetalEngSenior.h \
+		include/IronBullet.h \
+		include/AppleRobot.h \
+		include/SplashLaser.h \
+		include/SteveJobs.h \
+		include/TripleMajorSenior.h \
+		include/SplashPoisonBullet.h \
 		include/fusion_button.h \
 		include/BuildTowerIcon.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QPushButton \
@@ -6373,6 +6844,7 @@ obj/Bullet.o: src/Bullet.cpp include/Bullet.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qgraphicsscene.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/QMouseEvent \
 		../../../Qt/5.4/gcc_64/include/QtCore/QVector \
+		../../../Qt/5.4/gcc_64/include/QtCore/QList \
 		../../../Qt/5.4/gcc_64/include/QtCore/QString \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QLabel \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qlabel.h \
@@ -6381,11 +6853,29 @@ obj/Bullet.o: src/Bullet.cpp include/Bullet.h \
 		include/upgrade_button.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsSceneMouseEvent \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qgraphicssceneevent.h \
-		include/soundobject.h \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/QSound \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/qsound.h \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/qtmultimediadefs.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/QMap \
+		include/Upgrades.h \
+		include/SplashTower.h \
+		include/SplashBullet.h \
+		include/SlowTower.h \
+		include/SlowBullet.h \
+		include/PoisonTower.h \
+		include/PoisonBullet.h \
+		include/ChainTower.h \
+		include/GoldTower.h \
+		include/GoldBullet.h \
+		include/TutorRobot.h \
+		include/ProfessorMeeting.h \
+		include/PMBullet.h \
+		include/ChemEngSenior.h \
+		include/CESBullet.h \
+		include/JobsBiography.h \
+		include/MetalEngSenior.h \
+		include/IronBullet.h \
+		include/AppleRobot.h \
+		include/SplashLaser.h \
+		include/SteveJobs.h \
+		include/TripleMajorSenior.h \
+		include/SplashPoisonBullet.h \
 		include/fusion_button.h \
 		include/BuildTowerIcon.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QPushButton \
@@ -6395,7 +6885,7 @@ obj/Bullet.o: src/Bullet.cpp include/Bullet.h \
 		include/button.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/Bullet.o src/Bullet.cpp
 
-obj/BuildTowerIcon.o: src/BuildTowerIcon.cpp include/BuildTowerIcon.h \
+obj/BuildTowerIcon.o: src/BuildTowerIcon.cpp src/BuildTowerIcon.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPixmapItem \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qgraphicsitem.h \
 		../../../Qt/5.4/gcc_64/include/QtCore/qglobal.h \
@@ -6505,21 +6995,6 @@ obj/BuildTowerIcon.o: src/BuildTowerIcon.cpp include/BuildTowerIcon.h \
 		../../../Qt/5.4/gcc_64/include/QtCore/qfiledevice.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qvector2d.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/qtouchdevice.h \
-		include/Game.h \
-		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsView \
-		../../../Qt/5.4/gcc_64/include/QtWidgets/qgraphicsview.h \
-		../../../Qt/5.4/gcc_64/include/QtGui/qpainter.h \
-		../../../Qt/5.4/gcc_64/include/QtGui/qtextoption.h \
-		../../../Qt/5.4/gcc_64/include/QtGui/qpen.h \
-		../../../Qt/5.4/gcc_64/include/QtWidgets/qscrollarea.h \
-		../../../Qt/5.4/gcc_64/include/QtWidgets/qabstractscrollarea.h \
-		../../../Qt/5.4/gcc_64/include/QtWidgets/qframe.h \
-		../../../Qt/5.4/gcc_64/include/QtWidgets/qgraphicsscene.h \
-		../../../Qt/5.4/gcc_64/include/QtGui/QMouseEvent \
-		../../../Qt/5.4/gcc_64/include/QtCore/QVector \
-		../../../Qt/5.4/gcc_64/include/QtCore/QString \
-		../../../Qt/5.4/gcc_64/include/QtWidgets/QLabel \
-		../../../Qt/5.4/gcc_64/include/QtWidgets/qlabel.h \
 		include/Tower.h \
 		include/BattleObject.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsPolygonItem \
@@ -6530,17 +7005,55 @@ obj/BuildTowerIcon.o: src/BuildTowerIcon.cpp include/BuildTowerIcon.h \
 		../../../Qt/5.4/gcc_64/include/QtCore/qtimer.h \
 		../../../Qt/5.4/gcc_64/include/QtCore/qbasictimer.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/QPen \
+		../../../Qt/5.4/gcc_64/include/QtGui/qpen.h \
 		include/enemy.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsRectItem \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QWidget \
+		include/Game.h \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsView \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/qgraphicsview.h \
+		../../../Qt/5.4/gcc_64/include/QtGui/qpainter.h \
+		../../../Qt/5.4/gcc_64/include/QtGui/qtextoption.h \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/qscrollarea.h \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/qframe.h \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/qgraphicsscene.h \
+		../../../Qt/5.4/gcc_64/include/QtGui/QMouseEvent \
+		../../../Qt/5.4/gcc_64/include/QtCore/QVector \
+		../../../Qt/5.4/gcc_64/include/QtCore/QList \
+		../../../Qt/5.4/gcc_64/include/QtCore/QString \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/QLabel \
+		../../../Qt/5.4/gcc_64/include/QtWidgets/qlabel.h \
 		include/Wave_Generator.h \
 		include/upgrade_button.h \
-		include/soundobject.h \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/QSound \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/qsound.h \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/qtmultimediadefs.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/QMap \
+		include/Upgrades.h \
+		include/SplashTower.h \
+		include/SplashBullet.h \
+		include/Bullet.h \
+		../../../Qt/5.4/gcc_64/include/QtCore/QtMath \
+		../../../Qt/5.4/gcc_64/include/QtCore/qmath.h \
+		include/SlowTower.h \
+		include/SlowBullet.h \
+		include/PoisonTower.h \
+		include/PoisonBullet.h \
+		include/ChainTower.h \
+		include/GoldTower.h \
+		include/GoldBullet.h \
+		include/TutorRobot.h \
+		include/ProfessorMeeting.h \
+		include/PMBullet.h \
+		include/ChemEngSenior.h \
+		include/CESBullet.h \
+		include/JobsBiography.h \
+		include/MetalEngSenior.h \
+		include/IronBullet.h \
+		include/AppleRobot.h \
+		include/SplashLaser.h \
+		include/SteveJobs.h \
+		include/TripleMajorSenior.h \
+		include/SplashPoisonBullet.h \
 		include/fusion_button.h \
+		include/BuildTowerIcon.h \
 		include/button.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/BuildTowerIcon.o src/BuildTowerIcon.cpp
 
@@ -6674,6 +7187,7 @@ obj/BattleObject.o: src/BattleObject.cpp include/BattleObject.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qgraphicsscene.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/QMouseEvent \
 		../../../Qt/5.4/gcc_64/include/QtCore/QVector \
+		../../../Qt/5.4/gcc_64/include/QtCore/QList \
 		../../../Qt/5.4/gcc_64/include/QtCore/QString \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QLabel \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qlabel.h \
@@ -6682,11 +7196,29 @@ obj/BattleObject.o: src/BattleObject.cpp include/BattleObject.h \
 		include/upgrade_button.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsSceneMouseEvent \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qgraphicssceneevent.h \
-		include/soundobject.h \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/QSound \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/qsound.h \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/qtmultimediadefs.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/QMap \
+		include/Upgrades.h \
+		include/SplashTower.h \
+		include/SplashBullet.h \
+		include/SlowTower.h \
+		include/SlowBullet.h \
+		include/PoisonTower.h \
+		include/PoisonBullet.h \
+		include/ChainTower.h \
+		include/GoldTower.h \
+		include/GoldBullet.h \
+		include/TutorRobot.h \
+		include/ProfessorMeeting.h \
+		include/PMBullet.h \
+		include/ChemEngSenior.h \
+		include/CESBullet.h \
+		include/JobsBiography.h \
+		include/MetalEngSenior.h \
+		include/IronBullet.h \
+		include/AppleRobot.h \
+		include/SplashLaser.h \
+		include/SteveJobs.h \
+		include/TripleMajorSenior.h \
+		include/SplashPoisonBullet.h \
 		include/fusion_button.h \
 		include/BuildTowerIcon.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QPushButton \
@@ -6833,6 +7365,7 @@ obj/AppleRobot.o: src/AppleRobot.cpp include/AppleRobot.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qgraphicsscene.h \
 		../../../Qt/5.4/gcc_64/include/QtGui/QMouseEvent \
 		../../../Qt/5.4/gcc_64/include/QtCore/QVector \
+		../../../Qt/5.4/gcc_64/include/QtCore/QList \
 		../../../Qt/5.4/gcc_64/include/QtCore/QString \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QLabel \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qlabel.h \
@@ -6840,11 +7373,23 @@ obj/AppleRobot.o: src/AppleRobot.cpp include/AppleRobot.h \
 		include/upgrade_button.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QGraphicsSceneMouseEvent \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/qgraphicssceneevent.h \
-		include/soundobject.h \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/QSound \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/qsound.h \
-		../../../Qt/5.4/gcc_64/include/QtMultimedia/qtmultimediadefs.h \
-		../../../Qt/5.4/gcc_64/include/QtCore/QMap \
+		include/Upgrades.h \
+		include/SplashTower.h \
+		include/SlowTower.h \
+		include/SlowBullet.h \
+		include/PoisonTower.h \
+		include/PoisonBullet.h \
+		include/ChainTower.h \
+		include/TutorRobot.h \
+		include/ProfessorMeeting.h \
+		include/PMBullet.h \
+		include/ChemEngSenior.h \
+		include/CESBullet.h \
+		include/MetalEngSenior.h \
+		include/IronBullet.h \
+		include/SteveJobs.h \
+		include/TripleMajorSenior.h \
+		include/SplashPoisonBullet.h \
 		include/fusion_button.h \
 		include/BuildTowerIcon.h \
 		../../../Qt/5.4/gcc_64/include/QtWidgets/QPushButton \
