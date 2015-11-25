@@ -8,6 +8,7 @@
 #include <QObject>
 #include <QTimer>
 #include <QtMath>
+#include <typeinfo>
 #include "BattleObject.h"
 #include "enemy.h"
 
