@@ -8,6 +8,11 @@ Bullet::Bullet()
     ;
 }
 
+Bullet::~Bullet()
+{
+    ;
+}
+
 Bullet::Bullet(int power): QObject()
 {
     setPixmap(QPixmap(":/images/Mechanical.bmp"));          //image 설정

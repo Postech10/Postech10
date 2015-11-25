@@ -26,6 +26,11 @@ BattleObject::BattleObject()
     AttackRange->setPos(x()+ln.dx(),y()+ln.dy());       //center 맞추기
 }
 
+BattleObject::~BattleObject()
+{
+    ;
+}
+
 void BattleObject::Attack()
 {
     Bullet *bullet = new Bullet(AttackPower);

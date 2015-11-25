@@ -13,6 +13,7 @@ class BattleObject: public QObject, public QGraphicsPixmapItem{
     Q_OBJECT
 public:
     BattleObject();
+    virtual ~BattleObject();
     virtual void Attack();
     double CalcDistance(QGraphicsItem*);
     virtual void IsHitBy(int);
