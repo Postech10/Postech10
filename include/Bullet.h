@@ -11,10 +11,11 @@
 #include <typeinfo>
 #include "BattleObject.h"
 #include "enemy.h"
+#include "soundobject.h"
 
 #define STEP_SIZE 30                //기본으로 해놓은 STEP_SIZE
 
-class Bullet: public QObject, public QGraphicsPixmapItem{
+class Bullet: public QObject, public QGraphicsPixmapItem, public SoundObject{
     Q_OBJECT
 public:
     Bullet();

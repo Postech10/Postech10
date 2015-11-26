@@ -8,8 +8,9 @@
 #include <QPointF>
 #include <QTimer>
 #include <QPen>
+#include "soundobject.h"
 
-class BattleObject: public QObject, public QGraphicsPixmapItem{
+class BattleObject: public QObject, public QGraphicsPixmapItem, public SoundObject{
     Q_OBJECT
 public:
     BattleObject();

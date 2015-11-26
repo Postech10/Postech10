@@ -24,6 +24,8 @@ BattleObject::BattleObject()
     QPointF object_center(x()+40, y()+50);       //확실히 모름 나중에 디버깅하면서 맞출생각
     QLineF ln(poly_center, object_center);
     AttackRange->setPos(x()+ln.dx(),y()+ln.dy());       //center 맞추기
+
+    addSound("BulletWentOff","://sounds/BulletWentOff.wav");
 }
 
 BattleObject::~BattleObject()
@@ -134,6 +136,8 @@ void BattleObject::SetTarget()
             }
         }
     }
-    if(HasTarget == true)
-     Attack();                               //공
+    if(HasTarget == true){
+        Attack();                               //공격
+        playSound("BulletWentOff");
+    }
 }

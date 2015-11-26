@@ -26,6 +26,7 @@ void TutorRobot::SetTarget()
             Target = test;
             HasTarget = true;                  //가장가까운 적이 Target이 되도록함
             Attack();
+            playSound("BulletWentOff");
             attack_num++;
         }
     }
