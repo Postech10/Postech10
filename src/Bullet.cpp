@@ -6,7 +6,7 @@ extern Game* game;
 Bullet::Bullet()
 {
     addSound("Hit","://sounds/Hit.wav");
-    addSound("Splash","://sounds/splash.wav")
+    addSound("Splash","://sounds/splash.wav");
 }
 
 Bullet::~Bullet()

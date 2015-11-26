@@ -3,7 +3,7 @@
 #define BULLET
 
 #include <QGraphicsPixmapItem>
-#include <QGraphicsPolygonItem>
+#include <QGraphicsEllipseItem>
 #include <QGraphicsItem>
 #include <QObject>
 #include <QTimer>

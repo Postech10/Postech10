@@ -15,7 +15,7 @@ void SplashBullet::move()
     QList<QGraphicsItem *> colliding_enemies=collidingItems();      //Splash Bullet과 부딪힌 item들
     for(size_t i=0, n=colliding_enemies.size();i<n;i++){
         if(typeid(*(colliding_enemies[i]))==typeid(Enemy)){         //이들이 Enemy일때
-            new QGraphicsEllipseItem(QRectF(0,0,SCALE_FACTOR,SCALE_FACTOR),this);
+            QGraphicsEllipseItem *SplashRange = new QGraphicsEllipseItem(QRectF(0,0,SPLASH_SCALE_FACTOR,SPLASH_SCALE_FACTOR),this);
             SplashRange->setPen(QPen(Qt::DotLine));     //점선으로 범위 보이기
             QPointF poly_center(SPLASH_SCALE_FACTOR/2,SPLASH_SCALE_FACTOR/2);               //SplashRange의 중심
             poly_center = mapToScene(poly_center);
