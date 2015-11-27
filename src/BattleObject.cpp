@@ -120,9 +120,13 @@ void BattleObject::HideAttackRange()
 void BattleObject::SetTarget()
 {
     QList<QGraphicsItem *> colliding_items= AttackRange->collidingItems();//AttackRange와 colliding하는 item들
-    if(colliding_items.size() <= 2){        //target아직 없음       //debug가 안되서 왜 2여야되는지 모름..나중에
-        HasTarget = false;
-        return ;
+    for(size_t j = 0, m = colliding_items.size();j<m;j++){              //부딪히는 아이템들 다 검사
+        if(typeid(*(colliding_items[j]))==typeid(Enemy))                   //Enemy가 있으면
+            break;                                                         //중지하고 밑에 바로 실행
+        else if(j == m-1){                                                 //없으면
+            HasTarget = false;
+            return;                                                        //리턴
+        }
     }
     double closest_dist = 300;              //처음엔 범위보다 큰값으로 initialize
     for (size_t i=0, n=colliding_items.size();i<n;i++){
