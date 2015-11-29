@@ -25,13 +25,13 @@ private:
     float poisonedTime;     //elapsed time from poisoning point
     int slowedState;        //slowed:1, not:0
     int Full;    //new
+    int slowLevel;
     QGraphicsRectItem* hpBar;   //new
-    SoundObject* hit;
 public:
     Enemy(int level=1);               //constructor
-    int DieOrNot(){ return life; }    //Die=0, not=1
+    int DieOrNot(){ return !life; }    //Die=0, not=1
     void IsPoisonedBy(int);           //called when attack by poison tower
-    void IsSlowedBy();                //called when attack by slow tower
+    void IsSlowedBy(int);                //called when attack by slow tower
     void IsHitBy(int);               //called when attacked
     void startMovement();
     void setHpbar();

@@ -7,6 +7,7 @@ Bullet::Bullet()
 {
     addSound("Hit","://sounds/Hit.wav");
     addSound("Splash","://sounds/splash.wav");
+    move_timer = new QTimer();
 }
 
 Bullet::~Bullet()
@@ -19,6 +20,8 @@ Bullet::Bullet(int power): QObject()
     setPixmap(QPixmap(":/images/Mechanical.bmp"));          //image 설정
     SetAttackPower(power);
     move_timer = new QTimer();
+    addSound("Hit","://sounds/Hit.wav");
+    addSound("Splash","://sounds/splash.wav");
 }
 
 void Bullet::SetAttackPower(int AttackPower)
@@ -46,7 +49,7 @@ void Bullet::move()
     for(size_t i=0, n=colliding_enemies.size();i<n;i++){
         if(typeid(*(colliding_enemies[i]))==typeid(Enemy)){
             dynamic_cast<Enemy*>(colliding_enemies[i])->IsHitBy(AttackPower);
-            //playSound("Hit");               //적중 시 나는 소리
+            playSound("Hit");               //적중 시 나는 소리
             //game->scene->removeItem(colliding_enemies[i]);
             game->scene->removeItem(this);
             //game->SumWithEnemyNum(-1);

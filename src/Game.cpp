@@ -17,7 +17,7 @@ Game::Game(){
     setScene(scene);
 
     life = 100;
-    money = 1000;                             //money given at first
+    money = 50;                             //money given at first
     round = 1;                              //initialize round
     tooltip = nullptr;                      //initialize tooltip
     cursor = nullptr;                       //initialize cursor
@@ -28,10 +28,16 @@ Game::Game(){
 
     state = Cleared;                        //initialize state
     enemy_num=0;
+    dead_enemy=0;
+    wave=0;
 
     for(int i=0 ; i < 11 ; i++){
         for(int j=0 ; j < 12 ; j++)
             position[i][j]=false;
+    }
+    for(int i=11 ; i < 16 ; i++){
+        for(int j=0 ; j < 12 ; j++)
+            position[i][j]=true;
     }
     for(int i=3 ; i<10 ; i++)
         position[i][7]=true;
@@ -136,6 +142,7 @@ void Game::displayMenu()
     round_label = new QLabel();
     round_label->setFont(QFont("Arial", 20 , QFont::Bold));
     //round_label->setStyleSheet("background-color:gray;");
+    round_label->setText(QString("Round ")+QString::number(round));
     round_label->setGeometry(1024-64*4,0,64*3,30);
     scene->addWidget(round_label);
 
@@ -209,12 +216,11 @@ void Game::spawnEnemy()
 {
     if(SpawnList.size() != enemy.size() ){
         enemy.push_back(SpawnList[SpawnList.size()-enemy.size()-1]);
-        wave++;
-        qDebug()<<wave;
+        wave++;                                    //the number of enemies which were spawned.
         enemy.back()->startMovement();
         //please add startMovement method and un-commentize this.
         scene->addItem(enemy.back());
-        enemy_num++;
+        enemy_num++;                                //the number of enemies which are alive.
     }
     else
         spawn_timer->stop();
@@ -258,7 +264,7 @@ void Game::button_Pressed(QPointF point,int tower_code)
 
         spawn_timer = new QTimer(this);
         connect(spawn_timer,SIGNAL(timeout()),this,SLOT(spawnEnemy()));
-        spawn_timer->start(500);
+        spawn_timer->start(1000);
 
         scene->removeItem(start_pause_button);
         state = Ingame;
@@ -305,8 +311,14 @@ void Game::clear_game()
     scene->addItem(start_pause_button);
 
     round++;
+    money += dead_enemy*10;
+
     round_label->setText(QString("Round ")+QString::number(round));
     money_label->setText(QString("Money ")+QString::number(money));
+
+    wave = 0;
+    dead_enemy=0;
+    enemy_num=0;
 }
 
 
@@ -425,7 +437,6 @@ void Game::mousePressEvent(QMouseEvent *event){
         pointer->Activated(true);
         scene->addItem(pointer);
         QWidget::unsetCursor();
-        qDebug()<<(pointed_spot.x()/64)<<","<<(pointed_spot.y()/64);
 
         this->position[pointed_spot.x()/64][pointed_spot.y()/64] = true;
         add_mode = false;
@@ -451,7 +462,9 @@ void Game::SetUpgradeMode(bool _upgrade_mode)
 void Game::SumWithEnemyNum(int _num)
 {
     enemy_num += _num;
-    if(wave == SpawnList.size()){
+    dead_enemy++;
+    qDebug()<<wave<<","<<enemy_num<<","<<dead_enemy;
+    if(wave == SpawnList.size() && enemy_num == 0 && dead_enemy == SpawnList.size()){
         SetState(Cleared);
     }
 }
@@ -464,7 +477,6 @@ void Game::MakeNewGame()
     enemy.clear();
     SpawnList.clear();
     SpawnList = wave_generator.MakeSpawnList(round);
-    wave = 0;
 }
 
 void Game::FuseTower()
@@ -514,6 +526,20 @@ void Game::FuseTower()
             }
             QCursor* new_cursor = new QCursor(*pixmap);
             QWidget::setCursor(*new_cursor);
+
+            scene->removeItem(attack_ability);
+            delete attack_ability;
+            attack_ability = nullptr;
+
+            scene->removeItem(defense_ability);
+            delete defense_ability;
+            defense_ability = nullptr;
+
+            scene->removeItem(attack_speed_ability);
+            delete attack_speed_ability;
+            attack_speed_ability = nullptr;
+
+
         }
         else
             qDebug()<<"fusion 할 수 없습니다!";
@@ -521,6 +547,10 @@ void Game::FuseTower()
 
     else
         qDebug()<<"fusion 할 수 없습니다!";
+
+
+
+
 }
 
 
@@ -529,8 +559,10 @@ void Game::FuseTower()
 void Game::SetState(int _state){
     if(state != _state){
         state = _state;
-        if(_state == Cleared)
+        if(_state == Cleared){
+               qDebug()<<"!!!!!11";
             emit game_is_cleared();
+        }
     }
 }
 
