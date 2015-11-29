@@ -1,12 +1,14 @@
 #include "enemy.h"
+#include "Game.h"
 #include <QDebug>
 #include <QGraphicsScene>
+#include <QString>
 
-#define width 500
-#define height 500
+#define width 600
+#define height 600
 
 
-
+extern Game* game;
 Enemy::Enemy(int level)
 {
     currentLevel = level;
@@ -15,29 +17,10 @@ Enemy::Enemy(int level)
     int yLoc[10] = {80,80,80,60,60,60,35,10,10,10};
 
     for(int i=0;i<10;i++){
-        path[i][0] = xLoc[i]*width/100;
-        path[i][1] = yLoc[i]*height/100;
+        path[i][0] = xLoc[i]*width/100+80;
+        path[i][1] = yLoc[i]*height/100+65;
     }
-    /*path[0][0]=70*width/100;           //path represented by points 0->1.....
-    path[0][1]=80*height/100;
-    path[1][0]=45*width/100;
-    path[1][1]=80*height/100;
-    path[2][0]=20*width/100;
-    path[2][1]=80*height/100;
-    path[3][0]=20*width/100;
-    path[3][1]=60*height/100;
-    path[4][0]=50*width/100;
-    path[4][1]=60*height/100;
-    path[5][0]=80*width/100;
-    path[5][1]=60*height/100;
-    path[6][0]=80*width/100;
-    path[6][1]=35*height/100;
-    path[7][0]=80*width/100;
-    path[7][1]=10*height/100;
-    path[8][0]=45*width/100;
-    path[8][1]=10*height/100;
-    path[9][0]=20*width/100;
-    path[9][1]=10*height/100; */
+
     currentPath=-1;     //not yet on path
 
     clockRate=10000/(60+currentLevel);   //different velocity according to level
@@ -45,6 +28,7 @@ Enemy::Enemy(int level)
     life=1;
     Hp=(currentLevel/10+1)*50;
     DefensivePower=1;
+    slowedState=0;
 
     if(currentLevel%10!=0)
         this->HideAttackRange();
@@ -53,9 +37,13 @@ Enemy::Enemy(int level)
 
     setPos(path[0][0],path[0][1]);
 
-    //move according to signal
+    hit = new SoundObject;
+    hit->addSound("hit",":/sounds/Hit.wav");
+
+
     timer = new QTimer();
     connect(timer, SIGNAL(timeout()), this, SLOT(move()));
+
 
 }
 
@@ -63,31 +51,65 @@ void Enemy::IsPoisonedBy(int power)
 {
     poisonedTime=0;
     poisonTime = new QTimer();
-    connect(timer, SIGNAL(timeout()), this, SLOT(IsHitByP(power)));
-    timer->start(clockRate);
+    connect( poisonTime, SIGNAL(timeout()), this, SLOT(IsHitByP()));     //렉트 사운드
+    poisonTime->start(1000);
 }
 
 void Enemy::IsSlowedBy()
 {
     slowedState=0;
-    slowTime = new QTimer();
-    connect(timer, SIGNAL(timeout()), this, SLOT(changeClockRate()));
-    timer->start(1000);
+   slowTime = new QTimer();
+    connect(slowTime, SIGNAL(timeout()), this, SLOT(changeClockRate()));
+    slowTime->start(5000);
 }
 
 void Enemy::IsHitBy(int power)
 {
-      BattleObject::IsHitBy(power);   //decrease Hp
+    hit->playSound("hit");
+
+      Hp = Hp - power/DefensivePower;   //decrease Hp
+
+
       if(Hp<=0){
+          life=0;
+          scene()->removeItem(hpBar);
           scene()->removeItem(this);
+
           delete timer;
       }
+      else
+          cutHpbar();
+
 
 }
 
 void Enemy::startMovement()
 {
+
+    setHpbar();
     timer->start(50);
+}
+
+void Enemy::setHpbar()
+{
+    Full=Hp;
+    hpBar = new QGraphicsRectItem(0,0, float(width)/10, float(height)/50);
+    hpBar->setBrush(QBrush(Qt::red));
+    hpBar-> setPos(x(),y()-20);
+    game->scene->addItem(hpBar);
+}
+
+void Enemy::cutHpbar()
+{
+    qDebug()<<Hp<<Full;
+    hpBar->setRect(0,0, (float(width)/10)*((float(Hp)/Full)), float(height)/50);
+    qDebug()<<float(width)/10;
+             qDebug()<< float(Hp)/Full*100;
+}
+
+Enemy::~Enemy()
+{
+    //알아서 지워줌
 }
 
 void Enemy::setPicture()     //Hp AttackPower DefensePower
@@ -119,14 +141,16 @@ void Enemy::move()
 {
     if ((x()== path[currentPath+1][0]) && (y()==path[currentPath+1][1])){
         currentPath++;
-        x_move=(path[currentPath+1][0]-path[currentPath][0])/50;
-        y_move=(path[currentPath+1][1]-path[currentPath][1])/50;
+        x_move=(path[currentPath+1][0]-path[currentPath][0])/(width/10);
+        y_move=(path[currentPath+1][1]-path[currentPath][1])/(height/10);
     }
 
     setPos(x()+x_move, y()+y_move);
+    hpBar->setPos(x()+x_move, y()-20+y_move);
 
     if((x()== path[9][0]) && (y()==path[9][1])){                 //end point
         qDebug() << "Fail to remove enemy";
+        scene()->removeItem(hpBar);
         scene()->removeItem(this);
         delete timer;
     }
@@ -135,17 +159,13 @@ void Enemy::move()
 
 void Enemy::IsHitByP(int power)     //poisoned
 {
-    BattleObject::IsHitBy(power);   //decrease Hp
-    poisonedTime+=clockRate;        //calculate poisoned time
 
-    if(Hp<=0){
+    poisonedTime+=500;
+    if(poisonedTime>3000 || Hp<=0)            //after specific time, released from poison
         delete poisonTime;
-        scene()->removeItem(this);
-        delete timer;
-    }
+    else
+        IsHitBy(power);
 
-    if(poisonedTime>500)            //after specific time, released from poison
-        delete poisonTime;
 }
 
 void Enemy::changeClockRate()
@@ -153,14 +173,16 @@ void Enemy::changeClockRate()
     delete timer;
     timer = new QTimer();
     connect(timer, SIGNAL(timeout()), this, SLOT(move()));
-    if (slowedState=0){
-        timer->start(2*clockRate);    //slowed, doubled clockrate
+    if (slowedState==0){
+        timer->start(200);    //slowed, doubled clockrate
         slowedState=1;
+        qDebug()<<"slOw";
     }
     else {
-        timer->start(clockRate);      //recovered from slow state
+        timer->start(50);      //recovered from slow state
         slowedState=0;
         delete slowTime;
+        qDebug()<<"fast";
     }
 
 }

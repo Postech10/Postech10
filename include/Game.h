@@ -39,7 +39,7 @@ public:
     inline bool GetUpgradeMode() {return upgrade_mode;}
 
     //money accessor & modifier
-    inline void set_money(int _money) {money = _money;}
+    void set_money(int _money);
     inline int get_money() {return money;}
 
     void SumWithEnemyNum(int _num);
@@ -47,6 +47,9 @@ public:
 
     void SetState(int _state);
     int GetState();
+
+    int GetLife() {return life;}
+    void SetLife(int _life) {life = _life;}
 
     void MakeNewGame();
 
@@ -117,11 +120,10 @@ private :
     QLabel* round_label; //round 출력
     QLabel* money_label; //money 출력
 
-    QLabel* upgrade_level;
-    QLabel* attack_ability;
-    QLabel* defense_ability;
-    QLabel* attack_speed_ability;
-
+    QGraphicsTextItem* upgrade_level;
+    QGraphicsTextItem* attack_ability;
+    QGraphicsTextItem* defense_ability;
+    QGraphicsTextItem* attack_speed_ability;
 
 };
 

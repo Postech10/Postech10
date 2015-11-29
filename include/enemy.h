@@ -5,6 +5,7 @@
 #include <QObject>
 #include<QWidget>
 #include "BattleObject.h"
+#include "soundobject.h"
 #include <QTimer>
 
 class Enemy : public BattleObject{
@@ -23,6 +24,9 @@ private:
     int life;               //DiedOrNot
     float poisonedTime;     //elapsed time from poisoning point
     int slowedState;        //slowed:1, not:0
+    int Full;    //new
+    QGraphicsRectItem* hpBar;   //new
+    SoundObject* hit;
 public:
     Enemy(int level=1);               //constructor
     int DieOrNot(){ return life; }    //Die=0, not=1
@@ -30,9 +34,12 @@ public:
     void IsSlowedBy();                //called when attack by slow tower
     void IsHitBy(int);               //called when attacked
     void startMovement();
+    void setHpbar();
+    void cutHpbar();
+    ~Enemy();
 public slots:
     void move();                      //go through path
-    void IsHitByP(int);               //decrease Hp, when poisoned by tower
+    void IsHitByP(int p=10);               //decrease Hp, when poisoned by tower
     void changeClockRate();           //change the move speed of enemy
 };
 
