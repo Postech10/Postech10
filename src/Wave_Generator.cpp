@@ -49,7 +49,5 @@ QVector<Enemy *> WaveGenerator::MakeSpawnList(int round)
 
 void WaveGenerator::ClearSpwanList(int wave)
 {
-    for(int i=0 ; i<wave ; i++)
-        delete SpawnList[i];
     SpawnList.clear();
 }

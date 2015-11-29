@@ -1,17 +1,11 @@
 #ifndef UPGRADES
 #define UPGRADES
 
-#include "Tower.h"
-#include "SplashTower.h"
-#include "SlowTower.h"
 #include "PoisonTower.h"
 #include "ChainTower.h"
-#include "GoldTower.h"
 #include "TutorRobot.h"
 #include "ProfessorMeeting.h"
 #include "ChemEngSenior.h"
-#include "JobsBiography.h"
-#include "MetalEngSenior.h"
 #include "AppleRobot.h"
 #include "SteveJobs.h"
 #include "TripleMajorSenior.h"

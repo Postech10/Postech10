@@ -4,7 +4,6 @@
 
 #include <QGraphicsPixmapItem>
 #include <QGraphicsEllipseItem>
-#include <QGraphicsItem>
 #include <QObject>
 #include <QTimer>
 #include <QtMath>

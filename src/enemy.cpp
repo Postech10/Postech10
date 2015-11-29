@@ -1,4 +1,4 @@
-#include "enemy.h"
+﻿#include "enemy.h"
 #include "Game.h"
 #include <QDebug>
 #include <QGraphicsScene>
@@ -37,8 +37,6 @@ Enemy::Enemy(int level)
 
     setPos(path[0][0],path[0][1]);
 
-    hit = new SoundObject;
-    hit->addSound("hit",":/sounds/Hit.wav");
 
 
     timer = new QTimer();
@@ -55,23 +53,28 @@ void Enemy::IsPoisonedBy(int power)
     poisonTime->start(1000);
 }
 
-void Enemy::IsSlowedBy()
+void Enemy::IsSlowedBy(int power)
 {
-    slowedState=0;
-   slowTime = new QTimer();
+    delete timer;
+    timer = new QTimer();
+    connect(timer, SIGNAL(timeout()), this, SLOT(move()));
+    timer->start(50*power);    //slowed, doubled clockrate
+    qDebug()<<"slOw";
+
+    slowTime = new QTimer();
     connect(slowTime, SIGNAL(timeout()), this, SLOT(changeClockRate()));
     slowTime->start(5000);
 }
 
 void Enemy::IsHitBy(int power)
 {
-    hit->playSound("hit");
 
       Hp = Hp - power/DefensivePower;   //decrease Hp
 
 
       if(Hp<=0){
           life=0;
+	game->SumWithEnemyNum(-1);
           scene()->removeItem(hpBar);
           scene()->removeItem(this);
 
@@ -87,7 +90,7 @@ void Enemy::startMovement()
 {
 
     setHpbar();
-    timer->start(50);
+    timer->start(200);
 }
 
 void Enemy::setHpbar()
@@ -109,6 +112,7 @@ void Enemy::cutHpbar()
 
 Enemy::~Enemy()
 {
+    delete hpBar;
     //알아서 지워줌
 }
 
@@ -171,18 +175,11 @@ void Enemy::IsHitByP(int power)     //poisoned
 void Enemy::changeClockRate()
 {
     delete timer;
+    delete slowTime;
+
     timer = new QTimer();
     connect(timer, SIGNAL(timeout()), this, SLOT(move()));
-    if (slowedState==0){
-        timer->start(200);    //slowed, doubled clockrate
-        slowedState=1;
-        qDebug()<<"slOw";
-    }
-    else {
-        timer->start(50);      //recovered from slow state
-        slowedState=0;
-        delete slowTime;
-        qDebug()<<"fast";
-    }
+    timer->start(50);      //recovered from slow state
 
+    qDebug()<<"fast";
 }

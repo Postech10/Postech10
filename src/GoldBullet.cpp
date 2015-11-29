@@ -23,9 +23,8 @@ void GoldBullet::move()
     for(size_t i=0, n=colliding_enemies.size();i<n;i++){
         if(typeid(*(colliding_enemies[i]))==typeid(Enemy)){
             dynamic_cast<Enemy*>(colliding_enemies[i])->IsHitBy(AttackPower);
-           // if(dynamic_cast<Enemy*>(colliding_enemies[i])->DieOrNot())       //죽었는지 아닌지 확인필요.. 논의필요함
-              //  game->set_money(game->get_money()+GoldPower);                      //이타워에 의해 죽었을때!! 돈 올라감
-            //please make methods DieorNot and un-commentize this
+            if(dynamic_cast<Enemy*>(colliding_enemies[i])->DieOrNot())       //죽었는지 아닌지 확인필요.. 논의필요함
+                game->set_money(game->get_money()+GoldPower);                      //이타워에 의해 죽었을때!! 돈 올라감
             playSound("Hit");               //적중 시 나는 소리
             game->scene->removeItem(this);                      //꼭필요한지 모르겠음.. 나중에 수정예정
             delete this;
