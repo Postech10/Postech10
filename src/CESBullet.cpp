@@ -1,5 +1,4 @@
 #include "CESBullet.h"
-#include <typeinfo>
 #include "Game.h"
 
 extern Game* game;

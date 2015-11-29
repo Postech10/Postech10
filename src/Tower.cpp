@@ -1,9 +1,6 @@
 ﻿#include "Tower.h"
-#include <QVector>
-#include <QPointF>
 #include "Upgrades.h"
 #include "Game.h"
-#include <QDebug>
 
 extern Game* game;
 

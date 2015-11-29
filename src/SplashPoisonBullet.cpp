@@ -1,5 +1,5 @@
 #include "SplashPoisonBullet.h"
-#include <typeinfo> //in strict c++ environment, You SHOULD include <typeinfo> to use typeid
+#include <typeinfo>
 #include "Game.h"
 
 extern Game* game;

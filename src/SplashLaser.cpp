@@ -1,5 +1,5 @@
 #include "SplashLaser.h"
-#include <typeinfo> //you should include typeinfo to use typeid
+#include <typeinfo>
 #include "Game.h"
 
 extern Game* game;

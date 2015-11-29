@@ -1,5 +1,5 @@
 #include "GoldBullet.h"
-#include <typeinfo> //you should include typeinfo to user typeid
+#include <typeinfo>
 #include "Game.h"
 
 extern Game* game;
