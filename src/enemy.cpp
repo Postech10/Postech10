@@ -1,4 +1,4 @@
-#include "enemy.h"
+﻿#include "enemy.h"
 #include "Game.h"
 #include <QDebug>
 #include <QGraphicsScene>
@@ -51,7 +51,7 @@ void Enemy::IsPoisonedBy(int power)
 {
     poisonedTime=0;
     poisonTime = new QTimer();
-    connect( poisonTime, SIGNAL(timeout()), this, SLOT(IsHitByP()));     //렉트 사운드
+    connect( poisonTime, SIGNAL(timeout()), this, SLOT(IsHitByP()));     //?됲듃 ?ъ슫??
     poisonTime->start(1000);
 }
 
@@ -109,7 +109,7 @@ void Enemy::cutHpbar()
 
 Enemy::~Enemy()
 {
-    //알아서 지워줌
+    //?뚯븘??吏?뚯쨲
 }
 
 void Enemy::setPicture()     //Hp AttackPower DefensePower

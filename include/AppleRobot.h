@@ -1,4 +1,4 @@
-#ifndef APPLEROBOT_H
+﻿#ifndef APPLEROBOT_H
 #define APPLEROBOT_H
 
 #include "JobsBiography.h"

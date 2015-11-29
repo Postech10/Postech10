@@ -1,4 +1,4 @@
-#include "Upgrades.h"
+﻿#include "Upgrades.h"
 
 #define DEFAULT_UPGRADE_AMOUNT 10
 

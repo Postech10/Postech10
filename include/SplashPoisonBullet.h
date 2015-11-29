@@ -1,4 +1,4 @@
-#ifndef SPLASHPOISONBULLET_H
+﻿#ifndef SPLASHPOISONBULLET_H
 #define SPLASHPOISONBULLET_H
 
 #include "GoldBullet.h"

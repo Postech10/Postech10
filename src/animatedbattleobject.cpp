@@ -1,4 +1,4 @@
-#include "animatedbattleobject.h"
+﻿#include "animatedbattleobject.h"
 #include <QGraphicsPixmapItem>
 #include <QColor>
 #include <QBitmap>

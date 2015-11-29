@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #ifndef WAVEGENERATOR_H
 #define WAVEGENERATOR_H
 
