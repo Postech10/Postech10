@@ -89,6 +89,8 @@ private :
     QVector<Enemy*> enemy;
     //지금 살아 있는 enemy의 수
     int enemy_num;
+    //죽은 enemy의 수
+    int dead_enemy;
 
     //combnination[r][w]가 true면 r과 w는 조합이 가능함
     bool combination[14][14];
