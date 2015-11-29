@@ -1,4 +1,4 @@
-﻿#include "Game.h"
+#include "Game.h"
 #include <QGraphicsScene>
 #include "Tower.h"
 #include "Bullet.h"
@@ -59,7 +59,7 @@ Game::Game(){
         for(int j=0 ; j<14 ; j++)
             combination[i][j]=false;
     }
-    combination[0][0]=true; //?붾쾭源낆슜
+    combination[0][0]=true; //디버깅용
     combination[0][2]=true;
     combination[1][4]=true;
     combination[1][5]=true;
@@ -99,32 +99,62 @@ void Game::displayMenu()
     Normal_Tower_button = new BuildTowerIcon(":/images/Mechanical.bmp",NORMAL);
     Normal_Tower_button->setPos(1024-32*3,32*3);
     Normal_Tower_button->setZValue(1);
-    scene->addItem(Normal_Tower_button);                     //add icon ?앹꽦
+    scene->addItem(Normal_Tower_button);                     //add icon 생성    
+    QGraphicsTextItem* temp = scene->addText(QString("Normal_Tower"),QFont("Arial", 10));
+    temp->setDefaultTextColor(QColor(Qt::white));
+    temp->setPos(1024-32*3,32*3+5+64);
+    scene->addItem(temp);
+    delete temp;
 
     Splash_Tower_button = new BuildTowerIcon(":/images/Mechanical.bmp",SPLASH);
     Splash_Tower_button->setPos(1024-32*6,32*3);
     Splash_Tower_button->setZValue(1);
     scene->addItem(Splash_Tower_button);
+    temp = scene->addText(QString("Splash_Tower"),QFont("Arial", 10));
+    temp->setDefaultTextColor(QColor(Qt::white));
+    temp->setPos(1024-32*6,32*3+5+64);
+    scene->addItem(temp);
+    delete temp;
 
     Slow_Tower_button = new BuildTowerIcon(":/images/Mechanical.bmp",SLOW);
     Slow_Tower_button->setPos(1024-32*9,32*3);
     Slow_Tower_button->setZValue(1);
     scene->addItem(Slow_Tower_button);
+    temp = scene->addText(QString("Slow_Tower"),QFont("Arial", 10));
+    temp->setDefaultTextColor(QColor(Qt::white));
+    temp->setPos(1024-32*9,32*3+5+64);
+    scene->addItem(temp);
+    delete temp;
 
     Poison_Tower_button = new BuildTowerIcon(":/images/Mechanical.bmp",POISON);
     Poison_Tower_button->setPos(1024-32*3,32*6);
     Poison_Tower_button->setZValue(1);
     scene->addItem(Poison_Tower_button);
+    temp = scene->addText(QString("Poison_Tower"),QFont("Arial", 10));
+    temp->setDefaultTextColor(QColor(Qt::white));
+    temp->setPos(1024-32*3,32*6+5+64);
+    scene->addItem(temp);
+    delete temp;
 
     Chain_Tower_button = new BuildTowerIcon(":/images/Mechanical.bmp",CHAIN);
     Chain_Tower_button->setPos(1024-32*6,32*6);
     Chain_Tower_button->setZValue(1);
     scene->addItem(Chain_Tower_button);
+    temp = scene->addText(QString("Chain_Tower"),QFont("Arial", 10));
+    temp->setDefaultTextColor(QColor(Qt::white));
+    temp->setPos(1024-32*6,32*6+5+64);
+    scene->addItem(temp);
+    delete temp;
 
     Gold_Tower_button = new BuildTowerIcon(":/images/Mechanical.bmp",GOLD);
     Gold_Tower_button->setPos(1024-32*9,32*6);
     Gold_Tower_button->setZValue(1);
     scene->addItem(Gold_Tower_button);
+    temp = scene->addText(QString("Gold_Tower"),QFont("Arial", 10));
+    temp->setDefaultTextColor(QColor(Qt::white));
+    temp->setPos(1024-32*9,32*6+5+64);
+    scene->addItem(temp);
+    delete temp;
 
     //make fusion button and add it into scene
     fusion_button = new Fusion_Button(":/images/FUSE.jpg");
@@ -254,6 +284,11 @@ void Game::button_Pressed(QPointF point,int tower_code)
             build.push_back(new GoldTower());
             add_mode_pixmap = new QPixmap(QString(":/images/Mechanical.bmp"));break;
         }
+
+        build[build.size()-1]->SetAttackPower(upgrade_button->getUp()->GetReference(tower_code)->GetAttackPower());
+        build[build.size()-1]->SetDefensivePower(upgrade_button->getUp()->GetReference(tower_code)->GetDefensivePower());
+        build[build.size()-1]->SetAttackSpeed(upgrade_button->getUp()->GetReference(tower_code)->GetAttackSpeed());
+
         QCursor* add_mode_cursor = new QCursor(*add_mode_pixmap);
         QWidget::setCursor(*add_mode_cursor);
     }
@@ -306,6 +341,7 @@ void Game::button_Pressed(QPointF point,int tower_code)
 //this method is called when all spawned enemies is removed from scene
 void Game::clear_game()
 {
+    qDebug()<<"clear_game() start";
     wave_generator.ClearSpwanList(wave);
     start_pause_button->setPixmap(QPixmap(":/images/start.jpg"));
     scene->addItem(start_pause_button);
@@ -319,6 +355,7 @@ void Game::clear_game()
     wave = 0;
     dead_enemy=0;
     enemy_num=0;
+        qDebug()<<"clear_game() end";
 }
 
 
@@ -523,6 +560,8 @@ void Game::FuseTower()
                 pixmap = new QPixmap(QString(":/images/tooltip.png"));break;
             case TRIPLE:
                 pixmap = new QPixmap(QString(":/images/tooltip.png"));break;
+            case JOBSBIO:
+                pixmap = new QPixmap(QString(":/images/tooltip.png"));break;
             }
             QCursor* new_cursor = new QCursor(*pixmap);
             QWidget::setCursor(*new_cursor);
@@ -542,11 +581,11 @@ void Game::FuseTower()
 
         }
         else
-            qDebug()<<"fusion ?????놁뒿?덈떎!";
+            qDebug()<<"fusion 할 수 없습니다!";
     }
 
     else
-        qDebug()<<"fusion ?????놁뒿?덈떎!";
+        qDebug()<<"fusion 할 수 없습니다!";
 
 
 
@@ -560,7 +599,7 @@ void Game::SetState(int _state){
     if(state != _state){
         state = _state;
         if(_state == Cleared){
-               qDebug()<<"!!!!!11";
+               qDebug()<<"emit game_is_cleared";
             emit game_is_cleared();
         }
     }

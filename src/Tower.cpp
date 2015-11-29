@@ -2,6 +2,8 @@
 #include "Upgrades.h"
 #include "Game.h"
 
+#include <qdebug.h>
+
 extern Game* game;
 
 Tower::Tower()
@@ -20,6 +22,45 @@ Tower::Tower()
 
 void Tower::upgrade(Upgrades* up, int towercode)
 {
+    //upgrade proceed
+        up->UpgradeAttack(towercode);
+        up->UpgradeDefense(towercode);
+        up->UpgradeAttackSpeed(towercode);
+        switch(towercode)
+        {
+        case NORMAL:
+            break;
+        case SPLASH:
+            break;
+        case SLOW:
+            up->UpgradeSlow(towercode);
+            break;
+        case POISON:
+            break;
+        case CHAIN:
+            break;
+        case GOLD:
+            up->UpgradeGold(towercode);
+            break;
+        case TUTOR:
+            break;
+        case PROF:
+            break;
+        case CES:
+            break;
+        case JOBSBIO:
+            break;
+        case MES:
+            break;
+        case APPLE:
+            break;
+        case JOBS:
+            break;
+        case TRIPLE:
+            break;
+        }
+
+
     this->SetAttackPower(up->GetReference(towercode)->GetAttackPower());
     this->SetDefensivePower(up->GetReference(towercode)->GetDefensivePower());
     this->SetAttackSpeed(up->GetReference(towercode)->GetAttackSpeed());
