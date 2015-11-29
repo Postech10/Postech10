@@ -1,5 +1,5 @@
 #include "control_animation.h"
-#include <Qtimer>
+#include <QTimer>
 Control_Animation::Control_Animation()
 {
     QTimer * main = new QTimer(this);

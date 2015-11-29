@@ -7,6 +7,7 @@ Bullet::Bullet()
 {
     addSound("Hit","://sounds/Hit.wav");
     addSound("Splash","://sounds/splash.wav");
+    move_timer = new QTimer();
 }
 
 Bullet::~Bullet()
@@ -19,6 +20,8 @@ Bullet::Bullet(int power): QObject()
     setPixmap(QPixmap(":/images/Mechanical.bmp"));          //image 설정
     SetAttackPower(power);
     move_timer = new QTimer();
+    addSound("Hit","://sounds/Hit.wav");
+    addSound("Splash","://sounds/splash.wav");
 }
 
 void Bullet::SetAttackPower(int AttackPower)

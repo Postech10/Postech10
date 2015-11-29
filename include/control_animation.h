@@ -1,7 +1,7 @@
 #ifndef CONTROL_ANIMATION_H
 #define CONTROL_ANIMATION_H
 
-#include "AnimatedBattleObject.h"
+#include "animatedbattleobject.h"
 #include <QObject>
 
 class Control_Animation : public QObject
