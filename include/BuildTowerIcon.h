@@ -1,4 +1,4 @@
-#ifndef BUILDTOWERICON
+﻿#ifndef BUILDTOWERICON
 #define BUILDTOWERICON
 #include <QGraphicsPixmapItem>
 #include <QGraphicsSceneMouseEvent>
@@ -11,7 +11,7 @@ class BuildTowerIcon: public QPushButton, public QGraphicsPixmapItem{
 
 public:
     BuildTowerIcon(char* filename,int _tower_code,QGraphicsItem *parent =0);
-    void mousePressEvent(QGraphicsSceneMouseEvent *event);      //누를 때 method
+    void mousePressEvent(QGraphicsSceneMouseEvent *event);      //?꾨? ??method
 };
 
 #endif // BUILDTOWERICON
