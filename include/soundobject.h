@@ -1,4 +1,4 @@
-#ifndef SOUNDOBJECT_H
+﻿#ifndef SOUNDOBJECT_H
 #define SOUNDOBJECT_H
 
 /* code by Jung Yu Chul---------------------------------------------------SoundObject

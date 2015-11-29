@@ -1,4 +1,4 @@
-#ifndef TRIPLEMAJORSENIOR_H
+﻿#ifndef TRIPLEMAJORSENIOR_H
 #define TRIPLEMAJORSENIOR_H
 
 #include "MetalEngSenior.h"

@@ -1,4 +1,4 @@
-#include "Game.h"
+﻿#include "Game.h"
 #include <QGraphicsScene>
 #include "Tower.h"
 #include "Bullet.h"
@@ -59,7 +59,7 @@ Game::Game(){
         for(int j=0 ; j<14 ; j++)
             combination[i][j]=false;
     }
-    combination[0][0]=true; //디버깅용
+    combination[0][0]=true; //?붾쾭源낆슜
     combination[0][2]=true;
     combination[1][4]=true;
     combination[1][5]=true;
@@ -99,7 +99,7 @@ void Game::displayMenu()
     Normal_Tower_button = new BuildTowerIcon(":/images/Mechanical.bmp",NORMAL);
     Normal_Tower_button->setPos(1024-32*3,32*3);
     Normal_Tower_button->setZValue(1);
-    scene->addItem(Normal_Tower_button);                     //add icon 생성
+    scene->addItem(Normal_Tower_button);                     //add icon ?앹꽦
 
     Splash_Tower_button = new BuildTowerIcon(":/images/Mechanical.bmp",SPLASH);
     Splash_Tower_button->setPos(1024-32*6,32*3);
@@ -542,11 +542,11 @@ void Game::FuseTower()
 
         }
         else
-            qDebug()<<"fusion 할 수 없습니다!";
+            qDebug()<<"fusion ?????놁뒿?덈떎!";
     }
 
     else
-        qDebug()<<"fusion 할 수 없습니다!";
+        qDebug()<<"fusion ?????놁뒿?덈떎!";
 
 
 

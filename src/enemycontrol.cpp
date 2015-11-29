@@ -1,4 +1,4 @@
-#include "enemycontrol.h"
+﻿#include "enemycontrol.h"
 #include <QTimer>
 #include <QGraphicsScene>
 #include <QDebug>
@@ -24,7 +24,7 @@ void EnemyControl::spawn()
 {
     qDebug() << "%d"<< enemyLevel;
     if (enemyNum<10){
-       // if(enemyLevel>1)                 //나중에 레벨 올라갈때 필요
+       // if(enemyLevel>1)                 //?섏쨷???덈꺼 ?щ씪媛덈븣 ?꾩슂
          //   delete list[enemyNum];
         qDebug() << "%d"<< enemyLevel;
         if(enemyLevel%10==0)

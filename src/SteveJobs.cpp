@@ -1,4 +1,4 @@
-#include "SteveJobs.h"
+﻿#include "SteveJobs.h"
 #include "Game.h"
 
 extern Game* game;
@@ -11,8 +11,8 @@ SteveJobs::SteveJobs()
     AttackPower = 20;
     DefensivePower = 20;
     AttackSpeed = 20;
-    Attackable = false;                  //초기설정 나중에 밸런스를 위해 바꿀거임
-    setPixmap(QPixmap(":/images/Mechanical.bmp"));     //사진설정
+    Attackable = false;                  //珥덇린?ㅼ젙 ?섏쨷??諛몃윴?ㅻ? ?꾪빐 諛붽?嫄곗엫
+    setPixmap(QPixmap(":/images/Mechanical.bmp"));     //?ъ쭊?ㅼ젙
     this->HideAttackRange();
 }
 
@@ -27,6 +27,6 @@ void SteveJobs::Activated(bool active)
 
 void SteveJobs::IncGold()
 {
-    game->set_money(game->get_money()+AttackPower);                      //여기선 AttackPower가 골드증가량..
+    game->set_money(game->get_money()+AttackPower);                      //?ш린??AttackPower媛 怨⑤뱶利앷???.
 }
 

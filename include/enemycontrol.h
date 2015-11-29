@@ -1,4 +1,4 @@
-#ifndef ENEMYCONTROL
+﻿#ifndef ENEMYCONTROL
 #define ENEMYCONTROL
 
 #include "enemy.h"

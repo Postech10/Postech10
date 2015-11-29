@@ -1,4 +1,4 @@
-#ifndef GOLDTOWER_H
+﻿#ifndef GOLDTOWER_H
 #define GOLDTOWER_H
 
 #include "Tower.h"

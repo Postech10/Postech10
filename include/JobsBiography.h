@@ -1,4 +1,4 @@
-#ifndef JOBSBIOGRAPHY_H
+﻿#ifndef JOBSBIOGRAPHY_H
 #define JOBSBIOGRAPHY_H
 
 #include "GoldTower.h"

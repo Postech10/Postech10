@@ -1,4 +1,4 @@
-#ifndef METALENGSENIOR_H
+﻿#ifndef METALENGSENIOR_H
 #define METALENGSENIOR_H
 
 #include "GoldTower.h"

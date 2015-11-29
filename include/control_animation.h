@@ -1,4 +1,4 @@
-#ifndef CONTROL_ANIMATION_H
+﻿#ifndef CONTROL_ANIMATION_H
 #define CONTROL_ANIMATION_H
 
 #include "AnimatedBattleObject.h"

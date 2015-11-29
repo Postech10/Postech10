@@ -1,4 +1,4 @@
-#ifndef STEVEJOBS_H
+﻿#ifndef STEVEJOBS_H
 #define STEVEJOBS_H
 
 #include "Tower.h"

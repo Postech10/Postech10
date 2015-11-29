@@ -1,4 +1,4 @@
-#include "Bullet.h"
+﻿#include "Bullet.h"
 #include "Game.h"
 
 extern Game* game;
@@ -17,7 +17,7 @@ Bullet::~Bullet()
 
 Bullet::Bullet(int power): QObject()
 {
-    setPixmap(QPixmap(":/images/Mechanical.bmp"));          //image 설정
+    setPixmap(QPixmap(":/images/Mechanical.bmp"));          //image ?ㅼ젙
     SetAttackPower(power);
     move_timer = new QTimer();
     addSound("Hit","://sounds/Hit.wav");
@@ -36,7 +36,7 @@ int Bullet::GetAttackPower()
 
 void Bullet::Activated(bool active)
 {
-    connect(move_timer,SIGNAL(timeout()),this,SLOT(move()));        //일정 시간마다 움직임
+    connect(move_timer,SIGNAL(timeout()),this,SLOT(move()));        //?쇱젙 ?쒓컙留덈떎 ?吏곸엫
     if(active)
         move_timer->start(30);
     else
@@ -45,11 +45,11 @@ void Bullet::Activated(bool active)
 }
 void Bullet::move()
 {
-    QList<QGraphicsItem *> colliding_enemies=collidingItems();      //enemy랑 부딪히면 사라짐
+    QList<QGraphicsItem *> colliding_enemies=collidingItems();      //enemy??遺?ろ엳硫??щ씪吏?
     for(size_t i=0, n=colliding_enemies.size();i<n;i++){
         if(typeid(*(colliding_enemies[i]))==typeid(Enemy)){
             dynamic_cast<Enemy*>(colliding_enemies[i])->IsHitBy(AttackPower);
-            playSound("Hit");               //적중 시 나는 소리
+            playSound("Hit");               //?곸쨷 ???섎뒗 ?뚮━
             //game->scene->removeItem(colliding_enemies[i]);
             game->scene->removeItem(this);
             //game->SumWithEnemyNum(-1);
@@ -57,7 +57,7 @@ void Bullet::move()
             return;
         }
     }
-    double theta = rotation();                      //theta 설정
+    double theta = rotation();                      //theta ?ㅼ젙
 
     double dy = STEP_SIZE*qSin(qDegreesToRadians(theta));
     double dx = STEP_SIZE*qCos(qDegreesToRadians(theta));

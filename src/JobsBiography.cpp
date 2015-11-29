@@ -1,4 +1,4 @@
-#include "JobsBiography.h"
+﻿#include "JobsBiography.h"
 
 JobsBiography::JobsBiography()
 {
@@ -9,27 +9,27 @@ JobsBiography::JobsBiography()
     DefensivePower = 20;
     GoldPower = 10;
     AttackSpeed = 20;
-    Attackable = true;                  //초기설정 나중에 밸런스를 위해 바꿀거임
-    setPixmap(QPixmap(":/images/Mechanical.bmp"));     //사진설정
+    Attackable = true;                  //珥덇린?ㅼ젙 ?섏쨷??諛몃윴?ㅻ? ?꾪빐 諛붽?嫄곗엫
+    setPixmap(QPixmap(":/images/Mechanical.bmp"));     //?ъ쭊?ㅼ젙
 }
 
 void JobsBiography::SetTarget()
 {
-    int attack_num=0;                          //세개의 타겟에 대해서 공격가능하므로 세번까지 가능
-    QList<QGraphicsItem *> colliding_items= AttackRange->collidingItems();//AttackRange와 colliding하는 item들
-    for(size_t j = 0, m = colliding_items.size();j<m;j++){              //부딪히는 아이템들 다 검사
-        if(typeid(*(colliding_items[j]))==typeid(Enemy))                   //Enemy가 있으면
-            break;                                                         //중지하고 밑에 바로 실행
-        else if(j == m-1){                                                 //없으면
+    int attack_num=0;                          //?멸컻???寃잛뿉 ??댁꽌 怨듦꺽媛?ν븯誘濡??몃쾲源뚯? 媛??
+    QList<QGraphicsItem *> colliding_items= AttackRange->collidingItems();//AttackRange? colliding?섎뒗 item??
+    for(size_t j = 0, m = colliding_items.size();j<m;j++){              //遺?ろ엳???꾩씠?쒕뱾 ??寃??
+        if(typeid(*(colliding_items[j]))==typeid(Enemy))                   //Enemy媛 ?덉쑝硫?
+            break;                                                         //以묒??섍퀬 諛묒뿉 諛붾줈 ?ㅽ뻾
+        else if(j == m-1){                                                 //?놁쑝硫?
             HasTarget = false;
-            return;                                                        //리턴
+            return;                                                        //由ы꽩
         }
     }
     for (size_t i=0, n=colliding_items.size();i<n;i++){
         Enemy *test = dynamic_cast<Enemy *>(colliding_items[i]);           //colliding enemy
-        if(test&&attack_num<3){                          //enemy일 경우만
+        if(test&&attack_num<3){                          //enemy??寃쎌슦留?
             Target = test;
-            HasTarget = true;                  //가장가까운 적이 Target이 되도록함
+            HasTarget = true;                  //媛?κ?源뚯슫 ?곸씠 Target???섎룄濡앺븿
             Attack();
             playSound("BulletWentOff");
             attack_num++;

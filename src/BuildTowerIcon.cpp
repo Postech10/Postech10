@@ -1,4 +1,4 @@
-#include "BuildTowerIcon.h"
+﻿#include "BuildTowerIcon.h"
 #include "Game.h"
 
 extern Game *game;

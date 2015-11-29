@@ -1,4 +1,4 @@
-#include "soundobject.h"
+﻿#include "soundobject.h"
 #include <QSound>
 #include <QString>
 #include <iterator>

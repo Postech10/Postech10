@@ -1,4 +1,4 @@
-#ifndef BATTLEOBJECT
+﻿#ifndef BATTLEOBJECT
 #define BATTLEOBJECT
 
 #include <QGraphicsPixmapItem>

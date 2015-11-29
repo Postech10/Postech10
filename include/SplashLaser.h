@@ -1,4 +1,4 @@
-#ifndef SPLASHLASER_H
+﻿#ifndef SPLASHLASER_H
 #define SPLASHLASER_H
 
 #include "GoldBullet.h"

@@ -1,17 +1,17 @@
-#include <QApplication>
+﻿#include <QApplication>
 #include <QGraphicsScene>
 #include <QGraphicsView>
 #include "Game.h"
 #include <QMouseEvent>
 
-Game *game;                             //전역 변수 선언
+Game *game;                             //?꾩뿭 蹂???좎뼵
 int main(int argc, char *argv[])
 {
 
     QApplication a(argc, argv);
-    game = new Game();                  //초기화
-    game->displayMenu();                //메뉴 추가
-    game->show();                       //화면출력
+    game = new Game();                  //珥덇린??
+    game->displayMenu();                //硫붾돱 異붽?
+    game->show();                       //?붾㈃異쒕젰
 
     return a.exec();
 }

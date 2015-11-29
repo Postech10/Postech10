@@ -1,4 +1,4 @@
-#include "control_animation.h"
+﻿#include "control_animation.h"
 #include <Qtimer>
 Control_Animation::Control_Animation()
 {

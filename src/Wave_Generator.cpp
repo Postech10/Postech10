@@ -1,4 +1,4 @@
-#include "Wave_Generator.h"
+﻿#include "Wave_Generator.h"
 #include <qdebug.h>
 
 WaveGenerator::WaveGenerator()
@@ -15,32 +15,32 @@ QVector<Enemy *> WaveGenerator::MakeSpawnList(int round)
     }
 /*
     else if(round == 10){
-        SpawnList.push_back(new (조원에 여학생이 없어 불만인 학생));
+        SpawnList.push_back(new (議곗썝???ы븰?앹씠 ?놁뼱 遺덈쭔???숈깮));
     }
 
     else if(round >10 && round <20){
-        for(int i=0 ; i<어떤 숫자 ; i++){
-            SpawnList.push_back(new (졸업학기인 컴공과 학생));
+        for(int i=0 ; i<?대뼡 ?レ옄 ; i++){
+            SpawnList.push_back(new (議몄뾽?숆린??而닿났怨??숈깮));
         }
     }
     else if(round == 20)
-        SpawnList.push_back(new (군휴햑을 결정한 컴공과 학생));
+        SpawnList.push_back(new (援고쑕?묒쓣 寃곗젙??而닿났怨??숈깮));
 
     else if(round > 20 && round <30){
-        for(int i=0 ; i<어떤 숫자 ; i++){
-            SpawnList.push_back(new (컴공과 복수 전공&부전));
+        for(int i=0 ; i<?대뼡 ?レ옄 ; i++){
+            SpawnList.push_back(new (而닿났怨?蹂듭닔 ?꾧났&遺??);
         }
     }
     else if(round == 30){
-        SpawnList.push_back(new (조원 3명이 수강포기한 학생));
+        SpawnList.push_back(new (議곗썝 3紐낆씠 ?섍컯?ш린???숈깮));
     }
     else if(round > 30 && round <40){
-        for(int i=0 ; i<어떤 숫자 ; i++){
-            SpawnList.push_back(new (비컴공과 학생));
+        for(int i=0 ; i<?대뼡 ?レ옄 ; i++){
+            SpawnList.push_back(new (鍮꾩뺨怨듦낵 ?숈깮));
         }
     }
     else if(round == 40){
-        SpawnList.push_back(new (자다가 시험 못본 학생));
+        SpawnList.push_back(new (?먮떎媛 ?쒗뿕 紐삳낯 ?숈깮));
     }
     */
 

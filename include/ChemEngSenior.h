@@ -1,4 +1,4 @@
-#ifndef CHEMENGSENIOR_H
+﻿#ifndef CHEMENGSENIOR_H
 #define CHEMENGSENIOR_H
 
 #include "GoldTower.h"

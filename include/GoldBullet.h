@@ -1,4 +1,4 @@
-#ifndef GOLDBULLET_H
+﻿#ifndef GOLDBULLET_H
 #define GOLDBULLET_H
 
 #include "Bullet.h"
