@@ -5,6 +5,12 @@ extern Game* game;
 
 Bullet::Bullet()
 {
+    addSound("Hit","://sounds/Hit.wav");
+    addSound("Splash","://sounds/splash.wav");
+}
+
+Bullet::~Bullet()
+{
     ;
 }
 
@@ -32,6 +38,7 @@ void Bullet::Activated(bool active)
         move_timer->start(30);
     else
         move_timer->stop();
+
 }
 void Bullet::move()
 {
@@ -39,8 +46,7 @@ void Bullet::move()
     for(size_t i=0, n=colliding_enemies.size();i<n;i++){
         if(typeid(*(colliding_enemies[i]))==typeid(Enemy)){
             dynamic_cast<Enemy*>(colliding_enemies[i])->IsHitBy(AttackPower);
-            //please add isHitBy method and un-commentize this
-
+            //playSound("Hit");               //적중 시 나는 소리
             //game->scene->removeItem(colliding_enemies[i]);
             game->scene->removeItem(this);
             //game->SumWithEnemyNum(-1);

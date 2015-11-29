@@ -3,20 +3,23 @@
 #define BULLET
 
 #include <QGraphicsPixmapItem>
-#include <QGraphicsPolygonItem>
+#include <QGraphicsEllipseItem>
 #include <QGraphicsItem>
 #include <QObject>
 #include <QTimer>
 #include <QtMath>
+#include <typeinfo>
 #include "BattleObject.h"
 #include "enemy.h"
+#include "soundobject.h"
 
 #define STEP_SIZE 30                //기본으로 해놓은 STEP_SIZE
 
-class Bullet: public QObject, public QGraphicsPixmapItem{
+class Bullet: public QObject, public QGraphicsPixmapItem, public SoundObject{
     Q_OBJECT
 public:
     Bullet();
+    virtual ~Bullet();
     Bullet(int);           //constructor, int는 bullet의 파괴력(?)을 뜻함
     void SetAttackPower(int);
     int GetAttackPower();

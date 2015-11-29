@@ -8,11 +8,13 @@
 #include <QPointF>
 #include <QTimer>
 #include <QPen>
+#include "soundobject.h"
 
-class BattleObject: public QObject, public QGraphicsPixmapItem{
+class BattleObject: public QObject, public QGraphicsPixmapItem, public SoundObject{
     Q_OBJECT
 public:
     BattleObject();
+    virtual ~BattleObject();
     virtual void Attack();
     double CalcDistance(QGraphicsItem*);
     virtual void IsHitBy(int);

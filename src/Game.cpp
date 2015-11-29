@@ -8,6 +8,7 @@
 #include <QPoint>
 #include <QDebug>
 #include <QPainter>
+#include <sstream>
 
 Game::Game(){
     scene = new QGraphicsScene(this);       //make scene
@@ -15,8 +16,9 @@ Game::Game(){
     setFixedSize(1024,768);                 //fiz size of scene
     setScene(scene);
 
-    money = 50;                             //money given at first
-    round = 0;                              //initialize round
+    life = 100;
+    money = 1000;                             //money given at first
+    round = 1;                              //initialize round
     tooltip = nullptr;                      //initialize tooltip
     cursor = nullptr;                       //initialize cursor
 
@@ -27,23 +29,25 @@ Game::Game(){
     state = Cleared;                        //initialize state
     enemy_num=0;
 
-    for(int i=0 ; i < 16 ; i++){
+    for(int i=0 ; i < 11 ; i++){
         for(int j=0 ; j < 12 ; j++)
             position[i][j]=false;
     }
+    for(int i=3 ; i<10 ; i++)
+        position[i][7]=true;
+    position[3][8]=true;
+    for(int i=3 ; i<9 ; i++)
+        position[i][9]=true;
+    for(int i=4 ; i<9 ; i++)
+        position[i][2]=true;
+    for(int i=2 ; i<8 ; i++)
+        position[9][i]=true;
+    for(int i=0 ; i<16; i++)
+        position[i][0]=true;
 
     setMouseTracking(true);                 //enable mouse tracking
     setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);   //prohibit using scroll bar
     setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-
-    for(int i=0 ; i<13 ; i++){
-        QLine line(0,i*64,1024,i*64);
-        scene->addLine(line);
-    }
-    for(int i=0 ; i<17 ; i++){
-        QLine line(i*64,0,i*64,768);
-        scene->addLine(line);
-    }
 
     for(int i=0 ; i<14 ; i++){
         for(int j=0 ; j<14 ; j++)
@@ -76,6 +80,9 @@ Game::Game(){
 //this method is called right after the program is run
 void Game::displayMenu()
 {
+    QPixmap* map = new QPixmap(":/images/Map.bmp");
+    scene->addPixmap(*map);
+
     //make upgrade button and add it into scene
     upgrade_button = new UpgradeButton(":/images/upgrade.jpg");
     upgrade_button->setPos(1024-64*2-20,550);
@@ -84,32 +91,32 @@ void Game::displayMenu()
 
     //make build tower buttons and add it into scene
     Normal_Tower_button = new BuildTowerIcon(":/images/Mechanical.bmp",NORMAL);
-    Normal_Tower_button->setPos(1024-32*3,150);
+    Normal_Tower_button->setPos(1024-32*3,32*3);
     Normal_Tower_button->setZValue(1);
     scene->addItem(Normal_Tower_button);                     //add icon 생성
 
     Splash_Tower_button = new BuildTowerIcon(":/images/Mechanical.bmp",SPLASH);
-    Splash_Tower_button->setPos(1024-32*6,150);
+    Splash_Tower_button->setPos(1024-32*6,32*3);
     Splash_Tower_button->setZValue(1);
     scene->addItem(Splash_Tower_button);
 
     Slow_Tower_button = new BuildTowerIcon(":/images/Mechanical.bmp",SLOW);
-    Slow_Tower_button->setPos(1024-32*9,150);
+    Slow_Tower_button->setPos(1024-32*9,32*3);
     Slow_Tower_button->setZValue(1);
     scene->addItem(Slow_Tower_button);
 
     Poison_Tower_button = new BuildTowerIcon(":/images/Mechanical.bmp",POISON);
-    Poison_Tower_button->setPos(1024-32*3,250);
+    Poison_Tower_button->setPos(1024-32*3,32*6);
     Poison_Tower_button->setZValue(1);
     scene->addItem(Poison_Tower_button);
 
     Chain_Tower_button = new BuildTowerIcon(":/images/Mechanical.bmp",CHAIN);
-    Chain_Tower_button->setPos(1024-32*6,250);
+    Chain_Tower_button->setPos(1024-32*6,32*6);
     Chain_Tower_button->setZValue(1);
     scene->addItem(Chain_Tower_button);
 
     Gold_Tower_button = new BuildTowerIcon(":/images/Mechanical.bmp",GOLD);
-    Gold_Tower_button->setPos(1024-32*9,250);
+    Gold_Tower_button->setPos(1024-32*9,32*6);
     Gold_Tower_button->setZValue(1);
     scene->addItem(Gold_Tower_button);
 
@@ -124,11 +131,6 @@ void Game::displayMenu()
     start_pause_button->setPos(1024-64*4,620);
     start_pause_button->setZValue(1);
     scene->addItem(start_pause_button);
-
-    //add a large menu bar bar loacated in right side
-    //scene->addRect(1024-192,0,200,768,QPen(Qt::SolidLine),QBrush(QColor(Qt::gray)));
-    QPixmap* map = new QPixmap(":/images/Map.bmp");
-    scene->addPixmap(*map);
 
     //make a label which shows current round and add it into scene
     round_label = new QLabel();
@@ -151,6 +153,7 @@ void Game::displayMenu()
 //this method is called when a user point the tower button and this shows information of tower which user is looking at
 void Game::mouseMoveEvent(QMouseEvent *event)
 {
+
     //if there was a tooltip already
     if(tooltip && waiting_line.size() == 0){
         scene->removeItem(tooltip);
@@ -159,13 +162,42 @@ void Game::mouseMoveEvent(QMouseEvent *event)
     }
 
     //when mouse cursor is on tower build button
-    if(event->pos().x()/64 == (1024-192)/64 && event->pos().y()/64 == 200/64 && tooltip == nullptr){
+    if(event->pos().x()-(1024-32*3)<64 && event->pos().y()-32*3<64 && event->pos().x()-(1024-32*3)>0 && event->pos().y()-32*3>0 && tooltip == nullptr){
         tooltip = new QGraphicsPixmapItem();
         tooltip->setPixmap(QPixmap(":/images/tooltip.png"));
-        tooltip->setPos(1024-(192)*3/4,300);
+        tooltip->setPos(1024-192,280);
         scene->addItem(tooltip);
     }
-
+    else if(event->pos().x()-(1024-32*6)<64 && event->pos().y()-32*3<64 && event->pos().x()-(1024-32*6)>0 && event->pos().y()-32*3>0 && tooltip == nullptr){
+        tooltip = new QGraphicsPixmapItem();
+        tooltip->setPixmap(QPixmap(":/images/tooltip.png"));
+        tooltip->setPos(1024-192,280);
+        scene->addItem(tooltip);
+    }
+    else if(event->pos().x()-(1024-32*9)<64 && event->pos().y()-32*3<64 && event->pos().x()-(1024-32*9)>0 && event->pos().y()-32*3>0 && tooltip == nullptr){
+        tooltip = new QGraphicsPixmapItem();
+        tooltip->setPixmap(QPixmap(":/images/tooltip.png"));
+        tooltip->setPos(1024-192,280);
+        scene->addItem(tooltip);
+    }
+    else if(event->pos().x()-(1024-32*3)<64 && event->pos().y()-32*6<64 && event->pos().x()-(1024-32*3)>0 && event->pos().y()-32*6>0 && tooltip == nullptr){
+        tooltip = new QGraphicsPixmapItem();
+        tooltip->setPixmap(QPixmap(":/images/tooltip.png"));
+        tooltip->setPos(1024-192,280);
+        scene->addItem(tooltip);
+    }
+    else if(event->pos().x()-(1024-32*6)<64 && event->pos().y()-32*6<64 && event->pos().x()-(1024-32*6)>0 && event->pos().y()-32*6>0 && tooltip == nullptr){
+        tooltip = new QGraphicsPixmapItem();
+        tooltip->setPixmap(QPixmap(":/images/tooltip.png"));
+        tooltip->setPos(1024-192,280);
+        scene->addItem(tooltip);
+    }
+    else if(event->pos().x()-(1024-32*9)<64 && event->pos().y()-32*6<64 && event->pos().x()-(1024-32*9)>0 && event->pos().y()-32*6>0 && tooltip == nullptr){
+        tooltip = new QGraphicsPixmapItem();
+        tooltip->setPixmap(QPixmap(":/images/tooltip.png"));
+        tooltip->setPos(1024-192,280);
+        scene->addItem(tooltip);
+    }
     else
         QGraphicsView::mouseMoveEvent(event);
 }
@@ -175,17 +207,14 @@ void Game::mouseMoveEvent(QMouseEvent *event)
 //the method is called by spaawn timer regularly
 void Game::spawnEnemy()
 {
-    qDebug()<<"enemy가 스폰되었습니다.";
-
-    if(wave != enemy.size() ){
-        enemy.push_back(SpawnList[wave-enemy.size()-1]);
-
-        enemy[enemy.size()-1]->startMovement();
+    if(SpawnList.size() != enemy.size() ){
+        enemy.push_back(SpawnList[SpawnList.size()-enemy.size()-1]);
+        wave++;
+        qDebug()<<wave;
+        enemy.back()->startMovement();
         //please add startMovement method and un-commentize this.
         scene->addItem(enemy.back());
         enemy_num++;
-
-        //qDebug()<<reinterpret_cast<int> (enemy.back());
     }
     else
         spawn_timer->stop();
@@ -229,8 +258,9 @@ void Game::button_Pressed(QPointF point,int tower_code)
 
         spawn_timer = new QTimer(this);
         connect(spawn_timer,SIGNAL(timeout()),this,SLOT(spawnEnemy()));
-        spawn_timer->start(5000);
+        spawn_timer->start(500);
 
+        scene->removeItem(start_pause_button);
         state = Ingame;
     }
     /*
@@ -271,7 +301,12 @@ void Game::button_Pressed(QPointF point,int tower_code)
 void Game::clear_game()
 {
     wave_generator.ClearSpwanList(wave);
-    start_pause_button->setPixmap(QPixmap(":/images/Start_Button.png"));
+    start_pause_button->setPixmap(QPixmap(":/images/start.jpg"));
+    scene->addItem(start_pause_button);
+
+    round++;
+    round_label->setText(QString("Round ")+QString::number(round));
+    money_label->setText(QString("Money ")+QString::number(money));
 }
 
 
@@ -283,10 +318,22 @@ void Game::ShowTowerInfo(Tower *tower)
         scene->removeItem(tooltip);
         delete tooltip;
         tooltip = nullptr;
+
+        scene->removeItem(attack_ability);
+        delete attack_ability;
+        attack_ability = nullptr;
+
+        scene->removeItem(defense_ability);
+        delete defense_ability;
+        defense_ability = nullptr;
+
+        scene->removeItem(attack_speed_ability);
+        delete attack_speed_ability;
+        attack_speed_ability = nullptr;
     }
 
     tooltip = new QGraphicsPixmapItem();
-    tooltip->setPos(1024-(192)*3/4,300);
+    tooltip->setPos(1024-192-32*3,280);
 
     int towerType = tower->GetTowerCode();
     switch(towerType){
@@ -319,6 +366,24 @@ void Game::ShowTowerInfo(Tower *tower)
         tooltip->setPixmap(QPixmap(":/images/tooltip.png"));break;
 
     }
+
+    char buff[100];
+
+    sprintf(buff, "%d", tower->GetAttackPower());
+    attack_ability = scene->addText(QString("Attack: ")+QString(buff),QFont("Arial", 10));
+    attack_ability->setDefaultTextColor(QColor(Qt::white));
+    attack_ability->setPos(1024-32*3,32*12);
+
+    sprintf(buff, "%d", tower->GetDefensivePower());
+    defense_ability = scene->addText(QString("Defense: ")+QString(buff),QFont("Arial", 10));
+    defense_ability->setDefaultTextColor(QColor(Qt::white));
+    defense_ability->setPos(1024-32*3,32*13);
+
+    sprintf(buff, "%d", tower->GetAttackSpeed());
+    attack_speed_ability = scene->addText(QString("Speed: ")+QString(buff),QFont("Arial", 10));
+    attack_speed_ability->setDefaultTextColor(QColor(Qt::white));
+    attack_speed_ability->setPos(1024-32*3,32*14);
+
     scene->addItem(tooltip);
 }
 
@@ -331,6 +396,18 @@ void Game::DeletTowerInfo()
         scene->removeItem(tooltip);
         delete tooltip;
         tooltip = nullptr;
+
+        scene->removeItem(attack_ability);
+        delete attack_ability;
+        attack_ability = nullptr;
+
+        scene->removeItem(defense_ability);
+        delete defense_ability;
+        defense_ability = nullptr;
+
+        scene->removeItem(attack_speed_ability);
+        delete attack_speed_ability;
+        attack_speed_ability = nullptr;
     }
 }
 
@@ -348,6 +425,7 @@ void Game::mousePressEvent(QMouseEvent *event){
         pointer->Activated(true);
         scene->addItem(pointer);
         QWidget::unsetCursor();
+        qDebug()<<(pointed_spot.x()/64)<<","<<(pointed_spot.y()/64);
 
         this->position[pointed_spot.x()/64][pointed_spot.y()/64] = true;
         add_mode = false;
@@ -373,7 +451,7 @@ void Game::SetUpgradeMode(bool _upgrade_mode)
 void Game::SumWithEnemyNum(int _num)
 {
     enemy_num += _num;
-    if(enemy_num == 0){
+    if(wave == SpawnList.size()){
         SetState(Cleared);
     }
 }
@@ -385,13 +463,8 @@ void Game::MakeNewGame()
 {    
     enemy.clear();
     SpawnList.clear();
-
-    round++;
-    round_label->setText(QString("Round ")+QString::number(round));
-    money_label->setText(QString("Money ")+QString::number(money));
-
     SpawnList = wave_generator.MakeSpawnList(round);
-    wave = SpawnList.size();
+    wave = 0;
 }
 
 void Game::FuseTower()
@@ -459,4 +532,9 @@ void Game::SetState(int _state){
         if(_state == Cleared)
             emit game_is_cleared();
     }
+}
+
+void Game::set_money(int _money){
+    money = _money;
+    money_label->setText(QString("Money ")+QString::number(money));
 }
