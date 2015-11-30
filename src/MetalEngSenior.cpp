@@ -26,5 +26,4 @@ void MetalEngSenior::Attack()
     bullet->setRotation(angle);                     //set rotation
     game->scene->addItem(bullet);                   //add it in game scene
 }
-}
 

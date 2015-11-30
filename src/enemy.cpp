@@ -37,9 +37,6 @@ Enemy::Enemy(int level)
 
     setPos(path[0][0],path[0][1]);
 
-    hit = new SoundObject;
-    hit->addSound("hit",":/sounds/Hit.wav");
-
 
     timer = new QTimer();
     connect(timer, SIGNAL(timeout()), this, SLOT(move()));
@@ -65,7 +62,6 @@ void Enemy::IsSlowedBy()
 
 void Enemy::IsHitBy(int power)
 {
-    hit->playSound("hit");
 
       Hp = Hp - power/DefensivePower;   //decrease Hp
 

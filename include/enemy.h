@@ -27,7 +27,7 @@ private:
     QGraphicsRectItem* hpBar;   //new
 public:
     Enemy(int level=1);               //constructor
-    int DieOrNot(){ return life; }    //Die=0, not=1
+    int DieOrNot(){ return !life; }    //Die=0, not=1
     void IsPoisonedBy(int);           //called when attack by poison tower
     void IsSlowedBy();                //called when attack by slow tower
     void IsHitBy(int);               //called when attacked
