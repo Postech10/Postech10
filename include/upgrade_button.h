@@ -5,9 +5,15 @@
 #include <Upgrades.h>
 
 class UpgradeButton : public QGraphicsPixmapItem{
+
+private:
+    Upgrades* up;
+
 public:
     UpgradeButton(char* filename,QGraphicsItem *parent =0);
     void mousePressEvent(QGraphicsSceneMouseEvent *event);      //누를 때 method
+
+    Upgrades* getUp() {return up;}
 };
 
 #endif // UPGRADE_BUTTON_H
