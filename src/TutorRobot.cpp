@@ -8,27 +8,27 @@ TutorRobot::TutorRobot()
     AttackPower = 30;
     DefensivePower = 20;
     AttackSpeed = 20;
-    Attackable = true;                  //초기설정 나중에 밸런스를 위해 바꿀거임
-    setPixmap(QPixmap(":/images/Mechanical.bmp"));     //사진설정
+    Attackable = true;                  //this will be changed for balance
+    setPixmap(QPixmap(":/images/Mechanical.bmp"));     //set pic
 }
 
 void TutorRobot::SetTarget()
 {
-    int attack_num=0;                          //세개의 타겟에 대해서 공격가능하므로 세번까지 가능
-    QList<QGraphicsItem *> colliding_items= AttackRange->collidingItems();//AttackRange와 colliding하는 item들
-    for(size_t j = 0, m = colliding_items.size();j<m;j++){              //부딪히는 아이템들 다 검사
-        if(typeid(*(colliding_items[j]))==typeid(Enemy))                   //Enemy가 있으면
-            break;                                                         //중지하고 밑에 바로 실행
-        else if(j == m-1){                                                 //없으면
+    int attack_num=0;                          //target max num = 3
+    QList<QGraphicsItem *> colliding_items= AttackRange->collidingItems();// items collides with attack range
+    for(size_t j = 0, m = colliding_items.size();j<m;j++){
+        if(typeid(*(colliding_items[j]))==typeid(Enemy))                   //if enemy
+            break;
+        else if(j == m-1){                                                 //no enemy
             HasTarget = false;
-            return;                                                        //리턴
+            return;                                                        //return
         }
     }
     for (size_t i=0, n=colliding_items.size();i<n;i++){
         Enemy *test = dynamic_cast<Enemy *>(colliding_items[i]);           //colliding enemy
-        if(test&&attack_num<3){                          //enemy일 경우만
+        if(test&&attack_num<3){                          //only for enemy and smaller than MAX target num
             Target = test;
-            HasTarget = true;                  //가장가까운 적이 Target이 되도록함
+            HasTarget = true;
             Attack();
             playSound("BulletWentOff");
             attack_num++;

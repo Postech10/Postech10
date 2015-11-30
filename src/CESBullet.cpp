@@ -6,27 +6,26 @@ extern Game* game;
 
 CESBullet::CESBullet(int attack,int gold)
 {
-    setPixmap(QPixmap(":/images/Mechanical.bmp"));          //image 설정
+    setPixmap(QPixmap(":/images/Mechanical.bmp"));          //set pic
     SetAttackPower(attack);
     GoldPower = gold;
 }
 
 void CESBullet::move()
 {
-    QList<QGraphicsItem *> colliding_enemies=collidingItems();      //enemy랑 부딪히면 사라짐
+    QList<QGraphicsItem *> colliding_enemies=collidingItems();      //bullet collides
     for(size_t i=0, n=colliding_enemies.size();i<n;i++){
         if(typeid(*(colliding_enemies[i]))==typeid(Enemy)){
-            dynamic_cast<Enemy*>(colliding_enemies[i])->IsPoisonedBy(AttackPower);  //enemy에 논의 필요
-           // if(((Enemy *)colliding_enemies[i])->DieOrNot())       //죽었는지 아닌지 확인필요.. 논의필요함
-              //  game->set_money(game->get_money()+GoldPower);                      //이타워에 의해 죽었을때!! 돈 올라감
-            //please add method DieorNot, isPoisonedBy and un-commentize this.
-            playSound("Hit");               //적중 시 나는 소리
-            game->scene->removeItem(this);                      //꼭필요한지 모르겠음.. 나중에 수정예정
+            dynamic_cast<Enemy*>(colliding_enemies[i])->IsPoisonedBy(AttackPower);
+            if(((Enemy *)colliding_enemies[i])->DieOrNot())         //die?
+                game->set_money(game->get_money()+GoldPower);       //inc money
+            playSound("Hit");               //sound for hit
+            game->scene->removeItem(this);
             delete this;
             return;
         }
     }
-    double theta = rotation();                      //theta 설정
+    double theta = rotation();                      //set theta
 
     double dy = STEP_SIZE*qSin(qDegreesToRadians(theta));
     double dx = STEP_SIZE*qCos(qDegreesToRadians(theta));

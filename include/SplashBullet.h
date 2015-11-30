@@ -7,7 +7,7 @@
 
 class SplashBullet: public Bullet{
 public:
-    SplashBullet(int);           //constructor, int는 splashbullet의 파괴력을 뜻함
+    SplashBullet(int);           //constructor, int means splashbullet's power
 public slots:
     void move();        //splashbullet move method
 };

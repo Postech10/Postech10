@@ -1,37 +1,55 @@
-#include "soundobject.h"
-#include <QSound>
+﻿#include "soundobject.h"
+#include <QSoundEffect>
 #include <QString>
+#include <QUrl>
+#include <QDebug>
 #include <iterator>
 
 
 void SoundObject::addSound(const QString &tag, const QString &filename)
 {
-    soundboard[tag] = new QSound(filename);
-    soundon[tag] = false;
+    QSoundEffect* sound = new QSoundEffect;
+    QUrl file = QUrl::fromLocalFile(filename);
+    if(file.isEmpty()) qDebug()<<"Open File Not Found. Tag : "<<tag;
+    else sound->setSource(file);
+    sound->setVolume(0.8f);
+    soundboard[tag] = sound;
+
     //now, the sound of the file is matched to the tag
 }
 
 void SoundObject::playSound(const QString &tag)
 {
-    //first, update 'soundon' map
-    QMap<QString, QSound*>::iterator it;
+    //if any of the sound of this is playing, stop it.
+    //QMap<QString, QSoundEffect*>::iterator it;
+    /*for(it = soundboard.begin(); it!=soundboard.end(); it++)
+    {
+        if((*it)->isPlaying()){
+            (*it)->stop();
+        }
+    }*/
+    try{
+    soundboard[tag]->play(); //play assigned sound
+    }
+    catch(...){
+        qDebug()<<"Sound Not Found. Tag : "<<tag;
+    }
+}
+bool SoundObject::isSoundFinished()
+{
+    QMap<QString, QSoundEffect*>::iterator it;
     for(it = soundboard.begin(); it!=soundboard.end(); it++)
     {
-        if((*it)->isFinished()) soundon[it.key()] = false;
-        if(soundon[it.key()] == true) //playing?
-        {
-            (*it)->stop();//stop it
-            soundon[it.key()] = false;
+        if((*it)->isPlaying()){
+            return false;
         }
     }
-
-    //mark as played
-    soundon[tag] = true;
-    soundboard[tag]->play(); //play assigned sound
+    return true;
 }
+
 SoundObject::~SoundObject()
 {
-    QMap<QString, QSound*>::iterator it;
+    QMap<QString, QSoundEffect*>::iterator it;
     for(it = soundboard.begin(); it!=soundboard.end(); it++)
     {
         delete *it;
