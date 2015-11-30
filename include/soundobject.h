@@ -15,21 +15,19 @@
  *
  *
  * --------------------------------------------------------------------------------*/
-#include <QSound>
+#include <QSoundEffect>
 #include <QMap>
 #include <QString>
 
 class SoundObject
 {
 private:
-    QMap<QString, QSound*> soundboard;//every sound is mapped to a specific string.
-    QMap<QString, bool> soundon;/*if sound is on, true. else, false.
-                                  this map is used for stopping overlapped sounds
-                                  */
+    QMap<QString, QSoundEffect*> soundboard;//every sound is mapped to a specific string.
 
 public:
     void addSound(const QString& tag, const QString& filename);//specify a tag and a filename
     void playSound(const QString& tag);
+    bool isSoundFinished();
     ~SoundObject();
 };
 

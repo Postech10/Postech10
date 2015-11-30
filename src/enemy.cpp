@@ -1,4 +1,4 @@
-﻿#include "enemy.h"
+#include "enemy.h"
 #include "Game.h"
 #include <QDebug>
 #include <QGraphicsScene>
@@ -38,7 +38,6 @@ Enemy::Enemy(int level)
     setPos(path[0][0],path[0][1]);
 
 
-
     timer = new QTimer();
     connect(timer, SIGNAL(timeout()), this, SLOT(move()));
 
@@ -53,15 +52,10 @@ void Enemy::IsPoisonedBy(int power)
     poisonTime->start(1000);
 }
 
-void Enemy::IsSlowedBy(int power)
+void Enemy::IsSlowedBy()
 {
-    delete timer;
-    timer = new QTimer();
-    connect(timer, SIGNAL(timeout()), this, SLOT(move()));
-    timer->start(50*power);    //slowed, doubled clockrate
-    qDebug()<<"slOw";
-
-    slowTime = new QTimer();
+    slowedState=0;
+   slowTime = new QTimer();
     connect(slowTime, SIGNAL(timeout()), this, SLOT(changeClockRate()));
     slowTime->start(5000);
 }
@@ -74,7 +68,7 @@ void Enemy::IsHitBy(int power)
 
       if(Hp<=0){
           life=0;
-	game->SumWithEnemyNum(-1);
+          game->SumWithEnemyNum(-1);
           scene()->removeItem(hpBar);
           scene()->removeItem(this);
 
@@ -90,7 +84,7 @@ void Enemy::startMovement()
 {
 
     setHpbar();
-    timer->start(200);
+    timer->start(50);
 }
 
 void Enemy::setHpbar()
@@ -112,7 +106,6 @@ void Enemy::cutHpbar()
 
 Enemy::~Enemy()
 {
-    delete hpBar;
     //알아서 지워줌
 }
 
@@ -175,11 +168,18 @@ void Enemy::IsHitByP(int power)     //poisoned
 void Enemy::changeClockRate()
 {
     delete timer;
-    delete slowTime;
-
     timer = new QTimer();
     connect(timer, SIGNAL(timeout()), this, SLOT(move()));
-    timer->start(50);      //recovered from slow state
+    if (slowedState==0){
+        timer->start(200);    //slowed, doubled clockrate
+        slowedState=1;
+        qDebug()<<"slOw";
+    }
+    else {
+        timer->start(50);      //recovered from slow state
+        slowedState=0;
+        delete slowTime;
+        qDebug()<<"fast";
+    }
 
-    qDebug()<<"fast";
 }

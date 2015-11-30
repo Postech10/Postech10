@@ -1,4 +1,4 @@
-﻿#ifndef SPLASHBULLET_H
+#ifndef SPLASHBULLET_H
 #define SPLASHBULLET_H
 
 #include "Bullet.h"
@@ -7,7 +7,7 @@
 
 class SplashBullet: public Bullet{
 public:
-    SplashBullet(int);           //constructor, int??splashbullet???뚭눼?μ쓣 ?삵븿
+    SplashBullet(int);           //constructor, int means splashbullet's power
 public slots:
     void move();        //splashbullet move method
 };

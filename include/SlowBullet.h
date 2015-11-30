@@ -1,4 +1,4 @@
-﻿#ifndef SLOWBULLET_H
+#ifndef SLOWBULLET_H
 #define SLOWBULLET_H
 
 #include "Bullet.h"
@@ -7,7 +7,7 @@ class SlowBullet: public Bullet
 {
 public:
     SlowBullet();
-    SlowBullet(int);           //constructor, int??slowbullet???먮젮吏???뺣룄(?)???삵븿
+    SlowBullet(int);           //constructor, int means slowbullet's slow power
 public slots:
     void move();        //slowbullet move method
 protected:

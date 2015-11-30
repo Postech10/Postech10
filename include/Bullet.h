@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 #ifndef BULLET
 #define BULLET
 
@@ -12,21 +12,21 @@
 #include "enemy.h"
 #include "soundobject.h"
 
-#define STEP_SIZE 30                //湲곕낯?쇰줈 ?대넃? STEP_SIZE
+#define STEP_SIZE 30                //default STEP_SIZE
 
 class Bullet: public QObject, public QGraphicsPixmapItem, public SoundObject{
     Q_OBJECT
 public:
     Bullet();
     virtual ~Bullet();
-    Bullet(int);           //constructor, int??bullet???뚭눼???)???삵븿
+    Bullet(int);           //constructor, int means bullet's power(?)
     void SetAttackPower(int);
     int GetAttackPower();
     void Activated(bool);
 public slots:
     virtual void move();        //bullet move method
 protected:
-    int AttackPower;        //Bullet???뚭눼??
+    int AttackPower;        //Bullet power
     QTimer* move_timer;
 };
 

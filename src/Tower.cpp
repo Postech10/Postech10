@@ -15,8 +15,8 @@ Tower::Tower()
     DefensivePower = 20;
     AttackSpeed = 20;
     choose = false;
-    Attackable = true;                  //초기설정 나중에 밸런스를 위해 바꿀거임
-    setPixmap(QPixmap(":/images/Mechanical.bmp"));     //사진설정
+    Attackable = true;                  //this will be changed for balance
+    setPixmap(QPixmap(":/images/Mechanical.bmp"));     //set pic
 
 }
 
@@ -80,16 +80,9 @@ Tower* Tower::fuseTower(Tower *tow1, Tower *tow2)
      * TUTOR + JOBSBIO = APPLE 6*9 = 54
      * PROF + JOBSBIO = JOBS 7*9 = 63
      * CES + MES = TRIPLE 8*10=80*/
-    //필수사항 : 만드시 조합가능한거 끼리만 이 함수에 들어올수 있도록 해야함, 아니면 조합이
-    //안되는 두가지 임에도 불구하고 조합이 되어 나갈수도 있음!!
+    //requirement : tow1, tow2 should be possible combination number
+    //if inputs are wrong with above manual, it would produce error
     int mult_code = tow1->GetTowerCode()*tow2->GetTowerCode();
-
-/*
-    delete tow1;
-    delete tow2;                    //재료가 되는 두 타워는 지움*/
-
-    //지우기 전에 game class에서 처리할 것이 있기 때문에
-    //game class에서 지우는 걸
 
     switch(mult_code){
     case 0:
@@ -107,34 +100,13 @@ Tower* Tower::fuseTower(Tower *tow1, Tower *tow2)
     case 63:
         return new SteveJobs();
     case 80:
-        return new TripleMajorSenior();     //조합에 따라 알맞은 타워 반환
+        return new TripleMajorSenior();     //return proper tower
     }
 }
 
 int Tower::GetTargetNum()
 {
     return TargetNum;
-/*=======hw used this method for "Maximum Targets"
- * HOWEVER, Sangjin used this for scanning enemies(?) if i'm right.
- * you two are on mission to solve this
- * ---------------------------------------------------------
-    if(choose == false && game->GetAddMode()==false){
-        if(game->waiting_line.size() < 2){
-           attack_area->setPen(QPen(Qt::SolidLine));
-           choose = true;
-           game->waiting_line.push_back(this);
-        }
-    }
-
-    else if(choose == true){
-      attack_area->setPen(QPen(Qt::DotLine));
-        choose = false;
-        if(game->waiting_line[0] == this)
-            game->waiting_line.remove(0);
-        else
-           game->waiting_line.remove(1);
-    }        
->>>>>>> game*/
 }
 
 int Tower::GetTowerCode()
