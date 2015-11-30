@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #ifndef GAME
 #define GAME
 
@@ -8,6 +8,7 @@
 #include <QList>
 #include <QString>
 #include <QLabel>
+#include <QLineEdit>
 #include "Tower.h"
 #include "enemy.h"
 #include "Wave_Generator.h"
@@ -18,13 +19,13 @@
 
 enum State {Ingame, Paused, Cleared};
 
-class Game: public QGraphicsView{               //game화면을 상속 (view)
+class Game: public QGraphicsView{               //game?붾㈃???곸냽 (view)
 
     Q_OBJECT
 
 public:
     Game();                                     //constructor
-    void displayMenu();                         //메뉴들을 출력하는 method
+    void displayMenu();                         //硫붾돱?ㅼ쓣 異쒕젰?섎뒗 method
 
     //event method
     void mouseMoveEvent(QMouseEvent *event);
@@ -42,6 +43,10 @@ public:
     void set_money(int _money);
     inline int get_money() {return money;}
 
+    //round accessor & modifier
+    void set_round(int _round);
+    inline int get_round() {return round;}
+
     void SumWithEnemyNum(int _num);
     inline int GetEnemyNum() {return enemy_num;}
 
@@ -55,7 +60,7 @@ public:
 
     void FuseTower();
 
-    //지금은 변수들이 public인데 나중에 모두 private로 만들거임.
+    //吏湲덉? 蹂?섎뱾??public?몃뜲 ?섏쨷??紐⑤몢 private濡?留뚮뱾嫄곗엫.
     QGraphicsScene *scene;
     QList<Tower*> waiting_line;
     QGraphicsPixmapItem *tooltip;
@@ -65,7 +70,7 @@ public:
 signals:
     void RoundSet(int new_round);
     void game_is_cleared();
-    //state가 Cleared로 바뀌었을 때, 실행 되어 다음 판을 준비 하는 함수.
+    //state媛 Cleared濡?諛붾뚯뿀???? ?ㅽ뻾 ?섏뼱 ?ㅼ쓬 ?먯쓣 以鍮??섎뒗 ?⑥닔.
 
 public slots:
 
@@ -74,53 +79,57 @@ public slots:
     void clear_game();
     void ShowTowerInfo(Tower* tower);
     void DeletTowerInfo();
+    void CheatKeyEntered();
 
 private :
 
     QGraphicsPixmapItem *cursor;                  //members
 
-    //round에 따라 enemy를 만드는 인스턴스
+    //round???곕씪 enemy瑜?留뚮뱶???몄뒪?댁뒪
     WaveGenerator wave_generator;
-    //한 라운드에 리스폰 되어야 하는 enemy의 벡터
+    //???쇱슫?쒖뿉 由ъ뒪???섏뼱???섎뒗 enemy??踰≫꽣
     QVector<Enemy*> SpawnList;
-    //지금 건설 된 타워들의 벡터
+    //吏湲?嫄댁꽕 ????뚮뱾??踰≫꽣
     QVector<Tower*> build;
-    //지금 현재 리스폰 된 enemy가 담긴 벡터
+    //吏湲??꾩옱 由ъ뒪????enemy媛 ?닿릿 踰≫꽣
     QVector<Enemy*> enemy;
-    //지금 살아 있는 enemy의 수
+    //吏湲??댁븘 ?덈뒗 enemy????
     int enemy_num;
-    //죽은 enemy의 수
+    //二쎌? enemy????
     int dead_enemy;
 
-    //combnination[r][w]가 true면 r과 w는 조합이 가능함
+    //combnination[r][w]媛 true硫?r怨?w??議고빀??媛?ν븿
     bool combination[14][14];
 
-    //타워를 건설 할 때 사용하는 포인터 변수
+    //移섑듃?ㅻ? ?낅젰 ?????덈뒗 遺遺?
+    QLineEdit* textBox;
+
+    //??뚮? 嫄댁꽕 ?????ъ슜?섎뒗 ?ъ씤??蹂??
     Tower* pointer;
 
-    int life; //남은 체력
-    int money; //골드 획득량 정보
-    int round; //현재 라운드
-    int wave; //한 라운드에 등장하는 enemy의 수
-    int state; //현재 게임 상황이 어떤 상황인지 알려 주는 변수
+    int life; //?⑥? 泥대젰
+    int money; //怨⑤뱶 ?띾뱷???뺣낫
+    int round; //?꾩옱 ?쇱슫??
+    int wave; //???쇱슫?쒖뿉 ?깆옣?섎뒗 enemy????
+    int state; //?꾩옱 寃뚯엫 ?곹솴???대뼡 ?곹솴?몄? ?뚮젮 二쇰뒗 蹂??
 
-    bool add_mode; //add_mode 인지 아닌지에 대한 정보를 담고 있는 변수
+    bool add_mode; //add_mode ?몄? ?꾨땶吏??????뺣낫瑜??닿퀬 ?덈뒗 蹂??
     bool upgrade_mode;
-    bool position[16][12]; //1024*768를 64*64 크기의 정사각형들로 나눔
+    bool position[16][12]; //1024*768瑜?64*64 ?ш린???뺤궗媛곹삎?ㅻ줈 ?섎닎
 
-    Button *start_pause_button; //start_puase 버튼
-    Fusion_Button *fusion_button; //합체 버튼
-    BuildTowerIcon *Normal_Tower_button; //타워 버튼
-    BuildTowerIcon *Splash_Tower_button; //타워 버튼
-    BuildTowerIcon *Slow_Tower_button; //타워 버튼
-    BuildTowerIcon *Poison_Tower_button; //타워 버튼
-    BuildTowerIcon *Chain_Tower_button; //타워 버튼
-    BuildTowerIcon *Gold_Tower_button; //타워 버튼
-    UpgradeButton *upgrade_button; //업그레이드 버튼
+    Button *start_pause_button; //start_puase 踰꾪듉
+    Fusion_Button *fusion_button; //?⑹껜 踰꾪듉
+    BuildTowerIcon *Normal_Tower_button; //???踰꾪듉
+    BuildTowerIcon *Splash_Tower_button; //???踰꾪듉
+    BuildTowerIcon *Slow_Tower_button; //???踰꾪듉
+    BuildTowerIcon *Poison_Tower_button; //???踰꾪듉
+    BuildTowerIcon *Chain_Tower_button; //???踰꾪듉
+    BuildTowerIcon *Gold_Tower_button; //???踰꾪듉
+    UpgradeButton *upgrade_button; //?낃렇?덉씠??踰꾪듉
 
-    QTimer *spawn_timer; //적들이 scene에 출현 하는 frequency에 관한 정보를 담고 있다.
-    QLabel* round_label; //round 출력
-    QLabel* money_label; //money 출력
+    QTimer *spawn_timer; //?곷뱾??scene??異쒗쁽 ?섎뒗 frequency??愿???뺣낫瑜??닿퀬 ?덈떎.
+    QLabel* round_label; //round 異쒕젰
+    QLabel* money_label; //money 異쒕젰
 
     QGraphicsTextItem* upgrade_level;
     QGraphicsTextItem* attack_ability;

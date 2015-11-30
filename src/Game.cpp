@@ -1,4 +1,4 @@
-#include "Game.h"
+﻿#include "Game.h"
 #include <QGraphicsScene>
 #include "Tower.h"
 #include "Bullet.h"
@@ -59,7 +59,7 @@ Game::Game(){
         for(int j=0 ; j<14 ; j++)
             combination[i][j]=false;
     }
-    combination[0][0]=true; //디버깅용
+    combination[0][0]=true; //?붾쾭源낆슜
     combination[0][2]=true;
     combination[1][4]=true;
     combination[1][5]=true;
@@ -99,12 +99,11 @@ void Game::displayMenu()
     Normal_Tower_button = new BuildTowerIcon(":/images/Mechanical.bmp",NORMAL);
     Normal_Tower_button->setPos(1024-32*3,32*3);
     Normal_Tower_button->setZValue(1);
-    scene->addItem(Normal_Tower_button);                     //add icon 생성    
+    scene->addItem(Normal_Tower_button);                     //add icon ?앹꽦    
     QGraphicsTextItem* temp = scene->addText(QString("Normal_Tower"),QFont("Arial", 10));
     temp->setDefaultTextColor(QColor(Qt::white));
     temp->setPos(1024-32*3,32*3+5+64);
     scene->addItem(temp);
-    delete temp;
 
     Splash_Tower_button = new BuildTowerIcon(":/images/Mechanical.bmp",SPLASH);
     Splash_Tower_button->setPos(1024-32*6,32*3);
@@ -114,7 +113,6 @@ void Game::displayMenu()
     temp->setDefaultTextColor(QColor(Qt::white));
     temp->setPos(1024-32*6,32*3+5+64);
     scene->addItem(temp);
-    delete temp;
 
     Slow_Tower_button = new BuildTowerIcon(":/images/Mechanical.bmp",SLOW);
     Slow_Tower_button->setPos(1024-32*9,32*3);
@@ -124,7 +122,6 @@ void Game::displayMenu()
     temp->setDefaultTextColor(QColor(Qt::white));
     temp->setPos(1024-32*9,32*3+5+64);
     scene->addItem(temp);
-    delete temp;
 
     Poison_Tower_button = new BuildTowerIcon(":/images/Mechanical.bmp",POISON);
     Poison_Tower_button->setPos(1024-32*3,32*6);
@@ -134,7 +131,6 @@ void Game::displayMenu()
     temp->setDefaultTextColor(QColor(Qt::white));
     temp->setPos(1024-32*3,32*6+5+64);
     scene->addItem(temp);
-    delete temp;
 
     Chain_Tower_button = new BuildTowerIcon(":/images/Mechanical.bmp",CHAIN);
     Chain_Tower_button->setPos(1024-32*6,32*6);
@@ -144,7 +140,6 @@ void Game::displayMenu()
     temp->setDefaultTextColor(QColor(Qt::white));
     temp->setPos(1024-32*6,32*6+5+64);
     scene->addItem(temp);
-    delete temp;
 
     Gold_Tower_button = new BuildTowerIcon(":/images/Mechanical.bmp",GOLD);
     Gold_Tower_button->setPos(1024-32*9,32*6);
@@ -154,7 +149,6 @@ void Game::displayMenu()
     temp->setDefaultTextColor(QColor(Qt::white));
     temp->setPos(1024-32*9,32*6+5+64);
     scene->addItem(temp);
-    delete temp;
 
     //make fusion button and add it into scene
     fusion_button = new Fusion_Button(":/images/FUSE.jpg");
@@ -183,6 +177,11 @@ void Game::displayMenu()
     money_label->setText(QString("Money ")+QString::number(money));
     money_label->setGeometry(1024-64*4,35,64*3,30);
     scene->addWidget(money_label);
+
+    textBox = new QLineEdit();
+    connect(textBox , SIGNAL(returnPressed()), this, SLOT(CheatKeyEntered()));
+    textBox->setGeometry(64 , 32 , 64*3 , 32);
+    scene->addWidget(textBox);
 }
 
 
@@ -285,12 +284,12 @@ void Game::button_Pressed(QPointF point,int tower_code)
             add_mode_pixmap = new QPixmap(QString(":/images/Mechanical.bmp"));break;
         }
 
+        QCursor* add_mode_cursor = new QCursor(*add_mode_pixmap);
+        QWidget::setCursor(*add_mode_cursor);
+
         build[build.size()-1]->SetAttackPower(upgrade_button->getUp()->GetReference(tower_code)->GetAttackPower());
         build[build.size()-1]->SetDefensivePower(upgrade_button->getUp()->GetReference(tower_code)->GetDefensivePower());
         build[build.size()-1]->SetAttackSpeed(upgrade_button->getUp()->GetReference(tower_code)->GetAttackSpeed());
-
-        QCursor* add_mode_cursor = new QCursor(*add_mode_pixmap);
-        QWidget::setCursor(*add_mode_cursor);
     }
 
     //when start button pressed.
@@ -346,11 +345,8 @@ void Game::clear_game()
     start_pause_button->setPixmap(QPixmap(":/images/start.jpg"));
     scene->addItem(start_pause_button);
 
-    round++;
-    money += dead_enemy*10;
-
-    round_label->setText(QString("Round ")+QString::number(round));
-    money_label->setText(QString("Money ")+QString::number(money));
+    set_round(get_round() + 1);
+    set_money(get_money() + dead_enemy*5);
 
     wave = 0;
     dead_enemy=0;
@@ -460,6 +456,23 @@ void Game::DeletTowerInfo()
     }
 }
 
+void Game::CheatKeyEntered()
+{
+    QStringList input = textBox->text().split(" ");
+    if(input.size() == 2 && input.at(0) == QString("round") && input.at(1).toInt() > 0 && input.at(1).toInt() < 50){
+        set_round(input.at(1).toInt()-1);
+        this->SetState(Cleared);
+        textBox->setText(QString(""));
+    }
+
+    if(textBox->text() == QString("show me the money")){
+        set_money(99999);
+        textBox->setText(QString(""));
+    }
+    else
+        textBox->setText(QString(""));
+}
+
 //method to controll any mouse click events.
 //when add mode is true, tower is built by this method.
 void Game::mousePressEvent(QMouseEvent *event){
@@ -513,7 +526,7 @@ void Game::MakeNewGame()
 {    
     enemy.clear();
     SpawnList.clear();
-    SpawnList = wave_generator.MakeSpawnList(round);
+    SpawnList = wave_generator.MakeSpawnList(get_round());
 }
 
 void Game::FuseTower()
@@ -581,31 +594,36 @@ void Game::FuseTower()
 
         }
         else
-            qDebug()<<"fusion 할 수 없습니다!";
+            qDebug()<<"fusion ?????놁뒿?덈떎!";
     }
 
     else
-        qDebug()<<"fusion 할 수 없습니다!";
+        qDebug()<<"fusion ?????놁뒿?덈떎!";
 
 
 
 
 }
 
-
 //method to modify state of the game
 //this mehod emit signal that all enemies are removed from the scene
 void Game::SetState(int _state){
-    if(state != _state){
-        state = _state;
-        if(_state == Cleared){
-               qDebug()<<"emit game_is_cleared";
-            emit game_is_cleared();
-        }
+    state = _state;
+    if(_state == Cleared){
+           qDebug()<<"emit game_is_cleared";
+        emit game_is_cleared();
     }
 }
 
 void Game::set_money(int _money){
     money = _money;
     money_label->setText(QString("Money ")+QString::number(money));
+}
+
+void Game::set_round(int _round)
+{
+    if(round != _round){
+        round = _round;
+        round_label->setText(QString("Round ")+QString::number(round));
+    }
 }

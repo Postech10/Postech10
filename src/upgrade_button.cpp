@@ -1,4 +1,4 @@
-#include "upgrade_button.h"
+﻿#include "upgrade_button.h"
 #include "Game.h"
 #include <QDebug>
 extern Game *game;
