@@ -8,6 +8,7 @@
 #include <QList>
 #include <QString>
 #include <QLabel>
+#include <QLineEdit>
 #include "Tower.h"
 #include "enemy.h"
 #include "Wave_Generator.h"
@@ -42,6 +43,10 @@ public:
     void set_money(int _money);
     inline int get_money() {return money;}
 
+    //round accessor & modifier
+    void set_round(int _round);
+    inline int get_round() {return round;}
+
     void SumWithEnemyNum(int _num);
     inline int GetEnemyNum() {return enemy_num;}
 
@@ -74,6 +79,7 @@ public slots:
     void clear_game();
     void ShowTowerInfo(Tower* tower);
     void DeletTowerInfo();
+    void CheatKeyEntered();
 
 private :
 
@@ -94,6 +100,9 @@ private :
 
     //combnination[r][w]가 true면 r과 w는 조합이 가능함
     bool combination[14][14];
+
+    //치트키를 입력 할 수 있는 부분
+    QLineEdit* textBox;
 
     //타워를 건설 할 때 사용하는 포인터 변수
     Tower* pointer;

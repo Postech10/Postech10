@@ -9,6 +9,8 @@ class Control_Animation : public QObject
 public:
     Control_Animation();
     void ADD(AnimatedBattleObject new_Object);
+
+public slots:
     void Animate();
     void Underattack();
 
