@@ -17,7 +17,7 @@
 #include "BuildTowerIcon.h"
 #include "button.h"
 
-enum State {Ingame, Paused, Cleared};
+enum State {Ingame, Paused, Cleared, GameOver};
 
 class Game: public QGraphicsView{               //game?붾㈃???곸냽 (view)
 
@@ -47,14 +47,14 @@ public:
     void set_round(int _round);
     inline int get_round() {return round;}
 
-    void SumWithEnemyNum(int _num);
+    void RenewEnemyNum(bool is_dead);
     inline int GetEnemyNum() {return enemy_num;}
 
     void SetState(int _state);
     int GetState();
 
     int GetLife() {return life;}
-    void SetLife(int _life) {life = _life;}
+    void SetLife(int _life);
 
     void MakeNewGame();
 
@@ -70,7 +70,7 @@ public:
 signals:
     void RoundSet(int new_round);
     void game_is_cleared();
-    //state媛 Cleared濡?諛붾뚯뿀???? ?ㅽ뻾 ?섏뼱 ?ㅼ쓬 ?먯쓣 以鍮??섎뒗 ?⑥닔.
+    void game_is_over();
 
 public slots:
 
@@ -80,6 +80,7 @@ public slots:
     void ShowTowerInfo(Tower* tower);
     void DeletTowerInfo();
     void CheatKeyEntered();
+    void destroy_game();
 
 private :
 
@@ -130,11 +131,13 @@ private :
     QTimer *spawn_timer; //?곷뱾??scene??異쒗쁽 ?섎뒗 frequency??愿???뺣낫瑜??닿퀬 ?덈떎.
     QLabel* round_label; //round 異쒕젰
     QLabel* money_label; //money 異쒕젰
+    QLabel* life_label;
 
     QGraphicsTextItem* upgrade_level;
     QGraphicsTextItem* attack_ability;
     QGraphicsTextItem* defense_ability;
     QGraphicsTextItem* attack_speed_ability;
+    QGraphicsTextItem* game_over;
 
 };
 

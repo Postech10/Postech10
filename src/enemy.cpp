@@ -1,3 +1,4 @@
+﻿#pragma once
 #include "enemy.h"
 #include "Game.h"
 #include <QDebug>
@@ -38,6 +39,7 @@ Enemy::Enemy(int level)
     setPos(path[0][0],path[0][1]);
 
 
+
     timer = new QTimer();
     connect(timer, SIGNAL(timeout()), this, SLOT(move()));
 
@@ -52,10 +54,15 @@ void Enemy::IsPoisonedBy(int power)
     poisonTime->start(1000);
 }
 
-void Enemy::IsSlowedBy()
+void Enemy::IsSlowedBy(int power)
 {
-    slowedState=0;
-   slowTime = new QTimer();
+    delete timer;
+    timer = new QTimer();
+    connect(timer, SIGNAL(timeout()), this, SLOT(move()));
+    timer->start(200*power);    //slowed, doubled clockrate
+    qDebug()<<"slOw";
+
+    slowTime = new QTimer();
     connect(slowTime, SIGNAL(timeout()), this, SLOT(changeClockRate()));
     slowTime->start(5000);
 }
@@ -68,7 +75,7 @@ void Enemy::IsHitBy(int power)
 
       if(Hp<=0){
           life=0;
-          game->SumWithEnemyNum(-1);
+          game->RenewEnemyNum(true);
           scene()->removeItem(hpBar);
           scene()->removeItem(this);
 
@@ -87,25 +94,11 @@ void Enemy::startMovement()
     timer->start(50);
 }
 
-void Enemy::setHpbar()
-{
-    Full=Hp;
-    hpBar = new QGraphicsRectItem(0,0, float(width)/10, float(height)/50);
-    hpBar->setBrush(QBrush(Qt::red));
-    hpBar-> setPos(x(),y()-20);
-    game->scene->addItem(hpBar);
-}
 
-void Enemy::cutHpbar()
-{
-    qDebug()<<Hp<<Full;
-    hpBar->setRect(0,0, (float(width)/10)*((float(Hp)/Full)), float(height)/50);
-    qDebug()<<float(width)/10;
-             qDebug()<< float(Hp)/Full*100;
-}
 
 Enemy::~Enemy()
 {
+    delete hpBar;
     //알아서 지워줌
 }
 
@@ -116,7 +109,7 @@ void Enemy::setPicture()     //Hp AttackPower DefensePower
     switch(n/10){
     case 0:
         if(n%10) setPixmap(QPixmap(":/images/Mechanical.bmp"));
-        else     setPixmap(QPixmap(":/images/Enemy2.png"));
+        else     setPixmap(QPixmap(":/images/Mechanical.bmp"));
         break;
     case 1:
         if(n%10) setPixmap(QPixmap(":/images/Enemy3.png"));
@@ -147,6 +140,11 @@ void Enemy::move()
 
     if((x()== path[9][0]) && (y()==path[9][1])){                 //end point
         qDebug() << "Fail to remove enemy";
+
+
+        game->SetLife(game->GetLife()-10);
+        game->RenewEnemyNum(false);
+
         scene()->removeItem(hpBar);
         scene()->removeItem(this);
         delete timer;
@@ -168,18 +166,11 @@ void Enemy::IsHitByP(int power)     //poisoned
 void Enemy::changeClockRate()
 {
     delete timer;
+    delete slowTime;
+
     timer = new QTimer();
     connect(timer, SIGNAL(timeout()), this, SLOT(move()));
-    if (slowedState==0){
-        timer->start(200);    //slowed, doubled clockrate
-        slowedState=1;
-        qDebug()<<"slOw";
-    }
-    else {
-        timer->start(50);      //recovered from slow state
-        slowedState=0;
-        delete slowTime;
-        qDebug()<<"fast";
-    }
+    timer->start(50);      //recovered from slow state
 
+    qDebug()<<"fast";
 }
