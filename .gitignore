@@ -1,5 +1,9 @@
 sangjin.pro.user
 sangjin.exe.embed.manifest
+sangjin.exe_manifest.rc
+sangjin.exe_manifest.res
+sangjin.ilk
+sangjin.pdb
 sangjin.exe
 Makefile
 moc/
