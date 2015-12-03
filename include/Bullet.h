@@ -25,6 +25,7 @@ public:
     void Activated(bool);
 public slots:
     virtual void move();        //bullet move method
+    virtual void callDestructor();
 protected:
     int AttackPower;        //Bullet power
     QTimer* move_timer;
