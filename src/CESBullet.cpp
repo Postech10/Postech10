@@ -21,7 +21,7 @@ void CESBullet::move()
                 game->set_money(game->get_money()+GoldPower);       //inc money
             playSound("Hit");               //sound for hit
             game->scene->removeItem(this);
-            delete this;
+            QTimer::singleShot(3000,this,SLOT(callDestructor()));
             return;
         }
     }

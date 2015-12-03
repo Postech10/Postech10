@@ -18,7 +18,7 @@ void PoisonBullet::move()
             dynamic_cast<Enemy*>(colliding_enemies[i])->IsPoisonedBy(AttackPower);
             playSound("Hit");               //sound for hit
             game->scene->removeItem(this);
-            delete this;
+            QTimer::singleShot(3000,this,SLOT(callDestructor()));
             return;
         }
     }

@@ -3,7 +3,7 @@
 
 #include "GoldBullet.h"
 
-#define SPLASH_SCALE_FACTOR 20
+#define SPLASH_SCALE_FACTOR 150
 
 class SplashPoisonBullet: public GoldBullet{
 public:
