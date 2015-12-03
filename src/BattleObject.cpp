@@ -2,6 +2,8 @@
 #include "Bullet.h"
 #include "Game.h"
 #define SCALE_FACTOR 300
+#define width 600
+#define height 600
 
 extern Game* game;
 
@@ -144,4 +146,20 @@ void BattleObject::SetTarget()
         Attack();                               //attack
         playSound("BulletWentOff");
     }
+}
+
+void BattleObject::setHpbar()
+{
+    Full=Hp;
+    hpBar = new QGraphicsRectItem(0,0, float(width)/10, float(height)/50);
+    hpBar->setBrush(QBrush(Qt::red));
+    hpBar-> setPos(x(),y()-20);
+    game->scene->addItem(hpBar);
+}
+
+void BattleObject::cutHpbar()
+{
+
+    hpBar->setRect(0,0, (float(width)/10)*((float(Hp)/Full)), float(height)/50);
+
 }

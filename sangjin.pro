@@ -58,7 +58,8 @@ SOURCES += \
     src/AppleRobot.cpp \
     src/soundobject.cpp \
     src/animatedbattleobject.cpp \
-    src/control_animation.cpp
+    src/control_animation.cpp \
+    src/bullet_enemy.cpp
 
 HEADERS  += \
     include/upgrade_button.h \
@@ -99,7 +100,8 @@ HEADERS  += \
     include/AppleRobot.h \
     include/soundobject.h \
     include/animatedbattleobject.h \
-    include/control_animation.h
+    include/control_animation.h \
+    include/bullet_enemy.h
 
 RESOURCES += \
     resources/sources.qrc \

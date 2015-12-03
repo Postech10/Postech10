@@ -3,6 +3,7 @@
 #define WAVEGENERATOR_H
 
 #include "enemy.h"
+#include "attackableenemy.h"
 #include <QVector>
 
 
@@ -11,7 +12,7 @@ class WaveGenerator
 public:
     WaveGenerator();
     QVector<Enemy *> MakeSpawnList(int round);
-    void ClearSpwanList(int wave);
+    void ClearSpwanList();
 
 signals:
 

@@ -80,6 +80,7 @@ Game::Game(){
 
     //when game is cleared, automatically the game objcet prepares the next rounds.
     connect(this,SIGNAL(game_is_cleared()),this,SLOT(clear_game()));
+    connect(this,SIGNAL(game_is_over()),this,SLOT(destroy_game()));
 }
 
 //method to display default Menu on the scene
@@ -164,19 +165,26 @@ void Game::displayMenu()
 
     //make a label which shows current round and add it into scene
     round_label = new QLabel();
-    round_label->setFont(QFont("Arial", 20 , QFont::Bold));
+    round_label->setFont(QFont("Arial", 15 , QFont::Bold));
     //round_label->setStyleSheet("background-color:gray;");
     round_label->setText(QString("Round ")+QString::number(round));
-    round_label->setGeometry(1024-64*4,0,64*3,30);
+    round_label->setGeometry(1024-64*4,0,64*3,20);
     scene->addWidget(round_label);
 
     //make a label which shows current money the user has and add it into scene
     money_label = new QLabel();
-    money_label->setFont(QFont("Arial", 20 , QFont::Bold));
+    money_label->setFont(QFont("Arial", 15 , QFont::Bold));
     //money_label->setStyleSheet("background-color:gray;");
     money_label->setText(QString("Money ")+QString::number(money));
-    money_label->setGeometry(1024-64*4,35,64*3,30);
+    money_label->setGeometry(1024-64*4,25,64*3,20);
     scene->addWidget(money_label);
+
+    life_label = new QLabel();
+    life_label->setFont(QFont("Arial", 15 , QFont::Bold));
+    //money_label->setStyleSheet("background-color:gray;");
+    life_label->setText(QString("Life ")+QString::number(life));
+    life_label->setGeometry(1024-64*4,50,64*3,20);
+    scene->addWidget(life_label);
 
     textBox = new QLineEdit();
     connect(textBox , SIGNAL(returnPressed()), this, SLOT(CheatKeyEntered()));
@@ -303,23 +311,11 @@ void Game::button_Pressed(QPointF point,int tower_code)
         scene->removeItem(start_pause_button);
         state = Ingame;
     }
-    /*
-    else if(start_pause_button->contains(point)==true && state == Ingame){
 
-        if(spawn_timer != nullptr){
-            spawn_timer->stop();
-            delete spawn_timer;
-            spawn_timer = nullptr;
-        }
-
-        //for(int i=0 ; i<enemy.size() ; i++)
-            //enemy[i]->stopMovement();
-        //please declare stopMovement method and un-commentize this
-
-        start_pause_button->setPixmap(QPixmap(":/images/Start_Button.png"));
-        state = Paused;
+    else if(start_pause_button->contains(point)==true && state == GameOver){
+        set_round(1);
     }
-
+/*
     else if(start_pause_button->contains(point)==true && state == Paused){
         //for(int i=0 ; i<enemy.size() ; i++)
             //enemy[i]->startMovement(150);
@@ -341,12 +337,13 @@ void Game::button_Pressed(QPointF point,int tower_code)
 void Game::clear_game()
 {
     qDebug()<<"clear_game() start";
-    wave_generator.ClearSpwanList(wave);
+    wave_generator.ClearSpwanList();
     start_pause_button->setPixmap(QPixmap(":/images/start.jpg"));
     scene->addItem(start_pause_button);
 
     set_round(get_round() + 1);
     set_money(get_money() + dead_enemy*5);
+    life_label->setText(QString("Life ")+QString::number(life));
 
     wave = 0;
     dead_enemy=0;
@@ -473,6 +470,15 @@ void Game::CheatKeyEntered()
         textBox->setText(QString(""));
 }
 
+void Game::destroy_game()
+{
+    game_over = scene->addText(QString("GAME OVER!"),QFont("Arial", 100 , QFont::Bold));
+    game_over->setPos(0,768/2);
+
+    start_pause_button->setPixmap(QPixmap(":/images/start.jpg"));
+    scene->addItem(start_pause_button);
+}
+
 //method to controll any mouse click events.
 //when add mode is true, tower is built by this method.
 void Game::mousePressEvent(QMouseEvent *event){
@@ -507,14 +513,17 @@ void Game::SetUpgradeMode(bool _upgrade_mode)
 }
 
 
-//method to renew the number of enemies which are still alive
+//method to renew the number of enemies which are still in map
 //when the number of enemies in the map goes to zero, we change state of game to CLERED
-void Game::SumWithEnemyNum(int _num)
+void Game::RenewEnemyNum(bool is_dead)
 {
-    enemy_num += _num;
-    dead_enemy++;
+    enemy_num--;
+
+    if(is_dead)
+        dead_enemy++;
+
     qDebug()<<wave<<","<<enemy_num<<","<<dead_enemy;
-    if(wave == SpawnList.size() && enemy_num == 0 && dead_enemy == SpawnList.size()){
+    if(wave == SpawnList.size() && enemy_num == 0 && state != GameOver){
         SetState(Cleared);
     }
 }
@@ -599,20 +608,31 @@ void Game::FuseTower()
 
     else
         qDebug()<<"fusion ?????놁뒿?덈떎!";
-
-
-
-
 }
 
 //method to modify state of the game
 //this mehod emit signal that all enemies are removed from the scene
 void Game::SetState(int _state){
     state = _state;
-    if(_state == Cleared){
-           qDebug()<<"emit game_is_cleared";
+
+    if(_state == GameOver){
+        qDebug()<<"emit game_is_over";
+        emit game_is_over();
+    }
+
+    else if(_state == Cleared){
+        qDebug()<<"emit game_is_cleared";
         emit game_is_cleared();
     }
+}
+
+void Game::SetLife(int _life)
+{
+    life = _life;
+    if(life <= 0)
+        SetState(GameOver);
+
+    life_label->setText(QString("Life ")+QString::number(life));
 }
 
 void Game::set_money(int _money){

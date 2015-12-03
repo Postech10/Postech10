@@ -49,7 +49,7 @@ void Bullet::move()
     for(size_t i=0, n=colliding_enemies.size();i<n;i++){
         if(typeid(*(colliding_enemies[i]))==typeid(Enemy)){
             dynamic_cast<Enemy*>(colliding_enemies[i])->IsHitBy(AttackPower);
-            playSound("Hit");               //sound for hit
+            //playSound("Hit");               //sound for hit
             game->scene->removeItem(this);
             delete this;
             return;

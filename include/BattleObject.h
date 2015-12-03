@@ -28,6 +28,8 @@ public:
     void SetAttackSpeed(int AttackSpeed);
     virtual void Activated(bool);
     void HideAttackRange();
+    void setHpbar();
+    void cutHpbar();
 public slots:
     virtual void SetTarget();
 protected:
@@ -40,6 +42,9 @@ protected:
     int AttackSpeed;
     bool Attackable;
     QTimer* timer;
+    int Full;    //new
+    int slowLevel;
+    QGraphicsRectItem* hpBar;   //new
 };
 
 #endif // BATTLEOBJECT
