@@ -5,8 +5,8 @@ extern Game* game;
 
 Bullet::Bullet()
 {
-    addSound("Hit","://sounds/Hit.wav");
-    addSound("Splash","://sounds/splash.wav");
+    addSound("Hit","resources/sounds/Hit.wav");
+    addSound("Splash","resources/sounds/splash.wav");
     move_timer = new QTimer();
 }
 
@@ -20,8 +20,8 @@ Bullet::Bullet(int power): QObject()
     setPixmap(QPixmap(":/images/Mechanical.bmp"));          //set image
     SetAttackPower(power);
     move_timer = new QTimer();
-    addSound("Hit","://sounds/Hit.wav");
-    addSound("Splash","://sounds/splash.wav");
+    addSound("Hit","resources/sounds/Hit.wav");
+    addSound("Splash","resources/sounds/splash.wav");
 }
 
 void Bullet::SetAttackPower(int AttackPower)
