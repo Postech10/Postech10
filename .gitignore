@@ -1,5 +1,7 @@
 sangjin.pro.user
-bin/
+sangjin.exe.embed.manifest
+sangjin.exe
+Makefile
 moc/
 obj/
 rss/

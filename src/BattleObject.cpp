@@ -27,7 +27,7 @@ BattleObject::BattleObject()
     QLineF ln(poly_center, object_center);
     AttackRange->setPos(x()+ln.dx(),y()+ln.dy());       //sync center
 
-    addSound("BulletWentOff","://sounds/BulletWentOff.wav");
+    addSound("BulletWentOff","resources/sounds/BulletWentOff.wav");
 }
 
 BattleObject::~BattleObject()

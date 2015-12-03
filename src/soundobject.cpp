@@ -2,6 +2,7 @@
 #include <QSoundEffect>
 #include <QString>
 #include <QUrl>
+#include <QDir>
 #include <QDebug>
 #include <iterator>
 
@@ -9,6 +10,7 @@
 void SoundObject::addSound(const QString &tag, const QString &filename)
 {
     QSoundEffect* sound = new QSoundEffect;
+    //qDebug()<<QDir::currentPath() + "/" + filename;
     QUrl file = QUrl::fromLocalFile(filename);
     if(file.isEmpty()) qDebug()<<"Open File Not Found. Tag : "<<tag;
     else sound->setSource(file);

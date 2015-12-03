@@ -3,15 +3,6 @@
         <file>images/tooltip.png</file>
         <file>images/test_Mechanical.bmp</file>
         <file>images/Pause_Button.png</file>
-        <file>sounds/upgrade.wav</file>
-        <file>sounds/splash.wav</file>
-        <file>sounds/pushbutton.wav</file>
-        <file>sounds/move.wav</file>
-        <file>sounds/lifelost.wav</file>
-        <file>sounds/Select.wav</file>
-        <file>sounds/Hit.wav</file>
-        <file>sounds/Electricity.wav</file>
-        <file>sounds/BulletWentOff.wav</file>
         <file>images/upgrade.jpg</file>
         <file>images/TileMapSet.bmp</file>
         <file>images/Map.bmp</file>
@@ -39,14 +30,6 @@
         <file>images/Tooltip_IME.gif</file>
         <file>images/Tooltip_Mechanical.gif</file>
         <file>images/Tooltip_SMP.bmp</file>
-        <file>sounds/BattleTheme.mp3</file>
-        <file>sounds/Ending.mp3</file>
-        <file>sounds/FinalBossTheme.mp3</file>
-        <file>sounds/fusion.wav</file>
-        <file>sounds/Gameover.mp3</file>
-        <file>sounds/NormalTheme.mp3</file>
-        <file>sounds/TitleTheme.mp3</file>
-        <file>sounds/unablebutton.wav</file>
         <file>fonts/PressStart2P.ttf</file>
     </qresource>
 </RCC>

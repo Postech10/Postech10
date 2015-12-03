@@ -15,7 +15,7 @@ INCLUDEPATH += $$PWD/include/
 OBJECTS_DIR = $$PWD/obj
 MOC_DIR = $$PWD/moc
 RCC_DIR = $$PWD/rss
-DESTDIR = $$PWD/bin
+DESTDIR = $$PWD
 
 
 SOURCES += \
