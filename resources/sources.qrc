@@ -1,10 +1,7 @@
 <RCC>
     <qresource prefix="/">
-        <file>images/upgrade_button.png</file>
         <file>images/tooltip.png</file>
         <file>images/test_Mechanical.bmp</file>
-        <file>images/fusion_button.png</file>
-        <file>images/Start_Button.png</file>
         <file>images/Pause_Button.png</file>
         <file>sounds/upgrade.wav</file>
         <file>sounds/splash.wav</file>
@@ -21,5 +18,35 @@
         <file>images/FUSE.jpg</file>
         <file>images/start.jpg</file>
         <file>images/Mechanical.bmp</file>
+        <file>images/Animation_Assistant.bmp</file>
+        <file>images/Animation_ChemEng.bmp</file>
+        <file>images/Animation_Chemical.bmp</file>
+        <file>images/Animation_Enemy.bmp</file>
+        <file>images/Animation_IME.bmp</file>
+        <file>images/Animation_JobsBook.bmp</file>
+        <file>images/Animation_Mechanical.bmp</file>
+        <file>images/Animation_Metal.bmp</file>
+        <file>images/Animation_Professor.bmp</file>
+        <file>images/Animation_Session.bmp</file>
+        <file>images/Animation_SMP.bmp</file>
+        <file>images/Animation_TutorRobot.bmp</file>
+        <file>images/BulletSet.bmp</file>
+        <file>images/BulletSetManual.png</file>
+        <file>images/Buttons.bmp</file>
+        <file>images/Tooltip_Assistant.bmp</file>
+        <file>images/Tooltip_Chemical.bmp</file>
+        <file>images/Tooltip_Electronics.bmp</file>
+        <file>images/Tooltip_IME.gif</file>
+        <file>images/Tooltip_Mechanical.gif</file>
+        <file>images/Tooltip_SMP.bmp</file>
+        <file>sounds/BattleTheme.mp3</file>
+        <file>sounds/Ending.mp3</file>
+        <file>sounds/FinalBossTheme.mp3</file>
+        <file>sounds/fusion.wav</file>
+        <file>sounds/Gameover.mp3</file>
+        <file>sounds/NormalTheme.mp3</file>
+        <file>sounds/TitleTheme.mp3</file>
+        <file>sounds/unablebutton.wav</file>
+        <file>fonts/PressStart2P.ttf</file>
     </qresource>
 </RCC>
