@@ -19,7 +19,7 @@ void SplashBullet::move()
             SplashRange->setPen(QPen(Qt::DotLine));     //splash range dot line
             QPointF poly_center(SPLASH_SCALE_FACTOR/2,SPLASH_SCALE_FACTOR/2);               //center of splash range
             poly_center = mapToScene(poly_center);
-            QPointF object_center(colliding_enemies[i]->x(),colliding_enemies[i]->y());       //enemy's position that hit by bullet
+            QPointF object_center(x()+40,y()+50);       //bullet's position
             QLineF ln(poly_center, object_center);
             SplashRange->setPos(x()+ln.dx(),y()+ln.dy());       //sync center
             QList<QGraphicsItem *> splashed_enemies= SplashRange->collidingItems();     //all items in splash range
@@ -27,6 +27,7 @@ void SplashBullet::move()
                 if(typeid(*(splashed_enemies[j]))==typeid(Enemy))                       //if enemy
                    dynamic_cast<Enemy*>(splashed_enemies[j])->IsHitBy(AttackPower);     //hit by
             }
+            dynamic_cast<Enemy*>(colliding_enemies[i])->IsHitBy(AttackPower);
             playSound("Splash");               //sound for splash
             game->scene->removeItem(this);
             game->scene->removeItem(SplashRange);
