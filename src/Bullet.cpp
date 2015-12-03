@@ -49,9 +49,9 @@ void Bullet::move()
     for(size_t i=0, n=colliding_enemies.size();i<n;i++){
         if(typeid(*(colliding_enemies[i]))==typeid(Enemy)){
             dynamic_cast<Enemy*>(colliding_enemies[i])->IsHitBy(AttackPower);
-            //playSound("Hit");               //sound for hit
+            playSound("Hit");               //sound for hit
             game->scene->removeItem(this);
-            delete this;
+            QTimer::singleShot(3000,this,SLOT(callDestructor()));
             return;
         }
     }
@@ -61,4 +61,9 @@ void Bullet::move()
     double dx = STEP_SIZE*qCos(qDegreesToRadians(theta));
 
     setPos(x()+dx,y()+dy);
+}
+
+void Bullet::callDestructor()
+{
+    delete this;
 }
