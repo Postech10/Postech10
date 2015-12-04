@@ -16,7 +16,9 @@ Tower::Tower()
     AttackSpeed = 20;
     choose = false;
     Attackable = true;                  //this will be changed for balance
-    setPixmap(QPixmap(":/images/Icon_Assistant.bmp"));     //set pic
+    set_image(QString::fromStdString(":/images/Animation_Assistant.bmp"));
+    set_state(CALM);
+    //setPixmap(QPixmap(":/images/Icon_Assistant.bmp"));     //set pic
 
 }
 

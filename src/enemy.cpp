@@ -5,8 +5,8 @@
 #include <QGraphicsScene>
 #include <QString>
 
-#define width 600
-#define height 600
+#define width 640
+#define height 640
 
 
 extern Game* game;
@@ -18,19 +18,20 @@ Enemy::Enemy(int level)
     int yLoc[10] = {80,80,80,60,60,60,35,10,10,10};
 
     for(int i=0;i<10;i++){
-        path[i][0] = xLoc[i]*width/100+80;
-        path[i][1] = yLoc[i]*height/100+65;
+        path[i][0] = xLoc[i]*width/100+64;
+        path[i][1] = yLoc[i]*height/100+64;
     }
 
     currentPath=-1;     //not yet on path
 
-    clockRate=10000/(60+currentLevel);   //different velocity according to level
+       //different velocity according to level
 
     life=1;
     Hp=(currentLevel/10+1)*50;
     DefensivePower=1;
     slowedState=0;
     poisonedState=0;
+    reach=0;
 
     if(currentLevel%10!=0)
         this->HideAttackRange();
@@ -70,7 +71,7 @@ void Enemy::IsSlowedBy(int power)
     delete timer;
     timer = new QTimer();
     connect(timer, SIGNAL(timeout()), this, SLOT(move()));
-    timer->start(10*power);    //slowed, doubled clockrate
+    timer->start(clockRate/5*power);    //slowed, doubled clockrate
     qDebug()<<"slOw";
 
     slowTime = new QTimer();
@@ -91,8 +92,6 @@ void Enemy::IsHitBy(int power)
           scene()->removeItem(this);
           if(slowedState==1)
               delete slowTime;
-          if(poisonedState==1)
-              delete poisonTime;
       }
       else
           cutHpbar();
@@ -102,25 +101,31 @@ void Enemy::IsHitBy(int power)
 
 void Enemy::startMovement()
 {
-
+    clockRate=50 - 5*(currentLevel/10);
     setHpbar();
-    timer->start(50);
+    timer->start(clockRate);
 }
 
 
 
 Enemy::~Enemy()
 {
+  /*  qDebug()<<"a";
+
     if (Hp>0){
         delete timer;
+        qDebug()<<"b";
         delete hpBar;
+        qDebug()<<"c";
         if(slowedState==1)
             delete slowTime;
+        qDebug()<<"d";
         if(poisonedState==1)
             delete poisonTime;
+        qDebug()<<"e";
 
-    }
-    //알아서 지워줌
+    }*/
+    //나머지는 알아서 지워줌
 }
 
 void Enemy::setPicture()     //Hp AttackPower DefensePower
@@ -150,7 +155,7 @@ void Enemy::setPicture()     //Hp AttackPower DefensePower
 
 void Enemy::move()
 {
-    if ((x()== path[currentPath+1][0]) && (y()==path[currentPath+1][1])){
+    if ((((x()>= (path[currentPath+1][0]-0.2)))&& (x()<= (path[currentPath+1][0]+0.2))) && ((y()>= (path[currentPath+1][1]-0.2))&& (y()<= (path[currentPath+1][1]+0.2)))){
         currentPath++;
         x_move=(path[currentPath+1][0]-path[currentPath][0])/(width/10);
         y_move=(path[currentPath+1][1]-path[currentPath][1])/(height/10);
@@ -162,12 +167,18 @@ void Enemy::move()
     if((x()== path[9][0]) && (y()==path[9][1])){                 //end point
         qDebug() << "Fail to remove enemy";
 
-
+        reach=1;
         game->SetLife(game->GetLife()-10);
-        game->RenewEnemyNum(false);
+        qDebug() << "Fail to remove enemy1";
 
-        scene()->removeItem(hpBar);
-        scene()->removeItem(this);
+        game->RenewEnemyNum(false);
+        qDebug() << "Fail to remove enemy2";
+
+
+        game->scene->removeItem(hpBar);qDebug() << "Fail to remove enemy3";
+
+        game->scene->removeItem(this);qDebug() << "Fail to remove enemy4";
+
 
     }
 
@@ -176,14 +187,20 @@ void Enemy::move()
 void Enemy::IsHitByP(int power)     //poisoned
 {
 
-    poisonedTime+=500;
-    if(poisonedTime>5000 || Hp<=0){            //after specific time, released from poison
-        hpBar->setBrush(QBrush(Qt::red));
-        delete poisonTime;
-        poisonedState=0;
+    poisonedTime+=1000;
+
+    if(Hp<=0){
+        delete poisonTime;      //끝난경우
     }
-    else
+    else if(poisonedTime>3000){            //after specific time, released from poison
+        hpBar->setBrush(QBrush(Qt::red));
+        poisonedState=0;
+        delete poisonTime;
+    }
+    else if (reach==0)
         IsHitBy(power);
+
+
 
 }
 
@@ -195,7 +212,7 @@ void Enemy::changeClockRate()
 
     timer = new QTimer();
     connect(timer, SIGNAL(timeout()), this, SLOT(move()));
-    timer->start(50);      //recovered from slow state
+    timer->start(clockRate);      //recovered from slow state
 
     qDebug()<<"fast";
 }

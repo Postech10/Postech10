@@ -12,10 +12,10 @@
 #include <QFontDatabase>
 
 Game::Game(){
-    scene = new QGraphicsScene(this);       //make scene
-    scene->setSceneRect(0,0,1024,768);      //set size of scene
-    setFixedSize(1024,768);                 //fiz size of scene
-    setScene(scene);
+        scene = new QGraphicsScene(this);       //make scene
+        scene->setSceneRect(0,0,1024,768);      //set size of scene
+        setFixedSize(1024,768);                 //fiz size of scene
+        setScene(scene);
 
     life = 100;
     money = 50;                             //money given at first
@@ -77,6 +77,8 @@ Game::Game(){
     combination[9][6]=true;
     combination[9][7]=true;
     combination[10][8]=true;
+
+    control = new Control_Animation();
 
     //when game is cleared, automatically the game objcet prepares the next rounds.
     connect(this,SIGNAL(game_is_cleared()),this,SLOT(clear_game()));
@@ -253,6 +255,7 @@ void Game::spawnEnemy()
         //please add startMovement method and un-commentize this.
         scene->addItem(enemy.back());
         enemy_num++;                                //the number of enemies which are alive.
+        control->ADD(enemy.back());
     }
     else
         spawn_timer->stop();
@@ -291,9 +294,12 @@ void Game::button_Pressed(QPointF point,int tower_code)
         QCursor* add_mode_cursor = new QCursor(*add_mode_pixmap);
         QWidget::setCursor(*add_mode_cursor);
 
+        control->ADD(build[build.size()-1]);
+
         build[build.size()-1]->SetAttackPower(upgrade_button->getUp()->GetReference(tower_code)->GetAttackPower());
         build[build.size()-1]->SetDefensivePower(upgrade_button->getUp()->GetReference(tower_code)->GetDefensivePower());
         build[build.size()-1]->SetAttackSpeed(upgrade_button->getUp()->GetReference(tower_code)->GetAttackSpeed());
+
     }
 
     //when start button pressed.

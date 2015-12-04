@@ -16,6 +16,7 @@
 #include "fusion_button.h"
 #include "BuildTowerIcon.h"
 #include "button.h"
+#include "control_animation.h"
 
 enum State {Ingame, Paused, Cleared, GameOver};
 
@@ -63,6 +64,8 @@ public:
     void MakeNewGame();
 
     void FuseTower();
+
+    Control_Animation* control;
 
     //吏湲덉? 蹂?섎뱾??public?몃뜲 ?섏쨷??紐⑤몢 private濡?留뚮뱾嫄곗엫.
     QGraphicsScene *scene;
@@ -142,6 +145,8 @@ private :
     QLabel* defense_ability;
     QLabel* attack_speed_ability;
     QLabel* game_over;
+
+
 
 };
 
