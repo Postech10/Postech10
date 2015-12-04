@@ -86,10 +86,13 @@ void Enemy::IsHitBy(int power)
 
 
       if(Hp<=0){
+          qDebug()<<"hey";
           life=0;
           game->RenewEnemyNum(true);
           scene()->removeItem(hpBar);
           scene()->removeItem(this);
+          delete timer;
+          delete hpBar;
           if(slowedState==1)
               delete slowTime;
       }
@@ -113,9 +116,7 @@ Enemy::~Enemy()
   /*  qDebug()<<"a";
 
     if (Hp>0){
-        delete timer;
         qDebug()<<"b";
-        delete hpBar;
         qDebug()<<"c";
         if(slowedState==1)
             delete slowTime;
@@ -178,6 +179,8 @@ void Enemy::move()
         game->scene->removeItem(hpBar);qDebug() << "Fail to remove enemy3";
 
         game->scene->removeItem(this);qDebug() << "Fail to remove enemy4";
+        delete timer;
+        delete hpBar;
 
 
     }
