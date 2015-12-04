@@ -1,15 +1,16 @@
 ﻿#ifndef BATTLEOBJECT
 #define BATTLEOBJECT
 
-#include <QGraphicsPixmapItem>
+
 #include <QGraphicsEllipseItem>
 #include <QObject>
 #include <QPointF>
 #include <QTimer>
 #include <QPen>
 #include "soundobject.h"
+#include "animatedbattleobject.h"
 
-class BattleObject: public QObject, public QGraphicsPixmapItem, public SoundObject{
+class BattleObject: public QObject, public AnimatedBattleObject, public SoundObject{
     Q_OBJECT
 public:
     BattleObject();

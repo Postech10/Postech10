@@ -102,7 +102,6 @@ void Enemy::IsHitBy(int power)
 
 void Enemy::startMovement()
 {
-
     setHpbar();
     timer->start(50);
 }

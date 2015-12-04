@@ -55,6 +55,13 @@ double BattleObject::CalcDistance(QGraphicsItem *item)
 void BattleObject::IsHitBy(int AttackPower)
 {
     Hp = Hp - AttackPower/DefensivePower;       //not perfect equation yet
+
+    if(Hp<=0){
+        scene()->removeItem(hpBar);
+        scene()->removeItem(this);
+        }
+    else
+        cutHpbar();
 }
 
 int BattleObject::GetHp()
@@ -153,7 +160,7 @@ void BattleObject::setHpbar()
     Full=Hp;
     hpBar = new QGraphicsRectItem(0,0, float(width)/10, float(height)/50);
     hpBar->setBrush(QBrush(Qt::red));
-    hpBar-> setPos(x(),y()-20);
+    hpBar->setPos(x(),y()-20);
     game->scene->addItem(hpBar);
 }
 
