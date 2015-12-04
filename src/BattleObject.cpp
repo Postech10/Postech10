@@ -1,7 +1,9 @@
 #include "BattleObject.h"
 #include "Bullet.h"
 #include "Game.h"
+
 #define SCALE_FACTOR 300
+
 #define width 600
 #define height 600
 
@@ -28,6 +30,7 @@ BattleObject::BattleObject()
     AttackRange->setPos(x()+ln.dx(),y()+ln.dy());       //sync center
 
     addSound("BulletWentOff","resources/sounds/BulletWentOff.wav");
+
 }
 
 BattleObject::~BattleObject()

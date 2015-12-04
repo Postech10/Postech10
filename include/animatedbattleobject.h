@@ -5,6 +5,8 @@
 #include <QGraphicsPixmapItem>
 #include <QString>
 #include <QPixmap>
+#include <QColor>
+#include <QBitmap>
 
 enum states { CALM, ATTACK, UNDERATTACK };
 

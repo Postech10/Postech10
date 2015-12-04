@@ -1,7 +1,4 @@
 ﻿#include "AnimatedBattleObject.h"
-#include <QGraphicsPixmapItem>
-#include <QColor>
-#include <QBitmap>
 
 AnimatedBattleObject::AnimatedBattleObject()
 {
