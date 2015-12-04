@@ -14,7 +14,7 @@ Tower::Tower()
     AttackSpeed = 20;
     choose = false;
     Attackable = true;                  //this will be changed for balance
-    set_image(QString::fromStdString("://images/Animation_Assistant.bmp"));     //set pic
+    set_image(QString::fromStdString(":/images/Animation_Assistant.bmp"));
     set_state(CALM);
 }
 
@@ -100,7 +100,6 @@ Tower* Tower::fuseTower(Tower *tow1, Tower *tow2)
     case 80:
         return new TripleMajorSenior();     //return proper tower
     }
-    return NULL;
 }
 
 int Tower::GetTargetNum()
