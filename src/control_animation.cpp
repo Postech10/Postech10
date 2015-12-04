@@ -1,5 +1,6 @@
 ﻿#include "control_animation.h"
 #include <Qtimer>
+
 Control_Animation::Control_Animation()
 {
     QTimer * main = new QTimer(this);
@@ -7,7 +8,7 @@ Control_Animation::Control_Animation()
     main->start(800);
     QTimer *sub = new QTimer(this);
     connect(sub, SIGNAL(timeout()), this, SLOT(Underattack()));
-    sub->start(300);
+    sub->start(50);
 }
 
 void Control_Animation::ADD (AnimatedBattleObject* new_Animation)

@@ -6,10 +6,13 @@
 
 class Control_Animation : public QObject
 {
+    Q_OBJECT
+
 public:
     Control_Animation();
     void ADD(AnimatedBattleObject* new_Object);
     void Delete(AnimatedBattleObject* target);
+
 public slots:
     void Animate();
     void Underattack();
