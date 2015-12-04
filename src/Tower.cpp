@@ -16,7 +16,7 @@ Tower::Tower()
     AttackSpeed = 20;
     choose = false;
     Attackable = true;                  //this will be changed for balance
-    setPixmap(QPixmap(":/images/Mechanical.bmp"));     //set pic
+    setPixmap(QPixmap(":/images/Icon_Assistant.bmp"));     //set pic
 
 }
 

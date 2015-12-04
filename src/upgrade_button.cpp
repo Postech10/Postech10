@@ -10,12 +10,15 @@ UpgradeButton::UpgradeButton(char *filename, QGraphicsItem *parent)
 }
 void UpgradeButton::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {    
-     qDebug()<<this;
+    game->scene->removeItem(this);
+    QTimer::singleShot(150,game,SLOT(change()));
 
-    if(game->waiting_line.size() == 1 && game->get_money() >= 15){
+    if(game->waiting_line.size() == 1 && game->get_money()>= 15){
         game->waiting_line[0]->upgrade(up,game->waiting_line[0]->GetTowerCode());
         game->set_money(game->get_money() - 15);
+        game->SetUpgradeMode(true);
     }
     else
         qDebug()<<" you need only one tower to upgrade.";
 }
+

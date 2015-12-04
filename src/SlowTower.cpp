@@ -12,7 +12,7 @@ SlowTower::SlowTower()
     DefensivePower = 20;
     AttackSpeed = 20;
     Attackable = true;                  //this will be changed for balance
-    setPixmap(QPixmap(":/images/Mechanical.bmp"));     //set pic
+    setPixmap(QPixmap(":/images/Icon_SMP.bmp"));     //set pic
 }
 
 void SlowTower::Attack()

@@ -3,9 +3,10 @@
 #include <QGraphicsPixmapItem>
 #include <QGraphicsSceneMouseEvent>
 #include <QPushButton>
+#include <QMovie>
 #include <Tower.h>
 
-class BuildTowerIcon: public QPushButton, public QGraphicsPixmapItem{
+class BuildTowerIcon: public QPushButton,public QGraphicsPixmapItem{
 
     int tower_code;
 

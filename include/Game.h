@@ -35,6 +35,10 @@ public:
     inline void SetAddMode(bool _add_mode) {add_mode = _add_mode;}
     inline bool GetAddMode() {return add_mode;}
 
+    //fuse_mode accessor & modifier
+    inline void SetFuseMode(bool _fuse_mode) {fuse_mode = _fuse_mode;}
+    inline bool GetFuseMode() {return fuse_mode;}
+
     //upgrade_mode accessor & modifier
     void SetUpgradeMode(bool _upgrade_mode);
     inline bool GetUpgradeMode() {return upgrade_mode;}
@@ -63,9 +67,7 @@ public:
     //吏湲덉? 蹂?섎뱾??public?몃뜲 ?섏쨷??紐⑤몢 private濡?留뚮뱾嫄곗엫.
     QGraphicsScene *scene;
     QList<Tower*> waiting_line;
-    QGraphicsPixmapItem *tooltip;
-    bool fuse_mode;
-
+    QLabel *tooltip;
 
 signals:
     void RoundSet(int new_round);
@@ -81,6 +83,7 @@ public slots:
     void DeletTowerInfo();
     void CheatKeyEntered();
     void destroy_game();
+    void change();
 
 private :
 
@@ -116,6 +119,7 @@ private :
 
     bool add_mode; //add_mode ?몄? ?꾨땶吏??????뺣낫瑜??닿퀬 ?덈뒗 蹂??
     bool upgrade_mode;
+    bool fuse_mode;
     bool position[16][12]; //1024*768瑜?64*64 ?ш린???뺤궗媛곹삎?ㅻ줈 ?섎닎
 
     Button *start_pause_button; //start_puase 踰꾪듉
@@ -131,13 +135,13 @@ private :
     QTimer *spawn_timer; //?곷뱾??scene??異쒗쁽 ?섎뒗 frequency??愿???뺣낫瑜??닿퀬 ?덈떎.
     QLabel* round_label; //round 異쒕젰
     QLabel* money_label; //money 異쒕젰
-    QLabel* life_label;
+    QGraphicsRectItem* hpBar;
 
-    QGraphicsTextItem* upgrade_level;
-    QGraphicsTextItem* attack_ability;
-    QGraphicsTextItem* defense_ability;
-    QGraphicsTextItem* attack_speed_ability;
-    QGraphicsTextItem* game_over;
+    QLabel* upgrade_level;
+    QLabel* attack_ability;
+    QLabel* defense_ability;
+    QLabel* attack_speed_ability;
+    QLabel* game_over;
 
 };
 
