@@ -7,7 +7,8 @@
 #include <QGraphicsItem>
 #include "Tower.h"
 #include <QDebug>
-#define STEP_SIZE 50
+#include <QPointF>
+#define STEP 50
 
 extern Game * game;
 
@@ -34,19 +35,19 @@ void Bullet_enemy::move()
 {
     QList<QGraphicsItem *> colliding_tower=this->collidingItems();      //bullet collides
     for(size_t i=0, n=colliding_tower.size();i<n;i++){
-        if(typeid(*(colliding_tower[i]))==typeid(Tower)){
-            dynamic_cast<Tower*>(colliding_tower[i])->IsHitBy(AttackPower);
-           // playSound("Hit");               //sound for hit
-            Activated(0);
-            game->scene->removeItem(this);
-            delete this;
-            return;
-        }
+            Tower* tower=dynamic_cast<Tower *>(colliding_tower[i]);           //sound for hit
+            if(tower){
+                tower->IsHitBy(AttackPower);
+                Activated(0);
+                game->scene->removeItem(this);
+                delete this;
+                return;
+            }
     }
     double theta = rotation();                      //set theta
 
-    double dy = STEP_SIZE*qSin(qDegreesToRadians(theta));
-    double dx = STEP_SIZE*qCos(qDegreesToRadians(theta));
+    double dy = STEP*qSin(qDegreesToRadians(theta));
+    double dx = STEP*qCos(qDegreesToRadians(theta));
 
 
     setPos(x()+dx,y()+dy);

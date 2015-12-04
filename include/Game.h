@@ -133,6 +133,7 @@ private :
     BuildTowerIcon *Poison_Tower_button; //???踰꾪듉
     BuildTowerIcon *Chain_Tower_button; //???踰꾪듉
     BuildTowerIcon *Gold_Tower_button; //???踰꾪듉
+    BuildTowerIcon *Random_Tower_Button;
     UpgradeButton *upgrade_button; //?낃렇?덉씠??踰꾪듉
 
     QTimer *spawn_timer; //?곷뱾??scene??異쒗쁽 ?섎뒗 frequency??愿???뺣낫瑜??닿퀬 ?덈떎.

@@ -4,19 +4,22 @@
 #include <QList>
 #include <QPointF>
 #include <QTimer>
+#include <Tower.h>
 
 class AttackableEnemy : public Enemy{
     Q_OBJECT
 public:
     AttackableEnemy(int level);
     void Attack();
+    void property();
     //void IsHitBy(int);
 
 public slots:
     void SetTarget();\
 private:
     QTimer* timer_search;
-    QPointF targetTower;
+    Tower* targetTower;
+    int search_clockrate;
 
 };
 

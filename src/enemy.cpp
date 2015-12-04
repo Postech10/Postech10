@@ -133,21 +133,21 @@ void Enemy::setPicture()     //Hp AttackPower DefensePower
 {
     int n = currentLevel;
 
-    switch(n/10){
+    switch((n-1)/10){
     case 0:
-        if(n%10) setPixmap(QPixmap(":/images/Mechanical.bmp"));
+        if(n%9) setPixmap(QPixmap(":/images/Mechanical.bmp"));
         else     setPixmap(QPixmap(":/images/Mechanical.bmp"));
         break;
     case 1:
-        if(n%10) setPixmap(QPixmap(":/images/Enemy3.png"));
+        if(n%9) setPixmap(QPixmap(":/images/Enemy3.png"));
         else     setPixmap(QPixmap(":/images/Enemy4.png"));
         break;
     case 2:
-        if(n%10) setPixmap(QPixmap(":/images/Enemy5.png"));
+        if(n%9) setPixmap(QPixmap(":/images/Enemy5.png"));
         else     setPixmap(QPixmap(":/images/Enemy6.png"));
         break;
     case 3:
-        if(n%10) setPixmap(QPixmap(":/images/Enemy7.png"));
+        if(n%9) setPixmap(QPixmap(":/images/Enemy7.png"));
         else     setPixmap(QPixmap(":/images/Enemy8.png"));
         break;
     }
@@ -170,15 +170,13 @@ void Enemy::move()
 
         reach=1;
         game->SetLife(game->GetLife()-10);
-        qDebug() << "Fail to remove enemy1";
 
         game->RenewEnemyNum(false);
-        qDebug() << "Fail to remove enemy2";
 
 
-        game->scene->removeItem(hpBar);qDebug() << "Fail to remove enemy3";
+        game->scene->removeItem(hpBar);
 
-        game->scene->removeItem(this);qDebug() << "Fail to remove enemy4";
+        game->scene->removeItem(this);
         delete timer;
         delete hpBar;
 

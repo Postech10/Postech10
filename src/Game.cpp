@@ -133,6 +133,11 @@ void Game::displayMenu()
     Gold_Tower_button->setZValue(1);
     scene->addItem(Gold_Tower_button);
 
+    Random_Tower_Button = new BuildTowerIcon(":/images/Icon_Random.bmp",14);
+    Random_Tower_Button->setPos(768+64*3,192+64);
+    Random_Tower_Button->setZValue(1);
+    scene->addItem(Random_Tower_Button);
+
     //make fusion button and add it into scene
     fusion_button = new Fusion_Button(":/images/FusionButton.bmp");
     fusion_button->setPos(896,0);
@@ -273,22 +278,22 @@ void Game::button_Pressed(QPointF point,int tower_code)
         switch(tower_code){
         case NORMAL:
             build.push_back(new Tower());
-            add_mode_pixmap = new QPixmap(QString(":/images/Mechanical.bmp")); break;
+            add_mode_pixmap = new QPixmap(QString(":/images/Icon_Assistant.bmp")); break;
         case SPLASH:
             build.push_back(new SplashTower());
-            add_mode_pixmap = new QPixmap(QString(":/images/Mechanical.bmp"));break;
+            add_mode_pixmap = new QPixmap(QString(":/images/Icon_Mechanical.bmp"));break;
         case SLOW:
             build.push_back(new SlowTower());
-            add_mode_pixmap = new QPixmap(QString(":/images/Mechanical.bmp"));break;
+            add_mode_pixmap = new QPixmap(QString(":/images/Icon_SMP.bmp"));break;
         case POISON:
             build.push_back(new PoisonTower());
-            add_mode_pixmap = new QPixmap(QString(":/images/Mechanical.bmp"));break;
+            add_mode_pixmap = new QPixmap(QString(":/images/Icon_Chemical.bmp"));break;
         case CHAIN:
             build.push_back(new ChainTower());
-            add_mode_pixmap = new QPixmap(QString(":/images/Mechanical.bmp"));break;
+            add_mode_pixmap = new QPixmap(QString(":/images/Icon_Electronic.bmp"));break;
         case GOLD:
             build.push_back(new GoldTower());
-            add_mode_pixmap = new QPixmap(QString(":/images/Mechanical.bmp"));break;
+            add_mode_pixmap = new QPixmap(QString(":/images/Icon_IME.bmp"));break;
         }
 
         QCursor* add_mode_cursor = new QCursor(*add_mode_pixmap);
