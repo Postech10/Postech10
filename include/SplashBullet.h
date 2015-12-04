@@ -3,8 +3,6 @@
 
 #include "Bullet.h"
 
-#define SPLASH_SCALE_FACTOR 150
-
 class SplashBullet: public Bullet{
 public:
     SplashBullet(int);           //constructor, int means splashbullet's power
