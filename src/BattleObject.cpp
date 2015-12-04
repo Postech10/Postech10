@@ -23,7 +23,7 @@ BattleObject::BattleObject()
 
     QPointF poly_center(SCALE_FACTOR/2,SCALE_FACTOR/2);               //center of AttackRange
     poly_center = mapToScene(poly_center);
-    QPointF object_center(x()+40, y()+50);       //depend on image file
+    QPointF object_center(x()+32, y()+32);       //depend on image file
     QLineF ln(poly_center, object_center);
     AttackRange->setPos(x()+ln.dx(),y()+ln.dy());       //sync center
 
@@ -39,8 +39,8 @@ void BattleObject::Attack()
 {
     Bullet *bullet = new Bullet(AttackPower);
     bullet->Activated(true);
-    bullet->setPos(x()+40,y()+50);                  //same position with object_center(in constructor)
-    QLineF ln(QPointF(x()+40,y()+50),QPointF(Target->x(),Target->y()));      //line to target
+    bullet->setPos(x()+32,y()+32);                  //same position with object_center(in constructor)
+    QLineF ln(QPointF(x()+32,y()+32),QPointF(Target->x()+32,Target->y()+32));      //line to target
     int angle = -1 * ln.angle();                    //angle between object and target
     bullet->setRotation(angle);                     //set rotation
     game->scene->addItem(bullet);                   //add it in game scene
