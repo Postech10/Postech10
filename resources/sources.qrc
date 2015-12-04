@@ -36,12 +36,9 @@
         <file>images/FieldTooltip_IME.gif</file>
         <file>images/FusionButton.bmp</file>
         <file>images/Icon_Assistant.bmp</file>
-        <file>images/Icon_BASETOWER.bmp</file>
         <file>images/Icon_Chemical.bmp</file>
         <file>images/Icon_Electronic.bmp</file>
         <file>images/Icon_IME.bmp</file>
-        <file>images/Icon_LV2TOWER.bmp</file>
-        <file>images/Icon_LV3TOWER.bmp</file>
         <file>images/Icon_Mechanical.bmp</file>
         <file>images/Icon_Random.bmp</file>
         <file>images/Icon_SMP.bmp</file>
@@ -54,5 +51,15 @@
         <file>images/Tooltip_Electronics.gif</file>
         <file>images/Tooltip_SMP.gif</file>
         <file>images/UpgradeButton.bmp</file>
+        <file>images/FieldTooltip_Mechanical.gif</file>
+        <file>images/FieldTooltip_SMP.gif</file>
+        <file>images/Icon_BackToBaseTower.bmp</file>
+        <file>images/Icon_ToLevel2Tower.bmp</file>
+        <file>images/Icon_ToLevel3Tower.bmp</file>
+        <file>images/Tooltip_BackToBaseTowergif.gif</file>
+        <file>images/Tooltip_BackToLevel2Tower.gif</file>
+        <file>images/Tooltip_Random.gif</file>
+        <file>images/Tooltip_ToLevel2Tower.gif</file>
+        <file>images/Tooltip_ToLevel3Tower.gif</file>
     </qresource>
 </RCC>
