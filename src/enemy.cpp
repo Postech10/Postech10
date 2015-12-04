@@ -70,7 +70,7 @@ void Enemy::IsSlowedBy(int power)
     delete timer;
     timer = new QTimer();
     connect(timer, SIGNAL(timeout()), this, SLOT(move()));
-    timer->start(30*power);    //slowed, doubled clockrate
+    timer->start(10*power);    //slowed, doubled clockrate
     qDebug()<<"slOw";
 
     slowTime = new QTimer();
@@ -89,8 +89,10 @@ void Enemy::IsHitBy(int power)
           game->RenewEnemyNum(true);
           scene()->removeItem(hpBar);
           scene()->removeItem(this);
-
-          delete timer;
+          if(slowedState==1)
+              delete slowTime;
+          if(poisonedState==1)
+              delete poisonTime;
       }
       else
           cutHpbar();
@@ -109,7 +111,15 @@ void Enemy::startMovement()
 
 Enemy::~Enemy()
 {
-    delete hpBar;
+    if (Hp>0){
+        delete timer;
+        delete hpBar;
+        if(slowedState==1)
+            delete slowTime;
+        if(poisonedState==1)
+            delete poisonTime;
+
+    }
     //알아서 지워줌
 }
 
@@ -158,7 +168,7 @@ void Enemy::move()
 
         scene()->removeItem(hpBar);
         scene()->removeItem(this);
-        delete timer;
+
     }
 
 }
@@ -167,7 +177,7 @@ void Enemy::IsHitByP(int power)     //poisoned
 {
 
     poisonedTime+=500;
-    if(poisonedTime>2000 || Hp<=0){            //after specific time, released from poison
+    if(poisonedTime>5000 || Hp<=0){            //after specific time, released from poison
         hpBar->setBrush(QBrush(Qt::red));
         delete poisonTime;
         poisonedState=0;
@@ -181,6 +191,7 @@ void Enemy::changeClockRate()
 {
     delete timer;
     delete slowTime;
+    slowedState=0;
 
     timer = new QTimer();
     connect(timer, SIGNAL(timeout()), this, SLOT(move()));
@@ -188,3 +199,4 @@ void Enemy::changeClockRate()
 
     qDebug()<<"fast";
 }
+

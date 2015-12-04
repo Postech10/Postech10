@@ -20,8 +20,8 @@ void ChemEngSenior::Attack()
 {
     CESBullet *bullet = new CESBullet(AttackPower, GoldPower);
     bullet->Activated(true);
-    bullet->setPos(x()+40,y()+50);                  //same position with object_center(in constructor)
-    QLineF ln(QPointF(x()+40,y()+50),QPointF(Target->x(),Target->y()));      //line to target
+    bullet->setPos(x()+32,y()+32);                  //same position with object_center(in constructor)
+    QLineF ln(QPointF(x()+32,y()+32),QPointF(Target->x()+32,Target->y()+32));      //line to target
     int angle = -1 * ln.angle();                    //angle between object and target
     bullet->setRotation(angle);                     //set rotation
     game->scene->addItem(bullet);                   //add it in game scene

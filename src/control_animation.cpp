@@ -10,9 +10,14 @@ Control_Animation::Control_Animation()
     sub->start(300);
 }
 
-void Control_Animation::ADD (AnimatedBattleObject new_Animation)
+void Control_Animation::ADD (AnimatedBattleObject* new_Animation)
 {
-    ObjectList.append(&new_Animation);
+    ObjectList.append(new_Animation);
+}
+
+void Control_Animation::Delete(AnimatedBattleObject* target)
+{
+    ObjectList.removeOne(target);
 }
 
 void Control_Animation::Animate ()
