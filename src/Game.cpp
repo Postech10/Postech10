@@ -9,6 +9,7 @@
 #include <QDebug>
 #include <QPainter>
 #include <sstream>
+#include <QFontDatabase>
 
 Game::Game(){
     scene = new QGraphicsScene(this);       //make scene
@@ -24,7 +25,7 @@ Game::Game(){
 
     add_mode=false;                         //initialize modes
     fuse_mode=false;
-    //upgrade_mode=false;
+    upgrade_mode=false;
 
     state = Cleared;                        //initialize state
     enemy_num=0;
@@ -59,7 +60,6 @@ Game::Game(){
         for(int j=0 ; j<14 ; j++)
             combination[i][j]=false;
     }
-    combination[0][0]=true; //?붾쾭源낆슜
     combination[0][2]=true;
     combination[1][4]=true;
     combination[1][5]=true;
@@ -87,108 +87,92 @@ Game::Game(){
 //this method is called right after the program is run
 void Game::displayMenu()
 {
+    int id = QFontDatabase::addApplicationFont(":/fonts/PressStart2P.ttf");
+    QString family = QFontDatabase::applicationFontFamilies(id).at(0);
+    QFont mystyle(family);
+
     QPixmap* map = new QPixmap(":/images/Map.bmp");
     scene->addPixmap(*map);
 
     //make upgrade button and add it into scene
-    upgrade_button = new UpgradeButton(":/images/upgrade.jpg");
-    upgrade_button->setPos(1024-64*2-20,550);
+    upgrade_button = new UpgradeButton(":/images/UpgradeButton.bmp");
+    upgrade_button->setPos(768,0);
     upgrade_button->setZValue(1);
     scene->addItem(upgrade_button);
 
     //make build tower buttons and add it into scene
-    Normal_Tower_button = new BuildTowerIcon(":/images/Mechanical.bmp",NORMAL);
-    Normal_Tower_button->setPos(1024-32*3,32*3);
+    Normal_Tower_button = new BuildTowerIcon(":/images/Icon_Assistant.bmp",NORMAL);
+    Normal_Tower_button->setPos(768,192);
     Normal_Tower_button->setZValue(1);
-    scene->addItem(Normal_Tower_button);                     //add icon ?앹꽦    
-    QGraphicsTextItem* temp = scene->addText(QString("Normal_Tower"),QFont("Arial", 10));
-    temp->setDefaultTextColor(QColor(Qt::white));
-    temp->setPos(1024-32*3,32*3+5+64);
-    scene->addItem(temp);
+    scene->addItem(Normal_Tower_button);
 
-    Splash_Tower_button = new BuildTowerIcon(":/images/Mechanical.bmp",SPLASH);
-    Splash_Tower_button->setPos(1024-32*6,32*3);
+    Splash_Tower_button = new BuildTowerIcon(":/images/Icon_Mechanical.bmp",SPLASH);
+    Splash_Tower_button->setPos(768+64,192);
     Splash_Tower_button->setZValue(1);
     scene->addItem(Splash_Tower_button);
-    temp = scene->addText(QString("Splash_Tower"),QFont("Arial", 10));
-    temp->setDefaultTextColor(QColor(Qt::white));
-    temp->setPos(1024-32*6,32*3+5+64);
-    scene->addItem(temp);
 
-    Slow_Tower_button = new BuildTowerIcon(":/images/Mechanical.bmp",SLOW);
-    Slow_Tower_button->setPos(1024-32*9,32*3);
+    Slow_Tower_button = new BuildTowerIcon(":/images/Icon_SMP.bmp",SLOW);
+    Slow_Tower_button->setPos(768+64*2,192);
     Slow_Tower_button->setZValue(1);
     scene->addItem(Slow_Tower_button);
-    temp = scene->addText(QString("Slow_Tower"),QFont("Arial", 10));
-    temp->setDefaultTextColor(QColor(Qt::white));
-    temp->setPos(1024-32*9,32*3+5+64);
-    scene->addItem(temp);
 
-    Poison_Tower_button = new BuildTowerIcon(":/images/Mechanical.bmp",POISON);
-    Poison_Tower_button->setPos(1024-32*3,32*6);
+    Poison_Tower_button = new BuildTowerIcon(":/images/Icon_Chemical.bmp",POISON);
+    Poison_Tower_button->setPos(768,192+64);
     Poison_Tower_button->setZValue(1);
     scene->addItem(Poison_Tower_button);
-    temp = scene->addText(QString("Poison_Tower"),QFont("Arial", 10));
-    temp->setDefaultTextColor(QColor(Qt::white));
-    temp->setPos(1024-32*3,32*6+5+64);
-    scene->addItem(temp);
 
-    Chain_Tower_button = new BuildTowerIcon(":/images/Mechanical.bmp",CHAIN);
-    Chain_Tower_button->setPos(1024-32*6,32*6);
+    Chain_Tower_button = new BuildTowerIcon(":/images/Icon_Electronic.bmp",CHAIN);
+    Chain_Tower_button->setPos(768+64,192+64);
     Chain_Tower_button->setZValue(1);
     scene->addItem(Chain_Tower_button);
-    temp = scene->addText(QString("Chain_Tower"),QFont("Arial", 10));
-    temp->setDefaultTextColor(QColor(Qt::white));
-    temp->setPos(1024-32*6,32*6+5+64);
-    scene->addItem(temp);
 
-    Gold_Tower_button = new BuildTowerIcon(":/images/Mechanical.bmp",GOLD);
-    Gold_Tower_button->setPos(1024-32*9,32*6);
+    Gold_Tower_button = new BuildTowerIcon(":/images/Icon_IME.bmp",GOLD);
+    Gold_Tower_button->setPos(768+64*2,192+64);
     Gold_Tower_button->setZValue(1);
     scene->addItem(Gold_Tower_button);
-    temp = scene->addText(QString("Gold_Tower"),QFont("Arial", 10));
-    temp->setDefaultTextColor(QColor(Qt::white));
-    temp->setPos(1024-32*9,32*6+5+64);
-    scene->addItem(temp);
 
     //make fusion button and add it into scene
-    fusion_button = new Fusion_Button(":/images/FUSE.jpg");
-    fusion_button->setPos(1024-64*5+20,550);
+    fusion_button = new Fusion_Button(":/images/FusionButton.bmp");
+    fusion_button->setPos(896,0);
     fusion_button->setZValue(1);
     scene->addItem(fusion_button);
 
     //make start button and add it into scene
-    start_pause_button = new Button(":/images/start.jpg");
-    start_pause_button->setPos(1024-64*4,620);
+    start_pause_button = new Button(":/images/StartButton.bmp");
+    start_pause_button->setPos(768,576);
     start_pause_button->setZValue(1);
     scene->addItem(start_pause_button);
 
     //make a label which shows current round and add it into scene
     round_label = new QLabel();
-    round_label->setFont(QFont("Arial", 15 , QFont::Bold));
-    //round_label->setStyleSheet("background-color:gray;");
+    mystyle.setBold(true);
+    mystyle.setPointSize(20);
+    round_label->setFont(mystyle);
+    round_label->setStyleSheet("QLabel { background-color : rgba(0,0,0,0%); color : black; }");
     round_label->setText(QString("Round ")+QString::number(round));
-    round_label->setGeometry(1024-64*4,0,64*3,20);
+    round_label->setGeometry(704-64*2,704,64*2,64);
     scene->addWidget(round_label);
 
     //make a label which shows current money the user has and add it into scene
     money_label = new QLabel();
-    money_label->setFont(QFont("Arial", 15 , QFont::Bold));
-    //money_label->setStyleSheet("background-color:gray;");
-    money_label->setText(QString("Money ")+QString::number(money));
-    money_label->setGeometry(1024-64*4,25,64*3,20);
+    mystyle.setBold(true);
+    mystyle.setPointSize(15);
+    money_label->setFont(mystyle);
+    money_label->setStyleSheet("QLabel { background-color : rgba(0,0,0,0%); color : rgba(255,234,0); }");
+    money_label->setText(QString::number(money));
+    money_label->setGeometry(1024-64*2,32*10.5,64*3,50);
     scene->addWidget(money_label);
 
-    life_label = new QLabel();
-    life_label->setFont(QFont("Arial", 15 , QFont::Bold));
-    //money_label->setStyleSheet("background-color:gray;");
-    life_label->setText(QString("Life ")+QString::number(life));
-    life_label->setGeometry(1024-64*4,50,64*3,20);
-    scene->addWidget(life_label);
+    hpBar = new QGraphicsRectItem();
+    hpBar->setBrush(QBrush(Qt::red));
+    hpBar->setPos(256,21);
+    hpBar->setRect(0,0, (704-256)*((float(life)/100)), float(42-21));
+    scene->addItem(hpBar);
 
     textBox = new QLineEdit();
     connect(textBox , SIGNAL(returnPressed()), this, SLOT(CheatKeyEntered()));
-    textBox->setGeometry(64 , 32 , 64*3 , 32);
+    textBox->setGeometry(768+5 , 710 , 64*3.5 , 32);
+    textBox->setStyleSheet("background-color : black;");
     scene->addWidget(textBox);
 }
 
@@ -200,47 +184,58 @@ void Game::mouseMoveEvent(QMouseEvent *event)
 
     //if there was a tooltip already
     if(tooltip && waiting_line.size() == 0){
-        scene->removeItem(tooltip);
         delete tooltip;
         tooltip = nullptr;
     }
 
     //when mouse cursor is on tower build button
-    if(event->pos().x()-(1024-32*3)<64 && event->pos().y()-32*3<64 && event->pos().x()-(1024-32*3)>0 && event->pos().y()-32*3>0 && tooltip == nullptr){
-        tooltip = new QGraphicsPixmapItem();
-        tooltip->setPixmap(QPixmap(":/images/tooltip.png"));
-        tooltip->setPos(1024-192,280);
-        scene->addItem(tooltip);
+    if(event->pos().x()-(768)<64 && event->pos().y()-(192)<64
+            && event->pos().x()-(768)>0&& event->pos().y()-(192)>0 && tooltip == nullptr){
+        tooltip = new QLabel();
+        tooltip->setMovie(new QMovie(":/images/Tooltip_Assistant.gif"));
+        tooltip->movie()->start();
+        tooltip->setGeometry(768,384,256,192);
+        scene->addWidget(tooltip);
     }
-    else if(event->pos().x()-(1024-32*6)<64 && event->pos().y()-32*3<64 && event->pos().x()-(1024-32*6)>0 && event->pos().y()-32*3>0 && tooltip == nullptr){
-        tooltip = new QGraphicsPixmapItem();
-        tooltip->setPixmap(QPixmap(":/images/tooltip.png"));
-        tooltip->setPos(1024-192,280);
-        scene->addItem(tooltip);
+    else if(event->pos().x()-(768+64)<64 && event->pos().y()-192<64
+            && event->pos().x()-(768+64)>0 && event->pos().y()-192>0 && tooltip == nullptr){
+        tooltip = new QLabel();
+        tooltip->setMovie(new QMovie(":/images/Tooltip_Mechanical.gif"));
+        tooltip->movie()->start();
+        tooltip->setGeometry(768,384,256,192);
+        scene->addWidget(tooltip);
     }
-    else if(event->pos().x()-(1024-32*9)<64 && event->pos().y()-32*3<64 && event->pos().x()-(1024-32*9)>0 && event->pos().y()-32*3>0 && tooltip == nullptr){
-        tooltip = new QGraphicsPixmapItem();
-        tooltip->setPixmap(QPixmap(":/images/tooltip.png"));
-        tooltip->setPos(1024-192,280);
-        scene->addItem(tooltip);
+    else if(event->pos().x()-(768+64*2)<64 && event->pos().y()-192<64
+            && event->pos().x()-(768+64*2)>0 && event->pos().y()-192>0 && tooltip == nullptr){
+        tooltip = new QLabel();
+        tooltip->setMovie(new QMovie(":/images/Tooltip_SMP.gif"));
+        tooltip->movie()->start();
+        tooltip->setGeometry(768,384,256,192);
+        scene->addWidget(tooltip);
     }
-    else if(event->pos().x()-(1024-32*3)<64 && event->pos().y()-32*6<64 && event->pos().x()-(1024-32*3)>0 && event->pos().y()-32*6>0 && tooltip == nullptr){
-        tooltip = new QGraphicsPixmapItem();
-        tooltip->setPixmap(QPixmap(":/images/tooltip.png"));
-        tooltip->setPos(1024-192,280);
-        scene->addItem(tooltip);
+    else if(event->pos().x()-(768)<64 && event->pos().y()-(192+64)<64
+            && event->pos().x()-(768)>0 && event->pos().y()-(192+64)>0 && tooltip == nullptr){
+        tooltip = new QLabel();
+        tooltip->setMovie(new QMovie(":/images/Tooltip_Chemical.gif"));
+        tooltip->movie()->start();
+        tooltip->setGeometry(768,384,256,192);
+        scene->addWidget(tooltip);
     }
-    else if(event->pos().x()-(1024-32*6)<64 && event->pos().y()-32*6<64 && event->pos().x()-(1024-32*6)>0 && event->pos().y()-32*6>0 && tooltip == nullptr){
-        tooltip = new QGraphicsPixmapItem();
-        tooltip->setPixmap(QPixmap(":/images/tooltip.png"));
-        tooltip->setPos(1024-192,280);
-        scene->addItem(tooltip);
+    else if(event->pos().x()-(768+64)<64 && event->pos().y()-(192+64)<64
+            && event->pos().x()-(768+64)>0 && event->pos().y()-(192+64)>0 && tooltip == nullptr){
+        tooltip = new QLabel();
+        tooltip->setMovie(new QMovie(":/images/Tooltip_Electronics.gif"));
+        tooltip->movie()->start();
+        tooltip->setGeometry(768,384,256,192);
+        scene->addWidget(tooltip);
     }
-    else if(event->pos().x()-(1024-32*9)<64 && event->pos().y()-32*6<64 && event->pos().x()-(1024-32*9)>0 && event->pos().y()-32*6>0 && tooltip == nullptr){
-        tooltip = new QGraphicsPixmapItem();
-        tooltip->setPixmap(QPixmap(":/images/tooltip.png"));
-        tooltip->setPos(1024-192,280);
-        scene->addItem(tooltip);
+    else if(event->pos().x()-(768+64*2)<64 && event->pos().y()-(192+64)<64
+            && event->pos().x()-(768+64*2)>0 && event->pos().y()-(192+64)>0 && tooltip == nullptr){
+        tooltip = new QLabel();
+        tooltip->setMovie(new QMovie(":/images/Tooltip_IME.gif"));
+        tooltip->movie()->start();
+        tooltip->setGeometry(768,384,256,192);
+        scene->addWidget(tooltip);
     }
     else
         QGraphicsView::mouseMoveEvent(event);
@@ -268,6 +263,7 @@ void Game::spawnEnemy()
 //it acts differently according to current situation
 void Game::button_Pressed(QPointF point,int tower_code)
 {
+
     if(add_mode == true){
         QPixmap* add_mode_pixmap;
 
@@ -302,6 +298,9 @@ void Game::button_Pressed(QPointF point,int tower_code)
 
     //when start button pressed.
     else if(start_pause_button->contains(point) == true && state == Cleared){
+        this->scene->removeItem(start_pause_button);
+        QTimer::singleShot(150,this,SLOT(change()));
+
         MakeNewGame();
 
         spawn_timer = new QTimer(this);
@@ -313,7 +312,54 @@ void Game::button_Pressed(QPointF point,int tower_code)
     }
 
     else if(start_pause_button->contains(point)==true && state == GameOver){
-        set_round(1);
+
+        this->scene->removeItem(start_pause_button);
+        QTimer::singleShot(150,this,SLOT(change()));
+
+        set_money(0);
+
+        for(int i=0 ; i<build.size() ; i++){
+
+            switch(build[i]->GetTowerCode()){
+                case NORMAL:
+                    set_money(get_money() + 20);break;
+                case SPLASH:
+                    set_money(get_money() + 30);break;
+                case SLOW:
+                    set_money(get_money() + 30);break;
+                case POISON:
+                    set_money(get_money() + 35);break;
+                case CHAIN:
+                    set_money(get_money() + 40);break;
+                case GOLD:
+                    set_money(get_money() + 60);break;
+                case TUTOR:
+                    set_money(get_money() + 70);break;
+                case PROF:
+                    set_money(get_money() + 50);break;
+                case CES:
+                    set_money(get_money() + 95);break;
+                case JOBSBIO:
+                    set_money(get_money() + 100);break;
+                case MES:
+                    set_money(get_money() + 90);break;
+                case APPLE:
+                    set_money(get_money() + 170);break;
+                case JOBS:
+                    set_money(get_money() + 150);break;
+                case TRIPLE:
+                    set_money(get_money() + 185);break;
+            }
+            set_money(get_money() +
+                      (upgrade_button->getUp()->GetReference(build[i]->GetTowerCode())->GetDefensivePower()-20)/10*15);
+        }
+        for(int i=0 ; i<build.size() ; i++){
+            delete build[i];
+        }
+
+        SetLife(100);
+        state = Cleared;
+        delete game_over;
     }
 /*
     else if(start_pause_button->contains(point)==true && state == Paused){
@@ -331,19 +377,18 @@ void Game::button_Pressed(QPointF point,int tower_code)
     */
 }
 
-
 //method to clear game
 //this method is called when all spawned enemies is removed from scene
 void Game::clear_game()
 {
     qDebug()<<"clear_game() start";
     wave_generator.ClearSpwanList();
-    start_pause_button->setPixmap(QPixmap(":/images/start.jpg"));
+    start_pause_button->setPixmap(QPixmap(":/images/StartButton.bmp"));
     scene->addItem(start_pause_button);
 
     set_round(get_round() + 1);
     set_money(get_money() + dead_enemy*5);
-    life_label->setText(QString("Life ")+QString::number(life));
+    hpBar->setRect(0,0, (704-256)*((float(life)/100)), float(42-21));
 
     wave = 0;
     dead_enemy=0;
@@ -357,76 +402,85 @@ void Game::clear_game()
 void Game::ShowTowerInfo(Tower *tower)
 {
     if(tooltip){
-        scene->removeItem(tooltip);
         delete tooltip;
         tooltip = nullptr;
 
-        scene->removeItem(attack_ability);
         delete attack_ability;
         attack_ability = nullptr;
 
-        scene->removeItem(defense_ability);
         delete defense_ability;
         defense_ability = nullptr;
 
-        scene->removeItem(attack_speed_ability);
         delete attack_speed_ability;
         attack_speed_ability = nullptr;
     }
 
-    tooltip = new QGraphicsPixmapItem();
-    tooltip->setPos(1024-192-32*3,280);
+    tooltip = new QLabel();
+    tooltip->setGeometry(768,384,256,192);
 
     int towerType = tower->GetTowerCode();
     switch(towerType){
 
     case NORMAL:
-        tooltip->setPixmap(QPixmap(":/images/tooltip.png"));break;
+        tooltip->setMovie(new QMovie(":/images/FieldTooltip_Assistant.gif"));break;
     case SPLASH:
-        tooltip->setPixmap(QPixmap(":/images/tooltip.png"));break;
+        tooltip->setMovie(new QMovie(":/images/FieldTooltip_Mechanical.gif"));break;
     case SLOW:
-        tooltip->setPixmap(QPixmap(":/images/tooltip.png"));break;
+        tooltip->setMovie(new QMovie(":/images/FieldTooltip_SMP.gif"));break;
     case POISON:
-        tooltip->setPixmap(QPixmap(":/images/tooltip.png"));break;
+        tooltip->setMovie(new QMovie(":/images/FieldTooltip_Chemical.gif"));break;
     case CHAIN:
-        tooltip->setPixmap(QPixmap(":/images/tooltip.png"));break;
+        tooltip->setMovie(new QMovie(":/images/FieldTooltip_Electronics.gif"));break;
     case GOLD:
-        tooltip->setPixmap(QPixmap(":/images/tooltip.png"));break;
+        tooltip->setMovie(new QMovie(":/images/FieldTooltip_IME.gif"));break;
     case TUTOR:
-        tooltip->setPixmap(QPixmap(":/images/tooltip.png"));break;
+        tooltip->setMovie(new QMovie(":/images/tooltip.png"));break;
     case PROF:
-        tooltip->setPixmap(QPixmap(":/images/tooltip.png"));break;
+        tooltip->setMovie(new QMovie(":/images/tooltip.png"));break;
     case CES:
-        tooltip->setPixmap(QPixmap(":/images/tooltip.png"));break;
+        tooltip->setMovie(new QMovie(":/images/tooltip.png"));break;
     case MES:
-        tooltip->setPixmap(QPixmap(":/images/tooltip.png"));break;
+        tooltip->setMovie(new QMovie(":/images/tooltip.png"));break;
     case APPLE:
-        tooltip->setPixmap(QPixmap(":/images/tooltip.png"));break;
+        tooltip->setMovie(new QMovie(":/images/tooltip.png"));break;
     case JOBS:
-        tooltip->setPixmap(QPixmap(":/images/tooltip.png"));break;
+        tooltip->setMovie(new QMovie(":/images/tooltip.png"));break;
     case TRIPLE:
-        tooltip->setPixmap(QPixmap(":/images/tooltip.png"));break;
+        tooltip->setMovie(new QMovie(":/images/tooltip.png"));break;
 
     }
+    tooltip->movie()->start();
+    scene->addWidget(tooltip);
 
     char buff[100];
 
+    int id = QFontDatabase::addApplicationFont(":/fonts/PressStart2P.ttf");
+    QString family = QFontDatabase::applicationFontFamilies(id).at(0);
+    QFont mystyle(family);
+    mystyle.setPointSize(100);
+    mystyle.setPointSize(6);
+
     sprintf(buff, "%d", tower->GetAttackPower());
-    attack_ability = scene->addText(QString("Attack: ")+QString(buff),QFont("Arial", 10));
-    attack_ability->setDefaultTextColor(QColor(Qt::white));
-    attack_ability->setPos(1024-32*3,32*12);
+    attack_ability = new QLabel(QString("ATK: ")+QString(buff));
+    attack_ability->setFont(mystyle);
+    attack_ability->setStyleSheet("QLabel { background-color : rgba(0,0,0,0%); color : black; }");
+    attack_ability->setGeometry(1024-32*5.4,32*12.3,512,80);
+    scene->addWidget(attack_ability);
 
     sprintf(buff, "%d", tower->GetDefensivePower());
-    defense_ability = scene->addText(QString("Defense: ")+QString(buff),QFont("Arial", 10));
-    defense_ability->setDefaultTextColor(QColor(Qt::white));
-    defense_ability->setPos(1024-32*3,32*13);
+    defense_ability = new QLabel(QString("DEF: ")+QString(buff));
+    defense_ability->setFont(mystyle);
+    defense_ability->setStyleSheet("QLabel { background-color : rgba(0,0,0,0%); color : black; }");
+    defense_ability->setGeometry(1024-32*3,32*12.8,512,80);
+    scene->addWidget(defense_ability);
 
     sprintf(buff, "%d", tower->GetAttackSpeed());
-    attack_speed_ability = scene->addText(QString("Speed: ")+QString(buff),QFont("Arial", 10));
-    attack_speed_ability->setDefaultTextColor(QColor(Qt::white));
-    attack_speed_ability->setPos(1024-32*3,32*14);
+    attack_speed_ability = new QLabel(QString("SPD: ")+QString(buff));
+    attack_speed_ability->setFont(mystyle);
+    attack_speed_ability->setStyleSheet("QLabel { background-color : rgba(0,0,0,0%); color : black; }");
+    attack_speed_ability->setGeometry(1024-32*5.4,32*12.8,512,80);
+    scene->addWidget(attack_speed_ability);
 
-    scene->addItem(tooltip);
 }
 
 
@@ -435,19 +489,15 @@ void Game::ShowTowerInfo(Tower *tower)
 void Game::DeletTowerInfo()
 {
     if(tooltip){
-        scene->removeItem(tooltip);
         delete tooltip;
         tooltip = nullptr;
 
-        scene->removeItem(attack_ability);
         delete attack_ability;
         attack_ability = nullptr;
 
-        scene->removeItem(defense_ability);
         delete defense_ability;
         defense_ability = nullptr;
 
-        scene->removeItem(attack_speed_ability);
         delete attack_speed_ability;
         attack_speed_ability = nullptr;
     }
@@ -472,11 +522,38 @@ void Game::CheatKeyEntered()
 
 void Game::destroy_game()
 {
-    game_over = scene->addText(QString("GAME OVER!"),QFont("Arial", 100 , QFont::Bold));
-    game_over->setPos(0,768/2);
+    int id = QFontDatabase::addApplicationFont(":/fonts/PressStart2P.ttf");
+    QString family = QFontDatabase::applicationFontFamilies(id).at(0);
+    QFont mystyle(family);
 
-    start_pause_button->setPixmap(QPixmap(":/images/start.jpg"));
+    game_over = new QLabel("GAME OVER!");
+    mystyle.setBold(true);
+    mystyle.setPointSize(40);
+    game_over->setFont(mystyle);
+    game_over->setGeometry(1024/8,768/3,512,80);
+    game_over->setStyleSheet("QLabel { background-color : rgba(0,0,0,0%); color : black; }");
+    scene->addWidget(game_over);
+
+    start_pause_button->setPixmap(QPixmap(":/images/StartButton.bmp"));
     scene->addItem(start_pause_button);
+}
+
+void Game::change()
+{
+    if(upgrade_mode == true){
+        upgrade_button->setPixmap(QPixmap(":/images/UpgradeButton.bmp"));
+        this->scene->addItem(upgrade_button);
+        upgrade_mode = false;
+    }
+    if(fuse_mode == true){
+        fusion_button->setPixmap(QPixmap(":/images/FusionButton.bmp"));
+        this->scene->addItem(fusion_button);
+        fuse_mode = false;
+    }
+    else{
+        start_pause_button->setPixmap(QPixmap(":/images/StartButton.bmp"));
+        this->scene->addItem(start_pause_button);
+    }
 }
 
 //method to controll any mouse click events.
@@ -496,7 +573,7 @@ void Game::mousePressEvent(QMouseEvent *event){
 
         this->position[pointed_spot.x()/64][pointed_spot.y()/64] = true;
         add_mode = false;
-        money_label->setText(QString("Money ")+QString::number(money));
+        money_label->setText(QString::number(money));
     }
 
     else
@@ -588,15 +665,12 @@ void Game::FuseTower()
             QCursor* new_cursor = new QCursor(*pixmap);
             QWidget::setCursor(*new_cursor);
 
-            scene->removeItem(attack_ability);
             delete attack_ability;
             attack_ability = nullptr;
 
-            scene->removeItem(defense_ability);
             delete defense_ability;
             defense_ability = nullptr;
 
-            scene->removeItem(attack_speed_ability);
             delete attack_speed_ability;
             attack_speed_ability = nullptr;
 
@@ -626,18 +700,25 @@ void Game::SetState(int _state){
     }
 }
 
+int Game::GetState()
+{
+    return state;
+}
+
 void Game::SetLife(int _life)
 {
-    life = _life;
-    if(life <= 0)
-        SetState(GameOver);
+    if(life >0 || state == GameOver){
+        life = _life;
+        if(life <= 0)
+            SetState(GameOver);
 
-    life_label->setText(QString("Life ")+QString::number(life));
+        hpBar->setRect(0,0, (704-256)*((float(life)/100)), float(42-21));
+    }
 }
 
 void Game::set_money(int _money){
     money = _money;
-    money_label->setText(QString("Money ")+QString::number(money));
+    money_label->setText(QString::number(money));
 }
 
 void Game::set_round(int _round)

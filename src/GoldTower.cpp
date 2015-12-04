@@ -13,7 +13,7 @@ GoldTower::GoldTower()
     GoldPower = 10;
     AttackSpeed = 20;
     Attackable = true;                  //this will be changed for balance
-    setPixmap(QPixmap(":/images/Mechanical.bmp"));     //set pic
+    setPixmap(QPixmap(":/images/Icon_IME.bmp"));     //set pic
 }
 
 void GoldTower::Attack()

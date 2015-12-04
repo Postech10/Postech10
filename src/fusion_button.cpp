@@ -8,6 +8,9 @@ Fusion_Button::Fusion_Button(char *filename, QGraphicsItem *parent){
 }
 void Fusion_Button::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
+    game->scene->removeItem(this);
+    game->SetFuseMode(true);
+    QTimer::singleShot(150,game,SLOT(change()));
     game->FuseTower();
 }
 

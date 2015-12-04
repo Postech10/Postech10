@@ -5,7 +5,6 @@
 #include <Upgrades.h>
 
 class UpgradeButton : public QGraphicsPixmapItem{
-
 private:
     Upgrades* up;
 
