@@ -299,7 +299,7 @@ void Game::button_Pressed(QPointF point,int tower_code)
     //when start button pressed.
     else if(start_pause_button->contains(point) == true && state == Cleared){
         this->scene->removeItem(start_pause_button);
-        QTimer::singleShot(150,this,SLOT(change()));
+        QTimer::singleShot(300,this,SLOT(change()));
 
         MakeNewGame();
 
@@ -314,7 +314,7 @@ void Game::button_Pressed(QPointF point,int tower_code)
     else if(start_pause_button->contains(point)==true && state == GameOver){
 
         this->scene->removeItem(start_pause_button);
-        QTimer::singleShot(150,this,SLOT(change()));
+        QTimer::singleShot(300,this,SLOT(change()));
 
         set_money(0);
 
@@ -358,6 +358,8 @@ void Game::button_Pressed(QPointF point,int tower_code)
         }
 
         SetLife(100);
+        hpBar->setRect(0,0, (704-256)*((float(life)/100)), float(42-21));
+        scene->addItem(hpBar);
         state = Cleared;
         delete game_over;
     }
@@ -536,6 +538,7 @@ void Game::destroy_game()
 
     start_pause_button->setPixmap(QPixmap(":/images/StartButton.bmp"));
     scene->addItem(start_pause_button);
+
 }
 
 void Game::change()
@@ -707,13 +710,15 @@ int Game::GetState()
 
 void Game::SetLife(int _life)
 {
-    if(life >0 || state == GameOver){
+    if(life >0){
         life = _life;
         if(life <= 0)
             SetState(GameOver);
 
         hpBar->setRect(0,0, (704-256)*((float(life)/100)), float(42-21));
     }
+    if(state == GameOver)
+        life = _life;
 }
 
 void Game::set_money(int _money){

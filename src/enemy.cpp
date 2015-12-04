@@ -54,6 +54,7 @@ void Enemy::IsPoisonedBy(int power)
 
     poisonedState=1;
     poisonedTime=0;
+    hpBar->setBrush(QBrush(Qt::green));
     poisonTime = new QTimer();
     connect( poisonTime, SIGNAL(timeout()), this, SLOT(IsHitByP()));     //렉트 사운드
     poisonTime->start(1000);
@@ -61,10 +62,15 @@ void Enemy::IsPoisonedBy(int power)
 
 void Enemy::IsSlowedBy(int power)
 {
+    if (slowedState==1)
+        delete slowTime;
+
+    slowedState=1;
+
     delete timer;
     timer = new QTimer();
     connect(timer, SIGNAL(timeout()), this, SLOT(move()));
-    timer->start(200*power);    //slowed, doubled clockrate
+    timer->start(30*power);    //slowed, doubled clockrate
     qDebug()<<"slOw";
 
     slowTime = new QTimer();
@@ -161,7 +167,8 @@ void Enemy::IsHitByP(int power)     //poisoned
 {
 
     poisonedTime+=500;
-    if(poisonedTime>3000 || Hp<=0){            //after specific time, released from poison
+    if(poisonedTime>2000 || Hp<=0){            //after specific time, released from poison
+        hpBar->setBrush(QBrush(Qt::red));
         delete poisonTime;
         poisonedState=0;
     }
