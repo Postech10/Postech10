@@ -24,6 +24,7 @@ private:
     int life;               //DiedOrNot
     float poisonedTime;     //elapsed time from poisoning point
     int slowedState;        //slowed:1, not:0
+    int poisonedState;
 protected:
     QTimer* timer;          //path
 

@@ -30,6 +30,7 @@ Enemy::Enemy(int level)
     Hp=(currentLevel/10+1)*50;
     DefensivePower=1;
     slowedState=0;
+    poisonedState=0;
 
     if(currentLevel%10!=0)
         this->HideAttackRange();
@@ -48,6 +49,10 @@ Enemy::Enemy(int level)
 
 void Enemy::IsPoisonedBy(int power)
 {
+    if( poisonedState==1)
+        delete poisonTime;
+
+    poisonedState=1;
     poisonedTime=0;
     poisonTime = new QTimer();
     connect( poisonTime, SIGNAL(timeout()), this, SLOT(IsHitByP()));     //렉트 사운드
@@ -156,8 +161,10 @@ void Enemy::IsHitByP(int power)     //poisoned
 {
 
     poisonedTime+=500;
-    if(poisonedTime>3000 || Hp<=0)            //after specific time, released from poison
+    if(poisonedTime>3000 || Hp<=0){            //after specific time, released from poison
         delete poisonTime;
+        poisonedState=0;
+    }
     else
         IsHitBy(power);
 
