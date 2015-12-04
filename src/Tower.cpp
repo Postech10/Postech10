@@ -2,8 +2,6 @@
 #include "Upgrades.h"
 #include "Game.h"
 
-#include <qdebug.h>
-
 extern Game* game;
 
 Tower::Tower()
@@ -16,7 +14,8 @@ Tower::Tower()
     AttackSpeed = 20;
     choose = false;
     Attackable = true;                  //this will be changed for balance
-    setPixmap(QPixmap("://images/Icon_Assistant.bmp"));     //set pic
+    AnimatedBattleObject::set_image(QString::fromStdString("://images/Animation_Assistant.bmp"));     //set pic
+    set_state(CALM);
 }
 
 void Tower::upgrade(Upgrades* up, int towercode)
@@ -101,6 +100,7 @@ Tower* Tower::fuseTower(Tower *tow1, Tower *tow2)
     case 80:
         return new TripleMajorSenior();     //return proper tower
     }
+    return NULL;
 }
 
 int Tower::GetTargetNum()

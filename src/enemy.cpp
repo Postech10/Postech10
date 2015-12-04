@@ -1,5 +1,4 @@
-﻿#pragma once
-#include "enemy.h"
+﻿#include "enemy.h"
 #include "Game.h"
 #include <QDebug>
 #include <QGraphicsScene>
