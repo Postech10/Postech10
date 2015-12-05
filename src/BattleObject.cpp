@@ -60,6 +60,7 @@ void BattleObject::IsHitBy(int AttackPower)
     if(Hp<=0){
         scene()->removeItem(hpBar);
         scene()->removeItem(this);
+        game->DestroyTower(this);
     }
     else
         cutHpbar();
