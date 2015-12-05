@@ -15,10 +15,10 @@ extern Game * game;
 Bullet_enemy::Bullet_enemy(int power): Bullet(power){
 
     switch(power){
-    case 10: setPixmap(QPixmap(":/images/Mechanical.bmp"));break;
-    case 20: setPixmap(QPixmap(":images/"));break;
-    case 30: setPixmap(QPixmap(":images/"));break;
-    case 40: setPixmap(QPixmap(":images/"));break;
+    case 10: setPixmap(QPixmap(":/images/Bullet_Normal.bmp"));break;
+    case 20: setPixmap(QPixmap(":/images/Bullet_Normal.bmp"));break;
+    case 30: setPixmap(QPixmap(":/images/Bullet_Normal.bmp"));break;
+    case 40: setPixmap(QPixmap(":/images/Bullet_Normal.bmp"));break;
     }
 
     AttackPower=power;

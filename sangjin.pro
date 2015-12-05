@@ -23,7 +23,6 @@ SOURCES += \
     src/mainwindow.cpp \
     src/main.cpp \
     src/fusion_button.cpp \
-    src/enemycontrol.cpp \
     src/enemy.cpp \
     src/button.cpp \
     src/attackableenemy.cpp \
@@ -65,7 +64,6 @@ HEADERS  += \
     include/upgrade_button.h \
     include/mainwindow.h \
     include/fusion_button.h \
-    include/enemycontrol.h \
     include/enemy.h \
     include/button.h \
     include/attackableenemy.h \

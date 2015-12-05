@@ -19,7 +19,7 @@ Enemy::Enemy(int level)
 
     for(int i=0;i<10;i++){
         path[i][0] = xLoc[i]*width/100+64;
-        path[i][1] = yLoc[i]*height/100+64;
+        path[i][1] = yLoc[i]*height/100+45;
     }
 
     currentPath=-1;     //not yet on path
@@ -31,6 +31,7 @@ Enemy::Enemy(int level)
     DefensivePower=1;
     slowedState=0;
     poisonedState=0;
+    poisonPower=0;
     reach=0;
 
     if(currentLevel%10!=0)
@@ -55,7 +56,24 @@ void Enemy::IsPoisonedBy(int power)
 
     poisonedState=1;
     poisonedTime=0;
+    poisonPower=power;
+    poison_gold=0;
     hpBar->setBrush(QBrush(Qt::green));
+    poisonTime = new QTimer();
+    connect( poisonTime, SIGNAL(timeout()), this, SLOT(IsHitByP()));     //렉트 사운드
+    poisonTime->start(1000);
+}
+
+void Enemy::IsGoldPoisonedBy(int power, int gold)
+{
+    if( poisonedState==1)
+        delete poisonTime;
+
+    poisonedState=1;
+    poisonedTime=0;
+    poisonPower=power;
+    poison_gold=gold;
+    hpBar->setBrush(QBrush(Qt::yellow));
     poisonTime = new QTimer();
     connect( poisonTime, SIGNAL(timeout()), this, SLOT(IsHitByP()));     //렉트 사운드
     poisonTime->start(1000);
@@ -81,6 +99,8 @@ void Enemy::IsSlowedBy(int power)
 
 void Enemy::IsHitBy(int power)
 {
+      if(poisonedState==1)
+          Hp = Hp - poisonPower/DefensivePower;
 
       Hp = Hp - power/DefensivePower;   //decrease Hp
 
@@ -135,20 +155,44 @@ void Enemy::setPicture()     //Hp AttackPower DefensePower
 
     switch((n-1)/10){
     case 0:
-        if(n%9) setPixmap(QPixmap(":/images/Mechanical.bmp"));
-        else     setPixmap(QPixmap(":/images/Mechanical.bmp"));
+        if(n%9){
+            set_image(QString::fromStdString(":/images/Animation_Enemy.bmp"));
+            set_state(CALM);
+        }
+        else{
+            set_image(QString::fromStdString(":/images/Animation_Enemy.bmp"));
+            set_state(CALM);
+        }
         break;
     case 1:
-        if(n%9) setPixmap(QPixmap(":/images/Enemy3.png"));
-        else     setPixmap(QPixmap(":/images/Enemy4.png"));
+        if(n%9){
+            set_image(QString::fromStdString(":/images/Animation_Enemy2.bmp"));
+            set_state(CALM);
+        }
+        else    {
+            set_image(QString::fromStdString(":/images/Animation_Enemy2.bmp"));
+            set_state(CALM);
+        }
         break;
     case 2:
-        if(n%9) setPixmap(QPixmap(":/images/Enemy5.png"));
-        else     setPixmap(QPixmap(":/images/Enemy6.png"));
+        if(n%9){
+            set_image(QString::fromStdString(":/images/Animation_Enemy3.bmp"));
+            set_state(CALM);
+        }
+        else   {
+            set_image(QString::fromStdString(":/images/Animation_Enemy3.bmp"));
+            set_state(CALM);
+        }
         break;
     case 3:
-        if(n%9) setPixmap(QPixmap(":/images/Enemy7.png"));
-        else     setPixmap(QPixmap(":/images/Enemy8.png"));
+        if(n%9){
+            set_image(QString::fromStdString(":/images/Animation_Enemy4.bmp"));
+            set_state(CALM);
+        }
+        else   {
+            set_image(QString::fromStdString(":/images/Animation_Enemy4.bmp"));
+            set_state(CALM);
+        }
         break;
     }
 
@@ -196,12 +240,14 @@ void Enemy::IsHitByP(int power)     //poisoned
     else if(poisonedTime>3000){            //after specific time, released from poison
         hpBar->setBrush(QBrush(Qt::red));
         poisonedState=0;
+        poison_gold=0;
         delete poisonTime;
     }
-    else if (reach==0)
+    else if (reach==0){
         IsHitBy(power);
-
-
+        if (Hp<=0)
+            game->set_money(game->get_money()+poison_gold);
+    }
 
 }
 

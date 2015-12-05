@@ -17,7 +17,7 @@ AttackableEnemy::AttackableEnemy(int level):Enemy(level)
 {
     qDebug() << "make attackable enemy";
     DefensivePower=2;
-    AttackPower=level;
+    AttackPower=level*10;
     AttackSpeed=20;
     Attackable = true;
     search_clockrate=1000;

@@ -25,6 +25,8 @@ private:
     float poisonedTime;     //elapsed time from poisoning point
     int slowedState;        //slowed:1, not:0
     int poisonedState;
+    int poisonPower;
+    int poison_gold;
     int reach;
 protected:
     QTimer* timer;          //path
@@ -34,6 +36,7 @@ public:
     Enemy(int level=1);               //constructor
     int DieOrNot(){ return !life; }    //Die=0, not=1
     void IsPoisonedBy(int);           //called when attack by poison tower
+    void IsGoldPoisonedBy(int, int);
     void IsSlowedBy(int);                //called when attack by slow tower
     void IsHitBy(int);               //called when attacked
     void startMovement();
@@ -44,7 +47,7 @@ public:
     ~Enemy();
 public slots:
     void move();                      //go through path
-    void IsHitByP(int p=10);               //decrease Hp, when poisoned by tower
+    void IsHitByP(int p=0);               //decrease Hp, when poisoned by tower
     void changeClockRate();           //change the move speed of enemy
 };
 
