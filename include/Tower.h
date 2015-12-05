@@ -29,6 +29,7 @@ public:
     Tower* fuseTower(Tower*, Tower*);
     int GetTargetNum();
     int GetTowerCode();
+    void IsHitBy(int);
     void mousePressEvent(QGraphicsSceneMouseEvent *event);
 
 protected:

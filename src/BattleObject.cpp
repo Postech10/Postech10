@@ -53,19 +53,6 @@ double BattleObject::CalcDistance(QGraphicsItem *item)
     return ln.length();
 }
 
-void BattleObject::IsHitBy(int AttackPower)
-{
-    Hp = Hp - AttackPower/DefensivePower;       //not perfect equation yet
-
-    if(Hp<=0){
-        scene()->removeItem(hpBar);
-        scene()->removeItem(this);
-        game->DestroyTower(this);
-    }
-    else
-        cutHpbar();
-}
-
 int BattleObject::GetHp()
 {
     return Hp;
@@ -132,7 +119,7 @@ void BattleObject::SetTarget()
 {
     QList<QGraphicsItem *> colliding_items= AttackRange->collidingItems();//AttackRange's colliding item
     for(size_t j = 0, m = colliding_items.size();j<m;j++){
-        if(typeid(*(colliding_items[j]))==typeid(Enemy))                   //if Enemy
+        if((typeid(*(colliding_items[j]))==typeid(Enemy))||typeid(*(colliding_items[j]))==typeid(AttackableEnemy))       //if Enemy
             break;
         else if(j == m-1){                                                 //no Enemy
             HasTarget = false;
