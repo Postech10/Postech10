@@ -2,6 +2,7 @@
 #include <QGraphicsPixmapItem>
 #include <QColor>
 #include <QBitmap>
+#include <QDebug>
 
 AnimatedBattleObject::AnimatedBattleObject()
 {
@@ -17,6 +18,7 @@ AnimatedBattleObject::AnimatedBattleObject(QString &filename)
     QPixmap * copy = new QPixmap(image->copy(0, 0, 64 ,64));
     setPixmap(*copy);
     state_cnt = 1;
+    delete copy;
 }
 
 void AnimatedBattleObject::Animate()
@@ -25,12 +27,14 @@ void AnimatedBattleObject::Animate()
     {
         case CALM:
         {
+            qDebug() << state_cnt;
             if(state_cnt)
             {
                 QPixmap * copy = new QPixmap();
                 *copy = this->image->copy(0, 0, 64, 64);
                 setPixmap(*copy);
                 state_cnt = 0;
+                delete copy;
             }
             else
             {
@@ -38,6 +42,7 @@ void AnimatedBattleObject::Animate()
                 *copy = this->image->copy(64, 0, 64, 64);
                 setPixmap(*copy);
                 state_cnt = 1;
+                delete copy;
             }
             break;
         }
@@ -49,6 +54,7 @@ void AnimatedBattleObject::Animate()
                 *copy = this->image->copy(0, 128, 64, 64);
                 setPixmap(*copy);
                 state_cnt = 0;
+                delete copy;
             }
             else
             {
@@ -57,6 +63,7 @@ void AnimatedBattleObject::Animate()
                 setPixmap(*copy);
                 state_cnt = 1;
                 set_state(CALM);
+                delete copy;
             }
             break;
         }
@@ -69,6 +76,7 @@ void AnimatedBattleObject::Animate()
                 setPixmap(*copy);
                 state_cnt = 1;
                 set_state(CALM);
+                delete copy;
             }
             if(state_cnt == 1)
             {
@@ -76,6 +84,7 @@ void AnimatedBattleObject::Animate()
                 *copy = this->image->copy(64, 0, 64, 64);
                 setPixmap(*copy);
                 state_cnt = 2;
+                delete copy;
             }
             if(state_cnt == 2)
             {
@@ -83,6 +92,7 @@ void AnimatedBattleObject::Animate()
                 *copy = this->image->copy(128, 0, 64, 64);
                 setPixmap(*copy);
                 state_cnt = 3;
+                delete copy;
             }
             if(state_cnt == 3)
             {
@@ -90,6 +100,7 @@ void AnimatedBattleObject::Animate()
                 *copy = this->image->copy(64, 0, 64, 64);
                 setPixmap(*copy);
                 state_cnt = 0;
+                delete copy;
             }
         }
     }
@@ -100,7 +111,7 @@ void AnimatedBattleObject::set_state(states new_state)
     state = new_state;
     state_cnt = 1;
     Animate();
-    state_cnt = 1;
+    //state_cnt = 1;
 }
 
 states AnimatedBattleObject::get_state()

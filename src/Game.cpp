@@ -119,6 +119,11 @@ void Game::displayMenu()
     Slow_Tower_button->setZValue(1);
     scene->addItem(Slow_Tower_button);
 
+    Go_to_back_Button = new BuildTowerIcon(":/images/Icon_LV2TOWER.bmp",15);
+    Go_to_back_Button->setPos(768+64*3,192);
+    Go_to_back_Button->setZValue(1);
+    scene->addItem(Go_to_back_Button);
+
     Poison_Tower_button = new BuildTowerIcon(":/images/Icon_Chemical.bmp",POISON);
     Poison_Tower_button->setPos(768,192+64);
     Poison_Tower_button->setZValue(1);
@@ -235,6 +240,19 @@ void Game::mouseMoveEvent(QMouseEvent *event)
         tooltip->setGeometry(768,384,256,192);
         scene->addWidget(tooltip);
     }
+    else if(event->pos().x()-(768+64*3)<64 && event->pos().y()-192<64
+            && event->pos().x()-(768+64*3)>0 && event->pos().y()-192>0 && tooltip == nullptr){
+        tooltip = new QLabel();
+        if(towerinfo == BASE)
+            tooltip->setMovie(new QMovie(":/images/Tooltip_ToLevel2Tower.gif"));
+        if(towerinfo == LEVEL2)
+            tooltip->setMovie(new QMovie(":/images/Tooltip_ToLevel3Tower.gif"));
+        if(towerinfo != LEVEL3){
+            tooltip->movie()->start();
+            tooltip->setGeometry(768,384,256,192);
+            scene->addWidget(tooltip);
+        }
+    }
     else if(event->pos().x()-(768)<64 && event->pos().y()-(192+64)<64
             && event->pos().x()-(768)>0 && event->pos().y()-(192+64)>0 && tooltip == nullptr){
         tooltip = new QLabel();
@@ -242,9 +260,11 @@ void Game::mouseMoveEvent(QMouseEvent *event)
             tooltip->setMovie(new QMovie(":/images/Tooltip_Chemical.gif"));
         if(towerinfo == LEVEL2)
             tooltip->setMovie(new QMovie(":/images/TooltipLV2_Metal.gif"));
-        tooltip->movie()->start();
-        tooltip->setGeometry(768,384,256,192);
-        scene->addWidget(tooltip);
+        if(towerinfo != LEVEL3){
+            tooltip->movie()->start();
+            tooltip->setGeometry(768,384,256,192);
+            scene->addWidget(tooltip);
+        }
     }
     else if(event->pos().x()-(768+64)<64 && event->pos().y()-(192+64)<64
             && event->pos().x()-(768+64)>0 && event->pos().y()-(192+64)>0 && tooltip == nullptr){
@@ -253,17 +273,36 @@ void Game::mouseMoveEvent(QMouseEvent *event)
             tooltip->setMovie(new QMovie(":/images/Tooltip_Electronics.gif"));
         if(towerinfo == LEVEL2)
             tooltip->setMovie(new QMovie(":/images/TooltipLV2_JobsBook.gif"));
-        tooltip->movie()->start();
-        tooltip->setGeometry(768,384,256,192);
-        scene->addWidget(tooltip);
+        if(towerinfo != LEVEL3){
+            tooltip->movie()->start();
+            tooltip->setGeometry(768,384,256,192);
+            scene->addWidget(tooltip);
+        }
     }
     else if(event->pos().x()-(768+64*2)<64 && event->pos().y()-(192+64)<64
             && event->pos().x()-(768+64*2)>0 && event->pos().y()-(192+64)>0 && tooltip == nullptr){
-        tooltip = new QLabel();
-        tooltip->setMovie(new QMovie(":/images/Tooltip_IME.gif"));
-        tooltip->movie()->start();
-        tooltip->setGeometry(768,384,256,192);
-        scene->addWidget(tooltip);
+        if(towerinfo == BASE){
+            tooltip = new QLabel();
+            tooltip->setMovie(new QMovie(":/images/Tooltip_IME.gif"));
+            tooltip->movie()->start();
+            tooltip->setGeometry(768,384,256,192);
+            scene->addWidget(tooltip);
+        }
+    }
+    else if(event->pos().x()-(768+64*3)<64 && event->pos().y()-(192+64)<64
+            && event->pos().x()-(768+64*3)>0 && event->pos().y()-(192+64)>0 && tooltip == nullptr){
+
+            tooltip = new QLabel();
+            if(towerinfo == BASE)
+                tooltip->setMovie(new QMovie(":/images/Tooltip_Random.gif"));
+            if(towerinfo == LEVEL2)
+                tooltip->setMovie(new QMovie(":/images/Tooltip_BackToBaseTowergif.gif"));
+            if(towerinfo == LEVEL3)
+                tooltip->setMovie(new QMovie(":/images/Tooltip_BackToBaseTowergif.gif"));
+            tooltip->movie()->start();
+            tooltip->setGeometry(768,384,256,192);
+            scene->addWidget(tooltip);
+
     }
     else
         QGraphicsView::mouseMoveEvent(event);
@@ -683,6 +722,9 @@ void Game::FuseTower()
 
         if(combination[first][second] == true){
            new_tower = waiting_line[0]->fuseTower(waiting_line[0],waiting_line[1]);
+
+           control->Delete(waiting_line[0]);
+           control->Delete(waiting_line[1]);
             scene->removeItem(waiting_line[0]);
             scene->removeItem(waiting_line[1]);
 
@@ -752,8 +794,9 @@ void Game::DestroyTower(Tower * target)
 {
    QVector<Tower*>::iterator pos = std::find(build.begin() , build.end() ,target);
    if(pos != build.end()){
-       build.erase(pos);
-       delete *pos;
+       build.erase(pos);     
+       control->Delete(target);
+       delete target;
    }
 }
 

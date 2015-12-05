@@ -65,6 +65,16 @@ public:
     int GetTowerinfo() {return towerinfo;}
     void SetTowerinfo(int _towerinfo) {towerinfo = _towerinfo;}
 
+    BuildTowerIcon *getNormal_Tower_button() {return Normal_Tower_button;}
+    BuildTowerIcon *getSplash_Tower_button() {return Splash_Tower_button;}
+    BuildTowerIcon *getSlow_Tower_button() {return Slow_Tower_button;}
+    BuildTowerIcon *getGo_to_back_Button() {return Go_to_back_Button;}
+    BuildTowerIcon *getPoison_Tower_button() {return Poison_Tower_button;}
+    BuildTowerIcon *getChain_Tower_button() {return Chain_Tower_button;}
+    BuildTowerIcon *getGold_Tower_button() {return Gold_Tower_button;}
+    BuildTowerIcon *getRandom_Tower_Button() {return Random_Tower_Button;}
+
+
     void MakeNewGame();
 
     void FuseTower();
@@ -134,14 +144,17 @@ private :
 
     Button *start_pause_button; //start_puase 踰꾪듉
     Fusion_Button *fusion_button; //?⑹껜 踰꾪듉
+    UpgradeButton *upgrade_button; //?낃렇?덉씠??踰꾪듉
+
     BuildTowerIcon *Normal_Tower_button; //???踰꾪듉
     BuildTowerIcon *Splash_Tower_button; //???踰꾪듉
     BuildTowerIcon *Slow_Tower_button; //???踰꾪듉
+    BuildTowerIcon *Go_to_back_Button;
     BuildTowerIcon *Poison_Tower_button; //???踰꾪듉
     BuildTowerIcon *Chain_Tower_button; //???踰꾪듉
     BuildTowerIcon *Gold_Tower_button; //???踰꾪듉
     BuildTowerIcon *Random_Tower_Button;
-    UpgradeButton *upgrade_button; //?낃렇?덉씠??踰꾪듉
+
 
     QTimer *spawn_timer; //?곷뱾??scene??異쒗쁽 ?섎뒗 frequency??愿???뺣낫瑜??닿퀬 ?덈떎.
     QLabel* round_label; //round 異쒕젰

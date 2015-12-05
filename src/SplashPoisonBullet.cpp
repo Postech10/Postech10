@@ -28,6 +28,10 @@ void SplashPoisonBullet::move()
                     dynamic_cast<AttackableEnemy*>(splashed_enemies[j])->IsGoldPoisonedBy(AttackPower,GoldPower);
                 }
             }
+            if(typeid(*(colliding_enemies[i]))==typeid(Enemy))
+                dynamic_cast<Enemy*>(colliding_enemies[i])->IsGoldPoisonedBy(AttackPower,GoldPower);
+            else if(typeid(*(colliding_enemies[i]))==typeid(AttackableEnemy))
+                dynamic_cast<AttackableEnemy*>(colliding_enemies[i])->IsPoisonedBy(AttackPower,GoldPower);
             playSound("Splash");               //sound for splash
             game->scene->removeItem(this);
             QTimer::singleShot(3000,this,SLOT(callDestructor()));
