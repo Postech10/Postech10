@@ -1,7 +1,5 @@
 ﻿#include "BuildTowerIcon.h"
 #include "Game.h"
-#include <cstdlib>
-#include <ctime>
 #include <qdebug.h>
 
 extern Game *game;
@@ -10,6 +8,7 @@ BuildTowerIcon::BuildTowerIcon(char *filename,int _tower_code ,QGraphicsItem *pa
 
     setPixmap(QPixmap(filename));     //constructor
     tower_code = _tower_code;
+    srand(time(NULL));
 }
 void BuildTowerIcon::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {   
@@ -48,6 +47,8 @@ void BuildTowerIcon::mousePressEvent(QGraphicsSceneMouseEvent *event)
 
         if(game->GetTowerinfo() == LEVEL2){
             this->updatePixmap(game->getGo_to_back_Button(),":/images/Icon_ToLevel2Tower.bmp");
+            this->updatePixmap(game->getPoison_Tower_button(),":/images/Icon_Chemical.bmp");
+            this->updatePixmap(game->getChain_Tower_button(),":/images/Icon_Electronic.bmp");
         }
 
         if(game->GetTowerinfo() == LEVEL3){
@@ -74,7 +75,6 @@ void BuildTowerIcon::mousePressEvent(QGraphicsSceneMouseEvent *event)
 
         if(tower_code == 14){
 
-            srand(time(NULL));
             int random = rand() % 157 + 1;
             if(random >=1 && random <= 42)
                 random = NORMAL;

@@ -23,14 +23,24 @@ void SplashLaser::move()
             for (size_t j=0, m=splashed_enemies.size();j<m;j++){
                 if(typeid(*(splashed_enemies[j]))==typeid(Enemy)){                          //if enemy
                     dynamic_cast<Enemy*>(splashed_enemies[j])->IsHitBy(AttackPower);
-                    if(dynamic_cast<Enemy*>(colliding_enemies[j])->DieOrNot())              //die?
+                    if(dynamic_cast<Enemy*>(splashed_enemies[j])->DieOrNot())              //die?
                         game->set_money(game->get_money()+GoldPower);                       //inc money
                 }
                 else if(typeid(*(splashed_enemies[j]))==typeid(AttackableEnemy)){
                     dynamic_cast<AttackableEnemy*>(splashed_enemies[j])->IsHitBy(AttackPower);
-                    if(dynamic_cast<AttackableEnemy*>(colliding_enemies[j])->DieOrNot())              //die?
+                    if(dynamic_cast<AttackableEnemy*>(splashed_enemies[j])->DieOrNot())              //die?
                         game->set_money(game->get_money()+GoldPower);                       //inc money
                 }
+            }
+            if(typeid(*(colliding_enemies[i]))==typeid(Enemy)){
+                dynamic_cast<Enemy*>(colliding_enemies[i])->IsHitBy(AttackPower);
+                if(dynamic_cast<Enemy*>(colliding_enemies[i])->DieOrNot())              //die?
+                    game->set_money(game->get_money()+GoldPower);                       //inc money
+            }
+            else if(typeid(*(colliding_enemies[i]))==typeid(AttackableEnemy)){
+                dynamic_cast<AttackableEnemy*>(colliding_enemies[i])->IsHitBy(AttackPower);
+                if(dynamic_cast<AttackableEnemy*>(colliding_enemies[i])->DieOrNot())              //die?
+                    game->set_money(game->get_money()+GoldPower);                       //inc money
             }
             playSound("Splash");               //sound for splash
             game->scene->removeItem(this);

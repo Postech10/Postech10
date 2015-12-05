@@ -163,7 +163,7 @@ void Game::displayMenu()
     round_label->setFont(mystyle);
     round_label->setStyleSheet("QLabel { background-color : rgba(0,0,0,0%); color : white; }");
     round_label->setText(QString("Round ")+QString::number(round));
-    round_label->setGeometry(704-64*3,704,64*3,64);
+    round_label->setGeometry(704-64*3,704,64*4,64);
     scene->addWidget(round_label);
 
     //make a label which shows current money the user has and add it into scene
@@ -173,7 +173,7 @@ void Game::displayMenu()
     money_label->setFont(mystyle);
     money_label->setStyleSheet("QLabel { background-color : rgba(0,0,0,0%); color : rgba(255,234,0); }");
     money_label->setText(QString::number(money));
-    money_label->setGeometry(1024-64*2,32*10.5,64*3,50);
+    money_label->setGeometry(1024-64*2.2,32*10.5,64*3,50);
     scene->addWidget(money_label);
 
     hpBar = new QGraphicsRectItem();
@@ -185,7 +185,7 @@ void Game::displayMenu()
     textBox = new QLineEdit();
     connect(textBox , SIGNAL(returnPressed()), this, SLOT(CheatKeyEntered()));
     textBox->setGeometry(768+5 , 710 , 64*3.5 , 32);
-    textBox->setStyleSheet("background-color : black;");
+    textBox->setStyleSheet("background-color : white;");
     scene->addWidget(textBox);
 }
 
@@ -475,7 +475,6 @@ void Game::button_Pressed(QPointF point,int tower_code)
 //this method is called when all spawned enemies is removed from scene
 void Game::clear_game()
 {
-    qDebug()<<"clear_game() start";
     wave_generator.ClearSpwanList();
     start_pause_button->setPixmap(QPixmap(":/images/StartButton.bmp"));
     scene->addItem(start_pause_button);
@@ -487,7 +486,6 @@ void Game::clear_game()
     wave = 0;
     dead_enemy=0;
     enemy_num=0;
-        qDebug()<<"clear_game() end";
 }
 
 
@@ -696,7 +694,6 @@ void Game::RenewEnemyNum(bool is_dead)
     if(is_dead)
         dead_enemy++;
 
-    qDebug()<<wave<<","<<enemy_num<<","<<dead_enemy;
     if(wave == SpawnList.size() && enemy_num == 0 && state != GameOver){
         SetState(Cleared);
     }
@@ -782,12 +779,7 @@ void Game::FuseTower()
 
 
         }
-        else
-            qDebug()<<"fusion ?????놁뒿?덈떎!";
     }
-
-    else
-        qDebug()<<"fusion ?????놁뒿?덈떎!";
 }
 
 void Game::DestroyTower(Tower * target)
@@ -806,12 +798,10 @@ void Game::SetState(int _state){
     state = _state;
 
     if(_state == GameOver){
-        qDebug()<<"emit game_is_over";
         emit game_is_over();
     }
 
     else if(_state == Cleared){
-        qDebug()<<"emit game_is_cleared";
         emit game_is_cleared();
     }
 }
