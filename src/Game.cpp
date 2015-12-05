@@ -704,6 +704,9 @@ void Game::FuseTower()
 
         if(combination[first][second] == true){
            new_tower = waiting_line[0]->fuseTower(waiting_line[0],waiting_line[1]);
+
+           control->Delete(waiting_line[0]);
+           control->Delete(waiting_line[1]);
             scene->removeItem(waiting_line[0]);
             scene->removeItem(waiting_line[1]);
 
@@ -774,7 +777,9 @@ void Game::DestroyTower(Tower * target)
    QVector<Tower*>::iterator pos = std::find(build.begin() , build.end() ,target);
    if(pos != build.end()){
        build.erase(pos);
-       delete *pos;
+       Tower* tmp = *pos;
+       control->Delete(tmp);
+       delete tmp;
    }
 }
 

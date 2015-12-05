@@ -30,6 +30,7 @@ void SoundObject::playSound(const QString &tag)
             (*it)->stop();
         }
     }*/
+
     try{
     soundboard[tag]->play(); //play assigned sound
     }
