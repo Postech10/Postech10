@@ -61,5 +61,22 @@
         <file>images/Tooltip_Random.gif</file>
         <file>images/Tooltip_ToLevel2Tower.gif</file>
         <file>images/Tooltip_ToLevel3Tower.gif</file>
+        <file>images/Animation_AppleDeathMachine.bmp</file>
+        <file>images/Animation_JobsDream.bmp</file>
+        <file>images/Bullet_Normal.bmp</file>
+        <file>images/FieldTooltipLV2_Session.gif</file>
+        <file>images/FieldTooltipLV2_TutoringMachine.gif</file>
+        <file>images/Icon_BASETOWER.bmp</file>
+        <file>images/Icon_LV2TOWER.bmp</file>
+        <file>images/Icon_LV3TOWER.bmp</file>
+        <file>images/Intro3.bmp</file>
+        <file>images/Intro4.bmp</file>
+        <file>images/Intro5.bmp</file>
+        <file>images/Intro6.bmp</file>
+        <file>images/Intro7.bmp</file>
+        <file>images/Intro8.bmp</file>
+        <file>images/TitleButton.bmp</file>
+        <file>images/TooltipLV2_Session.gif</file>
+        <file>images/TooltipLV2_TutoringMachine.gif</file>
     </qresource>
 </RCC>
