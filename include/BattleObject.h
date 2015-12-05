@@ -17,7 +17,7 @@ public:
     virtual ~BattleObject();
     virtual void Attack();
     double CalcDistance(QGraphicsItem*);
-    virtual void IsHitBy(int);
+    virtual void IsHitBy(int)=0;
     int GetHp();
     int GetAttackPower();
     int GetDefensivePower();

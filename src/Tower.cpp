@@ -114,6 +114,19 @@ int Tower::GetTowerCode()
     return TowerCode;
 }
 
+void Tower::IsHitBy(int AttackPower)
+{
+    Hp = Hp - AttackPower/DefensivePower;       //not perfect equation yet
+
+    if(Hp<=0){
+        scene()->removeItem(hpBar);
+        scene()->removeItem(this);
+        game->DestroyTower(this);
+    }
+    else
+        cutHpbar();
+}
+
 void Tower::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
     if(choose == false && game->GetAddMode()==false){

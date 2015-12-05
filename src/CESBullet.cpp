@@ -25,6 +25,13 @@ void CESBullet::move()
             QTimer::singleShot(3000,this,SLOT(callDestructor()));
             return;
         }
+        else if(typeid(*(colliding_enemies[i]))==typeid(AttackableEnemy)){
+            dynamic_cast<AttackableEnemy*>(colliding_enemies[i])->IsGoldPoisonedBy(AttackPower,GoldPower);
+            playSound("Hit");               //sound for hit
+            game->scene->removeItem(this);
+            QTimer::singleShot(3000,this,SLOT(callDestructor()));
+            return;
+        }
     }
     double theta = rotation();                      //set theta
 

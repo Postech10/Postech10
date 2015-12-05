@@ -53,19 +53,6 @@ double BattleObject::CalcDistance(QGraphicsItem *item)
     return ln.length();
 }
 
-void BattleObject::IsHitBy(int AttackPower)
-{
-    Hp = Hp - AttackPower/DefensivePower;       //not perfect equation yet
-
-    if(Hp<=0){
-        scene()->removeItem(hpBar);
-        scene()->removeItem(this);
-        game->DestroyTower(this);
-    }
-    else
-        cutHpbar();
-}
-
 int BattleObject::GetHp()
 {
     return Hp;
@@ -132,7 +119,7 @@ void BattleObject::SetTarget()
 {
     QList<QGraphicsItem *> colliding_items= AttackRange->collidingItems();//AttackRange's colliding item
     for(size_t j = 0, m = colliding_items.size();j<m;j++){
-        if(typeid(*(colliding_items[j]))==typeid(Enemy))                   //if Enemy
+        if((typeid(*(colliding_items[j]))==typeid(Enemy))||typeid(*(colliding_items[j]))==typeid(AttackableEnemy))       //if Enemy
             break;
         else if(j == m-1){                                                 //no Enemy
             HasTarget = false;
@@ -141,7 +128,12 @@ void BattleObject::SetTarget()
     }
     double closest_dist = 300;              //first initialize longer than range
     for (size_t i=0, n=colliding_items.size();i<n;i++){
-        Enemy *test = dynamic_cast<Enemy *>(colliding_items[i]);           //colliding enemy
+        if(typeid(*(colliding_items[j]))==typeid(Enemy))
+            Enemy *test = dynamic_cast<Enemy *>(colliding_items[i]);           //colliding enemy
+        else if(typeid(*(colliding_items[j]))==typeid(AttackableEnemy))
+            AttackableEnemy *test = dynamic_cast<AttackableEnemy *>(colliding_items[i]);
+        else
+            continue;
         if(test){                          //only for enemy
             double this_dist = CalcDistance(test);
             if(this_dist < closest_dist){               //find closest enemy

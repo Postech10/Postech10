@@ -3,7 +3,7 @@
 #define TOWER
 
 #include "BattleObject.h"
-#include "enemy.h"
+#include "attackableenemy.h"
 
 #define NORMAL 0
 #define SPLASH 1
@@ -29,6 +29,7 @@ public:
     Tower* fuseTower(Tower*, Tower*);
     int GetTargetNum();
     int GetTowerCode();
+    void IsHitBy(int);
     void mousePressEvent(QGraphicsSceneMouseEvent *event);
 
 protected:
