@@ -18,8 +18,6 @@ Tower::Tower()
     Attackable = true;                  //this will be changed for balance
     set_image(QString::fromStdString(":/images/Animation_Assistant.bmp"));
     set_state(CALM);
-    //setPixmap(QPixmap(":/images/Icon_Assistant.bmp"));     //set pic
-
 }
 
 void Tower::upgrade(Upgrades* up, int towercode)

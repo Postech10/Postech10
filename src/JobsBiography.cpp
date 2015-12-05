@@ -10,7 +10,8 @@ JobsBiography::JobsBiography()
     GoldPower = 10;
     AttackSpeed = 20;
     Attackable = true;                  //this will be changed for balance
-    setPixmap(QPixmap(":/images/Mechanical.bmp"));     //set pic
+    set_image(QString::fromStdString("://images/Animation_JobsBook.bmp"));
+    set_state(CALM);
 }
 
 void JobsBiography::SetTarget()

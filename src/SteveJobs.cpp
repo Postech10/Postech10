@@ -12,7 +12,8 @@ SteveJobs::SteveJobs()
     DefensivePower = 20;
     AttackSpeed = 20;
     Attackable = false;                  //this will be changed for balance
-    setPixmap(QPixmap(":/images/Mechanical.bmp"));     //set pic
+    set_image(QString::fromStdString("://images/Animation_JobsDream.bmp"));
+    set_state(CALM);
     this->HideAttackRange();
 }
 
