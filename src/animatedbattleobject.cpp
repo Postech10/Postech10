@@ -27,7 +27,7 @@ void AnimatedBattleObject::Animate()
     {
         case CALM:
         {
-            qDebug() << state_cnt;
+            //qDebug() << state_cnt;
             if(state_cnt)
             {
                 QPixmap * copy = new QPixmap();

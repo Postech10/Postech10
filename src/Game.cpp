@@ -240,6 +240,19 @@ void Game::mouseMoveEvent(QMouseEvent *event)
         tooltip->setGeometry(768,384,256,192);
         scene->addWidget(tooltip);
     }
+    else if(event->pos().x()-(768+64*3)<64 && event->pos().y()-192<64
+            && event->pos().x()-(768+64*3)>0 && event->pos().y()-192>0 && tooltip == nullptr){
+        tooltip = new QLabel();
+        if(towerinfo == BASE)
+            tooltip->setMovie(new QMovie(":/images/Tooltip_ToLevel2Tower.gif"));
+        if(towerinfo == LEVEL2)
+            tooltip->setMovie(new QMovie(":/images/Tooltip_ToLevel3Tower.gif"));
+        if(towerinfo != LEVEL3){
+            tooltip->movie()->start();
+            tooltip->setGeometry(768,384,256,192);
+            scene->addWidget(tooltip);
+        }
+    }
     else if(event->pos().x()-(768)<64 && event->pos().y()-(192+64)<64
             && event->pos().x()-(768)>0 && event->pos().y()-(192+64)>0 && tooltip == nullptr){
         tooltip = new QLabel();
@@ -278,13 +291,18 @@ void Game::mouseMoveEvent(QMouseEvent *event)
     }
     else if(event->pos().x()-(768+64*3)<64 && event->pos().y()-(192+64)<64
             && event->pos().x()-(768+64*3)>0 && event->pos().y()-(192+64)>0 && tooltip == nullptr){
-        if(towerinfo == BASE){
+
             tooltip = new QLabel();
-            tooltip->setMovie(new QMovie(":/images/Tooltip_Random.gif"));
+            if(towerinfo == BASE)
+                tooltip->setMovie(new QMovie(":/images/Tooltip_Random.gif"));
+            if(towerinfo == LEVEL2)
+                tooltip->setMovie(new QMovie(":/images/Tooltip_BackToBaseTowergif.gif"));
+            if(towerinfo == LEVEL3)
+                tooltip->setMovie(new QMovie(":/images/Tooltip_BackToBaseTowergif.gif"));
             tooltip->movie()->start();
             tooltip->setGeometry(768,384,256,192);
             scene->addWidget(tooltip);
-        }
+
     }
     else
         QGraphicsView::mouseMoveEvent(event);
@@ -776,10 +794,9 @@ void Game::DestroyTower(Tower * target)
 {
    QVector<Tower*>::iterator pos = std::find(build.begin() , build.end() ,target);
    if(pos != build.end()){
-       build.erase(pos);
-       Tower* tmp = *pos;
-       control->Delete(tmp);
-       delete tmp;
+       build.erase(pos);     
+       control->Delete(target);
+       delete target;
    }
 }
 
