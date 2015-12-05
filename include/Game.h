@@ -19,6 +19,7 @@
 #include "control_animation.h"
 
 enum State {Ingame, Paused, Cleared, GameOver};
+enum TOWERINFO {BASE,LEVEL2,LEVEL3};
 
 class Game: public QGraphicsView{               //game?붾㈃???곸냽 (view)
 
@@ -61,9 +62,14 @@ public:
     int GetLife() {return life;}
     void SetLife(int _life);
 
+    int GetTowerinfo() {return towerinfo;}
+    void SetTowerinfo(int _towerinfo) {towerinfo = _towerinfo;}
+
     void MakeNewGame();
 
     void FuseTower();
+
+    void DestroyTower(Tower*target);
 
     Control_Animation* control;
 
@@ -119,6 +125,7 @@ private :
     int round; //?꾩옱 ?쇱슫??
     int wave; //???쇱슫?쒖뿉 ?깆옣?섎뒗 enemy????
     int state; //?꾩옱 寃뚯엫 ?곹솴???대뼡 ?곹솴?몄? ?뚮젮 二쇰뒗 蹂??
+    int towerinfo;
 
     bool add_mode; //add_mode ?몄? ?꾨땶吏??????뺣낫瑜??닿퀬 ?덈뒗 蹂??
     bool upgrade_mode;

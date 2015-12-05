@@ -28,6 +28,7 @@ Game::Game(){
     upgrade_mode=false;
 
     state = Cleared;                        //initialize state
+    towerinfo = BASE;
     enemy_num=0;
     dead_enemy=0;
     wave=0;
@@ -155,9 +156,9 @@ void Game::displayMenu()
     mystyle.setBold(true);
     mystyle.setPointSize(20);
     round_label->setFont(mystyle);
-    round_label->setStyleSheet("QLabel { background-color : rgba(0,0,0,0%); color : black; }");
+    round_label->setStyleSheet("QLabel { background-color : rgba(0,0,0,0%); color : white; }");
     round_label->setText(QString("Round ")+QString::number(round));
-    round_label->setGeometry(704-64*2,704,64*2,64);
+    round_label->setGeometry(704-64*3,704,64*3,64);
     scene->addWidget(round_label);
 
     //make a label which shows current money the user has and add it into scene
@@ -193,13 +194,17 @@ void Game::mouseMoveEvent(QMouseEvent *event)
     if(tooltip && waiting_line.size() == 0){
         delete tooltip;
         tooltip = nullptr;
-    }
-
+    } 
     //when mouse cursor is on tower build button
     if(event->pos().x()-(768)<64 && event->pos().y()-(192)<64
             && event->pos().x()-(768)>0&& event->pos().y()-(192)>0 && tooltip == nullptr){
         tooltip = new QLabel();
-        tooltip->setMovie(new QMovie(":/images/Tooltip_Assistant.gif"));
+        if(towerinfo == BASE)
+            tooltip->setMovie(new QMovie(":/images/Tooltip_Assistant.gif"));
+        if(towerinfo == LEVEL2)
+            tooltip->setMovie(new QMovie(":/images/TooltipLV2_TutoringMachine.gif"));
+        if(towerinfo == LEVEL3)
+            tooltip->setMovie(new QMovie(":/images/TooltipLV3_AppleDeathMachinel.gif"));
         tooltip->movie()->start();
         tooltip->setGeometry(768,384,256,192);
         scene->addWidget(tooltip);
@@ -207,7 +212,12 @@ void Game::mouseMoveEvent(QMouseEvent *event)
     else if(event->pos().x()-(768+64)<64 && event->pos().y()-192<64
             && event->pos().x()-(768+64)>0 && event->pos().y()-192>0 && tooltip == nullptr){
         tooltip = new QLabel();
-        tooltip->setMovie(new QMovie(":/images/Tooltip_Mechanical.gif"));
+        if(towerinfo == BASE)
+            tooltip->setMovie(new QMovie(":/images/Tooltip_Mechanical.gif"));
+        if(towerinfo == LEVEL2)
+            tooltip->setMovie(new QMovie(":/images/TooltipLV2_Session.gif"));
+        if(towerinfo == LEVEL3)
+            tooltip->setMovie(new QMovie(":/images/TooltipLV3_JobsDream.gif"));
         tooltip->movie()->start();
         tooltip->setGeometry(768,384,256,192);
         scene->addWidget(tooltip);
@@ -215,7 +225,12 @@ void Game::mouseMoveEvent(QMouseEvent *event)
     else if(event->pos().x()-(768+64*2)<64 && event->pos().y()-192<64
             && event->pos().x()-(768+64*2)>0 && event->pos().y()-192>0 && tooltip == nullptr){
         tooltip = new QLabel();
-        tooltip->setMovie(new QMovie(":/images/Tooltip_SMP.gif"));
+        if(towerinfo == BASE)
+            tooltip->setMovie(new QMovie(":/images/Tooltip_SMP.gif"));
+        if(towerinfo == LEVEL2)
+            tooltip->setMovie(new QMovie(":/images/TooltipLV2_ChemEng.gif"));
+        if(towerinfo == LEVEL3)
+            tooltip->setMovie(new QMovie(":/images/TooltipLV3_3Major.gif"));
         tooltip->movie()->start();
         tooltip->setGeometry(768,384,256,192);
         scene->addWidget(tooltip);
@@ -223,7 +238,10 @@ void Game::mouseMoveEvent(QMouseEvent *event)
     else if(event->pos().x()-(768)<64 && event->pos().y()-(192+64)<64
             && event->pos().x()-(768)>0 && event->pos().y()-(192+64)>0 && tooltip == nullptr){
         tooltip = new QLabel();
-        tooltip->setMovie(new QMovie(":/images/Tooltip_Chemical.gif"));
+        if(towerinfo == BASE)
+            tooltip->setMovie(new QMovie(":/images/Tooltip_Chemical.gif"));
+        if(towerinfo == LEVEL2)
+            tooltip->setMovie(new QMovie(":/images/TooltipLV2_Metal.gif"));
         tooltip->movie()->start();
         tooltip->setGeometry(768,384,256,192);
         scene->addWidget(tooltip);
@@ -231,7 +249,10 @@ void Game::mouseMoveEvent(QMouseEvent *event)
     else if(event->pos().x()-(768+64)<64 && event->pos().y()-(192+64)<64
             && event->pos().x()-(768+64)>0 && event->pos().y()-(192+64)>0 && tooltip == nullptr){
         tooltip = new QLabel();
-        tooltip->setMovie(new QMovie(":/images/Tooltip_Electronics.gif"));
+        if(towerinfo == BASE)
+            tooltip->setMovie(new QMovie(":/images/Tooltip_Electronics.gif"));
+        if(towerinfo == LEVEL2)
+            tooltip->setMovie(new QMovie(":/images/TooltipLV2_JobsBook.gif"));
         tooltip->movie()->start();
         tooltip->setGeometry(768,384,256,192);
         scene->addWidget(tooltip);
@@ -272,7 +293,7 @@ void Game::spawnEnemy()
 void Game::button_Pressed(QPointF point,int tower_code)
 {
 
-    if(add_mode == true){
+    if(add_mode == true && towerinfo == BASE){
         QPixmap* add_mode_pixmap;
 
         switch(tower_code){
@@ -297,6 +318,7 @@ void Game::button_Pressed(QPointF point,int tower_code)
         }
 
         QCursor* add_mode_cursor = new QCursor(*add_mode_pixmap);
+        QWidget::unsetCursor();
         QWidget::setCursor(*add_mode_cursor);
 
         control->ADD(build[build.size()-1]);
@@ -367,6 +389,26 @@ void Game::button_Pressed(QPointF point,int tower_code)
         for(int i=0 ; i<build.size() ; i++){
             delete build[i];
         }
+
+        for(int i=0 ; i < 11 ; i++){
+            for(int j=0 ; j < 12 ; j++)
+                position[i][j]=false;
+        }
+        for(int i=11 ; i < 16 ; i++){
+            for(int j=0 ; j < 12 ; j++)
+                position[i][j]=true;
+        }
+        for(int i=3 ; i<10 ; i++)
+            position[i][7]=true;
+        position[3][8]=true;
+        for(int i=3 ; i<9 ; i++)
+            position[i][9]=true;
+        for(int i=4 ; i<9 ; i++)
+            position[i][2]=true;
+        for(int i=2 ; i<8 ; i++)
+            position[9][i]=true;
+        for(int i=0 ; i<16; i++)
+            position[i][0]=true;
 
         SetLife(100);
         hpBar->setRect(0,0, (704-256)*((float(life)/100)), float(42-21));
@@ -447,20 +489,21 @@ void Game::ShowTowerInfo(Tower *tower)
     case GOLD:
         tooltip->setMovie(new QMovie(":/images/FieldTooltip_IME.gif"));break;
     case TUTOR:
-        tooltip->setMovie(new QMovie(":/images/tooltip.png"));break;
+        tooltip->setMovie(new QMovie(":/images/FieldTooltipLV2_TutoringMachine.gif"));break;
     case PROF:
-        tooltip->setMovie(new QMovie(":/images/tooltip.png"));break;
+        tooltip->setMovie(new QMovie(":/images/FieldTooltipLV2_Session.gif"));break;
     case CES:
-        tooltip->setMovie(new QMovie(":/images/tooltip.png"));break;
+        tooltip->setMovie(new QMovie(":/images/FieldTooltipLV2_ChemEng.gif"));break;
     case MES:
-        tooltip->setMovie(new QMovie(":/images/tooltip.png"));break;
+        tooltip->setMovie(new QMovie(":/images/FieldTooltipLV2_Metal.gif"));break;
+    case JOBSBIO:
+        tooltip->setMovie(new QMovie(":/images/FieldTooltipLV2_JobsBook.gif"));break;
     case APPLE:
-        tooltip->setMovie(new QMovie(":/images/tooltip.png"));break;
+        tooltip->setMovie(new QMovie(":/images/FieldTooltipLV3_AppleDeathMachinel.gif"));break;
     case JOBS:
-        tooltip->setMovie(new QMovie(":/images/tooltip.png"));break;
+        tooltip->setMovie(new QMovie(":/images/FieldTooltipLV3_JobsDream.gif"));break;
     case TRIPLE:
-        tooltip->setMovie(new QMovie(":/images/tooltip.png"));break;
-
+        tooltip->setMovie(new QMovie(":/FieldTooltipLV3_3Major.gif"));break;
     }
     tooltip->movie()->start();
     scene->addWidget(tooltip);
@@ -582,6 +625,7 @@ void Game::mousePressEvent(QMouseEvent *event){
         pointer->setVisible(true);
         pointer->setPos((pointed_spot.x()/64)*64,(pointed_spot.y()/64)*64);
         pointer->Activated(true);
+        pointer->setHpbar();
         scene->addItem(pointer);
         QWidget::unsetCursor();
 
@@ -650,33 +694,39 @@ void Game::FuseTower()
             position[static_cast<int>(waiting_line[0]->pos().x()/64)][static_cast<int>(waiting_line[0]->pos().y()/64)] = false;
             position[static_cast<int>(waiting_line[1]->pos().x()/64)][static_cast<int>(waiting_line[1]->pos().y()/64)] = false;
 
+//            waiting_line[0]->DelHpBar();
+//            waiting_line[1]->DelHpBar();
+
             delete waiting_line[0];
             delete waiting_line[1];
             waiting_line.clear();
 
             build.push_back(new_tower);
+            control->ADD(new_tower);
             add_mode = true;
             QPixmap* pixmap;
 
             switch(new_tower->GetTowerCode()){
             case TUTOR:
-                pixmap = new QPixmap(QString(":/images/tooltip.png"));break;
+                pixmap = new QPixmap(QString(":/images/IconLV2_TutorRobot.bmp"));break;
             case PROF:
-                pixmap = new QPixmap(QString(":/images/tooltip.png"));break;
+                pixmap = new QPixmap(QString(":/images/IconLV2_Session.bmp"));break;
             case CES:
-                pixmap = new QPixmap(QString(":/images/tooltip.png"));break;
+                pixmap = new QPixmap(QString(":/images/IconLV2_ChemEng.bmp"));break;
             case MES:
-                pixmap = new QPixmap(QString(":/images/tooltip.png"));break;
-            case APPLE:
-                pixmap = new QPixmap(QString(":/images/tooltip.png"));break;
-            case JOBS:
-                pixmap = new QPixmap(QString(":/images/tooltip.png"));break;
-            case TRIPLE:
-                pixmap = new QPixmap(QString(":/images/tooltip.png"));break;
+                pixmap = new QPixmap(QString(":/images/IconLV2_Metal.bmp"));break;
             case JOBSBIO:
-                pixmap = new QPixmap(QString(":/images/tooltip.png"));break;
+                pixmap = new QPixmap(QString(":/images/IconLV2_JobsBook.bmp"));break;
+            case APPLE:
+                pixmap = new QPixmap(QString(":/images/IconLV3_AppleDeathMachine.bmp"));break;
+            case JOBS:
+                pixmap = new QPixmap(QString(":/images/IconLV3_JobsDream.bmp"));break;
+            case TRIPLE:
+                pixmap = new QPixmap(QString(":/images/IconLV3_3Major.bmp"));break;
             }
+
             QCursor* new_cursor = new QCursor(*pixmap);
+            QWidget::unsetCursor();
             QWidget::setCursor(*new_cursor);
 
             delete attack_ability;
@@ -696,6 +746,15 @@ void Game::FuseTower()
 
     else
         qDebug()<<"fusion ?????놁뒿?덈떎!";
+}
+
+void Game::DestroyTower(Tower * target)
+{
+   QVector<Tower*>::iterator pos = std::find(build.begin() , build.end() ,target);
+   if(pos != build.end()){
+       build.erase(pos);
+       delete *pos;
+   }
 }
 
 //method to modify state of the game
