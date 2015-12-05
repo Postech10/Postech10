@@ -9,7 +9,8 @@ TutorRobot::TutorRobot()
     DefensivePower = 20;
     AttackSpeed = 20;
     Attackable = true;                  //this will be changed for balance
-    setPixmap(QPixmap(":/images/Mechanical.bmp"));     //set pic
+    set_image(QString::fromStdString("://images/Animation_TutorRobot.bmp"));
+    set_state(CALM);
 }
 
 void TutorRobot::SetTarget()

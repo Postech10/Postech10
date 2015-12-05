@@ -13,7 +13,8 @@ MetalEngSenior::MetalEngSenior()
     GoldPower = 20;
     AttackSpeed = 20;
     Attackable = true;                  //this will be changed for balance
-    setPixmap(QPixmap(":/images/Mechanical.bmp"));     //set pic
+    set_image(QString::fromStdString("://images/Animation_Metal.bmp"));
+    set_state(CALM);
 }
 
 void MetalEngSenior::Attack()
@@ -25,5 +26,6 @@ void MetalEngSenior::Attack()
     int angle = -1 * ln.angle();                    //angle between object and target
     bullet->setRotation(angle);                     //set rotation
     game->scene->addItem(bullet);                   //add it in game scene
+    set_state(ATTACK);
 }
 

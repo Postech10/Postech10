@@ -13,7 +13,8 @@ GoldTower::GoldTower()
     GoldPower = 10;
     AttackSpeed = 20;
     Attackable = true;                  //this will be changed for balance
-    setPixmap(QPixmap(":/images/Icon_IME.bmp"));     //set pic
+    set_image(QString::fromStdString("://images/Animation_IME.bmp"));
+    set_state(CALM);
 }
 
 void GoldTower::Attack()
@@ -25,6 +26,7 @@ void GoldTower::Attack()
     int angle = -1 * ln.angle();                    //angle between object and target
     bullet->setRotation(angle);                     //set rotation
     game->scene->addItem(bullet);                   //add it in game scene
+    set_state(ATTACK);
 }
 
 void GoldTower::SetGoldPower(int gold)

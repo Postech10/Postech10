@@ -44,6 +44,7 @@ void BattleObject::Attack()
     int angle = -1 * ln.angle();                    //angle between object and target
     bullet->setRotation(angle);                     //set rotation
     game->scene->addItem(bullet);                   //add it in game scene
+    set_state(ATTACK);
 }
 
 double BattleObject::CalcDistance(QGraphicsItem *item)

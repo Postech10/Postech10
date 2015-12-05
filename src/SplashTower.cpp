@@ -13,7 +13,8 @@ SplashTower::SplashTower()
     DefensivePower = 20;
     AttackSpeed = 20;
     Attackable = true;                  //this will be changed for balance
-    setPixmap(QPixmap(":/images/Icon_Mechanical.bmp"));     //set pic
+    set_image(QString::fromStdString("://images/Animation_Mechanical.bmp"));
+    set_state(CALM);
 }
 
 
@@ -26,4 +27,5 @@ void SplashTower::Attack()
     int angle = -1 * ln.angle();                    //angle between object and target
     bullet->setRotation(angle);                     //set rotation
     game->scene->addItem(bullet);                   //add it in game scene
+    set_state(ATTACK);
 }

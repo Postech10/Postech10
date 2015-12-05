@@ -78,5 +78,6 @@
         <file>images/TitleButton.bmp</file>
         <file>images/TooltipLV2_Session.gif</file>
         <file>images/TooltipLV2_TutoringMachine.gif</file>
+        <file>images/Animation_3Major.bmp</file>
     </qresource>
 </RCC>

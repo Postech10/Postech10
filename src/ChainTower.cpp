@@ -9,7 +9,8 @@ ChainTower::ChainTower()
     DefensivePower = 20;
     AttackSpeed = 20;
     Attackable = true;                  //this will be changed for balance
-    setPixmap(QPixmap(":/images/Icon_Electronic.bmp"));     //set pic
+    set_image(QString::fromStdString("://images/Animation_Electronic.bmp"));
+    set_state(CALM);
 }
 
 void ChainTower::SetTarget()
