@@ -1,5 +1,4 @@
-﻿#pragma once
-#ifndef TOWER
+﻿#ifndef TOWER
 #define TOWER
 
 #include "BattleObject.h"

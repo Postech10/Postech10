@@ -641,9 +641,21 @@ void Game::clear_game()
 //this method is called when an user selected an tower in map.
 void Game::ShowTowerInfo(Tower *tower)
 {
-    if(tooltip){
+    /*if(tooltip && movie_tooltip && attack_ability && defense_ability && attack_speed_ability && widget_tooltip && widget_atk && widget_atkspd && widget_def){
+        scene->removeItem(widget_tooltip);
+        scene->removeItem(widget_atk);
+        scene->removeItem(widget_atkspd);
+        scene->removeItem(widget_def);
+        widget_tooltip = nullptr;
+        widget_atk = nullptr;
+        widget_atkspd = nullptr;
+        widget_def = nullptr;
+
         delete tooltip;
         tooltip = nullptr;
+
+        delete movie_tooltip;
+        movie_tooltip = nullptr;
 
         delete attack_ability;
         attack_ability = nullptr;
@@ -653,7 +665,7 @@ void Game::ShowTowerInfo(Tower *tower)
 
         delete attack_speed_ability;
         attack_speed_ability = nullptr;
-    }
+    }*/
 
     tooltip = new QLabel();
     tooltip->setGeometry(768,384,256,192);
@@ -662,36 +674,37 @@ void Game::ShowTowerInfo(Tower *tower)
     switch(towerType){
 
     case NORMAL:
-        tooltip->setMovie(new QMovie(":/images/FieldTooltip_Assistant.gif"));break;
+        movie_tooltip = new QMovie(":/images/FieldTooltip_Assistant.gif");break;
     case SPLASH:
-        tooltip->setMovie(new QMovie(":/images/FieldTooltip_Mechanical.gif"));break;
+        movie_tooltip = new QMovie(":/images/FieldTooltip_Mechanical.gif");break;
     case SLOW:
-        tooltip->setMovie(new QMovie(":/images/FieldTooltip_SMP.gif"));break;
+        movie_tooltip = new QMovie(":/images/FieldTooltip_SMP.gif");break;
     case POISON:
-        tooltip->setMovie(new QMovie(":/images/FieldTooltip_Chemical.gif"));break;
+        movie_tooltip = new QMovie(":/images/FieldTooltip_Chemical.gif");break;
     case CHAIN:
-        tooltip->setMovie(new QMovie(":/images/FieldTooltip_Electronics.gif"));break;
+        movie_tooltip = new QMovie(":/images/FieldTooltip_Electronics.gif");break;
     case GOLD:
-        tooltip->setMovie(new QMovie(":/images/FieldTooltip_IME.gif"));break;
+        movie_tooltip = new QMovie(":/images/FieldTooltip_IME.gif");break;
     case TUTOR:
-        tooltip->setMovie(new QMovie(":/images/FieldTooltipLV2_TutoringMachine.gif"));break;
+        movie_tooltip = new QMovie(":/images/FieldTooltipLV2_TutoringMachine.gif");break;
     case PROF:
-        tooltip->setMovie(new QMovie(":/images/FieldTooltipLV2_Session.gif"));break;
+        movie_tooltip = new QMovie(":/images/FieldTooltipLV2_Session.gif");break;
     case CES:
-        tooltip->setMovie(new QMovie(":/images/FieldTooltipLV2_ChemEng.gif"));break;
+        movie_tooltip = new QMovie(":/images/FieldTooltipLV2_ChemEng.gif");break;
     case MES:
-        tooltip->setMovie(new QMovie(":/images/FieldTooltipLV2_Metal.gif"));break;
+        movie_tooltip = new QMovie(":/images/FieldTooltipLV2_Metal.gif");break;
     case JOBSBIO:
-        tooltip->setMovie(new QMovie(":/images/FieldTooltipLV2_JobsBook.gif"));break;
+        movie_tooltip = new QMovie(":/images/FieldTooltipLV2_JobsBook.gif");break;
     case APPLE:
-        tooltip->setMovie(new QMovie(":/images/FieldTooltipLV3_AppleDeathMachinel.gif"));break;
+        movie_tooltip = new QMovie(":/images/FieldTooltipLV3_AppleDeathMachinel.gif");break;
     case JOBS:
-        tooltip->setMovie(new QMovie(":/images/FieldTooltipLV3_JobsDream.gif"));break;
+        movie_tooltip = new QMovie(":/images/FieldTooltipLV3_JobsDream.gif");break;
     case TRIPLE:
-        tooltip->setMovie(new QMovie(":/FieldTooltipLV3_3Major.gif"));break;
+        movie_tooltip = new QMovie(":/FieldTooltipLV3_3Major.gif");break;
     }
+    tooltip->setMovie(movie_tooltip);
     tooltip->movie()->start();
-    scene->addWidget(tooltip);
+    widget_tooltip = scene->addWidget(tooltip);
 
     char buff[100];
 
@@ -706,21 +719,21 @@ void Game::ShowTowerInfo(Tower *tower)
     attack_ability->setFont(mystyle);
     attack_ability->setStyleSheet("QLabel { background-color : rgba(0,0,0,0%); color : black; }");
     attack_ability->setGeometry(1024-32*5.4,32*12.3,512,80);
-    scene->addWidget(attack_ability);
+    widget_atk = scene->addWidget(attack_ability);
 
     sprintf(buff, "%d", tower->GetDefensivePower());
     defense_ability = new QLabel(QString("DEF: ")+QString(buff));
     defense_ability->setFont(mystyle);
     defense_ability->setStyleSheet("QLabel { background-color : rgba(0,0,0,0%); color : black; }");
     defense_ability->setGeometry(1024-32*3,32*12.8,512,80);
-    scene->addWidget(defense_ability);
+    widget_def = scene->addWidget(defense_ability);
 
     sprintf(buff, "%d", tower->GetAttackSpeed());
     attack_speed_ability = new QLabel(QString("SPD: ")+QString(buff));
     attack_speed_ability->setFont(mystyle);
     attack_speed_ability->setStyleSheet("QLabel { background-color : rgba(0,0,0,0%); color : black; }");
     attack_speed_ability->setGeometry(1024-32*5.4,32*12.8,512,80);
-    scene->addWidget(attack_speed_ability);
+    widget_atkspd = scene->addWidget(attack_speed_ability);
 
 }
 
@@ -729,9 +742,21 @@ void Game::ShowTowerInfo(Tower *tower)
 //this method is called when we have to hide information of tower
 void Game::DeletTowerInfo()
 {
-    if(tooltip){
+    if(tooltip && movie_tooltip && attack_ability && defense_ability && attack_speed_ability && widget_tooltip && widget_atk && widget_atkspd && widget_def){
+        scene->removeItem(widget_tooltip);
+        scene->removeItem(widget_atk);
+        scene->removeItem(widget_atkspd);
+        scene->removeItem(widget_def);
+        widget_tooltip = nullptr;
+        widget_atk = nullptr;
+        widget_atkspd = nullptr;
+        widget_def = nullptr;
+
         delete tooltip;
         tooltip = nullptr;
+
+        delete movie_tooltip;
+        movie_tooltip = nullptr;
 
         delete attack_ability;
         attack_ability = nullptr;
@@ -741,6 +766,7 @@ void Game::DeletTowerInfo()
 
         delete attack_speed_ability;
         attack_speed_ability = nullptr;
+        qDebug()<<"Entered InfoLabelDeleting";
     }
 }
 

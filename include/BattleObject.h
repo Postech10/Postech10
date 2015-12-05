@@ -45,7 +45,6 @@ protected:
     bool Attackable;
     QTimer* timer;
     int Full;    //new
-    int slowLevel;
     QGraphicsRectItem* hpBar;   //new
 };
 
