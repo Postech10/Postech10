@@ -109,5 +109,8 @@
         <file>images/TooltipLV3_3Major.gif</file>
         <file>images/TooltipLV3_AppleDeathMachinel.gif</file>
         <file>images/TooltipLV3_JobsDream.gif</file>
+        <file>images/Animation_Enemy2.bmp</file>
+        <file>images/Animation_Enemy3.bmp</file>
+        <file>images/Animation_Enemy4.bmp</file>
     </qresource>
 </RCC>
