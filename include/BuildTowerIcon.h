@@ -5,6 +5,8 @@
 #include <QPushButton>
 #include <QMovie>
 #include <Tower.h>
+#include <cstdlib>
+#include <ctime>
 
 class BuildTowerIcon: public QPushButton,public QGraphicsPixmapItem{
 
