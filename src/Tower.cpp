@@ -1,6 +1,7 @@
 ﻿#include "Tower.h"
 #include "Upgrades.h"
 #include "Game.h"
+#include "animatedbattleobject.h"
 
 extern Game* game;
 
