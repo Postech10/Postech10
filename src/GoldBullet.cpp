@@ -1,5 +1,6 @@
 #include "GoldBullet.h"
 #include <typeinfo>
+#include <QBitmap>
 #include "Game.h"
 
 extern Game* game;
@@ -12,7 +13,9 @@ GoldBullet::GoldBullet()
 
 GoldBullet::GoldBullet(int attack, int gold)
 {
-    setPixmap(QPixmap(":/images/Mechanical.bmp"));          //set image
+    QPixmap image("://images/Bullet_Gold.bmp");
+    image.setMask(image.createMaskFromColor(QColor(255,0,170)));
+    setPixmap(image);
     SetAttackPower(attack);
     GoldPower = gold;
 }

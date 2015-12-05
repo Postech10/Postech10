@@ -1,12 +1,15 @@
 #include "SplashPoisonBullet.h"
 #include <typeinfo>
+#include <QBitmap>
 #include "Game.h"
 
 extern Game* game;
 
 SplashPoisonBullet::SplashPoisonBullet(int attack, int gold)
 {
-    setPixmap(QPixmap(":/images/Mechanical.bmp"));          //image 설정
+    QPixmap image("://images/Bullet_SplashPoison.bmp");
+    image.setMask(image.createMaskFromColor(QColor(255,0,170)));
+    setPixmap(image);
     SetAttackPower(attack);
     GoldPower = gold;
 }

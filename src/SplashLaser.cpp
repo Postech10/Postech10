@@ -1,12 +1,15 @@
 #include "SplashLaser.h"
 #include <typeinfo>
+#include <QBitmap>
 #include "Game.h"
 
 extern Game* game;
 
 SplashLaser::SplashLaser(int attack, int gold)
 {
-    setPixmap(QPixmap(":/images/Mechanical.bmp"));          //set image
+    QPixmap image("://images/Bullet_SplashLaser.bmp");
+    image.setMask(image.createMaskFromColor(QColor(255,0,170)));
+    setPixmap(image);
     SetAttackPower(attack);
     GoldPower = gold;
 }

@@ -1,5 +1,6 @@
 #include "SlowBullet.h"
 #include <typeinfo>
+#include <QBitmap>
 #include "Game.h"
 
 extern Game* game;
@@ -11,7 +12,9 @@ SlowBullet::SlowBullet()
 
 SlowBullet::SlowBullet(int power)
 {
-    setPixmap(QPixmap(":/images/Mechanical.bmp"));          //set image
+    QPixmap image("://images/Bullet_Slow.bmp");
+    image.setMask(image.createMaskFromColor(QColor(255,0,170)));
+    setPixmap(image);
     SlowPower = power;
 }
 

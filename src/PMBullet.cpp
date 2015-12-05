@@ -1,12 +1,15 @@
 #include "PMBullet.h"
 #include <typeinfo>
+#include <QBitmap>
 #include "Game.h"
 
 extern Game* game;
 
 PMBullet::PMBullet(int attack, int slow)
 {
-    setPixmap(QPixmap(":/images/Mechanical.bmp"));          //set image
+    QPixmap image("://images/Bullet_PM.bmp");
+    image.setMask(image.createMaskFromColor(QColor(255,0,170)));
+    setPixmap(image);
     AttackPower = attack;
     SlowPower = slow;
 }

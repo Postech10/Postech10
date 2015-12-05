@@ -1,5 +1,6 @@
 #include "Bullet.h"
 #include "Game.h"
+#include <QBitmap>
 
 extern Game* game;
 
@@ -17,7 +18,9 @@ Bullet::~Bullet()
 
 Bullet::Bullet(int power): QObject()
 {
-    setPixmap(QPixmap(":/images/Mechanical.bmp"));          //set image
+    QPixmap image("://images/Bullet_Normal.bmp");
+    image.setMask(image.createMaskFromColor(QColor(255,0,170)));
+    setPixmap(image);
     SetAttackPower(power);
     move_timer = new QTimer();
     addSound("Hit","resources/sounds/Hit.wav");
