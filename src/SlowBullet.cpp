@@ -11,7 +11,9 @@ SlowBullet::SlowBullet()
 
 SlowBullet::SlowBullet(int power)
 {
-    setPixmap(QPixmap(":/images/Mechanical.bmp"));          //set image
+    QPixmap* image = new QPixmap("://images/Bullet_Slow.bmp");
+    image->setMask(image->createMaskFromColor(QColor(255,0,170)));
+    setPixmap(image);
     SlowPower = power;
 }
 

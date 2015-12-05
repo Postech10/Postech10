@@ -56,6 +56,13 @@ double BattleObject::CalcDistance(QGraphicsItem *item)
 void BattleObject::IsHitBy(int AttackPower)
 {
     Hp = Hp - AttackPower/DefensivePower;       //not perfect equation yet
+
+    if(Hp<=0){
+        scene()->removeItem(hpBar);
+        scene()->removeItem(this);
+    }
+    else
+        cutHpbar();
 }
 
 int BattleObject::GetHp()

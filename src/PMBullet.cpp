@@ -6,7 +6,9 @@ extern Game* game;
 
 PMBullet::PMBullet(int attack, int slow)
 {
-    setPixmap(QPixmap(":/images/Mechanical.bmp"));          //set image
+    QPixmap* image = new QPixmap("://images/Bullet_PM.bmp");
+    image->setMask(image->createMaskFromColor(QColor(255,0,170)));
+    setPixmap(image);
     AttackPower = attack;
     SlowPower = slow;
 }

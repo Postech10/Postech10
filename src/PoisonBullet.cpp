@@ -6,7 +6,9 @@ extern Game* game;
 
 PoisonBullet::PoisonBullet(int power)
 {
-    setPixmap(QPixmap(":/images/Mechanical.bmp"));          //set image
+    QPixmap* image = new QPixmap("://images/Bullet_Poison.bmp");
+    image->setMask(image->createMaskFromColor(QColor(255,0,170)));
+    setPixmap(image);
     SetAttackPower(power);
 }
 

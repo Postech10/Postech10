@@ -13,7 +13,7 @@ ProfessorMeeting::ProfessorMeeting()
     DefensivePower = 20;
     AttackSpeed = 20;
     Attackable = true;                  //this will be changed for balance
-    set_image(QString::fromStdString("://images/Animation_Professor.bmp"));
+    set_image(QString::fromStdString("://images/Animation_Session.bmp"));
     set_state(CALM);
 }
 

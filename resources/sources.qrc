@@ -79,5 +79,15 @@
         <file>images/TooltipLV2_Session.gif</file>
         <file>images/TooltipLV2_TutoringMachine.gif</file>
         <file>images/Animation_3Major.bmp</file>
+        <file>images/Bullet_CES.bmp</file>
+        <file>images/Bullet_Gold.bmp</file>
+        <file>images/Bullet_Iron.bmp</file>
+        <file>images/Bullet_PM.bmp</file>
+        <file>images/Bullet_Poison.bmp</file>
+        <file>images/Bullet_Punch.bmp</file>
+        <file>images/Bullet_Slow.bmp</file>
+        <file>images/Bullet_Splash.bmp</file>
+        <file>images/Bullet_SplashLaser.bmp</file>
+        <file>images/Bullet_SplashPoison.bmp</file>
     </qresource>
 </RCC>

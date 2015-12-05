@@ -31,6 +31,7 @@ public:
     void HideAttackRange();
     void setHpbar();
     void cutHpbar();
+    inline void DelHpBar(){delete hpBar;}
 public slots:
     virtual void SetTarget();
 protected:
