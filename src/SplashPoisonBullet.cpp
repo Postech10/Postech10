@@ -22,9 +22,7 @@ void SplashPoisonBullet::move()
             QList<QGraphicsItem *> splashed_enemies= colliding_enemies[i]->collidingItems();     //item colliding with enemy that is hit by bullet
             for (size_t j=0, m=splashed_enemies.size();j<m;j++){
                 if(typeid(*(splashed_enemies[j]))==typeid(Enemy)){
-                    dynamic_cast<Enemy*>(splashed_enemies[j])->IsPoisonedBy(AttackPower); //poisoned related money.... should be discussed
-                    if(dynamic_cast<Enemy*>(splashed_enemies[j])->DieOrNot())       //die?
-                        game->set_money(game->get_money()+GoldPower);                      //inc money
+                    dynamic_cast<Enemy*>(splashed_enemies[j])->IsGoldPoisonedBy(AttackPower,GoldPower); //poisoned related money.... should be discussed
                 }
             }
             playSound("Splash");               //sound for splash
