@@ -641,7 +641,7 @@ void Game::clear_game()
 //this method is called when an user selected an tower in map.
 void Game::ShowTowerInfo(Tower *tower)
 {
-    /*if(tooltip && movie_tooltip && attack_ability && defense_ability && attack_speed_ability && widget_tooltip && widget_atk && widget_atkspd && widget_def){
+    if(tooltip && movie_tooltip && attack_ability && defense_ability && attack_speed_ability && widget_tooltip && widget_atk && widget_atkspd && widget_def){
         scene->removeItem(widget_tooltip);
         scene->removeItem(widget_atk);
         scene->removeItem(widget_atkspd);
@@ -665,7 +665,7 @@ void Game::ShowTowerInfo(Tower *tower)
 
         delete attack_speed_ability;
         attack_speed_ability = nullptr;
-    }*/
+    }
 
     tooltip = new QLabel();
     tooltip->setGeometry(768,384,256,192);
