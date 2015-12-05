@@ -4,6 +4,7 @@
 
 #include <QGraphicsView>
 #include <QMouseEvent>
+#include <QMovie>
 #include <QVector>
 #include <QList>
 #include <QString>
@@ -166,6 +167,10 @@ private :
     QLabel* defense_ability;
     QLabel* attack_speed_ability;
     QLabel* game_over;
+
+    QMovie* movie_tooltip;//a tooltip movie
+    int num_mouseonbutton;//a number to point in what icon the mouse is
+    QGraphicsProxyWidget* widget_tooltip;//a proxy widget pointer to store converted widget.
 
 
 

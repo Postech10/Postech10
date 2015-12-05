@@ -13,7 +13,7 @@ Bullet::Bullet()
 
 Bullet::~Bullet()
 {
-    ;
+    delete move_timer;
 }
 
 Bullet::Bullet(int power): QObject()

@@ -10,12 +10,14 @@
 #include <QPainter>
 #include <sstream>
 #include <QFontDatabase>
+#include <QGraphicsItem>
+#include <QGraphicsProxyWidget>
 
 Game::Game(){
-        scene = new QGraphicsScene(this);       //make scene
-        scene->setSceneRect(0,0,1024,768);      //set size of scene
-        setFixedSize(1024,768);                 //fiz size of scene
-        setScene(scene);
+    scene = new QGraphicsScene(this);       //make scene
+    scene->setSceneRect(0,0,1024,768);      //set size of scene
+    setFixedSize(1024,768);                 //fiz size of scene
+    setScene(scene);
 
     life = 100;
     money = 50;                             //money given at first
@@ -187,6 +189,7 @@ void Game::displayMenu()
     textBox->setGeometry(768+5 , 710 , 64*3.5 , 32);
     textBox->setStyleSheet("background-color : white;");
     scene->addWidget(textBox);
+    num_mouseonbutton = 0;
 }
 
 
@@ -196,116 +199,261 @@ void Game::mouseMoveEvent(QMouseEvent *event)
 {
 
     //if there was a tooltip already
-    if(tooltip && waiting_line.size() == 0){
+    /*if(tooltip && waiting_line.size() == 0){
         delete tooltip;
         tooltip = nullptr;
-    } 
+    } */
     //when mouse cursor is on tower build button
+    if(waiting_line.size() != 0) return;
     if(event->pos().x()-(768)<64 && event->pos().y()-(192)<64
-            && event->pos().x()-(768)>0&& event->pos().y()-(192)>0 && tooltip == nullptr){
-        tooltip = new QLabel();
-        if(towerinfo == BASE)
-            tooltip->setMovie(new QMovie(":/images/Tooltip_Assistant.gif"));
-        if(towerinfo == LEVEL2)
-            tooltip->setMovie(new QMovie(":/images/TooltipLV2_TutoringMachine.gif"));
-        if(towerinfo == LEVEL3)
-            tooltip->setMovie(new QMovie(":/images/TooltipLV3_AppleDeathMachinel.gif"));
-        tooltip->movie()->start();
-        tooltip->setGeometry(768,384,256,192);
-        scene->addWidget(tooltip);
-    }
-    else if(event->pos().x()-(768+64)<64 && event->pos().y()-192<64
-            && event->pos().x()-(768+64)>0 && event->pos().y()-192>0 && tooltip == nullptr){
-        tooltip = new QLabel();
-        if(towerinfo == BASE)
-            tooltip->setMovie(new QMovie(":/images/Tooltip_Mechanical.gif"));
-        if(towerinfo == LEVEL2)
-            tooltip->setMovie(new QMovie(":/images/TooltipLV2_Session.gif"));
-        if(towerinfo == LEVEL3)
-            tooltip->setMovie(new QMovie(":/images/TooltipLV3_JobsDream.gif"));
-        tooltip->movie()->start();
-        tooltip->setGeometry(768,384,256,192);
-        scene->addWidget(tooltip);
-    }
-    else if(event->pos().x()-(768+64*2)<64 && event->pos().y()-192<64
-            && event->pos().x()-(768+64*2)>0 && event->pos().y()-192>0 && tooltip == nullptr){
-        tooltip = new QLabel();
-        if(towerinfo == BASE)
-            tooltip->setMovie(new QMovie(":/images/Tooltip_SMP.gif"));
-        if(towerinfo == LEVEL2)
-            tooltip->setMovie(new QMovie(":/images/TooltipLV2_ChemEng.gif"));
-        if(towerinfo == LEVEL3)
-            tooltip->setMovie(new QMovie(":/images/TooltipLV3_3Major.gif"));
-        tooltip->movie()->start();
-        tooltip->setGeometry(768,384,256,192);
-        scene->addWidget(tooltip);
-    }
-    else if(event->pos().x()-(768+64*3)<64 && event->pos().y()-192<64
-            && event->pos().x()-(768+64*3)>0 && event->pos().y()-192>0 && tooltip == nullptr){
-        tooltip = new QLabel();
-        if(towerinfo == BASE)
-            tooltip->setMovie(new QMovie(":/images/Tooltip_ToLevel2Tower.gif"));
-        if(towerinfo == LEVEL2)
-            tooltip->setMovie(new QMovie(":/images/Tooltip_ToLevel3Tower.gif"));
-        if(towerinfo != LEVEL3){
-            tooltip->movie()->start();
-            tooltip->setGeometry(768,384,256,192);
-            scene->addWidget(tooltip);
-        }
-    }
-    else if(event->pos().x()-(768)<64 && event->pos().y()-(192+64)<64
-            && event->pos().x()-(768)>0 && event->pos().y()-(192+64)>0 && tooltip == nullptr){
-        tooltip = new QLabel();
-        if(towerinfo == BASE)
-            tooltip->setMovie(new QMovie(":/images/Tooltip_Chemical.gif"));
-        if(towerinfo == LEVEL2)
-            tooltip->setMovie(new QMovie(":/images/TooltipLV2_Metal.gif"));
-        if(towerinfo != LEVEL3){
-            tooltip->movie()->start();
-            tooltip->setGeometry(768,384,256,192);
-            scene->addWidget(tooltip);
-        }
-    }
-    else if(event->pos().x()-(768+64)<64 && event->pos().y()-(192+64)<64
-            && event->pos().x()-(768+64)>0 && event->pos().y()-(192+64)>0 && tooltip == nullptr){
-        tooltip = new QLabel();
-        if(towerinfo == BASE)
-            tooltip->setMovie(new QMovie(":/images/Tooltip_Electronics.gif"));
-        if(towerinfo == LEVEL2)
-            tooltip->setMovie(new QMovie(":/images/TooltipLV2_JobsBook.gif"));
-        if(towerinfo != LEVEL3){
-            tooltip->movie()->start();
-            tooltip->setGeometry(768,384,256,192);
-            scene->addWidget(tooltip);
-        }
-    }
-    else if(event->pos().x()-(768+64*2)<64 && event->pos().y()-(192+64)<64
-            && event->pos().x()-(768+64*2)>0 && event->pos().y()-(192+64)>0 && tooltip == nullptr){
-        if(towerinfo == BASE){
-            tooltip = new QLabel();
-            tooltip->setMovie(new QMovie(":/images/Tooltip_IME.gif"));
-            tooltip->movie()->start();
-            tooltip->setGeometry(768,384,256,192);
-            scene->addWidget(tooltip);
-        }
-    }
-    else if(event->pos().x()-(768+64*3)<64 && event->pos().y()-(192+64)<64
-            && event->pos().x()-(768+64*3)>0 && event->pos().y()-(192+64)>0 && tooltip == nullptr){
+            && event->pos().x()-(768)>0&& event->pos().y()-(192)>0){
+        if(num_mouseonbutton != 1)
+        {
+            if(widget_tooltip && tooltip && movie_tooltip){
+                scene->removeItem(widget_tooltip);//delete previous tooltip from the screen
+                delete tooltip;
+                delete movie_tooltip;
+                widget_tooltip = nullptr;
+                tooltip = nullptr;
+                movie_tooltip = nullptr;
+            }
 
             tooltip = new QLabel();
             if(towerinfo == BASE)
-                tooltip->setMovie(new QMovie(":/images/Tooltip_Random.gif"));
-            if(towerinfo == LEVEL2)
-                tooltip->setMovie(new QMovie(":/images/Tooltip_BackToBaseTowergif.gif"));
-            if(towerinfo == LEVEL3)
-                tooltip->setMovie(new QMovie(":/images/Tooltip_BackToBaseTowergif.gif"));
-            tooltip->movie()->start();
-            tooltip->setGeometry(768,384,256,192);
-            scene->addWidget(tooltip);
+                movie_tooltip = new QMovie(":/images/Tooltip_Assistant.gif");
+            else if(towerinfo == LEVEL2)
+                movie_tooltip = new QMovie(":/images/TooltipLV2_TutoringMachine.gif");
+            else if(towerinfo == LEVEL3)
+                movie_tooltip = new QMovie(":/images/TooltipLV3_AppleDeathMachinel.gif");
 
+            if(towerinfo == BASE || towerinfo == LEVEL2 || towerinfo == LEVEL3)
+            {
+                tooltip->setMovie(movie_tooltip);
+                tooltip->movie()->start();
+                tooltip->setGeometry(768,384,256,192);
+                widget_tooltip = scene->addWidget(tooltip);
+            }
+            num_mouseonbutton = 1;
+        }
     }
-    else
+    else if(event->pos().x()-(768+64)<64 && event->pos().y()-192<64
+            && event->pos().x()-(768+64)>0 && event->pos().y()-192>0){
+        if(num_mouseonbutton != 2)
+        {
+            if(widget_tooltip && tooltip && movie_tooltip){
+                scene->removeItem(widget_tooltip);//delete previous tooltip from the screen
+                delete tooltip;
+                delete movie_tooltip;
+                widget_tooltip = nullptr;
+                tooltip = nullptr;
+                movie_tooltip = nullptr;
+            }
+            tooltip = new QLabel();
+            if(towerinfo == BASE)
+                movie_tooltip = new QMovie(":/images/Tooltip_Mechanical.gif");
+            else if(towerinfo == LEVEL2)
+                movie_tooltip = new QMovie(":/images/TooltipLV2_Session.gif");
+            else if(towerinfo == LEVEL3)
+                movie_tooltip = new QMovie(":/images/TooltipLV3_JobsDream.gif");
+
+            if(towerinfo == BASE || towerinfo == LEVEL2 || towerinfo == LEVEL3)
+            {
+                tooltip->setMovie(movie_tooltip);
+                tooltip->movie()->start();
+                tooltip->setGeometry(768,384,256,192);
+                widget_tooltip = scene->addWidget(tooltip);
+            }
+            num_mouseonbutton = 2;
+        }
+    }
+    else if(event->pos().x()-(768+64*2)<64 && event->pos().y()-192<64
+            && event->pos().x()-(768+64*2)>0 && event->pos().y()-192>0){
+        if(num_mouseonbutton != 3)
+        {
+            if(widget_tooltip && tooltip && movie_tooltip){
+                scene->removeItem(widget_tooltip);//delete previous tooltip from the screen
+                delete tooltip;
+                delete movie_tooltip;
+                widget_tooltip = nullptr;
+                tooltip = nullptr;
+                movie_tooltip = nullptr;
+            }
+            tooltip = new QLabel();
+            if(towerinfo == BASE)
+                movie_tooltip = new QMovie(":/images/Tooltip_SMP.gif");
+            else if(towerinfo == LEVEL2)
+                movie_tooltip = new QMovie(":/images/TooltipLV2_ChemEng.gif");
+            else if(towerinfo == LEVEL3)
+                movie_tooltip = new QMovie(":/images/TooltipLV3_3Major.gif");
+
+            if(towerinfo == BASE || towerinfo == LEVEL2 || towerinfo == LEVEL3)
+            {
+                tooltip->setMovie(movie_tooltip);
+                tooltip->movie()->start();
+                tooltip->setGeometry(768,384,256,192);
+                widget_tooltip = scene->addWidget(tooltip);
+            }
+            num_mouseonbutton = 3;
+        }
+    }
+    else if(event->pos().x()-(768+64*3)<64 && event->pos().y()-192<64
+            && event->pos().x()-(768+64*3)>0 && event->pos().y()-192>0){
+        if(num_mouseonbutton != 4)
+        {
+            if(widget_tooltip && tooltip && movie_tooltip){
+                scene->removeItem(widget_tooltip);//delete previous tooltip from the screen
+                delete tooltip;
+                delete movie_tooltip;
+                widget_tooltip = nullptr;
+                tooltip = nullptr;
+                movie_tooltip = nullptr;
+            }
+            tooltip = new QLabel();
+            if(towerinfo == BASE)
+                movie_tooltip = new QMovie(":/images/Tooltip_ToLevel2Tower.gif");
+            else if(towerinfo == LEVEL2)
+                movie_tooltip = new QMovie(":/images/Tooltip_ToLevel3Tower.gif");
+            else delete tooltip;
+
+            if(towerinfo == BASE || towerinfo == LEVEL2)
+            {
+                tooltip->setMovie(movie_tooltip);
+                tooltip->movie()->start();
+                tooltip->setGeometry(768,384,256,192);
+                widget_tooltip = scene->addWidget(tooltip);
+            }
+            num_mouseonbutton = 4;
+        }
+    }
+    else if(event->pos().x()-(768)<64 && event->pos().y()-(192+64)<64
+            && event->pos().x()-(768)>0 && event->pos().y()-(192+64)>0){
+        if(num_mouseonbutton != 5)
+        {
+            if(widget_tooltip && tooltip && movie_tooltip){
+                scene->removeItem(widget_tooltip);//delete previous tooltip from the screen
+                delete tooltip;
+                delete movie_tooltip;
+                widget_tooltip = nullptr;
+                tooltip = nullptr;
+                movie_tooltip = nullptr;
+            }
+            tooltip = new QLabel();
+            if(towerinfo == BASE)
+                movie_tooltip = new QMovie(":/images/Tooltip_Chemical.gif");
+            else if(towerinfo == LEVEL2)
+                movie_tooltip = new QMovie(":/images/TooltipLV2_Metal.gif");
+            else delete tooltip;
+
+            if(towerinfo == BASE || towerinfo == LEVEL2)
+            {
+                tooltip->setMovie(movie_tooltip);
+                tooltip->movie()->start();
+                tooltip->setGeometry(768,384,256,192);
+                widget_tooltip = scene->addWidget(tooltip);
+            }
+            num_mouseonbutton = 5;
+        }
+    }
+    else if(event->pos().x()-(768+64)<64 && event->pos().y()-(192+64)<64
+            && event->pos().x()-(768+64)>0 && event->pos().y()-(192+64)>0){
+        if(num_mouseonbutton != 6)
+        {
+            if(widget_tooltip && tooltip && movie_tooltip){
+                scene->removeItem(widget_tooltip);//delete previous tooltip from the screen
+                delete tooltip;
+                delete movie_tooltip;
+                widget_tooltip = nullptr;
+                tooltip = nullptr;
+                movie_tooltip = nullptr;
+            }
+            tooltip = new QLabel();
+            if(towerinfo == BASE)
+                movie_tooltip = new QMovie(":/images/Tooltip_Electronics.gif");
+            else if(towerinfo == LEVEL2)
+                movie_tooltip = new QMovie(":/images/TooltipLV2_JobsBook.gif");
+            else tooltip;
+
+            if(towerinfo == BASE || towerinfo == LEVEL2)
+            {
+                tooltip->setMovie(movie_tooltip);
+                tooltip->movie()->start();
+                tooltip->setGeometry(768,384,256,192);
+                widget_tooltip = scene->addWidget(tooltip);
+            }
+            num_mouseonbutton = 6;
+        }
+    }
+    else if(event->pos().x()-(768+64*2)<64 && event->pos().y()-(192+64)<64
+            && event->pos().x()-(768+64*2)>0 && event->pos().y()-(192+64)>0){
+        if(num_mouseonbutton != 7)
+        {
+            if(widget_tooltip && tooltip && movie_tooltip){
+                scene->removeItem(widget_tooltip);//delete previous tooltip from the screen
+                delete tooltip;
+                delete movie_tooltip;
+                widget_tooltip = nullptr;
+                tooltip = nullptr;
+                movie_tooltip = nullptr;
+            }
+            tooltip = new QLabel();
+            if(towerinfo == BASE)
+                movie_tooltip = new QMovie(":/images/Tooltip_IME.gif");
+            else delete tooltip;
+
+            if(towerinfo == BASE)
+            {
+                tooltip->setMovie(movie_tooltip);
+                tooltip->movie()->start();
+                tooltip->setGeometry(768,384,256,192);
+                widget_tooltip = scene->addWidget(tooltip);
+            }
+            num_mouseonbutton = 7;
+        }
+    }
+    else if(event->pos().x()-(768+64*3)<64 && event->pos().y()-(192+64)<64
+            && event->pos().x()-(768+64*3)>0 && event->pos().y()-(192+64)>0){
+        if(num_mouseonbutton != 8)
+        {
+            if(widget_tooltip && tooltip && movie_tooltip){
+                scene->removeItem(widget_tooltip);//delete previous tooltip from the screen
+                delete tooltip;
+                delete movie_tooltip;
+                widget_tooltip = nullptr;
+                tooltip = nullptr;
+                movie_tooltip = nullptr;
+            }
+            tooltip = new QLabel();
+            if(towerinfo == BASE)
+                movie_tooltip = new QMovie(":/images/Tooltip_Random.gif");
+            if(towerinfo == LEVEL2)
+                movie_tooltip = new QMovie(":/images/Tooltip_BackToBaseTowergif.gif");
+            if(towerinfo == LEVEL3)
+                movie_tooltip = new QMovie(":/images/Tooltip_BackToBaseTowergif.gif");
+
+            if(towerinfo == BASE || towerinfo == LEVEL2 || towerinfo == LEVEL3)
+            {
+                tooltip->setMovie(movie_tooltip);
+                tooltip->movie()->start();
+                tooltip->setGeometry(768,384,256,192);
+                widget_tooltip = scene->addWidget(tooltip);
+            }
+            num_mouseonbutton = 8;
+        }
+    }
+    else{
+        //When the mouse is out of the tower icons,
+        //if the screen has a tooltip. delete it.
+        if(widget_tooltip && tooltip && movie_tooltip){
+            scene->removeItem(widget_tooltip);//delete previous tooltip from the screen
+            delete tooltip;
+            delete movie_tooltip;
+            widget_tooltip = nullptr;
+            tooltip = nullptr;
+            movie_tooltip = nullptr;
+        }
+        num_mouseonbutton = 0;
         QGraphicsView::mouseMoveEvent(event);
+    }
 }
 
 
@@ -393,34 +541,34 @@ void Game::button_Pressed(QPointF point,int tower_code)
         for(int i=0 ; i<build.size() ; i++){
 
             switch(build[i]->GetTowerCode()){
-                case NORMAL:
-                    set_money(get_money() + 20);break;
-                case SPLASH:
-                    set_money(get_money() + 30);break;
-                case SLOW:
-                    set_money(get_money() + 30);break;
-                case POISON:
-                    set_money(get_money() + 35);break;
-                case CHAIN:
-                    set_money(get_money() + 40);break;
-                case GOLD:
-                    set_money(get_money() + 60);break;
-                case TUTOR:
-                    set_money(get_money() + 70);break;
-                case PROF:
-                    set_money(get_money() + 50);break;
-                case CES:
-                    set_money(get_money() + 95);break;
-                case JOBSBIO:
-                    set_money(get_money() + 100);break;
-                case MES:
-                    set_money(get_money() + 90);break;
-                case APPLE:
-                    set_money(get_money() + 170);break;
-                case JOBS:
-                    set_money(get_money() + 150);break;
-                case TRIPLE:
-                    set_money(get_money() + 185);break;
+            case NORMAL:
+                set_money(get_money() + 20);break;
+            case SPLASH:
+                set_money(get_money() + 30);break;
+            case SLOW:
+                set_money(get_money() + 30);break;
+            case POISON:
+                set_money(get_money() + 35);break;
+            case CHAIN:
+                set_money(get_money() + 40);break;
+            case GOLD:
+                set_money(get_money() + 60);break;
+            case TUTOR:
+                set_money(get_money() + 70);break;
+            case PROF:
+                set_money(get_money() + 50);break;
+            case CES:
+                set_money(get_money() + 95);break;
+            case JOBSBIO:
+                set_money(get_money() + 100);break;
+            case MES:
+                set_money(get_money() + 90);break;
+            case APPLE:
+                set_money(get_money() + 170);break;
+            case JOBS:
+                set_money(get_money() + 150);break;
+            case TRIPLE:
+                set_money(get_money() + 185);break;
             }
             set_money(get_money() +
                       (upgrade_button->getUp()->GetReference(build[i]->GetTowerCode())->GetDefensivePower()-20)/10*15);
@@ -455,7 +603,7 @@ void Game::button_Pressed(QPointF point,int tower_code)
         state = Cleared;
         delete game_over;
     }
-/*
+    /*
     else if(start_pause_button->contains(point)==true && state == Paused){
         //for(int i=0 ; i<enemy.size() ; i++)
             //enemy[i]->startMovement(150);
@@ -718,10 +866,10 @@ void Game::FuseTower()
         int second = waiting_line[1]->GetTowerCode();
 
         if(combination[first][second] == true){
-           new_tower = waiting_line[0]->fuseTower(waiting_line[0],waiting_line[1]);
+            new_tower = waiting_line[0]->fuseTower(waiting_line[0],waiting_line[1]);
 
-           control->Delete(waiting_line[0]);
-           control->Delete(waiting_line[1]);
+            control->Delete(waiting_line[0]);
+            control->Delete(waiting_line[1]);
             scene->removeItem(waiting_line[0]);
             scene->removeItem(waiting_line[1]);
 
@@ -784,12 +932,12 @@ void Game::FuseTower()
 
 void Game::DestroyTower(Tower * target)
 {
-   QVector<Tower*>::iterator pos = std::find(build.begin() , build.end() ,target);
-   if(pos != build.end()){
-       build.erase(pos);     
-       control->Delete(target);
-       delete target;
-   }
+    QVector<Tower*>::iterator pos = std::find(build.begin() , build.end() ,target);
+    if(pos != build.end()){
+        build.erase(pos);
+        control->Delete(target);
+        delete target;
+    }
 }
 
 //method to modify state of the game

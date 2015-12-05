@@ -32,7 +32,7 @@ BattleObject::BattleObject()
 
 BattleObject::~BattleObject()
 {
-    ;
+    delete timer;
 }
 
 void BattleObject::Attack()
