@@ -119,6 +119,11 @@ void Game::displayMenu()
     Slow_Tower_button->setZValue(1);
     scene->addItem(Slow_Tower_button);
 
+    Go_to_back_Button = new BuildTowerIcon(":/images/Icon_LV2TOWER.bmp",15);
+    Go_to_back_Button->setPos(768+64*3,192);
+    Go_to_back_Button->setZValue(1);
+    scene->addItem(Go_to_back_Button);
+
     Poison_Tower_button = new BuildTowerIcon(":/images/Icon_Chemical.bmp",POISON);
     Poison_Tower_button->setPos(768,192+64);
     Poison_Tower_button->setZValue(1);
@@ -242,9 +247,11 @@ void Game::mouseMoveEvent(QMouseEvent *event)
             tooltip->setMovie(new QMovie(":/images/Tooltip_Chemical.gif"));
         if(towerinfo == LEVEL2)
             tooltip->setMovie(new QMovie(":/images/TooltipLV2_Metal.gif"));
-        tooltip->movie()->start();
-        tooltip->setGeometry(768,384,256,192);
-        scene->addWidget(tooltip);
+        if(towerinfo != LEVEL3){
+            tooltip->movie()->start();
+            tooltip->setGeometry(768,384,256,192);
+            scene->addWidget(tooltip);
+        }
     }
     else if(event->pos().x()-(768+64)<64 && event->pos().y()-(192+64)<64
             && event->pos().x()-(768+64)>0 && event->pos().y()-(192+64)>0 && tooltip == nullptr){
@@ -253,17 +260,31 @@ void Game::mouseMoveEvent(QMouseEvent *event)
             tooltip->setMovie(new QMovie(":/images/Tooltip_Electronics.gif"));
         if(towerinfo == LEVEL2)
             tooltip->setMovie(new QMovie(":/images/TooltipLV2_JobsBook.gif"));
-        tooltip->movie()->start();
-        tooltip->setGeometry(768,384,256,192);
-        scene->addWidget(tooltip);
+        if(towerinfo != LEVEL3){
+            tooltip->movie()->start();
+            tooltip->setGeometry(768,384,256,192);
+            scene->addWidget(tooltip);
+        }
     }
     else if(event->pos().x()-(768+64*2)<64 && event->pos().y()-(192+64)<64
             && event->pos().x()-(768+64*2)>0 && event->pos().y()-(192+64)>0 && tooltip == nullptr){
-        tooltip = new QLabel();
-        tooltip->setMovie(new QMovie(":/images/Tooltip_IME.gif"));
-        tooltip->movie()->start();
-        tooltip->setGeometry(768,384,256,192);
-        scene->addWidget(tooltip);
+        if(towerinfo == BASE){
+            tooltip = new QLabel();
+            tooltip->setMovie(new QMovie(":/images/Tooltip_IME.gif"));
+            tooltip->movie()->start();
+            tooltip->setGeometry(768,384,256,192);
+            scene->addWidget(tooltip);
+        }
+    }
+    else if(event->pos().x()-(768+64*3)<64 && event->pos().y()-(192+64)<64
+            && event->pos().x()-(768+64*3)>0 && event->pos().y()-(192+64)>0 && tooltip == nullptr){
+        if(towerinfo == BASE){
+            tooltip = new QLabel();
+            tooltip->setMovie(new QMovie(":/images/Tooltip_Random.gif"));
+            tooltip->movie()->start();
+            tooltip->setGeometry(768,384,256,192);
+            scene->addWidget(tooltip);
+        }
     }
     else
         QGraphicsView::mouseMoveEvent(event);

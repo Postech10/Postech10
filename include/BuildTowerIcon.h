@@ -13,6 +13,11 @@ class BuildTowerIcon: public QPushButton,public QGraphicsPixmapItem{
 public:
     BuildTowerIcon(char* filename,int _tower_code,QGraphicsItem *parent =0);
     void mousePressEvent(QGraphicsSceneMouseEvent *event);      //?꾨? ??method
+
+    int getTowerCode() {return tower_code;}
+    void setTowerCode(int _tower_code) {tower_code = _tower_code;}
+
+    void updatePixmap(BuildTowerIcon*update, char *newImage);
 };
 
 #endif // BUILDTOWERICON
