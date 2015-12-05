@@ -694,8 +694,8 @@ void Game::FuseTower()
             position[static_cast<int>(waiting_line[0]->pos().x()/64)][static_cast<int>(waiting_line[0]->pos().y()/64)] = false;
             position[static_cast<int>(waiting_line[1]->pos().x()/64)][static_cast<int>(waiting_line[1]->pos().y()/64)] = false;
 
-//            waiting_line[0]->DelHpBar();
-//            waiting_line[1]->DelHpBar();
+            waiting_line[0]->DelHpBar();
+            waiting_line[1]->DelHpBar();
 
             delete waiting_line[0];
             delete waiting_line[1];
