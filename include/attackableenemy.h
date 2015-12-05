@@ -4,7 +4,8 @@
 #include <QList>
 #include <QPointF>
 #include <QTimer>
-#include <Tower.h>
+
+class Tower;
 
 class AttackableEnemy : public Enemy{
     Q_OBJECT

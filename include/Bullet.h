@@ -9,7 +9,7 @@
 #include <QtMath>
 #include <typeinfo>
 #include "BattleObject.h"
-#include "enemy.h"
+#include "attackableenemy.h"
 #include "soundobject.h"
 
 #define STEP_SIZE 30                //default STEP_SIZE

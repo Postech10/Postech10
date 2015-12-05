@@ -18,11 +18,14 @@ void SplashPoisonBullet::move()
 {
     QList<QGraphicsItem *> colliding_enemies=collidingItems();      //SplashPoisonBullet collides
     for(size_t i=0, n=colliding_enemies.size();i<n;i++){
-        if(typeid(*(colliding_enemies[i]))==typeid(Enemy)){         //if enemy
+        if((typeid(*(colliding_enemies[i]))==typeid(Enemy))||typeid(*(colliding_enemies[i]))==typeid(AttackableEnemy)){         //if enemy
             QList<QGraphicsItem *> splashed_enemies= colliding_enemies[i]->collidingItems();     //item colliding with enemy that is hit by bullet
             for (size_t j=0, m=splashed_enemies.size();j<m;j++){
                 if(typeid(*(splashed_enemies[j]))==typeid(Enemy)){
                     dynamic_cast<Enemy*>(splashed_enemies[j])->IsGoldPoisonedBy(AttackPower,GoldPower); //poisoned related money.... should be discussed
+                }
+                else if(typeid(*(splashed_enemies[j]))==typeid(AttackableEnemy)){
+                    dynamic_cast<AttackableEnemy*>(splashed_enemies[j])->IsGoldPoisonedBy(AttackPower,GoldPower);
                 }
             }
             playSound("Splash");               //sound for splash

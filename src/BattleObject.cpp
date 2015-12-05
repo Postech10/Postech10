@@ -128,14 +128,18 @@ void BattleObject::SetTarget()
     }
     double closest_dist = 300;              //first initialize longer than range
     for (size_t i=0, n=colliding_items.size();i<n;i++){
-        Enemy *test = dynamic_cast<Enemy *>(colliding_items[i]);           //colliding enemy
-        if(test){                          //only for enemy
-            double this_dist = CalcDistance(test);
-            if(this_dist < closest_dist){               //find closest enemy
-                closest_dist = this_dist;
-                Target = test;
-                HasTarget = true;                  //the closest enemy is target
-            }
+        Enemy *test;
+        if(typeid(*(colliding_items[i]))==typeid(Enemy))
+            test = dynamic_cast<Enemy *>(colliding_items[i]);           //colliding enemy
+        else if(typeid(*(colliding_items[i]))==typeid(AttackableEnemy))
+            test = dynamic_cast<AttackableEnemy *>(colliding_items[i]);
+        else
+            continue;
+        double this_dist = CalcDistance(test);
+        if(this_dist < closest_dist){               //find closest enem
+            closest_dist = this_dist;
+            Target = test;
+            HasTarget = true;                  //the closest enemy is target
         }
     }
     if(HasTarget == true){

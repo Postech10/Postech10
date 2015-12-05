@@ -3,7 +3,7 @@
 #define TOWER
 
 #include "BattleObject.h"
-#include "enemy.h"
+#include "attackableenemy.h"
 
 #define NORMAL 0
 #define SPLASH 1

@@ -24,10 +24,17 @@ void GoldBullet::move()
 {
     QList<QGraphicsItem *> colliding_enemies=collidingItems();
     for(size_t i=0, n=colliding_enemies.size();i<n;i++){
-        if(typeid(*(colliding_enemies[i]))==typeid(Enemy)){
-            dynamic_cast<Enemy*>(colliding_enemies[i])->IsHitBy(AttackPower);
-            if(dynamic_cast<Enemy*>(colliding_enemies[i])->DieOrNot())       //die?
-                game->set_money(game->get_money()+GoldPower);                      //inc money
+        if((typeid(*(colliding_enemies[i]))==typeid(Enemy))||typeid(*(colliding_enemies[i]))==typeid(AttackableEnemy)){
+            if(typeid(*(colliding_enemies[i]))==typeid(Enemy)){
+                dynamic_cast<Enemy*>(colliding_enemies[i])->IsHitBy(AttackPower);
+                if(dynamic_cast<Enemy*>(colliding_enemies[i])->DieOrNot())       //die?
+                  game->set_money(game->get_money()+GoldPower);                      //inc money
+            }
+            else if(typeid(*(colliding_enemies[i]))==typeid(AttackableEnemy)){
+                dynamic_cast<AttackableEnemy*>(colliding_enemies[i])->IsHitBy(AttackPower);
+                if(dynamic_cast<AttackableEnemy*>(colliding_enemies[i])->DieOrNot())       //die?
+                  game->set_money(game->get_money()+GoldPower);                      //inc money
+            }
             playSound("Hit");               //sound for hit
             game->scene->removeItem(this);
             QTimer::singleShot(3000,this,SLOT(callDestructor()));
