@@ -135,7 +135,9 @@ void Tower::mousePressEvent(QGraphicsSceneMouseEvent *event)
            choose = true;
            game->waiting_line.push_back(this);
            game->ShowTowerInfo(this);
+           playSound("TowerSelected");
         }
+        else playSound("TowerSelectFail");
     }
 
     else if(choose == true){
@@ -143,5 +145,6 @@ void Tower::mousePressEvent(QGraphicsSceneMouseEvent *event)
         choose = false;
         game->waiting_line.removeOne(this);
         game->DeletTowerInfo();
+        playSound("TowerSelected");
     }
 }

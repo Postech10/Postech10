@@ -46,7 +46,6 @@ Enemy::Enemy(int level)
     timer = new QTimer();
     connect(timer, SIGNAL(timeout()), this, SLOT(move()));
 
-
 }
 
 void Enemy::IsPoisonedBy(int power)
@@ -211,6 +210,7 @@ void Enemy::move()
 
         reach=1;
         game->SetLife(game->GetLife()-10);
+        playSound("LifeLost");
 
         game->RenewEnemyNum(false);
 

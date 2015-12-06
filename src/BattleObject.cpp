@@ -28,6 +28,9 @@ BattleObject::BattleObject()
     AttackRange->setPos(x()+ln.dx(),y()+ln.dy());       //sync center
 
     addSound("BulletWentOff","resources/sounds/BulletWentOff.wav");
+    addSound("TowerSelected", "resources/sounds/pushbutton.wav");
+    addSound("TowerSelectFail", "resources/sounds/unablebutton.wav");
+    addSound("LifeLost", "resources/sounds/lifelost.wav");
 }
 
 BattleObject::~BattleObject()
