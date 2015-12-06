@@ -27,6 +27,8 @@ BattleObject::BattleObject()
     QLineF ln(poly_center, object_center);
     AttackRange->setPos(x()+ln.dx(),y()+ln.dy());       //sync center
 
+    connect(timer,SIGNAL(timeout()),this,SLOT(SetTarget()));
+
     addSound("BulletWentOff","resources/sounds/BulletWentOff.wav");
     addSound("TowerSelected", "resources/sounds/pushbutton.wav");
     addSound("TowerSelectFail", "resources/sounds/unablebutton.wav");
@@ -103,7 +105,6 @@ void BattleObject::SetAttackSpeed(int AttackSpeed)
 
 void BattleObject::Activated(bool active)
 {
-    connect(timer,SIGNAL(timeout()),this,SLOT(SetTarget()));
     if(active){
         if(Attackable){
             timer->start(20000/AttackSpeed);
