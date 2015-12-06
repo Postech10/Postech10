@@ -55,8 +55,10 @@ void AttackableEnemy::property()
 
 AttackableEnemy::~AttackableEnemy()
 {
-    if(timer_search)
+    if(timer_search){
         delete timer_search;
+        timer_search = nullptr;
+    }
 
 }
 

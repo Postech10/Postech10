@@ -781,7 +781,7 @@ void Game::ShowTowerInfo(Tower *tower)
     case JOBS:
         movie_tooltip = new QMovie(":/images/FieldTooltipLV3_JobsDream.gif");break;
     case TRIPLE:
-        movie_tooltip = new QMovie(":/FieldTooltipLV3_3Major.gif");break;
+        movie_tooltip = new QMovie(":/images/FieldTooltipLV3_3Major.gif");break;
     }
     tooltip->setMovie(movie_tooltip);
     tooltip->movie()->start();

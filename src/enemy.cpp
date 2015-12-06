@@ -147,14 +147,22 @@ void Enemy::startMovement()
 
 Enemy::~Enemy()
 {
-    if (slowTime)
+    if (slowTime){
         delete slowTime;
-    if(poisonTime)
+        slowTime = nullptr;
+    }
+    if(poisonTime){
         delete poisonTime;
-    if(timer)
+        poisonTime = nullptr;
+    }
+    if(timer){
         delete timer;
-    if(hpBar)
+        timer = nullptr;
+    }
+    if(hpBar){
         delete hpBar;
+        hpBar = nullptr;
+    }
 
 }
 
@@ -274,7 +282,9 @@ void Enemy::IsHitByP(int power)     //poisoned
 void Enemy::changeClockRate()
 {
     delete timer;
+    timer = nullptr;
     delete slowTime;
+    slowTime=nullptr;
     slowedState=0;
 
     timer = new QTimer();
