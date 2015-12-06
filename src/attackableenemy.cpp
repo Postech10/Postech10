@@ -15,12 +15,12 @@
 extern Game* game;
 AttackableEnemy::AttackableEnemy(int level):Enemy(level)
 {
-     Hp=500*level;
-     DefensivePower=2;
+     Hp=200*level;
+     DefensivePower=3;
      AttackPower=level*5;
      AttackSpeed=20;
      Attackable = true;
-     search_clockrate=1000;
+     search_clockrate=2000;
 
     property();
 
@@ -89,7 +89,9 @@ void AttackableEnemy::SetTarget()
             }
         }
     }
-    else
+    else{
         delete timer_search;
+        game->set_money(game->get_money()+getLevel()*100);
+    }
 }
 

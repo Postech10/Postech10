@@ -27,7 +27,7 @@ Enemy::Enemy(int level)
        //different velocity according to level
 
     life=1;
-    Hp=(currentLevel/10+1)*40;
+    Hp=40+currentLevel*4;
     DefensivePower=2;
     slowedState=0;
     poisonedState=0;
@@ -63,7 +63,7 @@ void Enemy::IsPoisonedBy(int power)
 
     poisonedState=1;
     poisonedTime=0;
-    poisonPower=power;
+    poisonPower=power*3/5;
     poison_gold=0;
     hpBar->setBrush(QBrush(Qt::green));
     poisonTime = new QTimer();
@@ -80,7 +80,7 @@ void Enemy::IsGoldPoisonedBy(int power, int gold)
 
     poisonedState=1;
     poisonedTime=0;
-    poisonPower=power;
+    poisonPower=power*3/5;
     poison_gold=gold;
     hpBar->setBrush(QBrush(Qt::yellow));
     poisonTime = new QTimer();
