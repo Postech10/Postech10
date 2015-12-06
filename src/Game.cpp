@@ -35,6 +35,7 @@ Game::Game(){
     enemy_num=0;
     dead_enemy=0;
     wave=0;
+    hidden = nullptr;
 
     for(int i=0 ; i < 11 ; i++){
         for(int j=0 ; j < 12 ; j++)
@@ -98,8 +99,8 @@ void Game::displayMenu()
     QString family = QFontDatabase::applicationFontFamilies(id).at(0);
     QFont mystyle(family);
 
-    QPixmap* map = new QPixmap(":/images/Map.bmp");
-    scene->addPixmap(*map);
+    QPixmap* tmp = new QPixmap(":/images/Map.bmp");
+    map = scene->addPixmap(*tmp);
 
     //make upgrade button and add it into scene
     upgrade_button = new UpgradeButton(":/images/UpgradeButton.bmp");
@@ -637,6 +638,56 @@ void Game::clear_game()
     for(int i=0 ; i<build.size() ; i++){
         build[i]->Activated(false);
     }
+    if(round == 41){
+
+        QTimer::singleShot(10,this,SLOT(MakeHiddenGame()));
+        QTimer::singleShot(1510,this,SLOT(MakeHiddenGame()));
+        QTimer::singleShot(3010,this,SLOT(MakeHiddenGame()));
+        QTimer::singleShot(4510,this,SLOT(MakeHiddenGame()));
+        QTimer::singleShot(6010,this,SLOT(MakeHiddenGame()));
+        QTimer::singleShot(7510,this,SLOT(MakeHiddenGame()));
+
+        scene->removeItem(map);
+        map = scene->addPixmap(QPixmap(":/images/BossMap.bmp"));
+        map->setZValue(0);
+
+        int id = QFontDatabase::addApplicationFont(":/fonts/PressStart2P.ttf");
+        QString family = QFontDatabase::applicationFontFamilies(id).at(0);
+        QFont mystyle(family);
+
+        delete round_label;
+        round_label = new QLabel();
+        mystyle.setBold(true);
+        mystyle.setPointSize(20);
+        round_label->setFont(mystyle);
+        round_label->setStyleSheet("QLabel { background-color : rgba(0,0,0,0%); color : white; }");
+        round_label->setText(QString("Hidden Stage"));
+        round_label->setGeometry(704-64*5,704,64*8,64);
+        scene->addWidget(round_label);
+
+        delete money_label;
+        money_label = new QLabel();
+        mystyle.setBold(true);
+        mystyle.setPointSize(15);
+        money_label->setFont(mystyle);
+        money_label->setStyleSheet("QLabel { background-color : rgba(0,0,0,0%); color : rgba(255,234,0); }");
+        money_label->setText(QString::number(money));
+        money_label->setGeometry(1024-64*2.2,32*10.5,64*3,50);
+        scene->addWidget(money_label);
+
+        delete hpBar;
+        hpBar = new QGraphicsRectItem();
+        hpBar->setBrush(QBrush(Qt::red));
+        hpBar->setPos(256,21);
+        hpBar->setRect(0,0, (704-256)*((float(life)/100)), float(42-21));
+        scene->addItem(hpBar);
+    }
+    if(round ==42){
+        scene->removeItem(map);
+        map = scene->addPixmap(QPixmap(":/images/Intro1.bmp"));
+        map->setZValue(2);
+        state = END;
+    }
 }
 
 
@@ -804,22 +855,31 @@ void Game::CheatKeyEntered()
 
 void Game::destroy_game()
 {
-    int id = QFontDatabase::addApplicationFont(":/fonts/PressStart2P.ttf");
-    QString family = QFontDatabase::applicationFontFamilies(id).at(0);
-    QFont mystyle(family);
 
-    game_over = new QLabel("GAME OVER!");
-    mystyle.setBold(true);
-    mystyle.setPointSize(40);
-    game_over->setFont(mystyle);
-    game_over->setGeometry(1024/8,768/3,512,80);
-    game_over->setStyleSheet("QLabel { background-color : rgba(0,0,0,0%); color : black; }");
-    scene->addWidget(game_over);
+    if(round ==42){
+        scene->removeItem(map);
+        map = scene->addPixmap(QPixmap(":/images/Intro1.bmp"));
+        map->setZValue(2);
+        state = END;
+    }
+    else{
+        int id = QFontDatabase::addApplicationFont(":/fonts/PressStart2P.ttf");
+        QString family = QFontDatabase::applicationFontFamilies(id).at(0);
+        QFont mystyle(family);
 
-    wave_generator.ClearSpwanList();
-    wave = 0;
-    dead_enemy=0;
-    enemy_num=0;
+        game_over = new QLabel("GAME OVER!");
+        mystyle.setBold(true);
+        mystyle.setPointSize(40);
+        game_over->setFont(mystyle);
+        game_over->setGeometry(1024/8,768/3,512,80);
+        game_over->setStyleSheet("QLabel { background-color : rgba(0,0,0,0%); color : black; }");
+        scene->addWidget(game_over);
+
+        wave_generator.ClearSpwanList();
+        wave = 0;
+        dead_enemy=0;
+        enemy_num=0;
+    }
 }
 
 void Game::change()
@@ -837,6 +897,20 @@ void Game::change()
     else{
         start_pause_button->setPixmap(QPixmap(":/images/StartButton.bmp"));
         this->scene->addItem(start_pause_button);
+    }
+}
+
+void Game::MakeHiddenGame()
+{
+    if(hidden != nullptr){
+        scene->removeItem(hidden);
+        delete hidden;
+        hidden = nullptr;
+    }
+    else{
+        QPixmap* tmp = new QPixmap(":/images/BossWarning.bmp");
+        hidden = scene->addPixmap(*tmp);
+        hidden->setZValue(2);
     }
 }
 
@@ -901,7 +975,9 @@ void Game::MakeNewGame()
     SpawnList.clear();
     SpawnList = wave_generator.MakeSpawnList(get_round());
     //if Final stage, remove Professor at the end.
-    if(get_round()==41) scene->removeItem(&professor_animation);
+    if(get_round()==41){
+        scene->removeItem(&professor_animation);
+    }
 }
 
 bool Game::FuseTower()
