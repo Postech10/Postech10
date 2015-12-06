@@ -10,6 +10,8 @@
 #include <QString>
 #include <QLabel>
 #include <QLineEdit>
+#include <QMediaPlayer>
+#include <QMediaPlaylist>
 #include "Tower.h"
 #include "enemy.h"
 #include "Wave_Generator.h"
@@ -180,6 +182,10 @@ private :
     QGraphicsProxyWidget* widget_atkspd;
     QGraphicsProxyWidget* widget_def;
     ProfessorAnimation professor_animation;
+
+    QMediaPlayer player;
+    QMediaPlaylist playlist;
+    bool isgameon;
 
 
 

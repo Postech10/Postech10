@@ -6,6 +6,8 @@
 #include <Game.h>
 #include <QApplication>
 #include <QRect>
+#include <QUrl>
+#include "Game.h"
 
 extern Game* game;
 TitleAndIntro::TitleAndIntro()
@@ -48,6 +50,15 @@ TitleAndIntro::TitleAndIntro()
     next = new Button(":/images/button_next(blue).bmp");
     next->setPos(832, 640);
     next->setZValue(1);
+
+    playlist.addMedia(QUrl::fromLocalFile("resources/sounds/TitleTheme.mp3"));
+    playlist.addMedia(QUrl::fromLocalFile("resources/sounds/tutorial.mp3"));
+    playlist.setPlaybackMode(QMediaPlaylist::CurrentItemInLoop);
+
+
+
+    player.setPlaylist(&playlist);
+    player.play();
 }
 
 
@@ -110,6 +121,7 @@ void TitleAndIntro::button_Pressed(QPointF point)
             page_num = 2;
 
             scene->addItem(next);
+            playlist.setCurrentIndex(1);
         }
 
         break;
@@ -216,6 +228,7 @@ void TitleAndIntro::button_Pressed(QPointF point)
         if(x >= next_x && x <= next_x + next_width && y >= next_y && y <= next_y + next_height)
         {
             page_num = 10;
+            player.stop();
             this->close();
             game = new Game();
             game->displayMenu();

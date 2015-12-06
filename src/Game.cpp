@@ -12,6 +12,7 @@
 #include <QFontDatabase>
 #include <QGraphicsItem>
 #include <QGraphicsProxyWidget>
+#include <QUrl>
 
 
 Game::Game(){
@@ -88,6 +89,10 @@ Game::Game(){
     //when game is cleared, automatically the game objcet prepares the next rounds.
     connect(this,SIGNAL(game_is_cleared()),this,SLOT(clear_game()));
     connect(this,SIGNAL(game_is_over()),this,SLOT(destroy_game()));
+    isgameon = false;
+
+
+
 
 }
 
@@ -95,6 +100,7 @@ Game::Game(){
 //this method is called right after the program is run
 void Game::displayMenu()
 {
+    isgameon = true;
     int id = QFontDatabase::addApplicationFont(":/fonts/PressStart2P.ttf");
     QString family = QFontDatabase::applicationFontFamilies(id).at(0);
     QFont mystyle(family);
@@ -197,6 +203,17 @@ void Game::displayMenu()
     professor_animation.setPos(64*3, 64*2);
     scene->addItem(&professor_animation);//professor at the end
     control->ADD(&professor_animation);
+
+    playlist.addMedia(QUrl::fromLocalFile("resources/sounds/NormalTheme.mp3"));
+    playlist.addMedia(QUrl::fromLocalFile("resources/sounds/BattleTheme.mp3"));
+    playlist.addMedia(QUrl::fromLocalFile("resources/sounds/FinalBossTheme.mp3"));
+    playlist.addMedia(QUrl::fromLocalFile("resources/sounds/Ending.mp3"));
+    playlist.setPlaybackMode(QMediaPlaylist::CurrentItemInLoop);
+
+    player.setPlaylist(&playlist);
+    player.setVolume(80);
+    player.play();
+
 }
 
 
@@ -586,6 +603,7 @@ void Game::button_Pressed(QPointF point,int tower_code)
             build[i]->DelHpBar();
             delete build[i];
         }
+        build.clear();
 
         for(int i=0 ; i<SpawnList.size() ; i++){
             control->Delete(SpawnList[i]);
@@ -625,6 +643,7 @@ void Game::button_Pressed(QPointF point,int tower_code)
 //this method is called when all spawned enemies is removed from scene
 void Game::clear_game()
 {    
+    playlist.setCurrentIndex(0);
     wave_generator.ClearSpwanList();
 
     set_round(get_round() + 1);
@@ -639,6 +658,7 @@ void Game::clear_game()
         build[i]->Activated(false);
     }
     if(round == 41){
+        playlist.setCurrentIndex(2);
 
         QTimer::singleShot(10,this,SLOT(MakeHiddenGame()));
         QTimer::singleShot(1510,this,SLOT(MakeHiddenGame()));
@@ -683,8 +703,9 @@ void Game::clear_game()
         scene->addItem(hpBar);
     }
     if(round ==42){
+        playlist.setCurrentIndex(3);
         scene->removeItem(map);
-        map = scene->addPixmap(QPixmap(":/images/Intro1.bmp"));
+        map = scene->addPixmap(QPixmap(":/images/Ending.bmp"));
         map->setZValue(2);
         state = END;
     }
@@ -917,6 +938,7 @@ void Game::MakeHiddenGame()
 //method to controll any mouse click events.
 //when add mode is true, tower is built by this method.
 void Game::mousePressEvent(QMouseEvent *event){
+    if(!isgameon) return;
 
     QPoint pointed_spot = event->pos();
 
@@ -977,6 +999,9 @@ void Game::MakeNewGame()
     //if Final stage, remove Professor at the end.
     if(get_round()==41){
         scene->removeItem(&professor_animation);
+    }
+    else{
+        playlist.setCurrentIndex(1);
     }
 }
 

@@ -4,6 +4,8 @@
 #include <QGraphicsView>
 #include <QGraphicsScene>
 #include <QMouseEvent>
+#include <QMediaPlayer>
+#include <QMediaPlaylist>
 #include <QLabel>
 #include "button.h"
 
@@ -22,6 +24,9 @@ public:
     Button* credit;
     Button* exit;
     Button* next;
+
+    QMediaPlayer player;
+    QMediaPlaylist playlist;
 
     int page_num;
 
