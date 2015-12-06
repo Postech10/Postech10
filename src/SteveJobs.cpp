@@ -15,11 +15,12 @@ SteveJobs::SteveJobs()
     set_image(QString::fromStdString("://images/Animation_JobsDream.bmp"));
     set_state(CALM);
     this->HideAttackRange();
+        connect(timer,SIGNAL(timeout()),this,SLOT(IncGold()));
 }
 
 void SteveJobs::Activated(bool active)
 {
-    connect(timer,SIGNAL(timeout()),this,SLOT(IncGold()));
+
     if(active)
         timer->start(20000/AttackSpeed);
     else
