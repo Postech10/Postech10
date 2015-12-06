@@ -103,6 +103,9 @@ void BattleObject::SetAttackSpeed(int AttackSpeed)
 
 void BattleObject::Activated(bool active)
 {
+    QTimer *temp = timer;
+    timer = new QTimer();
+    delete temp;
     connect(timer,SIGNAL(timeout()),this,SLOT(SetTarget()));
     if(active){
         if(Attackable){

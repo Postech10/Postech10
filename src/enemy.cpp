@@ -1,4 +1,4 @@
-﻿#pragma once
+﻿
 #include "enemy.h"
 #include "Game.h"
 #include <QDebug>
@@ -27,7 +27,7 @@ Enemy::Enemy(int level)
        //different velocity according to level
 
     life=1;
-    Hp=(currentLevel/5+1)*50;
+    Hp=(currentLevel/10+1)*40;
     DefensivePower=2;
     slowedState=0;
     poisonedState=0;
@@ -228,6 +228,7 @@ void Enemy::move()
     hpBar->setPos(x()+x_move, y()-20+y_move);
 
     if((x()== path[9][0]) && (y()==path[9][1])){                 //end point
+        playSound("LifeLost");
 
         reach=1;
         game->SetLife(game->GetLife()-10);

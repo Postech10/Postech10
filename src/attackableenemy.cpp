@@ -1,4 +1,4 @@
-#pragma once
+
 #include "attackableenemy.h"
 #include "Bullet.h"
 #include "Tower.h"
