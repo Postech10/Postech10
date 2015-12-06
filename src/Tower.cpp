@@ -45,18 +45,24 @@ void Tower::upgrade(Upgrades* up, int towercode)
         case TUTOR:
             break;
         case PROF:
+            up->UpgradeSlow(towercode);
             break;
         case CES:
+            up->UpgradeGold(towercode);
             break;
         case JOBSBIO:
+            up->UpgradeGold(towercode);
             break;
         case MES:
+            up->UpgradeGold(towercode);
             break;
         case APPLE:
+            up->UpgradeGold(towercode);
             break;
         case JOBS:
             break;
         case TRIPLE:
+            up->UpgradeGold(towercode);
             break;
         }
 

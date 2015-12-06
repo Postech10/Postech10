@@ -16,7 +16,7 @@ void UpgradeButton::mousePressEvent(QGraphicsSceneMouseEvent *event)
     game->SetUpgradeMode(true);
     QTimer::singleShot(150,game,SLOT(change()));
 
-    if(game->waiting_line.size() == 1 && game->get_money()>= 15){
+    if(game->waiting_line.size() == 1 && game->get_money()>= 15 && game->GetState() != Ingame){
         playSound("Upgrade");
         game->waiting_line[0]->upgrade(up,game->waiting_line[0]->GetTowerCode());
         game->set_money(game->get_money() - 15);

@@ -106,7 +106,7 @@ void BattleObject::Activated(bool active)
     connect(timer,SIGNAL(timeout()),this,SLOT(SetTarget()));
     if(active){
         if(Attackable){
-            timer->start(1000);
+            timer->start(20000/AttackSpeed);
         }
     }
     else
