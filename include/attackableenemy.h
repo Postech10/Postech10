@@ -14,6 +14,7 @@ public:
     void Attack();
     void property();
     //void IsHitBy(int);
+    ~AttackableEnemy();
 
 public slots:
     void SetTarget();\

@@ -27,7 +27,7 @@ Enemy::Enemy(int level)
        //different velocity according to level
 
     life=1;
-    Hp=(currentLevel/10+1)*50;
+    Hp=(currentLevel/10+1)*100;
     DefensivePower=1;
     slowedState=0;
     poisonedState=0;
@@ -56,7 +56,7 @@ void Enemy::IsPoisonedBy(int power)
 
     poisonedState=1;
     poisonedTime=0;
-    poisonPower=power;
+    poisonPower=power/2;
     poison_gold=0;
     hpBar->setBrush(QBrush(Qt::green));
     poisonTime = new QTimer();
@@ -71,7 +71,7 @@ void Enemy::IsGoldPoisonedBy(int power, int gold)
 
     poisonedState=1;
     poisonedTime=0;
-    poisonPower=power;
+    poisonPower=power/2;
     poison_gold=gold;
     hpBar->setBrush(QBrush(Qt::yellow));
     poisonTime = new QTimer();
@@ -90,7 +90,6 @@ void Enemy::IsSlowedBy(int power)
     timer = new QTimer();
     connect(timer, SIGNAL(timeout()), this, SLOT(move()));
     timer->start(clockRate/5*power);    //slowed, doubled clockrate
-    qDebug()<<"slOw";
 
     slowTime = new QTimer();
     connect(slowTime, SIGNAL(timeout()), this, SLOT(changeClockRate()));
@@ -102,11 +101,10 @@ void Enemy::IsHitBy(int power)
       if(poisonedState==1)
           Hp = Hp - poisonPower/DefensivePower;
 
-      Hp = Hp - power/DefensivePower;   //decrease Hp
+      Hp = Hp - (power/DefensivePower)/2;   //decrease Hp
 
 
       if(Hp<=0){
-          qDebug()<<"hey";
           life=0;
           game->RenewEnemyNum(true);
           scene()->removeItem(hpBar);
@@ -133,20 +131,15 @@ void Enemy::startMovement()
 
 Enemy::~Enemy()
 {
-  /*  qDebug()<<"a";
+    if (slowTime)
+        delete slowTime;
+    if(poisonTime)
+        delete poisonTime;
+    if(timer)
+        delete timer;
+    if(hpBar)
+        delete hpBar;
 
-    if (Hp>0){
-        qDebug()<<"b";
-        qDebug()<<"c";
-        if(slowedState==1)
-            delete slowTime;
-        qDebug()<<"d";
-        if(poisonedState==1)
-            delete poisonTime;
-        qDebug()<<"e";
-
-    }*/
-    //나머지는 알아서 지워줌
 }
 
 void Enemy::setPicture()     //Hp AttackPower DefensePower
@@ -194,6 +187,11 @@ void Enemy::setPicture()     //Hp AttackPower DefensePower
             set_state(CALM);
         }
         break;
+    case 4:
+        set_image(QString::fromStdString(":/images/Animation_Enemy4.bmp"));
+        set_state(CALM);
+        break;
+
     }
 
 }
@@ -210,7 +208,6 @@ void Enemy::move()
     hpBar->setPos(x()+x_move, y()-20+y_move);
 
     if((x()== path[9][0]) && (y()==path[9][1])){                 //end point
-        qDebug() << "Fail to remove enemy";
 
         reach=1;
         game->SetLife(game->GetLife()-10);
@@ -260,7 +257,5 @@ void Enemy::changeClockRate()
     timer = new QTimer();
     connect(timer, SIGNAL(timeout()), this, SLOT(move()));
     timer->start(clockRate);      //recovered from slow state
-
-    qDebug()<<"fast";
 }
 

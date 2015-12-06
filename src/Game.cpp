@@ -646,27 +646,33 @@ void Game::ShowTowerInfo(Tower *tower)
         scene->removeItem(widget_atk);
         scene->removeItem(widget_atkspd);
         scene->removeItem(widget_def);
-        widget_tooltip = nullptr;
-        widget_atk = nullptr;
-        widget_atkspd = nullptr;
-        widget_def = nullptr;
 
-        delete tooltip;
+
+        //delete tooltip;
+        delete widget_tooltip;
         tooltip = nullptr;
 
         delete movie_tooltip;
         movie_tooltip = nullptr;
 
-        delete attack_ability;
+        //delete attack_ability;
+        delete widget_atk;
         attack_ability = nullptr;
 
-        delete defense_ability;
+        //delete defense_ability;
+        delete widget_def;
         defense_ability = nullptr;
 
-        delete attack_speed_ability;
+        //delete attack_speed_ability;
+        delete widget_atkspd;
         attack_speed_ability = nullptr;
-    }
+        //qDebug()<<"Entered InfoLabelDeleting";
 
+        widget_tooltip = nullptr;
+        widget_atk = nullptr;
+        widget_atkspd = nullptr;
+        widget_def = nullptr;
+    }
     tooltip = new QLabel();
     tooltip->setGeometry(768,384,256,192);
 
@@ -747,26 +753,32 @@ void Game::DeletTowerInfo()
         scene->removeItem(widget_atk);
         scene->removeItem(widget_atkspd);
         scene->removeItem(widget_def);
-        widget_tooltip = nullptr;
-        widget_atk = nullptr;
-        widget_atkspd = nullptr;
-        widget_def = nullptr;
 
-        delete tooltip;
+
+        //delete tooltip;
+        delete widget_tooltip;
         tooltip = nullptr;
 
         delete movie_tooltip;
         movie_tooltip = nullptr;
 
-        delete attack_ability;
+        //delete attack_ability;
+        delete widget_atk;
         attack_ability = nullptr;
 
-        delete defense_ability;
+        //delete defense_ability;
+        delete widget_def;
         defense_ability = nullptr;
 
-        delete attack_speed_ability;
+        //delete attack_speed_ability;
+        delete widget_atkspd;
         attack_speed_ability = nullptr;
-        qDebug()<<"Entered InfoLabelDeleting";
+        //qDebug()<<"Entered InfoLabelDeleting";
+
+        widget_tooltip = nullptr;
+        widget_atk = nullptr;
+        widget_atkspd = nullptr;
+        widget_def = nullptr;
     }
 }
 
@@ -1010,3 +1022,4 @@ void Game::set_round(int _round)
         round_label->setText(QString("Round ")+QString::number(round));
     }
 }
+

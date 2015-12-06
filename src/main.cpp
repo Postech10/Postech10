@@ -10,7 +10,6 @@ int main(int argc, char *argv[])
 
     QApplication a(argc, argv);
 
-
     game = new Game();                  //珥덇린??
     game->displayMenu();                //硫붾돱 異붽?
     game->show();                       //?붾㈃異쒕젰

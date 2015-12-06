@@ -15,12 +15,12 @@
 extern Game* game;
 AttackableEnemy::AttackableEnemy(int level):Enemy(level)
 {
-    qDebug() << "make attackable enemy";
-    DefensivePower=2;
-    AttackPower=level*10;
-    AttackSpeed=20;
-    Attackable = true;
-    search_clockrate=1000;
+    Hp=200*level;
+     DefensivePower=2;
+     AttackPower=level*5;
+     AttackSpeed=20;
+     Attackable = true;
+     search_clockrate=1000;
 
     property();
 
@@ -46,34 +46,19 @@ void AttackableEnemy::property()
 {
     switch(getLevel()){
     case 10: break;
-    case 20: //범위 넓힘
-    case 30: AttackPower=1000; break;//다 죽임
-    case 40: AttackPower=1000;break;//범위 넓힘
-
+    case 20: setClockRate(5); break;
+    case 30: AttackPower=5000; search_clockrate=20000; setClockRate(20); break;//다 죽임
+    case 40: AttackPower=5000; search_clockrate=5000; setClockRate(5); break;//범위 넓힘
+    case 41: AttackPower=5000; search_clockrate=1000; setClockRate(5); break;
     }
 }
-/*
-void AttackableEnemy::IsHitBy(int power)
+
+AttackableEnemy::~AttackableEnemy()
 {
-    Hp = Hp - power/DefensivePower;   //decrease Hp
-    qDebug()<<Hp;
-
-
-    if(Hp<=0){
-        die();
-        game->RenewEnemyNum(true);
-        scene()->removeItem(hpBar);
-
+    if(timer_search)
         delete timer_search;
-        delete timer;
-        scene()->removeItem(this);
-
-
-    }
-    else
-        cutHpbar();
 }
-*/
+
 
 void AttackableEnemy::SetTarget()
 {
@@ -103,5 +88,7 @@ void AttackableEnemy::SetTarget()
             }
         }
     }
+    else
+        delete timer_search;
 }
 
