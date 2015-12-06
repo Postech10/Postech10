@@ -148,7 +148,7 @@ Enemy::~Enemy()
 {
     if (slowTime != nullptr)
         delete slowTime;
-    if(poisonTime!= nullptr)
+    if(poisonTime != nullptr)
         delete poisonTime;
     if(timer!= nullptr)
         delete timer;
@@ -258,6 +258,7 @@ void Enemy::IsHitByP(int power)     //poisoned
         poisonedState=0;
         poison_gold=0;
         delete poisonTime;
+        poisonTime = nullptr;
     }
     else if (reach==0){
         IsHitBy(power);

@@ -518,8 +518,6 @@ void Game::button_Pressed(QPointF point,int tower_code)
 
     //when start button pressed.
     else if(start_pause_button->contains(point) == true && state == Cleared){
-        this->scene->removeItem(start_pause_button);
-        QTimer::singleShot(300,this,SLOT(change()));
 
         MakeNewGame();
 
@@ -527,14 +525,10 @@ void Game::button_Pressed(QPointF point,int tower_code)
         connect(spawn_timer,SIGNAL(timeout()),this,SLOT(spawnEnemy()));
         spawn_timer->start(1000);
 
-        scene->removeItem(start_pause_button);
         state = Ingame;
     }
 
     else if(start_pause_button->contains(point)==true && state == GameOver){
-
-        this->scene->removeItem(start_pause_button);
-        QTimer::singleShot(300,this,SLOT(change()));
 
         set_money(0);
 
@@ -582,6 +576,7 @@ void Game::button_Pressed(QPointF point,int tower_code)
             control->Delete(SpawnList[i]);
             delete SpawnList[i];
         }
+        SpawnList.clear();
 
         for(int i=0 ; i < 11 ; i++){
             for(int j=0 ; j < 12 ; j++)
