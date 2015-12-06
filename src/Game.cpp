@@ -519,6 +519,14 @@ void Game::button_Pressed(QPointF point,int tower_code)
     //when start button pressed.
     else if(start_pause_button->contains(point) == true && state == Cleared){
 
+        this->scene->removeItem(start_pause_button);
+        QTimer::singleShot(150,this,SLOT(change()));
+
+        for(int i=0 ; i<build.size() ; i++){
+            build[i]->Activated(false);
+            build[i]->Activated(true);
+        }
+
         MakeNewGame();
 
         spawn_timer = new QTimer(this);
@@ -530,7 +538,13 @@ void Game::button_Pressed(QPointF point,int tower_code)
 
     else if(start_pause_button->contains(point)==true && state == GameOver){
 
+        this->scene->removeItem(start_pause_button);
+        QTimer::singleShot(150,this,SLOT(change()));
+
         set_money(0);
+        wave = 0;
+        dead_enemy=0;
+        enemy_num=0;
 
         for(int i=0 ; i<build.size() ; i++){
 
@@ -568,8 +582,8 @@ void Game::button_Pressed(QPointF point,int tower_code)
                       (upgrade_button->getUp()->GetReference(build[i]->GetTowerCode())->GetDefensivePower()-20)/10*15);
         }
         for(int i=0 ; i<build.size() ; i++){
-            build[i]->DelHpBar();
             control->Delete(build[i]);
+            build[i]->DelHpBar();
             delete build[i];
         }
 
@@ -605,29 +619,13 @@ void Game::button_Pressed(QPointF point,int tower_code)
         state = Cleared;
         delete game_over;
     }
-    /*
-    else if(start_pause_button->contains(point)==true && state == Paused){
-        //for(int i=0 ; i<enemy.size() ; i++)
-            //enemy[i]->startMovement(150);
-        //please declare startMovement method and un-commentize this.
-
-        spawn_timer = new QTimer(this);
-        connect(spawn_timer,SIGNAL(timeout()),this,SLOT(spawnEnemy()));
-        spawn_timer->start(2000);
-
-        start_pause_button->setPixmap(QPixmap(":/images/Pause_Button.png"));
-        state = Ingame;
-    }
-    */
 }
 
 //method to clear game
 //this method is called when all spawned enemies is removed from scene
 void Game::clear_game()
-{
+{    
     wave_generator.ClearSpwanList();
-    start_pause_button->setPixmap(QPixmap(":/images/StartButton.bmp"));
-    scene->addItem(start_pause_button);
 
     set_round(get_round() + 1);
     set_money(get_money() + dead_enemy*5);
@@ -815,9 +813,10 @@ void Game::destroy_game()
     game_over->setStyleSheet("QLabel { background-color : rgba(0,0,0,0%); color : black; }");
     scene->addWidget(game_over);
 
-    start_pause_button->setPixmap(QPixmap(":/images/StartButton.bmp"));
-    scene->addItem(start_pause_button);
-
+    wave_generator.ClearSpwanList();
+    wave = 0;
+    dead_enemy=0;
+    enemy_num=0;
 }
 
 void Game::change()
@@ -849,7 +848,6 @@ void Game::mousePressEvent(QMouseEvent *event){
         pointer = build[build.size()-1];
         pointer->setVisible(true);
         pointer->setPos((pointed_spot.x()/64)*64,(pointed_spot.y()/64)*64);
-        pointer->Activated(true);
         pointer->setHpbar();
         scene->addItem(pointer);
         QWidget::unsetCursor();
@@ -917,10 +915,8 @@ bool Game::FuseTower()
             scene->removeItem(waiting_line[0]);
             scene->removeItem(waiting_line[1]);
 
-            for(int i=0 ; i<build.size() ; i++){
-                if(build[i] == waiting_line[0] || build[i] == waiting_line[1])
-                    build.remove(i);
-            }
+            build.erase(std::find(build.begin(),build.end(),waiting_line[0]));
+            build.erase(std::find(build.begin(),build.end(),waiting_line[1]));
 
             position[static_cast<int>(waiting_line[0]->pos().x()/64)][static_cast<int>(waiting_line[0]->pos().y()/64)] = false;
             position[static_cast<int>(waiting_line[1]->pos().x()/64)][static_cast<int>(waiting_line[1]->pos().y()/64)] = false;

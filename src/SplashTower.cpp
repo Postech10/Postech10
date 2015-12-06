@@ -9,7 +9,7 @@ SplashTower::SplashTower()
     TargetNum = 1;
     TowerCode = SPLASH;
     Hp = 100;
-    AttackPower = 30;
+    AttackPower = 15;
     DefensivePower = 20;
     AttackSpeed = 20;
     Attackable = true;                  //this will be changed for balance

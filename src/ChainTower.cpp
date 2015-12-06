@@ -5,7 +5,7 @@ ChainTower::ChainTower()
     TargetNum = 3;
     TowerCode = CHAIN;
     Hp = 100;
-    AttackPower = 20;
+    AttackPower = 10;
     DefensivePower = 20;
     AttackSpeed = 20;
     Attackable = true;                  //this will be changed for balance

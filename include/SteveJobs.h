@@ -4,6 +4,7 @@
 #include "Tower.h"
 
 class SteveJobs: public Tower{
+    Q_OBJECT
 public:
     SteveJobs();
     void Activated(bool);
