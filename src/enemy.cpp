@@ -27,18 +27,12 @@ Enemy::Enemy(int level)
        //different velocity according to level
 
     life=1;
-    Hp=(currentLevel/10+1)*100;
-    DefensivePower=1;
+    Hp=(currentLevel/5+1)*50;
+    DefensivePower=2;
     slowedState=0;
     poisonedState=0;
     poisonPower=0;
     reach=0;
-
-    slowTime = nullptr;
-    poisonTime = nullptr;
-    timer = nullptr;
-    hpBar = nullptr;
-
 
     if(currentLevel%10!=0)
         this->HideAttackRange();
@@ -52,18 +46,17 @@ Enemy::Enemy(int level)
     timer = new QTimer();
     connect(timer, SIGNAL(timeout()), this, SLOT(move()));
 
+
 }
 
 void Enemy::IsPoisonedBy(int power)
 {
-    if( poisonedState==1){
+    if( poisonedState==1)
         delete poisonTime;
-        poisonTime = nullptr;
-    }
 
     poisonedState=1;
     poisonedTime=0;
-    poisonPower=power/2;
+    poisonPower=power;
     poison_gold=0;
     hpBar->setBrush(QBrush(Qt::green));
     poisonTime = new QTimer();
@@ -73,14 +66,12 @@ void Enemy::IsPoisonedBy(int power)
 
 void Enemy::IsGoldPoisonedBy(int power, int gold)
 {
-    if( poisonedState==1){
+    if( poisonedState==1)
         delete poisonTime;
-        poisonTime = nullptr;
-    }
 
     poisonedState=1;
     poisonedTime=0;
-    poisonPower=power/2;
+    poisonPower=power;
     poison_gold=gold;
     hpBar->setBrush(QBrush(Qt::yellow));
     poisonTime = new QTimer();
@@ -90,10 +81,8 @@ void Enemy::IsGoldPoisonedBy(int power, int gold)
 
 void Enemy::IsSlowedBy(int power)
 {
-    if (slowedState==1){
+    if (slowedState==1)
         delete slowTime;
-        slowTime = nullptr;
-    }
 
     slowedState=1;
 
@@ -112,22 +101,19 @@ void Enemy::IsHitBy(int power)
       if(poisonedState==1)
           Hp = Hp - poisonPower/DefensivePower;
 
-      Hp = Hp - (power/DefensivePower)/2;   //decrease Hp
+      Hp = Hp - (power/DefensivePower);   //decrease Hp
 
 
       if(Hp<=0){
           life=0;
+          game->set_money(game->get_money()+1);
           game->RenewEnemyNum(true);
           scene()->removeItem(hpBar);
           scene()->removeItem(this);
           delete timer;
-          timer = nullptr;
           delete hpBar;
-          hpBar = nullptr;
-          if(slowedState==1){
+          if(slowedState==1)
               delete slowTime;
-              slowTime = nullptr;
-          }
       }
       else
           cutHpbar();
@@ -146,13 +132,13 @@ void Enemy::startMovement()
 
 Enemy::~Enemy()
 {
-    if (slowTime != nullptr)
+    if (slowTime)
         delete slowTime;
-    if(poisonTime != nullptr)
+    if(poisonTime)
         delete poisonTime;
-    if(timer!= nullptr)
+    if(timer)
         delete timer;
-    if(hpBar!= nullptr)
+    if(hpBar)
         delete hpBar;
 
 }
@@ -206,6 +192,10 @@ void Enemy::setPicture()     //Hp AttackPower DefensePower
         set_image(QString::fromStdString(":/images/Animation_Enemy4.bmp"));
         set_state(CALM);
         break;
+    case 5:
+        set_image(QString::fromStdString(":/images/Animation_Professor.bmp"));
+        set_state(CALM);
+
 
     }
 
@@ -226,7 +216,6 @@ void Enemy::move()
 
         reach=1;
         game->SetLife(game->GetLife()-10);
-        playSound("LifeLost");
 
         game->RenewEnemyNum(false);
 
@@ -235,9 +224,7 @@ void Enemy::move()
 
         game->scene->removeItem(this);
         delete timer;
-        timer = nullptr;
         delete hpBar;
-        hpBar = nullptr;
 
 
     }
@@ -251,14 +238,12 @@ void Enemy::IsHitByP(int power)     //poisoned
 
     if(Hp<=0){
         delete poisonTime;      //끝난경우
-        poisonTime = nullptr;
     }
     else if(poisonedTime>3000){            //after specific time, released from poison
         hpBar->setBrush(QBrush(Qt::red));
         poisonedState=0;
         poison_gold=0;
         delete poisonTime;
-        poisonTime = nullptr;
     }
     else if (reach==0){
         IsHitBy(power);
@@ -271,9 +256,7 @@ void Enemy::IsHitByP(int power)     //poisoned
 void Enemy::changeClockRate()
 {
     delete timer;
-    timer = nullptr;
     delete slowTime;
-    slowTime = nullptr;
     slowedState=0;
 
     timer = new QTimer();

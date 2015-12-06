@@ -13,7 +13,6 @@ public:
     AttackableEnemy(int level);
     void Attack();
     void property();
-    //void IsHitBy(int);
     ~AttackableEnemy();
 
 public slots:

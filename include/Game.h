@@ -18,6 +18,7 @@
 #include "BuildTowerIcon.h"
 #include "button.h"
 #include "control_animation.h"
+#include "professoranimation.h"
 
 enum State {Ingame, Paused, Cleared, GameOver};
 enum TOWERINFO {BASE,LEVEL2,LEVEL3};
@@ -88,6 +89,7 @@ public:
     QGraphicsScene *scene;
     QList<Tower*> waiting_line;
     QLabel *tooltip;
+
 
 signals:
     void RoundSet(int new_round);
@@ -174,6 +176,7 @@ private :
     QGraphicsProxyWidget* widget_atk; //pointers to atk, atkspd, def QLebels.
     QGraphicsProxyWidget* widget_atkspd;
     QGraphicsProxyWidget* widget_def;
+    ProfessorAnimation professor_animation;
 
 
 

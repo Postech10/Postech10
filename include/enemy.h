@@ -43,7 +43,6 @@ public:
     void die(){life=0; this->HideAttackRange();}
     void setClockRate(int clock){clockRate=clock;}
     int getLevel(){return currentLevel;}
-
     ~Enemy();
 public slots:
     void move();                      //go through path

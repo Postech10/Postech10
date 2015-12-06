@@ -8,17 +8,28 @@
 #include "Tower.h"
 #include <QDebug>
 #include <QPointF>
-#define STEP 50
+#include <QBitmap>
+#define STEP 30
 
 extern Game * game;
 
 Bullet_enemy::Bullet_enemy(int power): Bullet(power){
-
     switch(power){
-    case 10: setPixmap(QPixmap(":/images/Bullet_Normal.bmp"));break;
-    case 20: setPixmap(QPixmap(":/images/Bullet_Normal.bmp"));break;
-    case 30: setPixmap(QPixmap(":/images/Bullet_Normal.bmp"));break;
-    case 40: setPixmap(QPixmap(":/images/Bullet_Normal.bmp"));break;
+    case 50: image = new QPixmap(":/images/Bullet_Normal.bmp");
+        image->setMask(image->createMaskFromColor(QColor(255,0,170)));
+        setPixmap(*image);break;
+    case 100: image = new QPixmap(":/images/Bullet_Normal.bmp");
+        image->setMask(image->createMaskFromColor(QColor(255,0,170)));
+        setPixmap(*image);break;
+    case 150: image = new QPixmap(":/images/Bullet_Punch.bmp");
+        image->setMask(image->createMaskFromColor(QColor(255,0,170)));
+        setPixmap(*image);break;
+    case 200: image = new QPixmap(":/images/Bullet_Punch.bmp");
+        image->setMask(image->createMaskFromColor(QColor(255,0,170)));
+        setPixmap(*image);break;
+    default:image = new QPixmap(":/images/Bullet_Punch.bmp");
+        image->setMask(image->createMaskFromColor(QColor(255,0,170)));
+        setPixmap(*image);break;
     }
 
     AttackPower=power;
@@ -37,9 +48,10 @@ void Bullet_enemy::move()
     for(size_t i=0, n=colliding_tower.size();i<n;i++){
             Tower* tower=dynamic_cast<Tower *>(colliding_tower[i]);           //sound for hit
             if(tower){
-                tower->IsHitBy(AttackPower);
+                tower->IsHitBy(AttackPower*2);
                 Activated(0);
                 game->scene->removeItem(this);
+                delete image;
                 delete this;
                 return;
             }

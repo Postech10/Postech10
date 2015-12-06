@@ -13,6 +13,7 @@
 #include <QGraphicsItem>
 #include <QGraphicsProxyWidget>
 
+
 Game::Game(){
     scene = new QGraphicsScene(this);       //make scene
     scene->setSceneRect(0,0,1024,768);      //set size of scene
@@ -86,6 +87,7 @@ Game::Game(){
     //when game is cleared, automatically the game objcet prepares the next rounds.
     connect(this,SIGNAL(game_is_cleared()),this,SLOT(clear_game()));
     connect(this,SIGNAL(game_is_over()),this,SLOT(destroy_game()));
+
 }
 
 //method to display default Menu on the scene
@@ -190,6 +192,10 @@ void Game::displayMenu()
     textBox->setStyleSheet("background-color : white;");
     scene->addWidget(textBox);
     num_mouseonbutton = 0;
+
+    professor_animation.setPos(64*3, 64*2);
+    scene->addItem(&professor_animation);//professor at the end
+    control->ADD(&professor_animation);
 }
 
 
@@ -621,7 +627,7 @@ void Game::clear_game()
     wave_generator.ClearSpwanList();
 
     set_round(get_round() + 1);
-    set_money(get_money() + dead_enemy*5);
+    //set_money(get_money() + dead_enemy*5);
     hpBar->setRect(0,0, (704-256)*((float(life)/100)), float(42-21));
 
     wave = 0;
@@ -894,6 +900,8 @@ void Game::MakeNewGame()
     enemy.clear();
     SpawnList.clear();
     SpawnList = wave_generator.MakeSpawnList(get_round());
+    //if Final stage, remove Professor at the end.
+    if(get_round()==41) scene->removeItem(&professor_animation);
 }
 
 bool Game::FuseTower()
@@ -1002,6 +1010,7 @@ int Game::GetState()
 void Game::SetLife(int _life)
 {
     if(life >0){
+        if(_life < life) professor_animation.set_state(ATTACK);
         life = _life;
         if(life <= 0)
             SetState(GameOver);
