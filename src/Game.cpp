@@ -569,6 +569,7 @@ void Game::button_Pressed(QPointF point,int tower_code)
         }
         for(int i=0 ; i<build.size() ; i++){
             build[i]->DelHpBar();
+            control->Delete(build[i]);
             delete build[i];
         }
 
