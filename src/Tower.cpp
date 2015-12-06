@@ -25,7 +25,7 @@ void Tower::upgrade(Upgrades* up, int towercode)
     //upgrade proceed
         up->UpgradeAttack(towercode);
         up->UpgradeDefense(towercode);
-        up->UpgradeAttackSpeed(towercode);
+        //up->UpgradeAttackSpeed(towercode);
         switch(towercode)
         {
         case NORMAL:
