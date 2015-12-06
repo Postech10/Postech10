@@ -14,9 +14,14 @@ void Fusion_Button::mousePressEvent(QGraphicsSceneMouseEvent *event)
     game->scene->removeItem(this);
     game->SetFuseMode(true);
     QTimer::singleShot(150,game,SLOT(change()));
-    isFuseSuccess = game->FuseTower();
-    if(isFuseSuccess) playSound("Combine");
-    else playSound("Fail");
+
+    if(game->GetState() != Ingame){
+        isFuseSuccess = game->FuseTower();
+        if(isFuseSuccess) playSound("Combine");
+        else playSound("Fail");
+    }
+    else
+        playSound("Fail");
 }
 
 

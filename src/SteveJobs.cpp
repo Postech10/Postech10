@@ -21,7 +21,7 @@ void SteveJobs::Activated(bool active)
 {
     connect(timer,SIGNAL(timeout()),this,SLOT(IncGold()));
     if(active)
-        timer->start(1/AttackSpeed);
+        timer->start(20000/AttackSpeed);
     else
         timer->stop();
 }
