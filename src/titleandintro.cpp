@@ -63,6 +63,21 @@ void TitleAndIntro::button_Pressed(QPointF point)
 
     switch(page_num)
     {
+    case 0:
+        if(x >= next_x && x <= next_x + next_width && y >= next_y && y <= next_y + next_height)
+        {
+            scene->clear();
+            scene->addPixmap(QPixmap(":/images/TitleScreen.bmp"));
+            page_num = 1;
+
+            next = new Button(":/images/button_next(blue).bmp");
+            next->setPos(832, 640);
+            next->setZValue(1);
+            scene->addItem(start);
+            scene->addItem(credit);
+            scene->addItem(exit);
+        }
+        break;
 
     case 1:
         if(x >= exit->QGraphicsPixmapItem::pos().x() &&
@@ -77,9 +92,13 @@ void TitleAndIntro::button_Pressed(QPointF point)
                 y >= credit->QGraphicsPixmapItem::pos().y() &&
                 y <= credit->QGraphicsPixmapItem::pos().y() + credit->QGraphicsPixmapItem::pixmap().height())
         {
-            /*scene->clear();
-            scene->addPixmap(QPixmap(":/images/Intro2.bmp"));
-            page_num = 0;*/
+            scene->removeItem(start);
+            scene->removeItem(credit);
+            scene->removeItem(exit);
+            scene->addPixmap(QPixmap(":/images/Credit.bmp"));
+            page_num = 0;
+
+            scene->addItem(next);
         }
         else if(x >= start->QGraphicsPixmapItem::pos().x() &&
                 x <= start->QGraphicsPixmapItem::pos().x() + start->QGraphicsPixmapItem::pixmap().width() &&
