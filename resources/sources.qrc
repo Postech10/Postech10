@@ -116,5 +116,7 @@
         <file>images/button_exit.bmp</file>
         <file>images/button_next(blue).bmp</file>
         <file>images/button_next(brown).bmp</file>
+        <file>images/button_next(black).bmp</file>
+        <file>images/button_start.bmp</file>
     </qresource>
 </RCC>

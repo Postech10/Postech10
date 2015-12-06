@@ -59,7 +59,8 @@ SOURCES += \
     src/animatedbattleobject.cpp \
     src/control_animation.cpp \
     src/bullet_enemy.cpp \
-    include/professoranimation.cpp
+    include/professoranimation.cpp \
+    src/titleandintro.cpp
 
 HEADERS  += \
     include/upgrade_button.h \
@@ -101,7 +102,8 @@ HEADERS  += \
     include/animatedbattleobject.h \
     include/control_animation.h \
     include/bullet_enemy.h \
-    include/professoranimation.h
+    include/professoranimation.h \
+    include/titleandintro.h
 
 RESOURCES += \
     resources/sources.qrc \
