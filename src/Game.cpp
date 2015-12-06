@@ -574,7 +574,13 @@ void Game::button_Pressed(QPointF point,int tower_code)
                       (upgrade_button->getUp()->GetReference(build[i]->GetTowerCode())->GetDefensivePower()-20)/10*15);
         }
         for(int i=0 ; i<build.size() ; i++){
+            build[i]->DelHpBar();
             delete build[i];
+        }
+
+        for(int i=0 ; i<SpawnList.size() ; i++){
+            control->Delete(SpawnList[i]);
+            delete SpawnList[i];
         }
 
         for(int i=0 ; i < 11 ; i++){
@@ -889,7 +895,11 @@ void Game::RenewEnemyNum(bool is_dead)
 //method to make new game when new round of game begins
 //we clean enemy & spawn list, renew level and money, and generate new waves.
 void Game::MakeNewGame()
-{    
+{
+    for(int i=0 ; i<SpawnList.size() ; i++){
+        control->Delete(SpawnList[i]);
+        delete SpawnList[i];
+    }
     enemy.clear();
     SpawnList.clear();
     SpawnList = wave_generator.MakeSpawnList(get_round());
@@ -975,6 +985,7 @@ void Game::DestroyTower(Tower * target)
     QVector<Tower*>::iterator pos = std::find(build.begin() , build.end() ,target);
     if(pos != build.end()){
         build.erase(pos);
+        position[static_cast<int>(target->pos().x()/64)][static_cast<int>(target->pos().y()/64)] = false;
         control->Delete(target);
         delete target;
     }

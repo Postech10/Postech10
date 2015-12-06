@@ -112,5 +112,9 @@
         <file>images/Animation_Enemy2.bmp</file>
         <file>images/Animation_Enemy3.bmp</file>
         <file>images/Animation_Enemy4.bmp</file>
+        <file>images/button_credit.bmp</file>
+        <file>images/button_exit.bmp</file>
+        <file>images/button_next(blue).bmp</file>
+        <file>images/button_next(brown).bmp</file>
     </qresource>
 </RCC>
