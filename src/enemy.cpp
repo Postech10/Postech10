@@ -34,6 +34,11 @@ Enemy::Enemy(int level)
     poisonPower=0;
     reach=0;
 
+    slowTime = nullptr;
+    poisonTime = nullptr;
+    timer = nullptr;
+    hpBar = nullptr;
+
     if(currentLevel%10!=0)
         this->HideAttackRange();
 
@@ -51,8 +56,10 @@ Enemy::Enemy(int level)
 
 void Enemy::IsPoisonedBy(int power)
 {
-    if( poisonedState==1)
+    if( poisonedState==1){
         delete poisonTime;
+        poisonTime=nullptr;
+    }
 
     poisonedState=1;
     poisonedTime=0;
@@ -66,8 +73,10 @@ void Enemy::IsPoisonedBy(int power)
 
 void Enemy::IsGoldPoisonedBy(int power, int gold)
 {
-    if( poisonedState==1)
+    if( poisonedState==1){
         delete poisonTime;
+        poisonTime = nullptr;
+    }
 
     poisonedState=1;
     poisonedTime=0;
@@ -81,8 +90,10 @@ void Enemy::IsGoldPoisonedBy(int power, int gold)
 
 void Enemy::IsSlowedBy(int power)
 {
-    if (slowedState==1)
+    if (slowedState==1){
         delete slowTime;
+        slowTime = nullptr;
+    }
 
     slowedState=1;
 
@@ -111,9 +122,13 @@ void Enemy::IsHitBy(int power)
           scene()->removeItem(hpBar);
           scene()->removeItem(this);
           delete timer;
+          timer= nullptr;
           delete hpBar;
-          if(slowedState==1)
+          hpBar=nullptr;
+          if(slowedState==1){
               delete slowTime;
+              slowTime = nullptr;
+          }
       }
       else
           cutHpbar();
@@ -224,9 +239,9 @@ void Enemy::move()
 
         game->scene->removeItem(this);
         delete timer;
+        timer=nullptr;
         delete hpBar;
-
-
+        hpBar=nullptr;
     }
 
 }
@@ -238,12 +253,14 @@ void Enemy::IsHitByP(int power)     //poisoned
 
     if(Hp<=0){
         delete poisonTime;      //끝난경우
+        poisonTime=nullptr;
     }
     else if(poisonedTime>3000){            //after specific time, released from poison
         hpBar->setBrush(QBrush(Qt::red));
         poisonedState=0;
         poison_gold=0;
         delete poisonTime;
+        poisonTime=nullptr;
     }
     else if (reach==0){
         IsHitBy(power);
