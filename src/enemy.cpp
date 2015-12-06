@@ -207,11 +207,11 @@ void Enemy::setPicture()     //Hp AttackPower DefensePower
         set_image(QString::fromStdString(":/images/Animation_Enemy4.bmp"));
         set_state(CALM);
         break;
-    case 5:
+
+    }
+    if(n == 41){
         set_image(QString::fromStdString(":/images/Animation_Professor.bmp"));
         set_state(CALM);
-
-
     }
 
 }

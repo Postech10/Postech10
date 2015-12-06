@@ -49,6 +49,8 @@ QVector<Enemy *> WaveGenerator::MakeSpawnList(int round)
     else if(round == 40){
         SpawnList.push_back(new AttackableEnemy(round));
     }
+    else if(round == 41)
+        SpawnList.push_back(new AttackableEnemy(41));
 
     return SpawnList;
 }

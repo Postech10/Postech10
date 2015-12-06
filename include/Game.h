@@ -20,7 +20,7 @@
 #include "control_animation.h"
 #include "professoranimation.h"
 
-enum State {Ingame, Paused, Cleared, GameOver};
+enum State {Ingame, Paused, Cleared, GameOver, END};
 enum TOWERINFO {BASE,LEVEL2,LEVEL3};
 
 class Game: public QGraphicsView{               //game?붾㈃???곸냽 (view)
@@ -106,6 +106,7 @@ public slots:
     void CheatKeyEntered();
     void destroy_game();
     void change();
+    void MakeHiddenGame();
 
 private :
 
@@ -158,6 +159,8 @@ private :
     BuildTowerIcon *Gold_Tower_button; //???踰꾪듉
     BuildTowerIcon *Random_Tower_Button;
 
+    QGraphicsPixmapItem* map;
+    QGraphicsPixmapItem* hidden;
 
     QTimer *spawn_timer; //?곷뱾??scene??異쒗쁽 ?섎뒗 frequency??愿???뺣낫瑜??닿퀬 ?덈떎.
     QLabel* round_label; //round 異쒕젰
