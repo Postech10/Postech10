@@ -3,8 +3,9 @@
 #include <QGraphicsPixmapItem>
 #include <QGraphicsSceneMouseEvent>
 #include <Upgrades.h>
+#include "soundobject.h"
 
-class UpgradeButton : public QGraphicsPixmapItem{
+class UpgradeButton : public SoundObject, public QGraphicsPixmapItem{
 private:
     Upgrades* up;
 

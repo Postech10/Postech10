@@ -895,7 +895,7 @@ void Game::MakeNewGame()
     SpawnList = wave_generator.MakeSpawnList(get_round());
 }
 
-void Game::FuseTower()
+bool Game::FuseTower()
 {
     if(waiting_line.size() == 2){
 
@@ -963,9 +963,11 @@ void Game::FuseTower()
             delete attack_speed_ability;
             attack_speed_ability = nullptr;
 
-
+            return true;
         }
+        else return false;
     }
+    else return false;
 }
 
 void Game::DestroyTower(Tower * target)

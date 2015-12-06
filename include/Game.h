@@ -78,7 +78,7 @@ public:
 
     void MakeNewGame();
 
-    void FuseTower();
+    bool FuseTower();
 
     void DestroyTower(Tower*target);
 

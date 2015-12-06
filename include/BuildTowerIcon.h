@@ -7,8 +7,9 @@
 #include <Tower.h>
 #include <cstdlib>
 #include <ctime>
+#include "soundobject.h"
 
-class BuildTowerIcon: public QPushButton,public QGraphicsPixmapItem{
+class BuildTowerIcon: public SoundObject, public QPushButton,public QGraphicsPixmapItem{
 
     int tower_code;
 
