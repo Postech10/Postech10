@@ -3,13 +3,13 @@
 #include "Bullet.h"
 #include <QPixmap>
 
-class Bullet_enemy : public Bullet{
+class Bullet_enemy : public Bullet{//bullet used by attackable enemy
 public:
-    Bullet_enemy(int power);
+    Bullet_enemy(int power);//Constructor
 public slots:
-    void move();
+    void move();//move toward tower
 private:
-    QPixmap* image;
+    QPixmap* image;//image of bullet
 };
 
 #endif // BULLET_ENEMY

@@ -1,19 +1,16 @@
 #include "bullet_enemy.h"
-#include <QPixmap>
-#include <QTimer>
 #include <qmath.h>
 #include "Game.h"
 #include <QList>
 #include <QGraphicsItem>
 #include "Tower.h"
-#include <QDebug>
 #include <QPointF>
 #include <QBitmap>
-#define STEP 30
+#define STEP 30  //bullet step size
 
-extern Game * game;
+extern Game * game;     //to access scene
 
-Bullet_enemy::Bullet_enemy(int power): Bullet(power){
+Bullet_enemy::Bullet_enemy(int power): Bullet(power){       //different bullet image according to level
     switch(power){
     case 50: image = new QPixmap(":/images/Bullet_Normal.bmp");
         image->setMask(image->createMaskFromColor(QColor(255,0,170)));
@@ -44,12 +41,12 @@ Bullet_enemy::Bullet_enemy(int power): Bullet(power){
 
 void Bullet_enemy::move()
 {
-    QList<QGraphicsItem *> colliding_tower=this->collidingItems();      //bullet collides
+    QList<QGraphicsItem *> colliding_tower=this->collidingItems();      //bullet collides, get colliding item lists
     for(size_t i=0, n=colliding_tower.size();i<n;i++){
-            Tower* tower=dynamic_cast<Tower *>(colliding_tower[i]);           //sound for hit
-            if(tower){
-                tower->IsHitBy(AttackPower*2);
-                Activated(0);
+            Tower* tower=dynamic_cast<Tower *>(colliding_tower[i]);     //only tower item can be casted
+            if(tower){      //if colliding item is tower
+                tower->IsHitBy(AttackPower*2);      //hit the tower
+                Activated(0);                       //stop to move
                 game->scene->removeItem(this);
                 delete image;
                 delete this;
@@ -58,10 +55,10 @@ void Bullet_enemy::move()
     }
     double theta = rotation();                      //set theta
 
-    double dy = STEP*qSin(qDegreesToRadians(theta));
+    double dy = STEP*qSin(qDegreesToRadians(theta));    //set x_step size, y_step size
     double dx = STEP*qCos(qDegreesToRadians(theta));
 
 
-    setPos(x()+dx,y()+dy);
+    setPos(x()+dx,y()+dy);      //move
 }
 

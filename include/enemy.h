@@ -5,8 +5,7 @@
 #include <QObject>
 #include<QWidget>
 #include "BattleObject.h"
-#include "soundobject.h"
-#include <QTimer>
+
 
 class Enemy : public BattleObject{
 Q_OBJECT
