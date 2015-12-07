@@ -8,7 +8,7 @@ SteveJobs::SteveJobs()
     TargetNum = 0;
     TowerCode = JOBS;
     Hp = 100;
-    AttackPower = 20;
+    AttackPower = 0;
     DefensivePower = 20;
     AttackSpeed = 20;
     Attackable = false;                  //this will be changed for balance
@@ -29,6 +29,6 @@ void SteveJobs::Activated(bool active)
 
 void SteveJobs::IncGold()
 {
-    game->set_money(game->get_money()+AttackPower);                      //in this part, attackpower means gold inc power
+    game->set_money(game->get_money()+2);                      //in this part, attackpower means gold inc power
 }
 

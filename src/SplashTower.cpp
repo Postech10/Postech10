@@ -9,9 +9,9 @@ SplashTower::SplashTower()
     TargetNum = 1;
     TowerCode = SPLASH;
     Hp = 100;
-    AttackPower = 20;
+    AttackPower = 25;
     DefensivePower = 20;
-    AttackSpeed = 20;
+    AttackSpeed = 15;
     Attackable = true;                  //this will be changed for balance
     set_image(QString::fromStdString("://images/Animation_Mechanical.bmp"));
     set_state(CALM);

@@ -9,9 +9,9 @@ AppleRobot::AppleRobot()
     TowerCode = APPLE;
     Hp = 100;
     AttackPower = 60;
-    DefensivePower = 20;
-    GoldPower = 20;
-    AttackSpeed = 20;
+    DefensivePower = 40;
+    GoldPower = 1;
+    AttackSpeed = 25;
     Attackable = true;                  //these informations will be changed for balance
     set_image(QString::fromStdString("://images/Animation_AppleDeathMachine.bmp"));
     set_state(CALM);

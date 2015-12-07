@@ -10,7 +10,7 @@ TripleMajorSenior::TripleMajorSenior()
     Hp = 100;
     AttackPower = 60;
     DefensivePower = 20;
-    GoldPower = 30;
+    GoldPower = 2;
     AttackSpeed = 20;
     Attackable = true;                  //this will be changed for balance
     set_image(QString::fromStdString("://images/Animation_3Major.bmp"));

@@ -10,7 +10,7 @@ ChemEngSenior::ChemEngSenior()
     Hp = 100;
     AttackPower = 40;
     DefensivePower = 20;
-    GoldPower = 10;
+    GoldPower = 1;
     AttackSpeed = 20;
     Attackable = true;                  //this will be changed for balance
     set_image(QString::fromStdString("://images/Animation_ChemEng.bmp"));

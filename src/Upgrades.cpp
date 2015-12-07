@@ -1,6 +1,6 @@
 ﻿#include "Upgrades.h"
 
-#define DEFAULT_UPGRADE_AMOUNT 10
+#define DEFAULT_UPGRADE_AMOUNT 5
 
 Tower* Upgrades::GetReference(int towercode)//return type shoud be a pointer
 {

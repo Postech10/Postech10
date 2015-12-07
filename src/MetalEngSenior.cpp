@@ -10,8 +10,8 @@ MetalEngSenior::MetalEngSenior()
     Hp = 100;
     AttackPower = 40;
     DefensivePower = 20;
-    GoldPower = 20;
-    AttackSpeed = 20;
+    GoldPower = 1;
+    AttackSpeed = 30;
     Attackable = true;                  //this will be changed for balance
     set_image(QString::fromStdString("://images/Animation_Metal.bmp"));
     set_state(CALM);

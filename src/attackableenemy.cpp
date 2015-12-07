@@ -55,10 +55,8 @@ void AttackableEnemy::property()
 
 AttackableEnemy::~AttackableEnemy()
 {
-    if(timer_search){
+    if(timer_search != nullptr)
         delete timer_search;
-        timer_search = nullptr;
-    }
 
 }
 
@@ -93,6 +91,7 @@ void AttackableEnemy::SetTarget()
     }
     else{
         delete timer_search;
+        timer_search = nullptr;
         game->set_money(game->get_money()+getLevel()*100);
     }
 }

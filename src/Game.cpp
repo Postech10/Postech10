@@ -529,7 +529,7 @@ void Game::button_Pressed(QPointF point,int tower_code)
         }
 
         QCursor* add_mode_cursor = new QCursor(*add_mode_pixmap);
-        QWidget::unsetCursor();
+        QWidget::setCursor(Qt::ArrowCursor);
         QWidget::setCursor(*add_mode_cursor);
 
         control->ADD(build[build.size()-1]);
@@ -669,7 +669,7 @@ void Game::clear_game()
 
         scene->removeItem(map);
         map = scene->addPixmap(QPixmap(":/images/BossMap.bmp"));
-        map->setZValue(0);
+        map->setZValue(-1);
 
         int id = QFontDatabase::addApplicationFont(":/fonts/PressStart2P.ttf");
         QString family = QFontDatabase::applicationFontFamilies(id).at(0);
@@ -950,6 +950,7 @@ void Game::mousePressEvent(QMouseEvent *event){
         pointer->setHpbar();
         scene->addItem(pointer);
         QWidget::unsetCursor();
+        QWidget::setCursor(Qt::ArrowCursor);
 
         this->position[pointed_spot.x()/64][pointed_spot.y()/64] = true;
         add_mode = false;
@@ -1059,7 +1060,7 @@ bool Game::FuseTower()
             }
 
             QCursor* new_cursor = new QCursor(*pixmap);
-            QWidget::unsetCursor();
+            QWidget::setCursor(Qt::ArrowCursor);
             QWidget::setCursor(*new_cursor);
 
             delete attack_ability;

@@ -27,7 +27,7 @@ Enemy::Enemy(int level)
        //different velocity according to level
 
     life=1;
-    Hp=40+currentLevel*4;
+    Hp=30+currentLevel*3;
     DefensivePower=2;
     slowedState=0;
     poisonedState=0;
@@ -56,6 +56,7 @@ Enemy::Enemy(int level)
 
 void Enemy::IsPoisonedBy(int power)
 {
+    IsHitBy(power*3/5);
     if( poisonedState==1){
         delete poisonTime;
         poisonTime=nullptr;
@@ -73,6 +74,7 @@ void Enemy::IsPoisonedBy(int power)
 
 void Enemy::IsGoldPoisonedBy(int power, int gold)
 {
+    IsHitBy(power*3/5);
     if( poisonedState==1){
         delete poisonTime;
         poisonTime = nullptr;
@@ -90,6 +92,8 @@ void Enemy::IsGoldPoisonedBy(int power, int gold)
 
 void Enemy::IsSlowedBy(int power)
 {
+    for(int i=0; i<2; i++)
+        move();
     if (slowedState==1){
         delete slowTime;
         slowTime = nullptr;
@@ -147,22 +151,14 @@ void Enemy::startMovement()
 
 Enemy::~Enemy()
 {
-    if (slowTime){
+    if (slowTime)
         delete slowTime;
-        slowTime = nullptr;
-    }
-    if(poisonTime){
+    if(poisonTime)
         delete poisonTime;
-        poisonTime = nullptr;
-    }
-    if(timer){
+    if(timer)
         delete timer;
-        timer = nullptr;
-    }
-    if(hpBar){
+    if(hpBar)
         delete hpBar;
-        hpBar = nullptr;
-    }
 
 }
 
@@ -264,7 +260,7 @@ void Enemy::IsHitByP(int power)     //poisoned
         delete poisonTime;      //끝난경우
         poisonTime=nullptr;
     }
-    else if(poisonedTime>3000){            //after specific time, released from poison
+    else if(poisonedTime>2500){            //after specific time, released from poison
         hpBar->setBrush(QBrush(Qt::red));
         poisonedState=0;
         poison_gold=0;
@@ -282,7 +278,6 @@ void Enemy::IsHitByP(int power)     //poisoned
 void Enemy::changeClockRate()
 {
     delete timer;
-    timer = nullptr;
     delete slowTime;
     slowTime=nullptr;
     slowedState=0;
