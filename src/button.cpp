@@ -11,6 +11,6 @@ Button::Button(char *filename, QGraphicsItem *parent){
 
 void Button::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
-    if(title->page_num <10) title->button_Pressed(event->scenePos());
-    else game->button_Pressed(event->pos(),0);
+    if(title->page_num <10) title->button_Pressed(event->scenePos()); // during title and intro
+    else game->button_Pressed(event->pos(),0); // after game started
 }

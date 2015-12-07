@@ -21,8 +21,8 @@ AnimatedBattleObject::AnimatedBattleObject(QString &filename)
     delete copy;
 }
 
-void AnimatedBattleObject::Animate()
-{
+void AnimatedBattleObject::Animate() //Animate according to its state (enum { CALM, ATTACK, UNDERATTACK })
+{                                    //state_cnt and state shows the object's state
     switch(this->state)
     {
         case CALM:
@@ -67,7 +67,7 @@ void AnimatedBattleObject::Animate()
             }
             break;
         }
-        case UNDERATTACK:
+        case UNDERATTACK:                   // not used as a result of a few trial. Not so effective.
         {
             if(state_cnt == 0)
             {
@@ -106,7 +106,7 @@ void AnimatedBattleObject::Animate()
     }
 }
 
-void AnimatedBattleObject::set_state(states new_state)
+void AnimatedBattleObject::set_state(states new_state) // set state to new one and trigger Animate() immediately
 {
     state = new_state;
     state_cnt = 1;
@@ -114,19 +114,19 @@ void AnimatedBattleObject::set_state(states new_state)
     //state_cnt = 1;
 }
 
-states AnimatedBattleObject::get_state()
+states AnimatedBattleObject::get_state() // return state
 {
     return this->state;
 }
 
-void AnimatedBattleObject::set_image(QString &new_image)
+void AnimatedBattleObject::set_image(QString &new_image) // set this->state to new one and mask (255, 0 , 170). Then set pixmap to upper left part of image
 {
     image = new QPixmap(new_image);
     image->setMask(image->createMaskFromColor(QColor(255, 0, 170)));
     setPixmap(image->copy(0, 0, 64, 64));
 }
 
-QPixmap* AnimatedBattleObject::get_image()
+QPixmap* AnimatedBattleObject::get_image() // return image
 {
     return image;
 }

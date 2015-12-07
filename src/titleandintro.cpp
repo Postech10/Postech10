@@ -12,23 +12,23 @@
 extern Game* game;
 TitleAndIntro::TitleAndIntro()
 {
-    scene = new QGraphicsScene(this);
+    scene = new QGraphicsScene(this); // make scene
     scene->setSceneRect(0, 0, 1024, 768);
     setFixedSize(1024, 768);
     setScene(scene);
 
     setMouseTracking(true);
-    setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff); // remove scrollbar
     setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
-    QPixmap* title = new QPixmap(":/images/TitleScreen.bmp");
+    QPixmap* title = new QPixmap(":/images/TitleScreen.bmp"); // set scene pixmap to TitleScreen
     scene->addPixmap(*title);
 
 
 
     page_num = 1;
 
-    start = new Button(":/images/TitleButton.bmp");
+    start = new Button(":/images/TitleButton.bmp"); // make 4 buttons: start, credit, exit, next
     start->QGraphicsPixmapItem::setPos(384, 576);
     //start->resize(QSize(704-384, 704-576));
     //start->setGeometry(384, 576, 704-384, 704-576);
@@ -62,7 +62,7 @@ TitleAndIntro::TitleAndIntro()
 }
 
 
-void TitleAndIntro::button_Pressed(QPointF point)
+void TitleAndIntro::button_Pressed(QPointF point) // called when button pressed
 {
     qreal x = point.x();
     qreal y = point.y();
@@ -74,7 +74,7 @@ void TitleAndIntro::button_Pressed(QPointF point)
 
     switch(page_num)
     {
-    case 0:
+    case 0: //credit screen
         if(x >= next_x && x <= next_x + next_width && y >= next_y && y <= next_y + next_height)
         {
             scene->clear();
@@ -91,14 +91,14 @@ void TitleAndIntro::button_Pressed(QPointF point)
         break;
 
     case 1:
-        if(x >= exit->QGraphicsPixmapItem::pos().x() &&
+        if(x >= exit->QGraphicsPixmapItem::pos().x() && // if exit button contains point
                 x <= exit->QGraphicsPixmapItem::pos().x() + exit->QGraphicsPixmapItem::pixmap().width() &&
                 y >= exit->QGraphicsPixmapItem::pos().y() &&
                 y <= exit->QGraphicsPixmapItem::pos().y() + exit->QGraphicsPixmapItem::pixmap().height())
         {
-            QApplication::quit();
+            QApplication::quit(); // quit application
         }
-        else if(x >= credit->QGraphicsPixmapItem::pos().x() &&
+        else if(x >= credit->QGraphicsPixmapItem::pos().x() && // if credit button contains point
                 x <= credit->QGraphicsPixmapItem::pos().x() + credit->QGraphicsPixmapItem::pixmap().width() &&
                 y >= credit->QGraphicsPixmapItem::pos().y() &&
                 y <= credit->QGraphicsPixmapItem::pos().y() + credit->QGraphicsPixmapItem::pixmap().height())
@@ -111,7 +111,7 @@ void TitleAndIntro::button_Pressed(QPointF point)
 
             scene->addItem(next);
         }
-        else if(x >= start->QGraphicsPixmapItem::pos().x() &&
+        else if(x >= start->QGraphicsPixmapItem::pos().x() && //
                 x <= start->QGraphicsPixmapItem::pos().x() + start->QGraphicsPixmapItem::pixmap().width() &&
                 y >= start->QGraphicsPixmapItem::pos().y() &&
                 y <= start->QGraphicsPixmapItem::pos().y() + start->QGraphicsPixmapItem::pixmap().height())
@@ -224,15 +224,15 @@ void TitleAndIntro::button_Pressed(QPointF point)
         }
         break;
 
-    case 9:
+    case 9: // end of intro and tutorial
         if(x >= next_x && x <= next_x + next_width && y >= next_y && y <= next_y + next_height)
         {
             page_num = 10;
             player.stop();
             this->close();
-            game = new Game();
+            game = new Game(); // make new Game
             game->displayMenu();
-            game->show();
+            game->show(); // show game
         }
         break;
     default:
