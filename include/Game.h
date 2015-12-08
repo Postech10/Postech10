@@ -25,13 +25,13 @@
 enum State {Ingame, Paused, Cleared, GameOver, END};
 enum TOWERINFO {BASE,LEVEL2,LEVEL3};
 
-class Game: public QGraphicsView{               //game?붾㈃???곸냽 (view)
+class Game: public QGraphicsView{
 
     Q_OBJECT
 
 public:
     Game();                                     //constructor
-    void displayMenu();                         //硫붾돱?ㅼ쓣 異쒕젰?섎뒗 method
+    void displayMenu();                         // display UI
 
     //event method
     void mouseMoveEvent(QMouseEvent *event);
@@ -57,18 +57,25 @@ public:
     void set_round(int _round);
     inline int get_round() {return round;}
 
+    //renew the number of enemies
     void RenewEnemyNum(bool is_dead);
+
+    //accesor for enemy_num
     inline int GetEnemyNum() {return enemy_num;}
 
+    //state accessor & modifier
     void SetState(int _state);
     int GetState();
 
+    //life accessor & modifier
     int GetLife() {return life;}
     void SetLife(int _life);
 
+    //towerinfo accessor & modifier
     int GetTowerinfo() {return towerinfo;}
     void SetTowerinfo(int _towerinfo) {towerinfo = _towerinfo;}
 
+    //accessors for BuildTowerIcons
     BuildTowerIcon *getNormal_Tower_button() {return Normal_Tower_button;}
     BuildTowerIcon *getSplash_Tower_button() {return Splash_Tower_button;}
     BuildTowerIcon *getSlow_Tower_button() {return Slow_Tower_button;}
@@ -78,117 +85,132 @@ public:
     BuildTowerIcon *getGold_Tower_button() {return Gold_Tower_button;}
     BuildTowerIcon *getRandom_Tower_Button() {return Random_Tower_Button;}
 
-
+    //make and prepare next round
     void MakeNewGame();
 
+    //fuse two tower if the combination is available
     bool FuseTower();
 
+    //destroy a tower which was dead
     void DestroyTower(Tower*target);
 
+    //make animation of objects in the scene
     Control_Animation* control;
 
-    //吏湲덉? 蹂?섎뱾??public?몃뜲 ?섏쨷??紐⑤몢 private濡?留뚮뱾嫄곗엫.
+    //scene which is shown
     QGraphicsScene *scene;
+
+    //waiting list of the towers for upgrade and combination
     QList<Tower*> waiting_line;
-    QLabel *tooltip;
+
 
 
 signals:
-    void RoundSet(int new_round);
+    //a signal emitted when all enemies are removed from the scene
     void game_is_cleared();
+
+    //a signal emitted when game is over
     void game_is_over();
 
 public slots:
 
+    //spawn enemy regularly
     void spawnEnemy();
+    //act when button was pressed
     void button_Pressed(QPointF point, int tower_code);
+    //clear the current round
     void clear_game();
+    //show tower information when a tower is selected
     void ShowTowerInfo(Tower* tower);
+    //show hide information when a tower is selected
     void DeletTowerInfo();
+    //act when cheat key is entered
     void CheatKeyEntered();
+    //clear the current game ane prepare new game
     void destroy_game();
+    //make animation for buttons
     void change();
+    //make hidden stage round
     void MakeHiddenGame();
 
 private :
 
-    QGraphicsPixmapItem *cursor;                  //members
-
-    //round???곕씪 enemy瑜?留뚮뱶???몄뒪?댁뒪
+    QGraphicsPixmapItem *cursor;
+    //make enemies
     WaveGenerator wave_generator;
-    //???쇱슫?쒖뿉 由ъ뒪???섏뼱???섎뒗 enemy??踰≫꽣
+    //store enemies which are ready to be spawned
     QVector<Enemy*> SpawnList;
-    //吏湲?嫄댁꽕 ????뚮뱾??踰≫꽣
+    //stor towers in the map
     QVector<Tower*> build;
-    //吏湲??꾩옱 由ъ뒪????enemy媛 ?닿릿 踰≫꽣
+    //store enemies which was already spawned
     QVector<Enemy*> enemy;
-    //吏湲??댁븘 ?덈뒗 enemy????
+    //the number of enemies was already spawned
     int enemy_num;
-    //二쎌? enemy????
+    //the number of enemies which were dead
     int dead_enemy;
 
-    //combnination[r][w]媛 true硫?r怨?w??議고빀??媛?ν븿
+    //combnination[r][w] is true if a tower whose code is r and the other whose code is w can be combined
     bool combination[14][14];
 
-    //移섑듃?ㅻ? ?낅젰 ?????덈뒗 遺遺?
+    //the edit box which user can enter cheat key on it
     QLineEdit* textBox;
 
-    //??뚮? 嫄댁꽕 ?????ъ슜?섎뒗 ?ъ씤??蹂??
+    //pointer for tower
     Tower* pointer;
 
-    int life; //?⑥? 泥대젰
-    int money; //怨⑤뱶 ?띾뱷???뺣낫
-    int round; //?꾩옱 ?쇱슫??
-    int wave; //???쇱슫?쒖뿉 ?깆옣?섎뒗 enemy????
-    int state; //?꾩옱 寃뚯엫 ?곹솴???대뼡 ?곹솴?몄? ?뚮젮 二쇰뒗 蹂??
-    int towerinfo;
+    int life;       //life
+    int money;      //money
+    int round;      //stage
+    int wave;       //the number of enemies which should be spawned
+    int state;      //state of game
+    int towerinfo;  //state of tooltip
 
-    bool add_mode; //add_mode ?몄? ?꾨땶吏??????뺣낫瑜??닿퀬 ?덈뒗 蹂??
-    bool upgrade_mode;
-    bool fuse_mode;
-    bool position[16][12]; //1024*768瑜?64*64 ?ш린???뺤궗媛곹삎?ㅻ줈 ?섎닎
+    bool add_mode;          //true when add mode
+    bool upgrade_mode;      //true when upgrade mode
+    bool fuse_mode;         //true when fuse mode
+    bool position[16][12];  //position[m][n] is true if there is already a tower at (64*m , 64*n)
 
-    Button *start_pause_button; //start_puase 踰꾪듉
-    Fusion_Button *fusion_button; //?⑹껜 踰꾪듉
-    UpgradeButton *upgrade_button; //?낃렇?덉씠??踰꾪듉
+    Button *start_pause_button;         //start_button
+    Fusion_Button *fusion_button;       //fusion button
+    UpgradeButton *upgrade_button;      //upgrade button
 
-    BuildTowerIcon *Normal_Tower_button; //???踰꾪듉
-    BuildTowerIcon *Splash_Tower_button; //???踰꾪듉
-    BuildTowerIcon *Slow_Tower_button; //???踰꾪듉
-    BuildTowerIcon *Go_to_back_Button;
-    BuildTowerIcon *Poison_Tower_button; //???踰꾪듉
-    BuildTowerIcon *Chain_Tower_button; //???踰꾪듉
-    BuildTowerIcon *Gold_Tower_button; //???踰꾪듉
-    BuildTowerIcon *Random_Tower_Button;
+    BuildTowerIcon *Normal_Tower_button;    //normal tower button
+    BuildTowerIcon *Splash_Tower_button;    //splash tower button
+    BuildTowerIcon *Slow_Tower_button;      //slow tower button
+    BuildTowerIcon *Go_to_back_Button;      //go to back button
+    BuildTowerIcon *Poison_Tower_button;    //posion tower button
+    BuildTowerIcon *Chain_Tower_button;     //chain tower button
+    BuildTowerIcon *Gold_Tower_button;      //gold tower button
+    BuildTowerIcon *Random_Tower_Button;    //random tower button
 
-    QGraphicsPixmapItem* map;
-    QGraphicsPixmapItem* hidden;
+    QGraphicsPixmapItem* map;               //map
+    QGraphicsPixmapItem* hidden;            //hidden stage map
 
-    QTimer *spawn_timer; //?곷뱾??scene??異쒗쁽 ?섎뒗 frequency??愿???뺣낫瑜??닿퀬 ?덈떎.
-    QLabel* round_label; //round 異쒕젰
-    QLabel* money_label; //money 異쒕젰
-    QGraphicsRectItem* hpBar;
+    QTimer *spawn_timer;                    //act when the enemies are spawned
+    QLabel* round_label;                    //show current stage the user is in
+    QLabel* money_label;                    //show current money the user has
+    QGraphicsRectItem* hpBar;               //show current hp
 
-    QLabel* upgrade_level;
-    QLabel* attack_ability;
-    QLabel* defense_ability;
-    QLabel* attack_speed_ability;
-    QLabel* game_over;
+    QLabel* attack_ability;                 //show attack level of a tower selected
+    QLabel* defense_ability;                //show defense level of a tower selected
+    QLabel* attack_speed_ability;           //show attack speed level of a tower selected
+    QLabel* game_over;                      //show game over sign
+    QLabel *tooltip;                        //to show tooltip
 
-    QMovie* movie_tooltip;//a tooltip movie
-    int num_mouseonbutton;//a number to point in what icon the mouse is
-    QGraphicsProxyWidget* widget_tooltip;//a proxy widget pointer to store converted widget.
-    QGraphicsProxyWidget* widget_atk; //pointers to atk, atkspd, def QLebels.
+    QMovie* movie_tooltip;                  //a tooltip movie
+    int num_mouseonbutton;                  //a number to point in what icon the mouse is
+    QGraphicsProxyWidget* widget_tooltip;   //a proxy widget pointer to store converted widget.
+    //pointers to atk, atkspd, def QLebels.
+    QGraphicsProxyWidget* widget_atk;
     QGraphicsProxyWidget* widget_atkspd;
     QGraphicsProxyWidget* widget_def;
     ProfessorAnimation professor_animation;
 
+    //to play BGM
     QMediaPlayer player;
     QMediaPlaylist playlist;
+
     bool isgameon;
-
-
-
 };
 
 #endif // GAME

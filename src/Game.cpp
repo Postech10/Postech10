@@ -33,12 +33,15 @@ Game::Game(){
 
     state = Cleared;                        //initialize state
     towerinfo = BASE;
-    enemy_num=0;
+
+    enemy_num=0;                            //initialize the number of enemies
     dead_enemy=0;
     wave=0;
-    hidden = nullptr;
 
-    for(int i=0 ; i < 11 ; i++){
+    hidden = nullptr;                       //initialize map
+
+
+    for(int i=0 ; i < 11 ; i++){            //make some areas unavailable when user constructs tower
         for(int j=0 ; j < 12 ; j++)
             position[i][j]=false;
     }
@@ -58,10 +61,12 @@ Game::Game(){
     for(int i=0 ; i<16; i++)
         position[i][0]=true;
 
-    setMouseTracking(true);                 //enable mouse tracking
-    setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);   //prohibit using scroll bar
-    setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
+    setMouseTracking(true);                                 //enable mouse tracking
+    setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);   //prohibit using scroll bar
+    setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);     //prohibit using scroll bar
+
+    //according to recipe for two tower combination, setting combination
     for(int i=0 ; i<14 ; i++){
         for(int j=0 ; j<14 ; j++)
             combination[i][j]=false;
@@ -88,12 +93,10 @@ Game::Game(){
 
     //when game is cleared, automatically the game objcet prepares the next rounds.
     connect(this,SIGNAL(game_is_cleared()),this,SLOT(clear_game()));
+
+    //when game was over, automatically the game objcet prepares new game.
     connect(this,SIGNAL(game_is_over()),this,SLOT(destroy_game()));
     isgameon = false;
-
-
-
-
 }
 
 //method to display default Menu on the scene
@@ -187,12 +190,14 @@ void Game::displayMenu()
     money_label->setGeometry(1024-64*2.2,32*10.5,64*3,50);
     scene->addWidget(money_label);
 
+    //make red Bar which shows current hp the user has and add it into scene
     hpBar = new QGraphicsRectItem();
     hpBar->setBrush(QBrush(Qt::red));
     hpBar->setPos(256,21);
     hpBar->setRect(0,0, (704-256)*((float(life)/100)), float(42-21));
     scene->addItem(hpBar);
 
+    //add edit box for cheat key
     textBox = new QLineEdit();
     connect(textBox , SIGNAL(returnPressed()), this, SLOT(CheatKeyEntered()));
     textBox->setGeometry(768+5 , 710 , 64*3.5 , 32);
@@ -200,10 +205,12 @@ void Game::displayMenu()
     scene->addWidget(textBox);
     num_mouseonbutton = 0;
 
+    //add professor
     professor_animation.setPos(64*3, 64*2);
     scene->addItem(&professor_animation);//professor at the end
     control->ADD(&professor_animation);
 
+    //add music
     playlist.addMedia(QUrl::fromLocalFile("resources/sounds/NormalTheme.mp3"));
     playlist.addMedia(QUrl::fromLocalFile("resources/sounds/BattleTheme.mp3"));
     playlist.addMedia(QUrl::fromLocalFile("resources/sounds/FinalBossTheme.mp3"));
@@ -221,12 +228,6 @@ void Game::displayMenu()
 //this method is called when a user point the tower button and this shows information of tower which user is looking at
 void Game::mouseMoveEvent(QMouseEvent *event)
 {
-
-    //if there was a tooltip already
-    /*if(tooltip && waiting_line.size() == 0){
-        delete tooltip;
-        tooltip = nullptr;
-    } */
     //when mouse cursor is on tower build button
     if(waiting_line.size() != 0) return;
     if(event->pos().x()-(768)<64 && event->pos().y()-(192)<64
