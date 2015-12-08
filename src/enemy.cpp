@@ -101,7 +101,6 @@ void Enemy::IsSlowedBy(int power)   //
     }
 
     slowedState=1;      //slowed state
-
     delete timer;
     timer = new QTimer();
     connect(timer, SIGNAL(timeout()), this, SLOT(move()));
@@ -257,7 +256,7 @@ void Enemy::move()      //move along the path
 }
 
 void Enemy::IsHitByP(int power)     //at poisoned state
-{
+{   if(reach==0){
     poisonedTime+=1000;
 
     if(Hp<=0){
@@ -270,19 +269,23 @@ void Enemy::IsHitByP(int power)     //at poisoned state
         hpBar->setBrush(QBrush(Qt::red));   //back to normal hpBar
         poisonedState=0;
         poison_gold=0;
+        if(poisonTime!=nullptr){
         delete poisonTime;
         poisonTime=nullptr;
+        }
     }
     else if (reach==0){     //possible to be attacked
         IsHitBy(power);     //attacked
         if (Hp<=0)
             game->set_money(game->get_money()+poison_gold); //get gold, dead by goldPoisonTower
     }
+    }
 
 }
 
 void Enemy::changeClockRate()   //back to normal movement speed
 {
+    if(reach==0){
     delete timer;
     delete slowTime;
     slowTime=nullptr;
@@ -291,5 +294,6 @@ void Enemy::changeClockRate()   //back to normal movement speed
     timer = new QTimer();
     connect(timer, SIGNAL(timeout()), this, SLOT(move()));
     timer->start(clockRate);      //recovered from slow state
+    }
 }
 
